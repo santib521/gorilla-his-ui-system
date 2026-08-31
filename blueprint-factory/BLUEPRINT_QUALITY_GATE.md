@@ -1,70 +1,96 @@
-# Gorilla HIS — Blueprint Quality Gate v1.0
+# Gorilla HIS — Blueprint Quality Gate v2.0
 
-Purpose: ตรวจว่า Application Blueprint พร้อมส่งเข้า UI Factory หรือยัง โดยไม่บังคับให้ Requirement ต้องสมบูรณ์ 100%
+Purpose: allow fast hospital prototype discovery without turning AI assumptions or generic best practices into false hospital requirements.
 
 ## Gate 1 — Source Truth
-- [ ] ระบุข้อมูลจาก Hospital/User จริง
-- [ ] แยกสิ่งที่ Confirm แล้วออกจาก TBD
-- [ ] ไม่มี Requirement ที่ AI แต่งขึ้นเอง
+- [ ] Hospital-confirmed facts are clearly identified.
+- [ ] Recommendations, assumptions and TBD are separated.
+- [ ] No AI-created item is labeled Hospital Confirmed.
 
-**FAIL:** พบ invented business requirement
+**HARD FAIL:** invented requirement presented as hospital truth.
 
-## Gate 2 — User & Permission
-- [ ] ระบุผู้ใช้งานหลัก
-- [ ] ระบุสิทธิ์/ข้อจำกัดสำคัญที่ทราบ
-- [ ] Permission ที่ยังไม่ชัดถูกทำเครื่องหมาย TBD
+## Gate 2 — Hospital System Soundness
+- [ ] Main users/actors are known enough for the intended prototype.
+- [ ] Patient/encounter context is handled when relevant.
+- [ ] Important permission/authorization gaps are identified.
+- [ ] Clinical documentation/order/data-source boundaries are identified when relevant.
+- [ ] Audit/accountability/history needs are considered when relevant.
+
+Unknowns may be Recommendation/WA/TBD; they must not be hidden.
 
 ## Gate 3 — Main Workflow
-- [ ] มี Start และ End ของ Main Workflow
-- [ ] Actor และ handoff สำคัญพอเข้าใจ
-- [ ] จุด Approve/Reject/Confirm ที่ User ระบุถูกเก็บไว้
+- [ ] Hospital-confirmed workflow is preserved.
+- [ ] Missing workflow steps are not fabricated as confirmed.
+- [ ] Prototype can demonstrate a coherent flow using only confirmed facts + clearly labeled safe Working Assumptions.
 
-**FAIL:** ไม่สามารถอธิบาย Main Workflow ได้โดยไม่เดา
+## Gate 4 — Clinical & Data Safety
+- [ ] No unconfirmed assumption causes a real medication/order/clinical action.
+- [ ] No unconfirmed assumption changes the legal/actual medical record.
+- [ ] No unsafe irreversible action is invented.
+- [ ] Real-vs-training/draft/preview effects are explicit where relevant.
 
-## Gate 4 — Business Rules
-- [ ] กฎสำคัญถูกแยกจาก Function
-- [ ] Calculation/Permission/Approval/Lock ที่ทราบถูกระบุ
-- [ ] สูตรหรือ Threshold ที่ไม่ทราบไม่ถูก AI สร้างเอง
+**HARD FAIL:** prototype treats an unconfirmed clinical/data effect as production truth.
 
-## Gate 5 — Functions & Information
-- [ ] แตก Core Functions จาก Requirement ที่มี
-- [ ] ระบุข้อมูลหลักที่ User ต้องเห็น/บันทึก
-- [ ] ระบุ Integration ที่ User กล่าวถึง
+## Gate 5 — Standards & Compliance
+- [ ] Relevant JCI considerations reviewed where applicable.
+- [ ] Relevant current HA considerations reviewed where applicable.
+- [ ] Relevant ISO/IEC 27001:2022 information-security considerations reviewed where applicable.
+- [ ] Compliance claims identify standard/topic and verification status.
+- [ ] No fabricated clause numbers or mandatory claims.
+- [ ] Best practice is not mislabeled as a formal accreditation requirement.
 
-## Gate 6 — States & Outcomes
-- [ ] ระบุ State ที่ Source รองรับ
-- [ ] State ที่จำเป็นแต่ไม่ทราบเป็น TBD
-- [ ] Output/Report ที่ User ต้องการถูกระบุ
+**HARD FAIL:** unsupported compliance claim.
 
-## Gate 7 — Gap Analysis
-- [ ] ความขัดแย้งถูกชี้ออกมา
-- [ ] Missing information ที่กระทบ Workflow/Business Rule ถูกระบุ
-- [ ] คำถามกลับ Hospital สั้น ชัด และถามเฉพาะสิ่งจำเป็น
-- [ ] ไม่ถามสิ่งที่ตอบได้จาก Raw Requirement อยู่แล้ว
+## Gate 6 — Functions, Rules & Traceability
+- [ ] FN-xx used for functions.
+- [ ] REQ-xx only for hospital requirements.
+- [ ] BR-xx only for confirmed business rules.
+- [ ] HSR-xx used for hospital-system recommendations.
+- [ ] CR-xx used for compliance recommendations.
+- [ ] WA-xx used for prototype assumptions.
+- [ ] TBD-xx used for unresolved gaps/conflicts.
+- [ ] AC-xx traces important expected behavior.
 
-## Gate 8 — Traceability
-- [ ] มี FN-xx
-- [ ] มี REQ-xx
-- [ ] มี BR-xx เมื่อมี Business Rule
-- [ ] มี AC-xx ที่ผูกกับ Requirement/Rule สำคัญ
+## Gate 7 — Working Assumption Safety
+Every WA must be:
+- [ ] clearly labeled;
+- [ ] reversible in prototype;
+- [ ] non-clinically dangerous;
+- [ ] not a false compliance claim;
+- [ ] assigned a confirmation point.
 
-## Readiness Decision
+If not, convert it to TBD.
 
-### DRAFT
-ข้อมูลยังไม่พอสร้าง Main Workflow ที่น่าเชื่อถือ
+## Gate 8 — Confirmation Strategy
+Questions are split into:
+- [ ] MUST CONFIRM BEFORE DEV
+- [ ] CONFIRM DURING PROTOTYPE REVIEW
+- [ ] LATER REFINEMENT
 
-### WAITING FOR CONFIRMATION
-โครงสร้างหลักชัด แต่มี Blocking TBD ที่ต้องถาม Hospital ก่อนทำ Mockup
+Do not block prototype for a question that can safely be validated by showing the prototype.
 
-### READY FOR UI FACTORY
-สามารถสร้าง Main Workflow และ Critical Workflow ใน Mockup ได้โดยไม่ invent Business Requirement
+# Readiness Decision
 
-> READY ไม่ได้หมายถึง Requirement สมบูรณ์ 100% แต่หมายถึงสิ่งที่ยังไม่รู้ไม่ทำให้ AI ต้องเดาเรื่องสำคัญ
+## DRAFT
+Insufficient information to build a coherent/safe prototype even with reversible labeled assumptions.
 
-## Hard Reject
-Blueprint ต้องไม่เข้า UI Factory เมื่อ:
-1. Main Workflow ต้องอาศัยการเดา
-2. Permission/Approval สำคัญขัดกันและยังไม่ Confirm
-3. AI เติม clinical/business rule เพื่อทำให้ระบบดูสมบูรณ์
-4. Critical requirement ไม่มี traceability
-5. Blocking TBD ถูกซ่อนหรือเปลี่ยนเป็น assumption
+## PROTOTYPE READY
+Enough hospital truth exists for a discovery mockup. Recommendations and Working Assumptions are permitted and clearly separated. No unsafe unconfirmed clinical/data effect is treated as real.
+
+## HOSPITAL CONFIRMED
+Hospital has reviewed/confirmed Main Workflow and critical rules/assumptions represented in the Blueprint.
+
+## READY FOR DEV HANDOFF
+Critical permissions, workflow, actual record/order effects, integration/source-of-truth behavior and acceptance criteria are confirmed or explicitly excluded. Relevant compliance claims have verification status.
+
+# Hard Reject
+1. AI recommendation disguised as hospital requirement.
+2. Invented clinical logic or unsafe data effect.
+3. Invented JCI/HA/ISO clause or unsupported mandatory claim.
+4. Critical unresolved issue hidden as an assumption.
+5. Working Assumption silently promoted to Dev requirement.
+6. Main Workflow cannot be explained coherently.
+
+# Factory Rule
+`PROTOTYPE READY` may enter UI Factory only as a **Discovery Prototype**.  
+`READY FOR DEV HANDOFF` may be treated as an implementation-ready business source, subject to normal project governance and technical validation.

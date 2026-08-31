@@ -1,135 +1,219 @@
-# Gorilla HIS UI Factory Gate
+# Gorilla HIS UI Factory Gate — Premium Craft v3.0
 
-Factory Gate เป็นด่านบังคับสำหรับ Mockup ทุกงาน เพื่อให้ผลลัพธ์จาก Claude, Gemini, GPT หรือ AI อื่นมีภาษา UI เดียวกัน โดย **Factory Gate ห้ามลดทอนกฎใน `AI_INSTRUCTIONS.md`** หากข้อความขัดกัน ให้ `AI_INSTRUCTIONS.md` มีอำนาจสูงสุดเสมอ
+Factory Gate is mandatory for every Gorilla HIS mockup. Its purpose is not only consistency. It must protect business truth, clinical safety, product continuity and premium craft.
 
-## Authority
+If this file conflicts with `AI_INSTRUCTIONS.md`, `AI_INSTRUCTIONS.md` wins.
+
+## 1. Authority
 
 ### Business Authority
-1. Application Blueprint (Business Source of Truth)
-2. Workflow / Requirement / Function List / Business Rules ที่สกัดจาก Blueprint
+1. Application Blueprint
+2. Workflow / Requirement / Function List / Business Rules explicitly derived from the Blueprint
 
-> ถ้า Blueprint ไม่มีข้อมูลบางประเภท ให้ระบุ `N/A — not present in Blueprint` ห้าม AI แต่ง Business Rule ขึ้นเองเพื่อให้ checklist ครบ
+Missing Blueprint information = `N/A — not present in Blueprint`. Do not invent business rules to satisfy a checklist.
 
 ### Design Authority
-1. `AI_INSTRUCTIONS.md`
-2. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
-3. Approved Components — สำหรับ desktop รวม locked structural reference `application-shell.html`
-4. **Premium Operational Visual Master — `design-system/components/premium-operational-layout.html` สำหรับ Command Center / Mission Control / Operations / Flow / Capacity pages**
-5. Approved Patterns
-6. Gold Standard ใน `approved-mockups/`
-7. `screenshots/actual-gorilla-his/`
-8. Proposed New Pattern
-9. AI design judgment
+1. `design-system/VISUAL_DNA.md`
+2. `AI_INSTRUCTIONS.md`
+3. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
+4. Human-approved Gold Standard relevant to the archetype
+5. Approved Components / Patterns
+6. Relevant actual Gorilla HIS screenshots for continuity
+7. Candidate references
+8. AI design judgment
 
-Blueprint บอกว่า "ระบบต้องทำอะไร" ส่วน Factory บอกว่า "Gorilla HIS ต้องแสดงและทำงานอย่างไร"
+**Important:** component reuse does not override Visual DNA. A component is a primitive, not a composition master.
 
-## Binding Reuse Rule — Read/Reference ≠ Reuse
+## 2. Gate Flow
 
-การบอกว่าอ่านไฟล์หรืออ้าง path **ยังไม่ถือว่า Reuse**. Builder ต้องนำ approved source ไปใช้จริงใน `index.html` และ Post-Build ต้องตรวจย้อนกลับได้
+`Blueprint → Pre-Build → Decision Architecture → Product Feeling Intent → Reuse Contract → Craft Plan → Build → Self-QA → Post-Build → Independent QA → Human Visual Review → Approved → Gold Standard when explicitly promoted`
 
-ก่อน Build ต้องประกาศ **Reuse Contract** อย่างน้อย:
-
-| Role | Required Source | Planned Use |
-|---|---|---|
-| Application Shell | `design-system/components/application-shell.html` | โครง topbar/sidebar/page header/content ของ desktop module |
-| Premium Operational Layout | `design-system/components/premium-operational-layout.html` เมื่อเป็น Command Center / operational page | visual grammar: compact header → context → KPI strip → alert → 2/3 operational evidence + 1/3 action rail |
-| Design Tokens | `design-system/tokens.css` | ใช้ token names เดิมโดยตรง |
-| Icons | `design-system/icon-rules.md` | ใช้ approved Font Awesome semantic mapping |
-| KPI (เมื่อเป็น operational dashboard) | `design-system/components/enterprise-kpi-strip.html` | ใช้ compact KPI strip ก่อน stat-card grid |
-| Operational container (เมื่อเกี่ยวข้อง) | `design-system/components/operational-panel.html` | ใช้ panel/table/divider เป็น default container |
-| Other Components/Patterns | relevant approved file(s) | ระบุ path และจุดที่นำไปใช้ |
-
-กฎบังคับ:
-- Desktop module **ต้องเริ่มจาก structure ของ `application-shell.html`** ไม่ใช่สร้าง header/nav/shell ใหม่ แล้วค่อยบอกว่า "inspired by".
-- Command Center / Mission Control / Operations / Flow / Capacity page **ต้อง derive visual composition จาก `premium-operational-layout.html`**. ห้ามสร้าง Hero Banner, terminal-style raw feed, marketing stat-card grid, futuristic AI panel หรือ 3-column equal-card showcase เป็น primary composition.
-- Design token ที่มีอยู่แล้ว **ต้องใช้ชื่อ token เดิมโดยตรง**. ห้ามสร้าง alias เช่น `--primary-color`, `--success-color`, `--card-bg` เพื่อครอบค่าใหม่/เปลี่ยน palette หาก `tokens.css` มี semantic/equivalent token รองรับอยู่แล้ว.
-- ห้ามคัดลอก "แนวคิด" ของ component แล้วเขียน component ใหม่ด้วย CSS คนละชุด หาก approved component รองรับงานนั้นได้.
-- ถ้าจำเป็นต้องไม่ใช้ Required Source ใด ต้อง Declare `Approved Exception Requested` พร้อมเหตุผล **ก่อน Coding**. Builder ไม่มีสิทธิ์ approve exception เอง.
-- Post-Build ต้องมี **Reuse Verification Table** ที่ระบุ Evidence ใน `index.html` ว่า source ที่ประกาศถูกใช้จริง.
-
-## Premium Operational Composition — Mandatory
-
-สำหรับ Command Center / Mission Control / Operations / Flow / Capacity page ให้ใช้ composition นี้เป็น default:
-
-`MASTER SHELL → COMPACT PAGE HEADER → CONTEXT/SYNC STRIP → ENTERPRISE KPI STRIP → ACTIONABLE ALERT STRIP → MAIN OPERATIONAL WORKSPACE (2/3 evidence + 1/3 decision/action) → SECONDARY DETAIL`
-
-Visual grammar:
-- Main content ต้องเน้น **table / worklist / queue / trend / exception / action** มากกว่ากล่อง presentation.
-- AI Prediction / Recommendation เป็น content ภายใน operational panel ปกติ ไม่ใช่ visual theme แยก.
-- Raw event feed ให้ใช้ compact timeline/table/worklist; **ห้ามทำเป็น dark developer terminal** สำหรับ operational users เว้นแต่ Blueprint ระบุ user เป็น technical operator และได้รับ exception.
-- ห้าม Hero/marketing banner ที่กินพื้นที่ first viewport.
-- ห้าม 3-column equal cards เป็นหน้าแรกของ operational workspace เมื่อไม่มีเหตุผลเชิง workflow.
-- Primary action ต้องอยู่กับ context ที่ผู้ใช้ตัดสินใจ ไม่ใช่ปุ่มใหญ่เต็ม card เพื่อความเด่นทางภาพ.
-- ที่ 1366×768 ต้องพยายามเห็น KPI + alert + main operational evidence + action rail ใน first viewport.
-
-## Gate Flow
-
-`Application Blueprint → Pre-Build Gate + Reuse Contract → Builder → Builder Self-QA → Post-Build Gate + Reuse Verification + Premium HIS Visual Gate → Independent QA Agent → Human Review → Approved → Gold Standard (เมื่อถูก Promote)`
-
-- Pre-Build FAIL = STOP ห้าม Generate
-- Builder Self-QA FAIL = Builder แก้ก่อนส่ง Post-Build Gate
+- Pre-Build FAIL = STOP
+- Self-QA FAIL = FIX before Post-Build
 - Post-Build FAIL = RETURN TO BUILDER
-- Premium HIS Visual Gate FAIL ตามเกณฑ์ด้านล่าง = RETURN TO BUILDER
-- QA FAIL = RETURN TO BUILDER
-- Human Approved = Approved Mockup; **ยังไม่เป็น Gold Standard จนกว่าจะ Promote ตาม `approved-mockups/GOLD_STANDARD.md`**
+- Visual/Craft FAIL = RETURN TO BUILDER
+- Human Approved ≠ Gold Standard until explicitly promoted
 
-## Hard Reject
+## 3. Binding Reuse Contract
 
-ให้ Reject ทันทีเมื่อพบอย่างใดอย่างหนึ่ง:
-- ไม่ได้อ่าน Application Blueprint ที่เป็น input ของงาน
-- ไม่ได้อ่าน source ที่ `AI_INSTRUCTIONS.md` บังคับ
-- External CDN / external font / external JS/CSS รวมถึง Font Awesome CDN/Kit ใน mockup
-- สร้าง design language ใหม่แทน Gorilla HIS
-- Hardcode **สี, spacing, font size, radius, shadow หรือ design value ที่ `tokens.css` ครอบคลุมอยู่แล้ว** แทนการใช้ token
-- สร้าง local design-token/palette alias ใหม่ เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` ทั้งที่ approved token รองรับอยู่แล้ว
-- ประกาศว่าจะ reuse approved source ใน Pre-Build แต่ implementation สร้าง shell/component/style ใหม่แทนโดยไม่มี approved exception
-- มี Main Workflow หรือ Critical Requirement จาก Blueprint หาย
-- Dead button ใน Main Workflow
-- JavaScript error ที่กระทบ Main Workflow
-- ใช้ข้อมูลผู้ป่วยจริง
-- New reusable UI pattern แต่ไม่ Declare `Proposed New Pattern`
-- ไม่ทำ Builder Self-QA ตาม `modules/_feature-template/review/qa-checklist.md`
-- Desktop module สร้าง application shell ใหม่แทน approved `application-shell.html` โดยไม่มี approved exception
-- ใช้ Emoji เป็น UI icon/navigation/section decoration
-- ใช้ custom SVG/icon ใหม่ทั้งที่มี approved Font Awesome semantic icon ตาม `design-system/icon-rules.md` โดยไม่มี approved exception
-- Operational screen ใช้ AI/futuristic/marketing visual theme แทน Gorilla HIS visual language
-- Semantic clinical colors ถูกใช้เป็น decoration หรือความหมายที่ขัดกับ `design-system/design-rules.md`
-- Operational dashboard ใช้ stat-card grid เป็น default ทั้งที่ `enterprise-kpi-strip.html` รองรับ requirement ได้ โดยไม่มีเหตุผล/approved exception
-- Card ถูกใช้เป็น default container อย่างเป็นระบบแทน approved operational panel/table/divider language
-- Command Center / Mission Control / Operations page ไม่ derive จาก `premium-operational-layout.html` โดยไม่มี approved exception
-- Hero banner / dark AI hero / terminal feed / equal-card showcase ถูกใช้เป็น primary visual composition ของ operational page โดยไม่มี Blueprint requirement + approved exception
+Before coding, Builder declares relevant approved sources and planned use.
 
-## Premium HIS Visual Gate — Mandatory
+Minimum roles:
 
-Visual Gate เป็น **ชั้นเพิ่มจาก Phase 1 Factory Gate** ไม่แทนที่ Hard Reject, Blueprint Traceability, Functional Gate หรือ Patient Safety rules เดิม
+| Role | Source | Requirement |
+|---|---|---|
+| Visual DNA | `design-system/VISUAL_DNA.md` | composition/craft authority |
+| Design Tokens | `design-system/tokens.css` | approved palette, surfaces, depth, type, motion |
+| Icons | `design-system/icon-rules.md` | approved semantic Font Awesome mapping |
+| Shell continuity | `design-system/components/application-shell.html` | reuse product identity/navigation behavior where relevant |
+| Controls / Modal / Forms | relevant approved components | reuse interaction behavior and states |
+| Pattern | relevant approved pattern(s) | reuse when workflow genuinely fits |
+| Gold Standard | relevant Human-approved artifact | use only when archetype is close |
 
-Builder Self-QA, Post-Build Gate และ Independent QA ต้องตรวจจาก rendered UI จริงเมื่อ tool รองรับ; ถ้า tool render ไม่ได้ ให้บันทึก limitation และส่ง Human/Visual QA ตรวจ ห้ามเดาว่า PASS จาก code อย่างเดียว
+`Read/Reference ≠ Reuse` — implementation evidence must exist in `index.html`.
+
+However, **reuse must not force weak composition**. If an existing candidate/master creates generic or barren output, Visual DNA has higher authority. Declare the divergence and preserve behavior/continuity rather than mechanically copying layout.
+
+## 4. Decision Architecture Gate
+
+Before coding Builder must state:
+- Decision Question
+- Primary Evidence
+- Exception
+- Primary Action
+- Secondary Evidence
+
+PASS only when these are grounded in the Blueprint.
+
+## 5. Product Feeling Gate
+
+Builder must state:
+- 3–5 intended qualities, e.g. `precision / calm / responsive / crafted / confident`;
+- 2–4 prohibited feelings, e.g. `admin template / barren spreadsheet / AI showcase / consumer toy`.
+
+The rendered result is later evaluated against this intent.
+
+## 6. Premium Craft Plan
+
+Before Build declare how the page will achieve:
+- authored proportion and focal path;
+- Surface Architecture (Canvas / Work / Instrument / Elevated / Semantic);
+- typography hierarchy;
+- instrument-quality numbers;
+- meaningful data visualization where needed;
+- controlled depth;
+- restrained color;
+- micro-interaction / causal motion;
+- product-specific detail beyond default component assembly.
+
+A plan that only says `use cards / grid / colors / shadow / icons` = FAIL.
+
+## 7. Hard Reject
+
+Reject immediately when any applies:
+- Blueprint not read;
+- mandatory authority source not read;
+- external CDN/font/JS/CSS or Font Awesome CDN/Kit;
+- real patient data;
+- missing Main Workflow / Critical Requirement;
+- dead Main Workflow action;
+- workflow-breaking JS error;
+- hidden chain-of-thought in deliverables;
+- local palette/design-token aliases used to bypass `tokens.css`;
+- patient-safety semantic colors used decoratively;
+- Emoji used as UI icon;
+- custom icon/SVG used when approved Font Awesome semantic icon exists without approved exception;
+- generic AI/futuristic theme;
+- repeated rounded-card grammar used as the page architecture;
+- visual hierarchy collapses when color is removed;
+- composition is explained by an easy grid rather than workflow importance;
+- page is merely a flat white spreadsheet/table with hairlines and no crafted surface hierarchy;
+- page calls itself Premium/Gold/World-class without Human Visual Approval.
+
+## 8. Premium HIS Visual Gate
+
+Rendered UI must be reviewed whenever rendering is possible. If the tool cannot render, record `VISUAL REVIEW LIMITATION`; code inspection cannot self-certify Premium.
 
 | Gate | Question | PASS condition |
 |---|---|---|
-| VG-01 Product Character | ดูเป็น Hospital Enterprise System หรือ generic SaaS/AI Dashboard? | Clinical / Operational / Trustworthy / Dense / Calm / Professional |
-| VG-02 Application Shell | ใช้ approved shell จริงหรือ approved exception? | Implementation structure derives from `application-shell.html`; custom header/nav shell is not PASS |
-| VG-03 Font Awesome Compliance | ใช้ icon languageกลางหรือไม่? มี Emoji/custom icon/CDN หรือไม่? | Font Awesome semantic mapping ตาม `design-system/icon-rules.md`; default `fa-solid`; no Emoji UI; no custom SVG when approved FA icon exists; no external FA CDN/Kit in mockup |
-| VG-04 Container Discipline | Card Everywhere หรือไม่? | Operational panels/tables/dividers/split layouts used as default when appropriate; systematic card-everywhere = FAIL |
-| VG-05 KPI Discipline | Operational KPI ใหญ่แบบ marketing/stat-card grid หรือไม่? | `enterprise-kpi-strip.html` reused when it supports the requirement; stat-card remains valid for suitable Home/Executive summary |
-| VG-06 Color Discipline | สีถูกใช้ตาม Design Rules หรือไม่? | Neutral-first; approved tokens used directly; clinical semantic colors retain strict meanings and are never decorative |
-| VG-07 Density | 1366×768 เห็น key operational state เพียงพอหรือไม่? | Page context + summary + alert + main operational content + primary action visible when requirement/layout makes this feasible |
-| VG-08 Typography/Scale | มี oversized heading/KPI/button หรือไม่? | Approved token scale; scan-first hierarchy |
-| VG-09 AI Visual Theme | Feature AI ถูกทำเป็น futuristic theme หรือไม่? | AI presented as a capability inside Gorilla HIS visual language |
-| VG-10 Operational Composition | หน้า Command Center/Operations ใช้ premium operational master จริงหรือไม่? | Composition derives from `premium-operational-layout.html`; no hero/terminal/equal-card showcase; evidence-heavy 2/3 + action 1/3 workspace when applicable |
+| VG-01 Product Character | Purpose-built HIS or generic software? | Clinical / Operational / Trustworthy / Crafted / Desirable |
+| VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | Situation → evidence → exception → action is visually obvious |
+| VG-03 Icon System | Approved icon language? | Font Awesome semantic mapping; no Emoji/CDN/unapproved replacement |
+| VG-04 Composition | Authored or grid-generated? | Proportion follows importance; no mechanical equal-card composition |
+| VG-05 Surface Architecture | Too flat or too decorative? | Deliberate Canvas/Work/Instrument/Elevated layers; depth has meaning |
+| VG-06 Typography Craft | Does typography carry hierarchy? | Values, units, labels, metadata and narrative have intentional rhythm |
+| VG-07 Instrument Quality | Do key measures feel like readings or spreadsheet cells? | Threshold/delta/trend/forecast/context used when decision-relevant |
+| VG-08 Color Discipline | Controlled and semantic? | Neutral-led; Indigo/Teal restrained; clinical semantics remain strict |
+| VG-09 Data Visualization | Does visualization answer a decision question? | Flow/trend/forecast/capacity visualization used where it improves comprehension |
+| VG-10 Interaction Craft | Does state change feel deliberate? | Hover/selected/pressed and relevant causal transitions are clear and restrained |
+| VG-11 AI Integration | AI showroom or integrated intelligence? | Prediction/recommendation is attached to evidence and operational impact |
+| VG-12 Density | Real HIS information density without noise? | First viewport carries meaningful work and remains scannable |
+| VG-13 Anti-Template | Could labels be swapped for CRM/fintech? | No — composition and visualization are purpose-built |
+| VG-14 Dryness / Barren Test | Does it feel sterile, unfinished or bureaucratic? | No — surface, type, instrument and interaction craft create a refined product feel |
+| VG-15 Desirability | Would a user describe it as crafted and desirable, not merely tidy? | Candidate is visually compelling without luxury decoration |
 
-### Visual Gate Severity
+### Severity
 
-- **VG-01, VG-02, VG-03, VG-06, VG-09, VG-10 FAIL = P0 Design / Automatic FAIL** เมื่อเป็นการฝ่าฝืนชัดเจนและไม่มี approved exception
-- **VG-04, VG-05, VG-07, VG-08 = P1** เมื่อทำให้ operational scanability หรือ Gorilla HIS consistency ลดลงอย่างมีนัยสำคัญ; QA ยกระดับเป็น P0 ได้เมื่อเป็น systematic design-language violation
-- การไม่มี relevant operational KPI/panel ใน Blueprint ไม่ทำให้ VG-04/VG-05 FAIL; ใช้ `N/A` ได้พร้อมเหตุผล
+Automatic P0 Design FAIL:
+- VG-01, VG-02, VG-08, VG-11, VG-13
+- clear clinical-safety misuse
+- external asset violation
+- workflow failure
 
-## Reference Availability Rule
+Premium Candidate cannot pass Human Visual Review when:
+- VG-05, VG-06, VG-07, VG-10, VG-14 or VG-15 materially fail.
 
-- `approved-mockups/` หรือ screenshot จริงอาจยังไม่มีตัวที่เกี่ยวข้องกับงานนั้นได้ ให้ระบุ `N/A — no relevant reference found`; **ไม่ถือว่า Pre-Build FAIL เพียงเพราะไม่มี reference**
-- แต่ถ้ามี relevant approved pattern/component/reference แล้ว Builder ไม่ตรวจหรือเลือกละเลยโดยไม่มีเหตุผล ให้ FAIL
-- ถ้า AI tool ดู binary screenshot ไม่ได้ แต่เข้าถึง metadata/path ได้ ให้ระบุ limitation และใช้ design rules + approved HTML/reference ที่อ่านได้แทน; ห้ามเดารายละเอียดในภาพ
+## 9. BMW Test — Product Quality Benchmark
 
-## Gold Standard Rule
+This is a quality metaphor, not a visual-copy instruction.
 
-ไฟล์ที่ผ่าน Factory Gate หรือ Human Approved ยังไม่ถือเป็น Gold Standard อัตโนมัติ ต้องผ่าน Promotion Criteria ใน `approved-mockups/GOLD_STANDARD.md` และถูกบันทึกใน `approved-mockups/INDEX.md` พร้อม version/status/reference
+Question:
+**If another HIS has the same features, what in this screen makes Gorilla HIS feel materially more designed?**
+
+Evidence may include:
+- better proportion;
+- richer but controlled surface hierarchy;
+- superior instrument readability;
+- clearer decision path;
+- refined control feel;
+- better causal motion;
+- precise micro-detail;
+- distinctive operational visualization.
+
+If the only answer is color/logo/shadow/radius/icons → FAIL Premium Craft.
+
+## 10. iPhone Test — Restraint + Refinement Benchmark
+
+Questions:
+- When decoration is reduced, does the interface remain refined?
+- When depth is added, does it improve hierarchy instead of adding ornament?
+- Does every interaction feel deliberate?
+- Is visual complexity reduced without removing useful information?
+
+A page cannot pass by being either flashy **or** barren.
+
+## 11. Operational / Command Center Rule
+
+Command Center is a live decision instrument, not a fixed layout template.
+
+The previous `premium-operational-layout.html` is **Candidate Reference only** and is not mandatory composition authority.
+
+The first viewport should communicate:
+1. operating state;
+2. trajectory / time-to-threshold;
+3. bottleneck;
+4. evidence;
+5. intervention + projected impact.
+
+Prefer, when appropriate:
+- Hospital Instrument Band;
+- Operational Flow Spine;
+- Forecast / time-to-threshold;
+- embedded exception at the affected point;
+- Intelligence Intervention layer;
+- scenario transitions that propagate through the system.
+
+Do not force a 2/3 + 1/3 arrangement. Proportion follows information importance.
+
+## 12. Post-Build Required Evidence
+
+Post-Build must include:
+- Blueprint Traceability Table
+- Binding Reuse Verification Table
+- Decision Architecture Verification
+- Product Feeling Verification
+- Anti-Template Test
+- Dryness / Barren Test
+- BMW Test
+- iPhone Test
+- Premium HIS Visual Gate VG-01..VG-15
+- Human Visual Review limitation/status
+
+## 13. Gold Standard Rule
+
+Factory PASS = technically/design-governed Candidate only.
+
+Promotion sequence:
+`Candidate → Independent QA Passed → Human Approved → explicit Gold Standard promotion`
+
+Human visual judgment is required for Premium/Gold status.

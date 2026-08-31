@@ -1,90 +1,108 @@
-# Factory Gate — Pre-Build Checklist
+# Gorilla HIS — Pre-Build Checklist v3.0
 
-**Application:** << name >>  
-**Blueprint:** << Application blueprint_*.txt >>  
-**AI/Builder:** << tool >>
+Pre-Build must PASS before coding.
 
-> Pre-Build ตรวจว่า Builder มีข้อมูลและแผนพร้อมก่อน Coding ไม่ได้อ้างว่าฟังก์ชันทำงานแล้ว
+## A. Source of Truth
+- [ ] Application Blueprint read completely
+- [ ] `AI_INSTRUCTIONS.md` read
+- [ ] `factory-gate/FACTORY_GATE.md` read
+- [ ] `design-system/VISUAL_DNA.md` read
+- [ ] `design-system/design-rules.md` read
+- [ ] `design-system/ux-rules.md` read
+- [ ] `design-system/tokens.css` read
+- [ ] `design-system/icon-rules.md` read
+- [ ] relevant components/patterns reviewed
+- [ ] relevant Gold Standard reviewed, or `N/A — none available`
+- [ ] screenshot availability/limitation declared
 
-## A. Source Readiness
-- [ ] อ่าน Application Blueprint ครบ
-- [ ] อ่าน source ตาม mandatory read order ใน `AI_INSTRUCTIONS.md`
-- [ ] อ่าน `factory-gate/FACTORY_GATE.md`
-- [ ] อ่าน `design-system/tokens.css` และบันทึก approved token names ที่จะใช้
-- [ ] อ่าน `design-system/icon-rules.md`
-- [ ] อ่าน `design-system/components/application-shell.html` สำหรับ desktop module
-- [ ] ถ้าเป็น Command Center / Mission Control / Operations / Flow / Capacity page ให้อ่าน `design-system/components/premium-operational-layout.html`
-- [ ] ตรวจ `approved-mockups/INDEX.md`
-- [ ] ตรวจ relevant screenshot/reference เท่าที่ tool เข้าถึงได้
+Missing mandatory authority source = FAIL.
 
-ทุกข้อให้ระบุ **Evidence/Path ที่อ่านจริง** ไม่ใช่เพียงติ๊ก checkbox
+## B. Blueprint Understanding
+- [ ] Objective stated from Blueprint only
+- [ ] Users/Roles stated from Blueprint only
+- [ ] Main Workflow stated
+- [ ] Critical Requirements stated
+- [ ] Unknown/missing item marked N/A/Question instead of invented
 
-## B. Blueprint Extraction
-สกัดเฉพาะสิ่งที่ Blueprint มี และคงสาระเดิม:
-- [ ] Workflow: `WF-01...` หรือ `N/A — not present in Blueprint`
-- [ ] Requirements: `REQ-01...` หรือ N/A
-- [ ] Functions: `FN-01...` หรือ N/A
-- [ ] Business Rules: `BR-01...` หรือ N/A
-- [ ] Required States/Exceptions: `ST-01...` หรือ N/A
-- [ ] ระบุ Critical Requirement/Main Workflow จากข้อความใน Blueprint; ถ้า Blueprint ไม่จัด Critical ห้าม AI เดาเอง
+## C. Decision Architecture
+- [ ] Decision Question
+- [ ] Primary Evidence
+- [ ] Exception
+- [ ] Primary Action
+- [ ] Secondary Evidence
 
-## C. Binding Reuse Contract — Mandatory
+If the first 5-second decision cannot be stated = FAIL / clarify before coding.
 
-> **Read/Reference ≠ Reuse.** Builder ต้องประกาศ source ที่จะนำไปใช้จริงก่อน Coding และ Post-Build ต้องพิสูจน์ implementation ย้อนกลับได้
+## D. Product Feeling Intent
+- [ ] 3–5 intended product qualities declared
+- [ ] prohibited feelings declared
+- [ ] intended qualities are not only styling words such as “blue / rounded / shadow”
 
-กรอกตารางนี้ก่อน PASS:
+Example:
+`precision / calm / responsive / crafted / confident`
 
-| UI Role | Approved Source / Repo Path | Exact Reuse Plan | Exception Requested? | Result |
-|---|---|---|---|---|
-| Application Shell | `design-system/components/application-shell.html` | ระบุว่าจะคง structure ส่วนใด | No / Requested | PASS/FAIL |
-| Premium Operational Layout | `design-system/components/premium-operational-layout.html` หรือ N/A | สำหรับ Command Center/Operations ให้ระบุ compact header/context/KPI/alert/2:1 workspace/action rail | No / Requested / N/A | PASS/N/A/FAIL |
-| Design Tokens | `design-system/tokens.css` | ระบุ token groups/names ที่จะใช้โดยตรง | No / Requested | PASS/FAIL |
-| Icons | `design-system/icon-rules.md` | ระบุ semantic mapping หลัก | No / Requested | PASS/FAIL |
-| KPI | `design-system/components/enterprise-kpi-strip.html` หรือ N/A | ระบุว่าจะ reuse อย่างไร | No / Requested / N/A | PASS/N/A/FAIL |
-| Operational Container | `design-system/components/operational-panel.html` หรือ N/A | ระบุ panel/table/divider reuse | No / Requested / N/A | PASS/N/A/FAIL |
-| Other Components | relevant approved paths | ระบุ component → view/function | No / Requested / N/A | PASS/N/A/FAIL |
-| Patterns | relevant approved paths | ระบุ pattern → workflow | No / Requested / N/A | PASS/N/A/FAIL |
+Must not feel like:
+`admin template / barren spreadsheet / AI showcase / consumer toy`
 
-Binding rules:
-- [ ] Desktop module จะเริ่มจาก approved `application-shell.html` ไม่สร้าง header/nav/shell ใหม่
-- [ ] Command Center / Mission Control / Operations / Flow / Capacity page จะ derive composition จาก `premium-operational-layout.html`
-- [ ] จะไม่มี Hero Banner / dark AI hero / developer-terminal feed / 3-column equal-card showcase เป็น primary operational composition เว้นแต่ Blueprint + approved exception ระบุ
-- [ ] Main operational workspace จะเน้น table/worklist/queue/trend/exception/action และใช้ 2/3 evidence + 1/3 decision/action rail เมื่อเหมาะสม
-- [ ] จะใช้ approved token names **โดยตรง** ไม่สร้าง local palette/token aliases เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` เมื่อ token เดิมรองรับ
-- [ ] Operational dashboard ตรวจ `enterprise-kpi-strip.html` และจะ reuse ถ้ารองรับ requirement
-- [ ] Operational content ตรวจ `operational-panel.html`; card จะไม่เป็น default container
-- [ ] Font Awesome mapping ใช้ตาม `icon-rules.md`; no Emoji/custom SVG/CDN/Kit
-- [ ] หากไม่ใช้ required source ต้อง Declare `Approved Exception Requested` พร้อมเหตุผลก่อน Coding; Builder ห้าม approve เอง
+## E. Binding Reuse Contract
+For every relevant role record **source path + actual planned use**.
 
-**ข้อใด Required และไม่สามารถ commit reuse ได้ = PRE-BUILD FAIL.**
+| Role | Source | Planned actual reuse | Status |
+|---|---|---|---|
+| Visual DNA | `design-system/VISUAL_DNA.md` | | |
+| Tokens | `design-system/tokens.css` | | |
+| Icons | `design-system/icon-rules.md` | | |
+| Shell continuity | `design-system/components/application-shell.html` when suitable | | |
+| Controls/Forms/Modal | relevant component(s) | | |
+| Workflow pattern | relevant pattern(s) | | |
+| Gold Standard | relevant approved artifact / N/A | | |
 
-## D. Design Plan
-- [ ] ระบุ Existing Components ที่จะ reuse พร้อม path
-- [ ] ระบุ Existing Patterns ที่จะ reuse พร้อม path
-- [ ] ระบุ Gold Standard ที่ใกล้เคียง หรือ `N/A — no relevant Gold Standard`
-- [ ] ระบุ Actual Screenshot references หรือ limitation/N/A
-- [ ] ระบุ Gap ที่ของเดิมรองรับไม่ได้
-- [ ] ทุก reusable gap ถูก Declare เป็น `Proposed New Pattern`
+Rules:
+- `Read/Reference ≠ Reuse`.
+- Reuse behavior/product continuity when fit is real.
+- Do not mechanically copy a Candidate layout if it creates generic or barren composition.
+- `premium-operational-layout.html` is deprecated and is not a mandatory source.
 
-## E. Screen & Flow Plan
-- [ ] ระบุ Views/Screens ที่จะสร้าง
-- [ ] Mapping `WF/REQ/FN/BR/ST` ที่มีอยู่ไปยัง View/Interaction ที่วางแผนรองรับ
-- [ ] ระบุ Main Workflow ที่ **จะทำให้** click-through ได้หลัง Build
-- [ ] สำหรับ operational page ระบุ first viewport composition ที่ 1366×768 ว่าจะเห็น KPI + alert + main evidence + action rail อย่างไร
+## F. Composition Intent
+- [ ] authored path stated as `Situation → Evidence → Exception → Action → Detail`
+- [ ] composition rationale is based on information importance, not easy grid structure
+- [ ] unequal information is allowed unequal visual proportion
+- [ ] page does not begin with “3/4/5 cards” as the architecture
 
-## Pre-Build Evidence Table
-| Gate Item | Evidence / Repo Path / Blueprint Section | Result |
-|---|---|---|
-| Source readiness | | PASS/FAIL |
-| Blueprint extraction | | PASS/FAIL |
-| Binding Reuse Contract | | PASS/FAIL |
-| Premium Operational Master (if applicable) | | PASS/N/A/FAIL |
-| Design references | | PASS/N/A/FAIL |
-| Screen/flow plan | | PASS/FAIL |
+## G. Premium Craft Plan
+- [ ] Surface Architecture planned: Canvas / Work / Instrument / Elevated / Semantic
+- [ ] Typography hierarchy planned
+- [ ] numerical/instrument hierarchy planned
+- [ ] data visualization decision stated when relevant
+- [ ] depth/light strategy stated
+- [ ] color strategy stated
+- [ ] hover/selected/pressed behavior stated
+- [ ] causal motion stated when state transition matters
+- [ ] specific crafted detail stated beyond default component assembly
 
-## Result
-- [ ] **PASS — BUILD ALLOWED**
-- [ ] **FAIL — STOP, DO NOT GENERATE**
+If the plan is only “clean/minimal/modern” = FAIL.
 
-FAIL เมื่อ source ที่บังคับเข้าถึงไม่ได้, Blueprint ไม่ได้ถูกอ่าน, ไม่สามารถสร้าง traceable plan ได้, หรือไม่สามารถ commit Binding Reuse Contract สำหรับ required source ได้  
-การไม่มี Gold Standard/screenshot ที่เกี่ยวข้อง **ไม่ใช่ FAIL อัตโนมัติ** ให้บันทึก N/A/limitation แทน
+## H. Anti-Template Risk
+- [ ] top two generic-template risks stated
+- [ ] mitigation stated
+- [ ] page would remain purpose-built if brand color/logo were hidden
+
+## I. Dryness / Barren Risk
+- [ ] identifies where over-minimalism could make the page sterile
+- [ ] explains how surface, type, instrumentation or interaction will retain richness
+- [ ] solution does not rely on decorative gradients/shadows/cards
+
+## J. Command Center / Operational Intelligence — when applicable
+- [ ] current operating state can be communicated
+- [ ] trajectory / time-to-threshold strategy exists
+- [ ] bottleneck/exception is visually attached to evidence
+- [ ] intervention + projected impact are planned
+- [ ] key measures will behave as instruments rather than spreadsheet KPI cells
+- [ ] operational visualization selected because it answers the decision question
+- [ ] no fixed 2/3 + 1/3 template is being forced without evidence-based reason
+
+## RESULT
+
+`PASS / FAIL`
+
+If FAIL, STOP before coding and state missing/failed items.

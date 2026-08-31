@@ -1,7 +1,14 @@
-# Gorilla HIS — Application Blueprint Template
+# Gorilla HIS — Application Blueprint Template v2.0
 
-**Blueprint Version:** v1.0  
-**Status:** DRAFT / WAITING FOR CONFIRMATION / READY FOR UI FACTORY
+**Blueprint Version:** v0.x / v1.x  
+**Status:** DRAFT / PROTOTYPE READY / HOSPITAL CONFIRMED / READY FOR DEV HANDOFF
+
+## Evidence Classification
+- `HOSPITAL CONFIRMED` — hospital/user explicitly supplied or confirmed.
+- `HOSPITAL STANDARD RECOMMENDATION` — expert HIS recommendation; not hospital-confirmed.
+- `COMPLIANCE RECOMMENDATION` — recommendation tied to identified JCI/HA/ISO 27001 basis.
+- `WORKING ASSUMPTION` — temporary reversible prototype choice; must be confirmed later.
+- `TBD` — unknown; do not guess.
 
 ## 1. Product
 **Application Name:**  
@@ -9,61 +16,91 @@
 **Objective:**
 
 ## 2. Users & Roles
-| Role | Responsibility | Permission / Constraint |
-|---|---|---|
-| | | |
+| Role | Responsibility | Permission / Constraint | Evidence |
+|---|---|---|---|
+| | | | |
 
 ## 3. Main Workflow
 `Start → ... → End`
 
-1. 
+Clearly mark any step that is not Hospital Confirmed.
 
 ## 4. Core Functions
-| ID | Function | Description |
+| ID | Function | Description | Evidence |
+|---|---|---|---|
+| FN-01 | | | |
+
+## 5. Hospital Requirements
+| ID | Requirement | Evidence |
 |---|---|---|
-| FN-01 | | |
+| REQ-01 | | HOSPITAL CONFIRMED |
 
-## 5. Requirements
-| ID | Requirement | Source Status |
+## 6. Confirmed Business Rules
+| ID | Business Rule | Evidence |
 |---|---|---|
-| REQ-01 | | Confirmed / TBD |
+| BR-01 | | HOSPITAL CONFIRMED |
 
-## 6. Business Rules
-| ID | Business Rule | Source Status |
+Do not place AI recommendations in this section.
+
+## 7. Hospital Standard Recommendations
+| ID | Recommendation | Rationale | Confirmation Needed |
+|---|---|---|---|
+| HSR-01 | | | Yes/No |
+
+## 8. Standards & Compliance Review
+| ID | Standard | Topic / Principle | Recommendation | Verification |
+|---|---|---|---|---|
+| CR-01 | JCI / HA / ISO/IEC 27001 | | | VERIFIED / NEED STANDARD VERIFICATION |
+
+Do not fabricate clause numbers. Accreditation principles do not automatically dictate a UI control.
+
+## 9. Data / Integration
+| Data/System | Expected Relationship | Evidence |
 |---|---|---|
-| BR-01 | | Confirmed / TBD |
+| | | |
 
-## 7. Data / Integration
-- 
-
-## 8. Workflow / Record States
+## 10. Workflow / Record States
 `State A → State B → ...`
 
-Use `TBD` when states are not supported by source information.
+Mark unconfirmed states as Working Assumption or TBD.
 
-## 9. Key Information Required
+## 11. Key Information Required
 - 
 
-## 10. Reports / Outputs
+## 12. Reports / Outputs
 - 
 
-## 11. Gap / Conflict / TBD
-| ID | Missing / Conflicting Point | Why It Matters | Need Confirmation From |
+## 13. Working Assumption Register
+| ID | Working Assumption | Why Needed for Prototype | Risk if Wrong | Confirm When |
+|---|---|---|---|---|
+| WA-01 | | | | Prototype Review |
+
+## 14. TBD / Conflict Register
+| ID | Missing / Conflict | Why It Matters | Safe Prototype Treatment |
 |---|---|---|---|
 | TBD-01 | | | |
 
-## 12. Questions to Confirm with Hospital
+## 15. Questions
+### MUST CONFIRM BEFORE DEV
 1. 
 
-## 13. Acceptance Criteria
-| ID | Acceptance Criterion | Related REQ/BR |
-|---|---|---|
-| AC-01 | | |
+### CONFIRM DURING PROTOTYPE REVIEW
+1. 
 
-## 14. Blueprint Readiness
-**Status:** DRAFT / WAITING FOR CONFIRMATION / READY FOR UI FACTORY  
-**Blocking TBD:**  
-**Non-blocking TBD:**
+### LATER REFINEMENT
+1. 
+
+## 16. Acceptance Criteria
+| ID | Acceptance Criterion | Related IDs | Evidence |
+|---|---|---|---|
+| AC-01 | | REQ/BR/HSR | |
+
+## 17. Blueprint Readiness
+**Status:** DRAFT / PROTOTYPE READY / HOSPITAL CONFIRMED / READY FOR DEV HANDOFF  
+**Critical unresolved items:**  
+**Prototype-safe assumptions:**  
+**Compliance verification pending:**
 
 ### Readiness Rule
-`READY FOR UI FACTORY` means the available information is sufficient to mock the Main Workflow and critical rules without inventing hospital business requirements. It does not mean every future requirement is known.
+`PROTOTYPE READY` means enough truth exists to build a safe discovery mockup while clearly labeling reversible assumptions/recommendations.  
+`READY FOR DEV HANDOFF` requires critical workflow, permission, clinical/data effects, integration behavior and implementation acceptance criteria to be confirmed or explicitly out of scope.

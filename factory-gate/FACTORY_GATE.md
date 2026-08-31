@@ -14,11 +14,12 @@ Factory Gate เป็นด่านบังคับสำหรับ Mockup
 1. `AI_INSTRUCTIONS.md`
 2. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
 3. Approved Components — สำหรับ desktop รวม locked structural reference `application-shell.html`
-4. Approved Patterns
-5. Gold Standard ใน `approved-mockups/`
-6. `screenshots/actual-gorilla-his/`
-7. Proposed New Pattern
-8. AI design judgment
+4. **Premium Operational Visual Master — `design-system/components/premium-operational-layout.html` สำหรับ Command Center / Mission Control / Operations / Flow / Capacity pages**
+5. Approved Patterns
+6. Gold Standard ใน `approved-mockups/`
+7. `screenshots/actual-gorilla-his/`
+8. Proposed New Pattern
+9. AI design judgment
 
 Blueprint บอกว่า "ระบบต้องทำอะไร" ส่วน Factory บอกว่า "Gorilla HIS ต้องแสดงและทำงานอย่างไร"
 
@@ -31,6 +32,7 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 | Role | Required Source | Planned Use |
 |---|---|---|
 | Application Shell | `design-system/components/application-shell.html` | โครง topbar/sidebar/page header/content ของ desktop module |
+| Premium Operational Layout | `design-system/components/premium-operational-layout.html` เมื่อเป็น Command Center / operational page | visual grammar: compact header → context → KPI strip → alert → 2/3 operational evidence + 1/3 action rail |
 | Design Tokens | `design-system/tokens.css` | ใช้ token names เดิมโดยตรง |
 | Icons | `design-system/icon-rules.md` | ใช้ approved Font Awesome semantic mapping |
 | KPI (เมื่อเป็น operational dashboard) | `design-system/components/enterprise-kpi-strip.html` | ใช้ compact KPI strip ก่อน stat-card grid |
@@ -39,10 +41,26 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 
 กฎบังคับ:
 - Desktop module **ต้องเริ่มจาก structure ของ `application-shell.html`** ไม่ใช่สร้าง header/nav/shell ใหม่ แล้วค่อยบอกว่า "inspired by".
+- Command Center / Mission Control / Operations / Flow / Capacity page **ต้อง derive visual composition จาก `premium-operational-layout.html`**. ห้ามสร้าง Hero Banner, terminal-style raw feed, marketing stat-card grid, futuristic AI panel หรือ 3-column equal-card showcase เป็น primary composition.
 - Design token ที่มีอยู่แล้ว **ต้องใช้ชื่อ token เดิมโดยตรง**. ห้ามสร้าง alias เช่น `--primary-color`, `--success-color`, `--card-bg` เพื่อครอบค่าใหม่/เปลี่ยน palette หาก `tokens.css` มี semantic/equivalent token รองรับอยู่แล้ว.
 - ห้ามคัดลอก "แนวคิด" ของ component แล้วเขียน component ใหม่ด้วย CSS คนละชุด หาก approved component รองรับงานนั้นได้.
 - ถ้าจำเป็นต้องไม่ใช้ Required Source ใด ต้อง Declare `Approved Exception Requested` พร้อมเหตุผล **ก่อน Coding**. Builder ไม่มีสิทธิ์ approve exception เอง.
 - Post-Build ต้องมี **Reuse Verification Table** ที่ระบุ Evidence ใน `index.html` ว่า source ที่ประกาศถูกใช้จริง.
+
+## Premium Operational Composition — Mandatory
+
+สำหรับ Command Center / Mission Control / Operations / Flow / Capacity page ให้ใช้ composition นี้เป็น default:
+
+`MASTER SHELL → COMPACT PAGE HEADER → CONTEXT/SYNC STRIP → ENTERPRISE KPI STRIP → ACTIONABLE ALERT STRIP → MAIN OPERATIONAL WORKSPACE (2/3 evidence + 1/3 decision/action) → SECONDARY DETAIL`
+
+Visual grammar:
+- Main content ต้องเน้น **table / worklist / queue / trend / exception / action** มากกว่ากล่อง presentation.
+- AI Prediction / Recommendation เป็น content ภายใน operational panel ปกติ ไม่ใช่ visual theme แยก.
+- Raw event feed ให้ใช้ compact timeline/table/worklist; **ห้ามทำเป็น dark developer terminal** สำหรับ operational users เว้นแต่ Blueprint ระบุ user เป็น technical operator และได้รับ exception.
+- ห้าม Hero/marketing banner ที่กินพื้นที่ first viewport.
+- ห้าม 3-column equal cards เป็นหน้าแรกของ operational workspace เมื่อไม่มีเหตุผลเชิง workflow.
+- Primary action ต้องอยู่กับ context ที่ผู้ใช้ตัดสินใจ ไม่ใช่ปุ่มใหญ่เต็ม card เพื่อความเด่นทางภาพ.
+- ที่ 1366×768 ต้องพยายามเห็น KPI + alert + main operational evidence + action rail ใน first viewport.
 
 ## Gate Flow
 
@@ -78,6 +96,8 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 - Semantic clinical colors ถูกใช้เป็น decoration หรือความหมายที่ขัดกับ `design-system/design-rules.md`
 - Operational dashboard ใช้ stat-card grid เป็น default ทั้งที่ `enterprise-kpi-strip.html` รองรับ requirement ได้ โดยไม่มีเหตุผล/approved exception
 - Card ถูกใช้เป็น default container อย่างเป็นระบบแทน approved operational panel/table/divider language
+- Command Center / Mission Control / Operations page ไม่ derive จาก `premium-operational-layout.html` โดยไม่มี approved exception
+- Hero banner / dark AI hero / terminal feed / equal-card showcase ถูกใช้เป็น primary visual composition ของ operational page โดยไม่มี Blueprint requirement + approved exception
 
 ## Premium HIS Visual Gate — Mandatory
 
@@ -89,17 +109,18 @@ Builder Self-QA, Post-Build Gate และ Independent QA ต้องตรว�
 |---|---|---|
 | VG-01 Product Character | ดูเป็น Hospital Enterprise System หรือ generic SaaS/AI Dashboard? | Clinical / Operational / Trustworthy / Dense / Calm / Professional |
 | VG-02 Application Shell | ใช้ approved shell จริงหรือ approved exception? | Implementation structure derives from `application-shell.html`; custom header/nav shell is not PASS |
-| VG-03 Font Awesome Compliance | ใช้ icon language กลางหรือไม่? มี Emoji/custom icon/CDN หรือไม่? | Font Awesome semantic mapping ตาม `design-system/icon-rules.md`; default `fa-solid`; no Emoji UI; no custom SVG when approved FA icon exists; no external FA CDN/Kit in mockup |
+| VG-03 Font Awesome Compliance | ใช้ icon languageกลางหรือไม่? มี Emoji/custom icon/CDN หรือไม่? | Font Awesome semantic mapping ตาม `design-system/icon-rules.md`; default `fa-solid`; no Emoji UI; no custom SVG when approved FA icon exists; no external FA CDN/Kit in mockup |
 | VG-04 Container Discipline | Card Everywhere หรือไม่? | Operational panels/tables/dividers/split layouts used as default when appropriate; systematic card-everywhere = FAIL |
 | VG-05 KPI Discipline | Operational KPI ใหญ่แบบ marketing/stat-card grid หรือไม่? | `enterprise-kpi-strip.html` reused when it supports the requirement; stat-card remains valid for suitable Home/Executive summary |
 | VG-06 Color Discipline | สีถูกใช้ตาม Design Rules หรือไม่? | Neutral-first; approved tokens used directly; clinical semantic colors retain strict meanings and are never decorative |
 | VG-07 Density | 1366×768 เห็น key operational state เพียงพอหรือไม่? | Page context + summary + alert + main operational content + primary action visible when requirement/layout makes this feasible |
 | VG-08 Typography/Scale | มี oversized heading/KPI/button หรือไม่? | Approved token scale; scan-first hierarchy |
 | VG-09 AI Visual Theme | Feature AI ถูกทำเป็น futuristic theme หรือไม่? | AI presented as a capability inside Gorilla HIS visual language |
+| VG-10 Operational Composition | หน้า Command Center/Operations ใช้ premium operational master จริงหรือไม่? | Composition derives from `premium-operational-layout.html`; no hero/terminal/equal-card showcase; evidence-heavy 2/3 + action 1/3 workspace when applicable |
 
 ### Visual Gate Severity
 
-- **VG-01, VG-02, VG-03, VG-06, VG-09 FAIL = P0 Design / Automatic FAIL** เมื่อเป็นการฝ่าฝืนชัดเจนและไม่มี approved exception
+- **VG-01, VG-02, VG-03, VG-06, VG-09, VG-10 FAIL = P0 Design / Automatic FAIL** เมื่อเป็นการฝ่าฝืนชัดเจนและไม่มี approved exception
 - **VG-04, VG-05, VG-07, VG-08 = P1** เมื่อทำให้ operational scanability หรือ Gorilla HIS consistency ลดลงอย่างมีนัยสำคัญ; QA ยกระดับเป็น P0 ได้เมื่อเป็น systematic design-language violation
 - การไม่มี relevant operational KPI/panel ใน Blueprint ไม่ทำให้ VG-04/VG-05 FAIL; ใช้ `N/A` ได้พร้อมเหตุผล
 

@@ -21,7 +21,9 @@
 | `worklist.html` | คิวงานที่ต้องดำเนินการต่อ พร้อม action ต่อแถว (ต่างจาก data table ที่แสดงผลอย่างเดียว) | Registration, ER, LAB, Radiology, Pharmacy |
 | `tabs.html` | สลับดูเนื้อหาหลายหมวดในหน้าเดียวกัน (เช่น ประวัติผู้ป่วย: Vitals/Lab/Medication/Notes) | ทุก module |
 | `notification-toast.html` | แจ้งผลลัพธ์ action แบบชั่วคราว (Success/Error/Info ทั่วไป — ไม่ใช่ patient-safety critical) | ทุก module |
-| `stat-card.html` | ตัวเลขสรุปภาพรวม (ไอคอนวงกลมสี + ตัวเลข + label) — พบจริงใน Visual Audit | หน้า Dashboard/Home ของทุก module |
+| `stat-card.html` | ตัวเลขสรุปภาพรวม (ไอคอนวงกลมสี + ตัวเลข + label) — พบจริงใน Visual Audit | หน้า Dashboard/Home ของทุก module **เท่านั้น** (ห้ามใช้กับหน้าปฏิบัติการ ดู § 0.5.3 ใน `design-rules.md`) |
+| `enterprise-kpi-strip.html` | KPI แถวเดียว compact สำหรับหน้าจอปฏิบัติการที่มีตัวเลขสรุปหลายตัว (ไม่ใช่ Home Dashboard) — ใช้ก่อน `stat-card.html` เสมอตาม `design-rules.md` § 0.5.3 | Command Center, ER Flow, Bed Management และหน้าปฏิบัติการอื่นที่มี KPI แถวบน |
+| `application-shell.html` | **Master Application Shell ที่ล็อกตายตัว** (Top bar + Left sidebar + Content) — ทุก feature ต้องใช้โครงนี้ ห้ามออกแบบ Shell เอง (ดู `design-rules.md` § 0.5.5) | ทุก module/feature |
 | `patient-summary-panel.html` | แผงข้อมูลผู้ป่วยแบบละเอียด (vitals + allergy + underlying + social history) — พบจริงใน Visual Audit | Pharmacy, IPD, หน้าที่ต้องดู context ผู้ป่วยตลอดเวลา |
 
 ## กฎการเพิ่มไฟล์ใหม่ในโฟลเดอร์นี้

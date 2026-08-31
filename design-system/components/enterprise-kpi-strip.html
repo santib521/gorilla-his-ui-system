@@ -1,0 +1,84 @@
+<!--
+  Component: Enterprise KPI Strip
+  เพิ่มตาม design-rules.md § 0.5.3 — "สำหรับ Operational Dashboard ให้ใช้ enterprise-kpi-strip ก่อน stat-card"
+  ต่างจาก stat-card.html (ไอคอนวงกลมสี + ตัวเลขใหญ่ เหมาะกับ Home Dashboard) ตัวนี้ compact แถวเดียว
+  อ่านเร็วแบบ command center จริง เหมาะกับหน้าจอปฏิบัติการที่มี KPI หลายตัวพร้อมกัน (ER Flow, Bed Management,
+  Level 1-3 ของ Hospital Command Center ฯลฯ)
+
+  โครงสร้าง: label (บนสุด, ตัวพิมพ์เล็ก, letter-spacing) -> value (ตัวเลขหลัก ขนาดพอเหมาะ ไม่ใหญ่เกินหัวข้อหน้า)
+  -> delta (บรรทัดเล็กด้านล่าง ใช้สี semantic เฉพาะเมื่อสื่อความหมายจริง เช่น เกิน threshold)
+
+  กฎการใช้สี: ตัวเลข value ใช้ --color-text-primary เป็นค่าเริ่มต้นเสมอ จะเปลี่ยนเป็นสี semantic
+  (critical/warning) เฉพาะเมื่อค่านั้นเข้าเกณฑ์ผิดปกติจริงเท่านั้น (ดู design-rules.md § 4) ห้ามไล่สีทุกช่องให้สวย
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Enterprise KPI Strip</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+
+  .kpi-strip {
+    display: flex; align-items: stretch; background: var(--color-bg-surface);
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    overflow-x: auto;
+  }
+  .kpi-strip__item {
+    flex: 1 1 0; min-width: 128px; padding: var(--space-3) var(--space-4);
+    border-right: 1px solid var(--color-border);
+  }
+  .kpi-strip__item:last-child { border-right: none; }
+  .kpi-strip__label {
+    font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); color: var(--color-text-secondary);
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-1);
+    white-space: nowrap;
+  }
+  .kpi-strip__value {
+    font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--color-text-primary);
+    line-height: 1.15; font-family: var(--font-family-mono);
+  }
+  .kpi-strip__value--critical { color: var(--color-status-critical); }
+  .kpi-strip__value--warning  { color: var(--color-status-warning); }
+  .kpi-strip__value--normal   { color: var(--color-status-normal); }
+  .kpi-strip__delta {
+    font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-top: var(--space-1);
+  }
+  .kpi-strip__delta--up   { color: var(--color-status-critical); }   /* ปรับตามบริบท: ขึ้น=แย่ลง เช่น waiting time */
+  .kpi-strip__delta--down { color: var(--color-status-normal); }
+</style>
+</head>
+<body>
+
+<!-- ตัวอย่าง: ใช้แทนแถว stat-card เดิมของหน้าปฏิบัติการ (ไม่ใช่ Home Dashboard) -->
+<div class="kpi-strip">
+  <div class="kpi-strip__item">
+    <div class="kpi-strip__label">Bed Occupancy</div>
+    <div class="kpi-strip__value">84.2%</div>
+    <div class="kpi-strip__delta kpi-strip__delta--up">▲ 2.1% vs 08:00</div>
+  </div>
+  <div class="kpi-strip__item">
+    <div class="kpi-strip__label">ALOS</div>
+    <div class="kpi-strip__value">3.4 d</div>
+    <div class="kpi-strip__delta kpi-strip__delta--down">▼ 0.2 d</div>
+  </div>
+  <div class="kpi-strip__item">
+    <div class="kpi-strip__label">ER Wait</div>
+    <div class="kpi-strip__value kpi-strip__value--warning">32 min</div>
+    <div class="kpi-strip__delta">SLA &lt; 45 min</div>
+  </div>
+  <div class="kpi-strip__item">
+    <div class="kpi-strip__label">Daily Census</div>
+    <div class="kpi-strip__value">428</div>
+    <div class="kpi-strip__delta kpi-strip__delta--up">▲ 12 vs เมื่อวาน</div>
+  </div>
+  <div class="kpi-strip__item">
+    <div class="kpi-strip__label">Available Bed</div>
+    <div class="kpi-strip__value kpi-strip__value--critical">18</div>
+    <div class="kpi-strip__delta kpi-strip__delta--down">▼ 6</div>
+  </div>
+</div>
+
+</body>
+</html>

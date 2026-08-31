@@ -46,6 +46,7 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 - ใช้ข้อมูลผู้ป่วยจริง
 - New reusable UI pattern แต่ไม่ Declare `Proposed New Pattern`
 - ไม่ทำ Builder Self-QA ตาม `modules/_feature-template/review/qa-checklist.md`
+- **ไม่ผ่าน Premium HIS Visual Gate (ดู `premium-his-visual-gate.md`) — เพิ่มตาม `design-system/design-rules.md` § 0.5.8**
 
 ## Reference Availability Rule
 

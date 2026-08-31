@@ -53,8 +53,11 @@
 - [ ] Builder Self-QA ตาม `modules/_feature-template/review/qa-checklist.md` เสร็จแล้ว
 - [ ] Pre-Build Result และ Blueprint Traceability แนบกับงาน
 
+## G. Premium HIS Visual Gate (เพิ่มตาม `design-system/design-rules.md` § 0.5.8)
+- [ ] ตอบครบ 7 ข้อใน `factory-gate/premium-his-visual-gate.md` — ข้อใดตอบว่า "ไม่ผ่าน" ถือเป็น Hard Reject ตาม `FACTORY_GATE.md`
+
 ## Result
 - [ ] **PASS → SEND TO INDEPENDENT QA AGENT**
 - [ ] **FAIL → RETURN TO BUILDER**
 
-Automatic FAIL: Hard Reject ใน `FACTORY_GATE.md`, Main Workflow FAIL/PARTIAL, Critical Requirement FAIL/PARTIAL, Console Error, หรือ required deliverable ขาด
+Automatic FAIL: Hard Reject ใน `FACTORY_GATE.md`, Main Workflow FAIL/PARTIAL, Critical Requirement FAIL/PARTIAL, Console Error, Premium HIS Visual Gate ข้อใดไม่ผ่าน, หรือ required deliverable ขาด

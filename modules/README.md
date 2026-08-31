@@ -42,3 +42,11 @@ modules/<module>/<feature-kebab-case>/
 | การเงิน/แคชเชียร์ | `billing/` | Billed WorkList, Cashier worklist, รับชำระเงิน — เพิ่มหลัง Visual Audit |
 
 เพิ่ม module ใหม่: สร้างโฟลเดอร์ใหม่ใต้ `modules/`, เพิ่ม `README.md` อธิบายบริบทธุรกิจ, แจ้งทีมในที่ประชุม weekly sync
+
+## Feature พิเศษข้าม module (cross-module)
+
+บางโฟลเดอร์ใต้ `modules/` ไม่ใช่ "ธุรกิจ 1 module" แบบ 11 รายการด้านบน แต่เป็น feature ที่รวมข้อมูลข้ามหลาย module — ยังใช้โครงสร้าง `feature-spec.md` / `prompt-used.md` / `index.html` / `review/qa-checklist.md` เดียวกันทุกอย่าง เพียงไม่มี `README.md` บริบทธุรกิจแบบ module เดี่ยว:
+
+| Feature | โฟลเดอร์ | คืออะไร |
+|---|---|---|
+| Hospital Command Center | `hospital-command-center/` | Mission Control รวมข้อมูล Real-Time จากทุก module ผ่าน AI Brain Engine กระจายให้ผู้ใช้ 3 ระดับ (ดู `feature-spec.md` ในโฟลเดอร์นี้) — มี 6 Proposed New Pattern ที่ยังไม่ผ่าน weekly design sync ห้ามทีมอื่นเอาไปใช้ต่อจนกว่าจะอนุมัติ (ดู `review/qa-checklist.md`) |

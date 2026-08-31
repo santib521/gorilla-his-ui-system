@@ -4,6 +4,8 @@
 
 > เรื่อง**พฤติกรรม/การโต้ตอบ**ของ UI (worklist, action, state, detail pattern) ย้ายไปอยู่ที่ [`ux-rules.md`](./ux-rules.md) แล้ว — ไฟล์นี้เน้นเฉพาะ**หน้าตา/ภาพ**
 
+> **v2 (2026-08-31):** เพิ่ม § 0.5 "Enterprise HIS Visual Character" หลังพบว่า feature ที่มีคำว่า AI/Command Center ในชื่อ ถูก AI builder ตีความเป็น AI/SaaS dashboard stereotype (gradient, glow, emoji, การ์ดใหญ่, ตัวเลขใหญ่, ข้อความ marketing) — อ่าน § 0.5 **ก่อน**เริ่มออกแบบ feature ใหม่ทุกครั้ง ไม่ว่า requirement จะใช้คำว่า "AI" หรือไม่
+
 ## 0. Product Character
 
 **อัปเดตแล้วตาม Visual Audit จริง** (เทียบจากภาพใน `screenshots/actual-gorilla-his/` 29 ภาพ — เดิมเป็นแค่ baseline สมมติ ตอนนี้อ้างอิงของจริงแล้ว):
@@ -17,6 +19,90 @@
 - **ค่าวิกฤต/ผิดปกติในตัวเลข** แสดงด้วยสีข้อความแดงตรง ๆ (ไม่ใช่ badge เสมอไป) ตรงกับแนวทางที่ `vitals-form.html` ทำอยู่แล้ว — ยืนยันว่าถูกทาง
 
 **ช่องว่างที่ยังไม่มี component รองรับ (รู้ไว้ ยังไม่ได้สร้าง):** กราฟสัญญาณชีพแบบ time-series ระดับ Critical Care Flowsheet (ดู `17Graphic sheet.jpg`) ซับซ้อนกว่า component ปัจจุบันมาก — ถ้ามี feature ต้องใช้ ให้ปรึกษาที่ weekly design sync ก่อนแทนที่จะเดาออกแบบเอง
+
+## 0.5 Enterprise HIS Visual Character (Master Rule — บังคับทุก Feature) — v2
+
+> เพิ่มเข้ามาหลังพบว่า mockup หลายชิ้น (โดยเฉพาะ feature ที่มีคำว่า "AI"/"Command Center" ใน requirement) มีแนวโน้มถูก AI ตีความเป็น **AI/SaaS Dashboard Visual Stereotype** (gradient ฉูดฉาด, glow, การ์ดใหญ่โล่ง, ตัวเลขใหญ่เกินบริบท, emoji, ข้อความเชิง marketing) ทั้งที่ระบบนี้คือ **Enterprise Hospital Application** ไม่ใช่ AI Showcase — กฎในหมวดนี้มีอำนาจเหนือ "รสนิยม"/"ความคิดสร้างสรรค์" ของ AI ที่สร้างงานเสมอ ขัดกับ §1-§10 ข้อไหนไม่ได้ ให้หมวดนี้ชนะเฉพาะเรื่อง "ความรู้สึกโดยรวม" (tone) เท่านั้น ส่วนกฎ Semantic Color/Accessibility ของหมวดอื่นยังใช้เต็มเหมือนเดิม
+
+**คำประกาศหลัก:**
+
+> Gorilla HIS เป็นแอปพลิเคชันระดับองค์กรของโรงพยาบาล (professional hospital enterprise application) **ไม่ใช่** marketing dashboard, AI showcase, fintech dashboard หรือ consumer SaaS product
+
+UI ต้องให้ความรู้สึก: **Clinical / Operational / Trustworthy / Dense / Calm / Professional**
+
+**หลีกเลี่ยงเด็ดขาด (ไม่ว่า feature จะมีคำว่า "AI"/"Intelligence"/"Command Center" อยู่ใน requirement หรือไม่ก็ตาม):**
+- oversized card (การ์ดใหญ่โล่งเกินเนื้อหา)
+- excessive rounded corners (มุมโค้งมนเกินความจำเป็น)
+- decorative gradient (ไล่สีเพื่อความสวยงามล้วน ๆ ไม่ได้สื่อความหมาย)
+- emoji icon ใน production UI (ดูข้อถัดไป)
+- colorful dashboard block (หลายสีแข่งขันกันในหน้าเดียว)
+- excessive whitespace (พื้นที่ว่างเกินจำเป็นจนข้อมูลสำคัญต้อง scroll ถึงจะเห็น)
+- oversized KPI typography (ตัวเลข KPI ใหญ่เกินบริบทงาน เช่น เท่าหัวข้อหน้า)
+- "AI futuristic" visual language (dark panel เรืองแสง, glow, สีม่วง/น้ำเงินเข้มแบบ sci-fi, sparkle ✨)
+- hero banner / ข้อความหัวข้อเชิง marketing (เช่น "✨ AI Brain & Predictive Intelligence Engine")
+- ปุ่ม action ขนาดใหญ่เต็มการ์ดที่ใช้สี warning/critical เป็นการตกแต่งแทนที่จะสื่อความหมายจริง
+
+### 0.5.1 ห้ามใช้ Emoji เป็น Production UI Icon เด็ดขาด
+
+**Emoji are prohibited as production UI icons.** ต้องใช้ **inline SVG line icon โทนสีเดียว (monochrome, `stroke="currentColor"`)** จาก icon set ที่อนุมัติแทนเสมอ — รวมถึงไอคอนใน component เดิมที่ยังใช้ emoji อยู่ (เช่น ตัวอย่างใน `stat-card.html` ที่สร้างไว้ก่อนกฎนี้ — ให้ถือเป็น debt ที่ต้องแก้ ไม่ใช่ของที่ยกเว้น)
+
+ตัวอย่างการแปลความหมายเป็น icon (ไม่ใช่ literal 1:1 กับคำ แต่สื่อความหมายเชิงหน้าที่):
+- "AI/สมองระบบ" → ใช้ icon เชิง circuit/network ไม่ใช่รูปสมองการ์ตูนหรือ 🧠
+- "ภาพรวม/Strategic" → icon เชิง dashboard/grid
+- "ปฏิบัติการ/Tactical" → icon เชิง activity/pulse
+- "หน้างาน/Frontline" → icon เชิง worklist/bed
+- "ตั้งค่า/Config" → icon เชิง gear/settings มาตรฐาน (ไม่ใช้ ⚙️)
+
+### 0.5.2 Card ไม่ใช่ Container เริ่มต้น (Card is not the default container)
+
+**ใช้ card เฉพาะเมื่อข้อมูลนั้นเป็นอิสระจากบริบทรอบข้างจริง ๆ** (เช่น ผลลัพธ์สรุปที่ต้องแยกสายตาชัดเจน) หน้าจอเชิงปฏิบัติการ (operational screen) ให้เลือกใช้ `section` (หัวข้อ + เส้นแบ่ง `divider`), `table`, และ split-panel เป็นหลักก่อนคิดถึง card — โครงหน้าอ้างอิง:
+
+```
+Page Header
+────────────────────────────────────────
+KPI strip
+Bed Occupancy 84.2% | ALOS 3.4 | ER Wait 32m | Census 428 | ...
+────────────────────────────────────────
+Operational Trend                  Decision / Alert
+[ graph / timeline ]               [ compact panel ]
+────────────────────────────────────────
+Department Situation / Worklist / Details
+```
+
+### 0.5.3 Enterprise KPI Strip ก่อน Stat Card เสมอสำหรับ Operational Dashboard
+
+ตัวเลขสรุปในหน้าจอเชิงปฏิบัติการ (Level 1-3 ของ Command Center, ER Flow, Bed Management ฯลฯ) **ต้องใช้ `components/enterprise-kpi-strip.html`** (แถวเดียว compact, ตัวเลขขนาดพอเหมาะกับบริบทงาน ไม่ใหญ่เกินหัวข้อหน้า) — **`stat-card.html`** (ไอคอนวงกลมสี + ตัวเลขใหญ่) **สงวนไว้เฉพาะ** หน้า Home Dashboard ของแต่ละ module หรือ Executive Summary ที่เหมาะสมเท่านั้น (ตาม `patterns/dashboard-home.md` เดิม) ห้ามใช้ผสมกันในหน้าเดียวโดยไม่มีเหตุผล
+
+### 0.5.4 สีต้องเหลือ "90% Neutral + 10% Meaning"
+
+หน้าจอส่วนใหญ่ต้องเป็นโทนกลาง (ขาว/เทา) 80-90% ของพื้นที่ทั้งหมด สีที่ไม่ใช่กลางใช้ได้เฉพาะ:
+- **Gorilla Indigo** (`--color-blue-*`) → navigation, primary action เท่านั้น
+- **เขียว** (`--color-status-normal`) → success/normal เท่านั้น
+- **ส้ม** (`--color-status-warning`) → warning เท่านั้น (**ห้าม**ใช้กับปุ่ม action ทั่วไปเพื่อให้ปุ่มเด่น — ปุ่มที่ไม่ใช่ warning state จริงต้องเป็น `btn--secondary`/`btn--primary` ปกติ)
+- **แดง** (`--color-status-critical`) → critical เท่านั้น
+
+สีมีไว้ "บอกความหมาย" ไม่ใช่ "ทำให้หน้าจอสวย" — ถ้าจะเพิ่มสีต้องตอบได้ว่าสีนั้นสื่อความหมายเชิง semantic อะไร ตอบไม่ได้ = ห้ามใส่
+
+### 0.5.5 Application Shell ต้องมีแบบเดียว ห้าม AI ออกแบบเอง
+
+โครง Shell (Top bar + Left sidebar navigation ตาม §2) ถูก**ล็อกตายตัว**ไว้ที่ `components/application-shell.html` แล้ว **ห้าม feature ใดออกแบบ Shell ของตัวเอง** (ไม่ว่าจะเป็น top-nav-tabs, dark header, หรือรูปแบบอื่น) AI มีสิทธิ์ออกแบบเฉพาะ **Main Content Area** เท่านั้น ส่วนที่ห้ามแตะ: Logo placement, Top bar, Sidebar, Module selector, User profile, Navigation width, Header height (รายละเอียดดู component file)
+
+### 0.5.6 Premium HIS Density Rule
+
+จอ Desktop HIS ต้องออกแบบเพื่อ **operational scanning** ไม่ใช่จอโฆษณา หลีกเลี่ยง whitespace ที่มากเกินจำเป็น ที่ความละเอียด **1366×768 หน้าจอแรกที่เปิดมาต้องเห็นครบโดยไม่ต้อง scroll**: Page context, KPI, Alert, ข้อมูลปฏิบัติการหลัก, Primary Action
+
+### 0.5.7 Feature ที่เกี่ยวกับ AI ต้องไม่มี "AI Visual Theme"
+
+Feature ที่ใช้ AI/Predictive logic ภายใน **ต้องแสดงผลเหมือน Clinical/Operational Intelligence ปกติ** ไม่ใช่ AI showcase — ห้ามใช้ gradient, dark futuristic panel, glow, สีม่วง, emoji สมอง, sparkle ✨ ประกอบ ตัวอย่าง:
+
+- ❌ "✨ AI Brain & Predictive Intelligence Engine"
+- ✅ "Operational Intelligence" พร้อมบรรทัดกำกับ `Updated 14:38 | Source: ADT, ER, Bed Management`
+
+และ AI Recommendation ให้ใช้ panel แบบเดียวกับ Clinical Recommendation ปกติของระบบ (ไม่ใช่ card พิเศษแยกสไตล์)
+
+### 0.5.8 Premium HIS Visual Gate (เพิ่มเข้า Factory Gate)
+
+QA/Builder ต้องตอบ 7 ข้อนี้ก่อนถือว่างานผ่าน (รายละเอียดเต็มดู `factory-gate/premium-his-visual-gate.md`): (1) ดูเหมือนระบบงานโรงพยาบาลหรือ SaaS Dashboard? (2) มี Emoji/decorative icon หรือไม่? (3) มี Card มากเกินจำเป็นหรือไม่? (4) มีสีที่ไม่สื่อ semantic meaning หรือไม่? (5) มี oversized heading/KPI หรือไม่? (6) Shell ตรงกับ Master Application Shell หรือไม่? (7) ที่ 1366×768 information density เหมาะกับ HIS หรือไม่?
 
 ## 1. หลักการออกแบบ (Design Principles)
 

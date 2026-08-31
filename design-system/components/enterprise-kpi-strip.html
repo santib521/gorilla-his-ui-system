@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enterprise KPI Strip</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+*{box-sizing:border-box} body{margin:0;padding:var(--space-5);font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary)}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--color-bg-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
+.kpi{min-width:0;padding:var(--space-3) var(--space-4);border-right:1px solid var(--color-border)} .kpi:last-child{border-right:0}
+.kpi-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.02em}
+.kpi-value{margin-top:var(--space-1);font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}
+.kpi-meta{margin-top:var(--space-1);font-size:var(--font-size-xs);color:var(--color-text-secondary)}
+.kpi-meta.is-warning{color:var(--color-status-warning)} .kpi-meta.is-critical{color:var(--color-status-critical)} .kpi-meta.is-normal{color:var(--color-status-normal)}
+@media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi{border-bottom:1px solid var(--color-border)}}
+</style></head>
+<body>
+<!-- Enterprise KPI Strip: preferred over stat-card for operational/command-center screens. Compact, scan-first, no decorative icons. Semantic colors only for status meaning. -->
+<section class="kpi-strip" aria-label="Operational KPI summary">
+ <div class="kpi"><div class="kpi-label">Bed Occupancy</div><div class="kpi-value">84.2%</div><div class="kpi-meta is-normal">Within operating range · &lt;85%</div></div>
+ <div class="kpi"><div class="kpi-label">Average LOS</div><div class="kpi-value">3.4 d</div><div class="kpi-meta">−0.2 d vs previous period</div></div>
+ <div class="kpi"><div class="kpi-label">ER Waiting</div><div class="kpi-value">32 min</div><div class="kpi-meta is-normal">SLA &lt;45 min</div></div>
+ <div class="kpi"><div class="kpi-label">Current Census</div><div class="kpi-value">428</div><div class="kpi-meta">+12 since 08:00</div></div>
+ <div class="kpi"><div class="kpi-label">Available Beds</div><div class="kpi-value">18</div><div class="kpi-meta is-warning">6 pending cleaning</div></div>
+</section>
+</body></html>

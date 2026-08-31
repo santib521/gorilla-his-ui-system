@@ -1,0 +1,67 @@
+# APPLICATION BLUEPRINT LITE — Hospital Command Center
+
+## 1. Application
+ชื่อระบบ: Hospital Command Center — Real-Time Operational Intelligence
+วัตถุประสงค์: ศูนย์บัญชาการข้อมูล Real-Time ของโรงพยาบาล รับข้อมูล HIMS/HIS ผ่าน AI Brain Engine เพื่อ Predict / Detect / Recommend และกระจายข้อมูล/คำแนะนำตามระดับการบริหาร
+ผู้ใช้งานหลัก: Level 1 C-Level, Level 2 Middle Management/Command Center, Level 3 Operational Frontline, System Administrator
+
+## 2. Main Workflow
+Normal Operations
+→ ER มีผู้ป่วยเพิ่ม / Peak ER Surge
+→ AI Brain ตรวจพบความเสี่ยง
+→ AI Recommendation
+→ Level 2 Alert
+→ Level 2 Approve / Dispatch Action
+→ Level 3 ได้รับ Task
+→ Start Task
+→ Complete Task
+→ Capacity / Operational Status ดีขึ้น
+→ Dashboard/KPI สะท้อนผล
+
+## 3. Functions
+- Navigation: AI Brain Engine / Level 1 / Level 2 / Level 3 / Self-Service Config
+- LIVE HIMS SYNC + Last Refresh
+- Scenario Simulator: Normal / Peak ER Surge / Bed Gridlock Critical
+- AI Brain: Data Flow, Raw Feed, ER Forecast, Discharge Predictor, EWS Prediction, Recommendation
+- Level 1: Bed Occupancy, ALOS, ER Overcrowding, ER Waiting, Daily Census, Revenue/Census, Trend, Prediction, Strategic Action
+- Level 2: ER Flow, Bed Management, Housekeeping/Logistics, Bottleneck, Gridlock Protocol, Dispatch Task, Threshold Simulation
+- Level 3: ER/Ward/Housekeeping/Transport View, Bed Grid, Patient Context, EWS/Risk, Operational Task
+- Self-Service: Rule Builder, Dashboard Configuration, Metric Mapping
+
+## 4. Information / Data
+- Bed Occupancy %
+- Average Length of Stay
+- ER Overcrowding Index
+- ER Waiting Time / Queue
+- Daily Census
+- Revenue / Census Correlation
+- Occupied / Reserved / Cleaning / Available / Discharge Ready Bed
+- Cleaning TAT / Transport Queue / Pending Tasks
+- EWS / Deterioration Risk / Clinical Alert
+- AI Recommendation
+- Task Status
+- LIVE HIMS SYNC / Last Data Refresh
+
+## 5. Business Rules
+- Scenario เปลี่ยนแล้ว KPI, Alert, Recommendation และ Operational Status ต้องเปลี่ยนสอดคล้องกัน
+- Strategic/Critical Action ต้อง Confirm ก่อนดำเนินการ
+- Level 2 Dispatch Operational Task ไป Level 3
+- Task Lifecycle: Pending → In Progress → Completed ห้ามข้ามขั้นใน Main Demo
+- เมื่อ Task Complete แล้ว Capacity/Operational Status ต้องสะท้อนผล
+- AI Clinical Recommendation เป็น Decision Support ไม่ใช่ Definitive Diagnosis
+- Patient Context ใช้ Mock Data เท่านั้น
+- Threshold/Scenario เป็น Simulation ไม่ใช่ Production Configuration
+
+## 6. Demo / Acceptance
+1. เริ่ม Normal Operations
+2. เปลี่ยน Peak ER Surge
+3. KPI / ER Queue / Waiting / Bed Demand เปลี่ยน
+4. AI ตรวจพบ Risk และสร้าง Recommendation
+5. Recommendation ไป Level 2
+6. Level 2 Confirm และ Dispatch Action
+7. Level 3 ได้รับ Task
+8. Start Task → In Progress
+9. Complete Task → Completed
+10. Capacity/Status ดีขึ้นและ Dashboard สะท้อนผล
+
+Main Demo ผ่านเมื่อ Flow ข้างต้นทำได้ต่อเนื่อง พร้อม Navigation 5 ส่วน, 3 Scenarios, Modal Confirmation, Self-Service demo และใช้ Mock Data เท่านั้น

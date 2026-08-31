@@ -1,0 +1,93 @@
+<!--
+  Component: Patient Search Bar
+  ใช้ค้นหาผู้ป่วยด้วย HN หรือชื่อ พร้อม autocomplete แบบ mock (ไม่มี API จริง)
+  Reuse: status-badges.html (สำหรับ badge แพ้ยาในผลค้นหา)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Patient Search Bar</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .search-wrap { position: relative; max-width: 480px; }
+  .search-input {
+    width: 100%; box-sizing: border-box;
+    font-family: var(--font-family-base); font-size: var(--font-size-base);
+    padding: var(--space-3) var(--space-4) var(--space-3) var(--space-8);
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    min-height: 44px; background: var(--color-white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2364748b' stroke-width='2'><circle cx='6.5' cy='6.5' r='5.5'/><line x1='10.5' y1='10.5' x2='15' y2='15'/></svg>") no-repeat 14px center;
+  }
+  .search-input:focus { outline: none; border-color: var(--color-blue-500); box-shadow: 0 0 0 3px var(--color-blue-100); }
+
+  .search-results {
+    position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+    background: var(--color-white); border: 1px solid var(--color-border);
+    border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+    max-height: 320px; overflow-y: auto; z-index: var(--z-dropdown);
+    display: none;
+  }
+  .search-results.is-open { display: block; }
+  .search-result-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: var(--space-3) var(--space-4); cursor: pointer; border-bottom: 1px solid var(--color-border);
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: var(--color-gray-50); }
+  .sri__name { font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .sri__meta { font-size: var(--font-size-xs); color: var(--color-text-secondary); }
+  .badge { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); border: 1px solid; }
+  .badge--critical { background: var(--color-status-critical-bg); color: var(--color-status-critical); border-color: var(--color-status-critical-border); }
+  .search-empty { padding: var(--space-4); color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+</style>
+</head>
+<body>
+
+<div class="search-wrap">
+  <input class="search-input" id="patientSearch" type="text" placeholder="ค้นหาด้วย HN หรือชื่อ-สกุลผู้ป่วย..." autocomplete="off">
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<script>
+  // Mock data — ห้ามใช้ข้อมูลผู้ป่วยจริง
+  const mockPatients = [
+    { hn: "HN6805-00231", name: "นายสมชาย ใจดี", age: 45, allergy: true },
+    { hn: "HN6805-00456", name: "นางสมหญิง มีสุข", age: 62, allergy: false },
+    { hn: "HN6805-00789", name: "เด็กชายกิตติ แข็งแรง", age: 8, allergy: false },
+    { hn: "HN6805-01012", name: "นายวิชัย เพียรทำ", age: 33, allergy: false },
+  ];
+
+  const input = document.getElementById('patientSearch');
+  const results = document.getElementById('searchResults');
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { results.classList.remove('is-open'); results.innerHTML = ''; return; }
+
+    const matches = mockPatients.filter(p =>
+      p.hn.toLowerCase().includes(q) || p.name.toLowerCase().includes(q)
+    );
+
+    if (matches.length === 0) {
+      results.innerHTML = '<div class="search-empty">ไม่พบผู้ป่วยที่ตรงกับ "' + input.value + '"</div>';
+    } else {
+      results.innerHTML = matches.map(p => `
+        <div class="search-result-item" tabindex="0">
+          <div>
+            <div class="sri__name">${p.name}</div>
+            <div class="sri__meta">HN: ${p.hn} • อายุ ${p.age} ปี</div>
+          </div>
+          ${p.allergy ? '<span class="badge badge--critical">⚠ แพ้ยา</span>' : ''}
+        </div>
+      `).join('');
+    }
+    results.classList.add('is-open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrap')) results.classList.remove('is-open');
+  });
+</script>
+</body>
+</html>

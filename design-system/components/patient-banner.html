@@ -1,0 +1,56 @@
+<!--
+  Component: Patient Banner
+  แถบข้อมูลผู้ป่วยด้านบนหน้าจอ — ใช้ซ้ำในแทบทุกหน้าที่เกี่ยวกับผู้ป่วยรายคน
+  ลำดับการวางในหน้าจอ: alert-banner (ถ้ามี) มาก่อน แล้วตามด้วย patient-banner นี้เสมอ
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Patient Banner</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+
+  .patient-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: var(--shadow-sm);
+  }
+  .patient-banner__info { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+  .patient-banner__avatar {
+    width: 48px; height: 48px; border-radius: var(--radius-full);
+    background: var(--color-blue-100); color: var(--color-blue-700);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: var(--font-weight-bold); font-size: var(--font-size-lg);
+  }
+  .patient-banner__name { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .patient-banner__meta { font-size: var(--font-size-sm); color: var(--color-text-secondary); display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-1); }
+  .patient-banner__meta span b { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+</style>
+</head>
+<body>
+  <div class="patient-banner">
+    <div class="patient-banner__info">
+      <div class="patient-banner__avatar">สช</div>
+      <div>
+        <div class="patient-banner__name">นายสมชาย ใจดี</div>
+        <div class="patient-banner__meta">
+          <span>HN: <b>HN6805-00231</b></span>
+          <span>อายุ: <b>45 ปี</b></span>
+          <span>เพศ: <b>ชาย</b></span>
+          <span>เตียง: <b>4A-12</b></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="patient-banner__meta">แพทย์เจ้าของไข้: <b>พญ. สมหญิง รักษาดี</b></span>
+    </div>
+  </div>
+</body>
+</html>

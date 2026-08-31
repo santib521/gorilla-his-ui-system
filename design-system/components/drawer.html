@@ -1,0 +1,61 @@
+<!--
+  Component: Drawer (side panel)
+  ใช้สำหรับงานสั้น ๆ ที่มีบริบทเดียว โดยไม่ต้องออกจากหน้าหลัก (ดู ux-rules.md § 4 Detail Pattern)
+  ต่างจาก modal-dialog.html ตรงที่ drawer เลื่อนจากขอบจอ และเปิดค้างไว้พร้อมดูหน้าหลังได้บางส่วน
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Drawer</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .btn { font-family: var(--font-family-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);
+    padding: var(--space-3) var(--space-5); border-radius: var(--radius-md); border: none; cursor: pointer;
+    background: var(--color-primary-action); color: var(--color-text-inverse); }
+
+  .drawer-backdrop {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.35);
+    display: none; z-index: var(--z-modal-backdrop);
+  }
+  .drawer-backdrop.is-open { display: block; }
+
+  .drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 420px;
+    background: var(--color-bg-surface); box-shadow: var(--shadow-lg);
+    transform: translateX(100%); transition: transform var(--transition-base);
+    z-index: var(--z-modal); display: flex; flex-direction: column;
+  }
+  .drawer-backdrop.is-open .drawer { transform: translateX(0); }
+
+  .drawer__header { display: flex; justify-content: space-between; align-items: center; padding: var(--space-5); border-bottom: 1px solid var(--color-border); }
+  .drawer__title { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); }
+  .drawer__close { background: none; border: none; font-size: var(--font-size-lg); cursor: pointer; color: var(--color-text-secondary); }
+  .drawer__body { padding: var(--space-5); overflow-y: auto; flex: 1; font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+  .drawer__footer { padding: var(--space-5); border-top: 1px solid var(--color-border); display: flex; justify-content: flex-end; gap: var(--space-3); }
+  .btn--secondary { background: var(--color-white); color: var(--color-text-primary); border: 1px solid var(--color-border); }
+</style>
+</head>
+<body>
+  <button class="btn" onclick="document.getElementById('demoDrawer').classList.add('is-open')">เปิด Drawer ตัวอย่าง</button>
+
+  <div class="drawer-backdrop" id="demoDrawer" onclick="if(event.target===this) this.classList.remove('is-open')">
+    <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer__header">
+        <span class="drawer__title" id="drawerTitle">รายละเอียด Order ยา</span>
+        <button class="drawer__close" onclick="document.getElementById('demoDrawer').classList.remove('is-open')" aria-label="ปิด">✕</button>
+      </div>
+      <div class="drawer__body">
+        <p>Order: Amoxicillin 500mg — 3 เวลาหลังอาหาร x 5 วัน</p>
+        <p>ผู้สั่ง: พญ. สมหญิง รักษาดี</p>
+        <p>สถานะ: รอเภสัชกรตรวจสอบ</p>
+      </div>
+      <div class="drawer__footer">
+        <button class="btn btn--secondary" onclick="document.getElementById('demoDrawer').classList.remove('is-open')">ปิด</button>
+        <button class="btn">อนุมัติ Order</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

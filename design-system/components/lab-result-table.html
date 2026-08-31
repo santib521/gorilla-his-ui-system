@@ -1,0 +1,130 @@
+<!--
+  Component: Lab Result Table
+  ตารางแสดงผล Lab พร้อม flag สูง/ต่ำ/วิกฤต และ sort/filter แบบ mock (client-side ล้วน ๆ)
+  Reuse: status-badges.html (flag column)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Lab Result Table</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .table-toolbar { display: flex; gap: var(--space-3); margin-bottom: var(--space-4); }
+  .table-toolbar select, .table-toolbar input {
+    font-family: var(--font-family-base); font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    min-height: 40px;
+  }
+
+  table { width: 100%; border-collapse: collapse; background: var(--color-bg-surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+  thead th {
+    text-align: left; font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.02em;
+    color: var(--color-text-secondary); background: var(--color-gray-50);
+    padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); cursor: pointer; user-select: none;
+  }
+  tbody td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--font-size-sm); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--color-gray-50); }
+
+  .val { font-family: var(--font-family-mono); }
+  .badge { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); border: 1px solid; display: inline-block; }
+  .badge--normal   { background: var(--color-status-normal-bg); color: var(--color-status-normal); border-color: var(--color-status-normal-border); }
+  .badge--high     { background: var(--color-status-warning-bg); color: var(--color-lab-flag-high); border-color: var(--color-status-warning-border); }
+  .badge--low      { background: var(--color-status-info-bg); color: var(--color-lab-flag-low); border-color: var(--color-status-info-border); }
+  .badge--critical { background: var(--color-status-critical-bg); color: var(--color-status-critical); border-color: var(--color-status-critical-border); }
+
+  tr.row--critical td:first-child { box-shadow: inset 3px 0 0 var(--color-status-critical); }
+</style>
+</head>
+<body>
+
+<div class="table-toolbar">
+  <input type="text" id="filterInput" placeholder="ค้นหารายการตรวจ...">
+  <select id="flagFilter">
+    <option value="">ทุกสถานะ</option>
+    <option value="normal">Normal</option>
+    <option value="high">High</option>
+    <option value="low">Low</option>
+    <option value="critical">Critical</option>
+  </select>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th data-key="name">รายการตรวจ ⇅</th>
+      <th data-key="value">ผลตรวจ ⇅</th>
+      <th data-key="ref">ค่าอ้างอิง</th>
+      <th data-key="flag">สถานะ ⇅</th>
+      <th data-key="date">วันที่ตรวจ ⇅</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<script>
+  // Mock data — ต้องมีอย่างน้อย 1 record ผิดปกติตาม design-rules.md § 7
+  const mockLabResults = [
+    { name: "Hemoglobin (Hb)", value: "13.5", unit: "g/dL", ref: "12–16", flag: "normal", date: "2026-08-28" },
+    { name: "White Blood Cell (WBC)", value: "15.2", unit: "x10^9/L", ref: "4.0–11.0", flag: "high", date: "2026-08-28" },
+    { name: "Potassium (K+)", value: "6.8", unit: "mmol/L", ref: "3.5–5.0", flag: "critical", date: "2026-08-28" },
+    { name: "Sodium (Na+)", value: "129", unit: "mmol/L", ref: "135–145", flag: "low", date: "2026-08-28" },
+    { name: "Fasting Blood Sugar", value: "98", unit: "mg/dL", ref: "70–100", flag: "normal", date: "2026-08-28" },
+    { name: "Creatinine", value: "1.0", unit: "mg/dL", ref: "0.6–1.3", flag: "normal", date: "2026-08-27" },
+  ];
+
+  const badgeLabel = { normal: "Normal", high: "High ↑", low: "Low ↓", critical: "Critical ‼" };
+  let sortKey = null, sortAsc = true;
+
+  function render() {
+    const q = document.getElementById('filterInput').value.trim().toLowerCase();
+    const flag = document.getElementById('flagFilter').value;
+
+    let rows = mockLabResults.filter(r =>
+      (!q || r.name.toLowerCase().includes(q)) && (!flag || r.flag === flag)
+    );
+
+    if (sortKey) {
+      rows = [...rows].sort((a, b) => {
+        let av = a[sortKey], bv = b[sortKey];
+        if (sortKey === 'value') { av = parseFloat(av); bv = parseFloat(bv); }
+        if (av < bv) return sortAsc ? -1 : 1;
+        if (av > bv) return sortAsc ? 1 : -1;
+        return 0;
+      });
+    }
+
+    const tbody = document.getElementById('tbody');
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--color-text-secondary);padding:var(--space-6);">ไม่พบผลตรวจที่ตรงกับเงื่อนไข</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = rows.map(r => `
+      <tr class="${r.flag === 'critical' ? 'row--critical' : ''}">
+        <td>${r.name}</td>
+        <td class="val">${r.value} ${r.unit}</td>
+        <td class="val">${r.ref}</td>
+        <td><span class="badge badge--${r.flag}">${badgeLabel[r.flag]}</span></td>
+        <td>${r.date}</td>
+      </tr>
+    `).join('');
+  }
+
+  document.getElementById('filterInput').addEventListener('input', render);
+  document.getElementById('flagFilter').addEventListener('change', render);
+  document.querySelectorAll('thead th').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      sortAsc = (sortKey === key) ? !sortAsc : true;
+      sortKey = key;
+      render();
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!--
+  Component: Modal Dialog
+  ใช้สำหรับ confirm action / ฟอร์มสั้น ๆ ใน modal
+  Mock JS: เปิด/ปิด modal ด้วยปุ่ม (ไม่มี dependency ภายนอก)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Modal Dialog</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .btn { font-family: var(--font-family-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);
+    padding: var(--space-3) var(--space-5); border-radius: var(--radius-md); border: none; cursor: pointer;
+    background: var(--color-primary-action); color: var(--color-text-inverse); }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+    display: none; align-items: center; justify-content: center; z-index: var(--z-modal-backdrop);
+  }
+  .modal-backdrop.is-open { display: flex; }
+  .modal {
+    background: var(--color-bg-surface); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg); width: 100%; max-width: 420px;
+    padding: var(--space-6); z-index: var(--z-modal);
+  }
+  .modal__title { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); margin-bottom: var(--space-3); }
+  .modal__body { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-6); }
+  .modal__actions { display: flex; justify-content: flex-end; gap: var(--space-3); }
+  .btn--secondary { background: var(--color-white); color: var(--color-text-primary); border: 1px solid var(--color-border); }
+</style>
+</head>
+<body>
+  <button class="btn" onclick="document.getElementById('demoModal').classList.add('is-open')">เปิด Modal ตัวอย่าง</button>
+
+  <div class="modal-backdrop" id="demoModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__title" id="modalTitle">ยืนยันการยกเลิกนัดหมาย</div>
+      <div class="modal__body">คุณต้องการยกเลิกนัดหมายของผู้ป่วยรายนี้ใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้</div>
+      <div class="modal__actions">
+        <button class="btn btn--secondary" onclick="document.getElementById('demoModal').classList.remove('is-open')">ยกเลิก</button>
+        <button class="btn" onclick="document.getElementById('demoModal').classList.remove('is-open')">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!--
+  Component: Status Badges
+  ใช้แสดง: สถานะนัดหมาย, priority คิว, lab flag
+  ห้ามใช้สี critical/warning กับความหมายอื่นนอกเหนือจาก design-rules.md § 4
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Status Badges</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  h2 { font-size: var(--font-size-lg); margin-bottom: var(--space-3); margin-top: var(--space-6); }
+  .row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+  }
+  .badge--critical { background: var(--color-status-critical-bg); color: var(--color-status-critical); border-color: var(--color-status-critical-border); }
+  .badge--warning  { background: var(--color-status-warning-bg);  color: var(--color-status-warning);  border-color: var(--color-status-warning-border); }
+  .badge--normal   { background: var(--color-status-normal-bg);   color: var(--color-status-normal);   border-color: var(--color-status-normal-border); }
+  .badge--info     { background: var(--color-status-info-bg);     color: var(--color-status-info);     border-color: var(--color-status-info-border); }
+  .badge--inactive { background: var(--color-status-inactive-bg); color: var(--color-status-inactive); border-color: var(--color-status-inactive-border); }
+</style>
+</head>
+<body>
+  <h2>Appointment / General Status</h2>
+  <div class="row">
+    <span class="badge badge--info">รอตรวจ</span>
+    <span class="badge badge--warning">คิวล่าช้า</span>
+    <span class="badge badge--normal">ตรวจเสร็จสิ้น</span>
+    <span class="badge badge--inactive">ยกเลิกนัด</span>
+    <span class="badge badge--critical">⚠ แพ้ยา</span>
+  </div>
+
+  <h2>Lab Flag</h2>
+  <div class="row">
+    <span class="badge badge--normal">Normal</span>
+    <span class="badge badge--warning">High ↑</span>
+    <span class="badge badge--info">Low ↓</span>
+    <span class="badge badge--critical">Critical ‼</span>
+  </div>
+</body>
+</html>

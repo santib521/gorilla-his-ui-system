@@ -1,0 +1,96 @@
+<!--
+  Component: Worklist
+  ต่างจาก lab-result-table.html: worklist คือ "คิวงานที่ต้องดำเนินการต่อ" (มี action ต่อแถว)
+  ไม่ใช่ตารางแสดงผลอย่างเดียว ใช้ได้กับแทบทุก module (registration, ER, radiology, pharmacy, lab)
+  Reuse: status-badges.html (สถานะ/priority แต่ละแถว)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Worklist</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .worklist-toolbar { display: flex; gap: var(--space-3); margin-bottom: var(--space-4); align-items: center; }
+  .worklist-toolbar input, .worklist-toolbar select {
+    font-family: var(--font-family-base); font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); min-height: 40px;
+  }
+  .worklist-count { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-left: auto; }
+
+  .worklist { background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .worklist-row {
+    display: grid; grid-template-columns: 90px 1fr 140px 120px 140px;
+    align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border); font-size: var(--font-size-sm);
+  }
+  .worklist-row:last-child { border-bottom: none; }
+  .worklist-row.is-header { background: var(--color-gray-50); font-size: var(--font-size-xs); text-transform: uppercase; color: var(--color-text-secondary); letter-spacing: 0.02em; }
+  .worklist-row:not(.is-header):hover { background: var(--color-gray-50); }
+  .worklist-row.priority--urgent { box-shadow: inset 3px 0 0 var(--color-status-critical); }
+
+  .wl-name { font-weight: var(--font-weight-medium); }
+  .wl-meta { font-size: var(--font-size-xs); color: var(--color-text-secondary); }
+  .badge { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); border: 1px solid; display: inline-block; }
+  .badge--critical { background: var(--color-status-critical-bg); color: var(--color-status-critical); border-color: var(--color-status-critical-border); }
+  .badge--warning { background: var(--color-status-warning-bg); color: var(--color-status-warning); border-color: var(--color-status-warning-border); }
+  .badge--info { background: var(--color-status-info-bg); color: var(--color-status-info); border-color: var(--color-status-info-border); }
+  .badge--normal { background: var(--color-status-normal-bg); color: var(--color-status-normal); border-color: var(--color-status-normal-border); }
+
+  .wl-action {
+    font-family: var(--font-family-base); font-size: var(--font-size-xs); font-weight: var(--font-weight-medium);
+    padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--color-primary-action);
+    background: var(--color-white); color: var(--color-primary-action); cursor: pointer;
+  }
+  .wl-action:hover { background: var(--color-blue-50); }
+</style>
+</head>
+<body>
+
+<div class="worklist-toolbar">
+  <input type="text" placeholder="ค้นหาในคิวงาน...">
+  <select><option>ทุกสถานะ</option><option>รอดำเนินการ</option><option>กำลังทำ</option><option>เสร็จสิ้น</option></select>
+  <span class="worklist-count">4 รายการในคิว</span>
+</div>
+
+<div class="worklist">
+  <div class="worklist-row is-header">
+    <div>เวลา</div><div>ผู้ป่วย / งาน</div><div>Priority</div><div>สถานะ</div><div>Action</div>
+  </div>
+
+  <div class="worklist-row priority--urgent">
+    <div class="wl-meta">08:42</div>
+    <div><div class="wl-name">นายสมชาย ใจดี</div><div class="wl-meta">HN6805-00231 · Order: CBC, Electrolyte</div></div>
+    <div><span class="badge badge--critical">Urgent</span></div>
+    <div><span class="badge badge--warning">รอดำเนินการ</span></div>
+    <div><button class="wl-action">เปิดงาน →</button></div>
+  </div>
+
+  <div class="worklist-row">
+    <div class="wl-meta">08:50</div>
+    <div><div class="wl-name">นางสมหญิง มีสุข</div><div class="wl-meta">HN6805-00456 · Order: Chest X-ray</div></div>
+    <div><span class="badge badge--info">ปกติ</span></div>
+    <div><span class="badge badge--info">กำลังทำ</span></div>
+    <div><button class="wl-action">ดูรายละเอียด →</button></div>
+  </div>
+
+  <div class="worklist-row">
+    <div class="wl-meta">09:05</div>
+    <div><div class="wl-name">เด็กชายกิตติ แข็งแรง</div><div class="wl-meta">HN6805-00789 · Order: FBS</div></div>
+    <div><span class="badge badge--info">ปกติ</span></div>
+    <div><span class="badge badge--normal">เสร็จสิ้น</span></div>
+    <div><button class="wl-action">ดูผล →</button></div>
+  </div>
+
+  <div class="worklist-row">
+    <div class="wl-meta">09:12</div>
+    <div><div class="wl-name">นายวิชัย เพียรทำ</div><div class="wl-meta">HN6805-01012 · Order: Urinalysis</div></div>
+    <div><span class="badge badge--info">ปกติ</span></div>
+    <div><span class="badge badge--warning">รอดำเนินการ</span></div>
+    <div><button class="wl-action">เปิดงาน →</button></div>
+  </div>
+</div>
+
+</body>
+</html>

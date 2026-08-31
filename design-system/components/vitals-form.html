@@ -1,0 +1,110 @@
+<!--
+  Component: Vitals Form
+  ฟอร์มบันทึกสัญญาณชีพ พร้อม validation ไฮไลต์ค่าผิดปกติอัตโนมัติ (ตามช่วงอ้างอิงใน design-rules.md § 7)
+  Reuse: form-controls.html (input style), status-badges.html (แสดงผลลัพธ์)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Vitals Form</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .vitals-form { background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); max-width: 640px; box-shadow: var(--shadow-sm); }
+  .vitals-form__title { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); margin-bottom: var(--space-5); }
+  .vitals-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  .vitals-form__row { display: flex; flex-direction: column; }
+  .vitals-form__row label { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); margin-bottom: var(--space-2); }
+  .vitals-form__input-wrap { display: flex; align-items: center; gap: var(--space-2); }
+  .vitals-form__row input {
+    font-family: var(--font-family-mono); font-size: var(--font-size-base);
+    padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    width: 100%; box-sizing: border-box; min-height: 44px;
+  }
+  .vitals-form__unit { font-size: var(--font-size-sm); color: var(--color-text-secondary); white-space: nowrap; }
+  .vitals-form__flag { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); margin-top: var(--space-1); min-height: 16px; }
+
+  .vitals-form__row--normal input { border-color: var(--color-status-normal-border); }
+  .vitals-form__row--normal .vitals-form__flag { color: var(--color-status-normal); }
+
+  .vitals-form__row--warning input { border-color: var(--color-status-warning-border); background: var(--color-status-warning-bg); }
+  .vitals-form__row--warning .vitals-form__flag { color: var(--color-status-warning); }
+
+  .vitals-form__row--critical input { border-color: var(--color-status-critical-border); background: var(--color-status-critical-bg); }
+  .vitals-form__row--critical .vitals-form__flag { color: var(--color-status-critical); }
+</style>
+</head>
+<body>
+
+<div class="vitals-form">
+  <div class="vitals-form__title">บันทึกสัญญาณชีพ (Vital Signs)</div>
+  <div class="vitals-form__grid">
+
+    <div class="vitals-form__row" data-vital="temp">
+      <label for="v-temp">อุณหภูมิร่างกาย</label>
+      <div class="vitals-form__input-wrap">
+        <input type="number" step="0.1" id="v-temp" value="38.6">
+        <span class="vitals-form__unit">°C</span>
+      </div>
+      <div class="vitals-form__flag"></div>
+    </div>
+
+    <div class="vitals-form__row" data-vital="hr">
+      <label for="v-hr">อัตราการเต้นหัวใจ</label>
+      <div class="vitals-form__input-wrap">
+        <input type="number" id="v-hr" value="82">
+        <span class="vitals-form__unit">bpm</span>
+      </div>
+      <div class="vitals-form__flag"></div>
+    </div>
+
+    <div class="vitals-form__row" data-vital="bp">
+      <label for="v-bp-sys">ความดันโลหิต (Systolic)</label>
+      <div class="vitals-form__input-wrap">
+        <input type="number" id="v-bp-sys" value="148">
+        <span class="vitals-form__unit">mmHg</span>
+      </div>
+      <div class="vitals-form__flag"></div>
+    </div>
+
+    <div class="vitals-form__row" data-vital="spo2">
+      <label for="v-spo2">ค่าออกซิเจนในเลือด (SpO2)</label>
+      <div class="vitals-form__input-wrap">
+        <input type="number" id="v-spo2" value="97">
+        <span class="vitals-form__unit">%</span>
+      </div>
+      <div class="vitals-form__flag"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Reference range ตาม design-rules.md § 7 — ห้ามแก้ค่าช่วงอ้างอิงในนี้โดยพลการ
+  const rules = {
+    temp: v => v >= 39.5 ? ['critical', 'วิกฤต — ไข้สูงมาก'] : v >= 38.0 ? ['warning', 'มีไข้'] : ['normal', 'ปกติ'],
+    hr:   v => (v < 50 || v > 130) ? ['critical', 'ผิดปกติรุนแรง'] : (v < 60 || v > 100) ? ['warning', 'ผิดปกติ'] : ['normal', 'ปกติ'],
+    bp:   v => v >= 180 ? ['critical', 'ความดันสูงวิกฤต'] : v >= 140 ? ['warning', 'ความดันสูง'] : ['normal', 'ปกติ'],
+    spo2: v => v < 90 ? ['critical', 'ออกซิเจนต่ำวิกฤต'] : v < 95 ? ['warning', 'ออกซิเจนต่ำ'] : ['normal', 'ปกติ'],
+  };
+
+  function evaluate(row) {
+    const key = row.dataset.vital;
+    const input = row.querySelector('input');
+    const flagEl = row.querySelector('.vitals-form__flag');
+    const val = parseFloat(input.value);
+    if (isNaN(val)) return;
+    const [level, label] = rules[key](val);
+    row.classList.remove('vitals-form__row--normal', 'vitals-form__row--warning', 'vitals-form__row--critical');
+    row.classList.add('vitals-form__row--' + level);
+    flagEl.textContent = label;
+  }
+
+  document.querySelectorAll('.vitals-form__row').forEach(row => {
+    evaluate(row);
+    row.querySelector('input').addEventListener('input', () => evaluate(row));
+  });
+</script>
+</body>
+</html>

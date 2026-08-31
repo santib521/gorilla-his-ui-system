@@ -1,0 +1,52 @@
+<!--
+  Component: Tabs
+  ใช้แบ่งเนื้อหาในหน้าเดียวกันเป็นหมวดที่สลับดูได้ (เช่น ประวัติผู้ป่วย: Vitals / Lab / Medication / Notes)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Tabs</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .tabs { background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
+  .tabs__list { display: flex; border-bottom: 1px solid var(--color-border); background: var(--color-gray-50); }
+  .tabs__tab {
+    font-family: var(--font-family-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);
+    padding: var(--space-4) var(--space-5); background: none; border: none; cursor: pointer;
+    color: var(--color-text-secondary); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tabs__tab.is-active { color: var(--color-primary-action); border-bottom-color: var(--color-primary-action); background: var(--color-bg-surface); }
+  .tabs__tab:focus-visible { outline: 2px solid var(--color-blue-500); outline-offset: -2px; }
+  .tabs__panel { display: none; padding: var(--space-5); font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+  .tabs__panel.is-active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tabs__list" role="tablist">
+    <button class="tabs__tab is-active" role="tab" data-panel="vitals">Vitals</button>
+    <button class="tabs__tab" role="tab" data-panel="lab">Lab</button>
+    <button class="tabs__tab" role="tab" data-panel="med">Medication</button>
+    <button class="tabs__tab" role="tab" data-panel="notes">Notes</button>
+  </div>
+  <div class="tabs__panel is-active" id="panel-vitals">อุณหภูมิ 37.1°C · HR 78 bpm · BP 118/76 · SpO2 98%</div>
+  <div class="tabs__panel" id="panel-lab">Hemoglobin 13.5 g/dL (ปกติ), WBC 15.2 (สูง)</div>
+  <div class="tabs__panel" id="panel-med">Amoxicillin 500mg 3x/day x 5 วัน</div>
+  <div class="tabs__panel" id="panel-notes">ผู้ป่วยนัดติดตามอาการในอีก 14 วัน</div>
+</div>
+
+<script>
+  document.querySelectorAll('.tabs__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tabs__tab').forEach(t => t.classList.remove('is-active'));
+      document.querySelectorAll('.tabs__panel').forEach(p => p.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      document.getElementById('panel-' + tab.dataset.panel).classList.add('is-active');
+    });
+  });
+</script>
+</body>
+</html>

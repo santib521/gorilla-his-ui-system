@@ -1,0 +1,74 @@
+<!--
+  Component: Alert Banner (Patient Safety)
+  กฎบังคับ: ใช้ --color-status-critical เท่านั้นสำหรับแพ้ยา/ความเสี่ยงถึงชีวิต
+  ต้องวางไว้บนสุดของหน้าจอผู้ป่วย เหนือ patient-banner เสมอ (ดู design-rules.md § 8)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Alert Banner</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  h2 { font-size: var(--font-size-lg); margin: var(--space-6) 0 var(--space-3); }
+
+  .alert-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    border: 1px solid;
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+  .alert-banner__icon { font-size: var(--font-size-xl); line-height: 1; }
+  .alert-banner__title { font-weight: var(--font-weight-bold); margin-bottom: var(--space-1); }
+
+  .alert-banner--critical {
+    background: var(--color-status-critical-bg);
+    border-color: var(--color-status-critical-border);
+    color: var(--color-status-critical);
+  }
+  .alert-banner--warning {
+    background: var(--color-status-warning-bg);
+    border-color: var(--color-status-warning-border);
+    color: var(--color-status-warning);
+  }
+  .alert-banner--info {
+    background: var(--color-status-info-bg);
+    border-color: var(--color-status-info-border);
+    color: var(--color-status-info);
+  }
+</style>
+</head>
+<body>
+  <h2>Critical — ใช้กับแพ้ยา / ความเสี่ยงถึงชีวิตเท่านั้น</h2>
+  <div class="alert-banner alert-banner--critical" role="alert">
+    <span class="alert-banner__icon">⚠️</span>
+    <div>
+      <div class="alert-banner__title">แพ้ยา (Drug Allergy) — Penicillin, Sulfa</div>
+      <div>ผู้ป่วยมีประวัติแพ้ยากลุ่ม Penicillin และ Sulfa รุนแรง (Anaphylaxis) — ห้ามสั่งจ่ายยากลุ่มนี้</div>
+    </div>
+  </div>
+
+  <h2>Warning</h2>
+  <div class="alert-banner alert-banner--warning" role="alert">
+    <span class="alert-banner__icon">⚠</span>
+    <div>
+      <div class="alert-banner__title">ค่า Lab ผิดปกติ</div>
+      <div>ผลตรวจล่าสุดมีค่าที่สูง/ต่ำกว่าเกณฑ์ปกติ กรุณาตรวจสอบก่อนสั่งการรักษา</div>
+    </div>
+  </div>
+
+  <h2>Info</h2>
+  <div class="alert-banner alert-banner--info" role="status">
+    <span class="alert-banner__icon">ℹ️</span>
+    <div>
+      <div class="alert-banner__title">นัดหมายถัดไป</div>
+      <div>ผู้ป่วยมีนัดติดตามอาการในอีก 14 วัน</div>
+    </div>
+  </div>
+</body>
+</html>

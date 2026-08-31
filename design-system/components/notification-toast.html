@@ -1,0 +1,56 @@
+<!--
+  Component: Notification / Toast
+  ใช้แสดงผลลัพธ์ของ action แบบชั่วคราว (Success/Error state ทั่วไป — ไม่ใช่ patient-safety critical)
+  ต่างจาก alert-banner.html ซึ่งค้างอยู่ถาวรและสงวนไว้สำหรับความเสี่ยงผู้ป่วยเท่านั้น
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Notification Toast</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .btn { font-family: var(--font-family-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);
+    padding: var(--space-3) var(--space-5); border-radius: var(--radius-md); border: 1px solid var(--color-border); cursor: pointer;
+    background: var(--color-white); margin-right: var(--space-3); }
+
+  .toast-stack {
+    position: fixed; top: var(--space-5); right: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-3); z-index: var(--z-toast); width: 320px;
+  }
+  .toast {
+    display: flex; align-items: flex-start; gap: var(--space-3);
+    background: var(--color-bg-surface); border: 1px solid var(--color-border); border-left: 4px solid;
+    border-radius: var(--radius-md); box-shadow: var(--shadow-md); padding: var(--space-4);
+    font-size: var(--font-size-sm); animation: slide-in var(--transition-base);
+  }
+  @keyframes slide-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+  .toast--success { border-left-color: var(--color-status-normal); }
+  .toast--error { border-left-color: var(--color-status-critical); }
+  .toast--info { border-left-color: var(--color-status-info); }
+  .toast__title { font-weight: var(--font-weight-bold); margin-bottom: 2px; }
+  .toast__close { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--color-text-secondary); }
+</style>
+</head>
+<body>
+
+  <button class="btn" onclick="showToast('success', 'บันทึกสำเร็จ', 'บันทึกข้อมูล vitals เรียบร้อยแล้ว')">Trigger Success</button>
+  <button class="btn" onclick="showToast('error', 'บันทึกไม่สำเร็จ', 'กรุณาลองใหม่อีกครั้ง')">Trigger Error</button>
+  <button class="btn" onclick="showToast('info', 'มีนัดหมายใหม่', 'ผู้ป่วยเพิ่มนัดหมายวันพรุ่งนี้')">Trigger Info</button>
+
+  <div class="toast-stack" id="toastStack"></div>
+
+  <script>
+    function showToast(type, title, message) {
+      const stack = document.getElementById('toastStack');
+      const el = document.createElement('div');
+      el.className = 'toast toast--' + type;
+      el.innerHTML = `<div><div class="toast__title">${title}</div><div>${message}</div></div><button class="toast__close" aria-label="ปิด">✕</button>`;
+      el.querySelector('.toast__close').addEventListener('click', () => el.remove());
+      stack.appendChild(el);
+      setTimeout(() => el.remove(), 5000);
+    }
+  </script>
+</body>
+</html>

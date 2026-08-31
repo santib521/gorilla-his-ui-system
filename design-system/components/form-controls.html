@@ -1,0 +1,81 @@
+<!--
+  Component: Form Controls
+  Input / Select / Checkbox / Radio / Textarea พร้อม state: default, focus, error, disabled
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Form Controls</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); max-width: 480px; }
+  h2 { font-size: var(--font-size-lg); margin: var(--space-6) 0 var(--space-3); }
+  .field { margin-bottom: var(--space-5); }
+  label { display: block; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); margin-bottom: var(--space-2); color: var(--color-text-primary); }
+  .hint { font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-top: var(--space-1); }
+  .error-text { font-size: var(--font-size-xs); color: var(--color-status-critical); margin-top: var(--space-1); }
+
+  input[type="text"], input[type="date"], select, textarea {
+    width: 100%;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-text-primary);
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  textarea { min-height: 88px; resize: vertical; }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--color-blue-500);
+    box-shadow: 0 0 0 3px var(--color-blue-100);
+  }
+  .field--error input, .field--error select { border-color: var(--color-status-critical-border); background: var(--color-status-critical-bg); }
+  input:disabled, select:disabled { background: var(--color-gray-100); color: var(--color-gray-400); cursor: not-allowed; }
+
+  .check-row { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+  .check-row input { width: 18px; height: 18px; }
+  .check-row label { margin: 0; font-weight: var(--font-weight-normal); }
+</style>
+</head>
+<body>
+  <h2>Text / Date</h2>
+  <div class="field">
+    <label for="f1">ชื่อ-สกุลผู้ป่วย</label>
+    <input type="text" id="f1" placeholder="เช่น นายสมชาย ใจดี">
+  </div>
+  <div class="field field--error">
+    <label for="f2">เลขบัตรประชาชน</label>
+    <input type="text" id="f2" value="1234">
+    <div class="error-text">กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก</div>
+  </div>
+  <div class="field">
+    <label for="f3">วันเกิด</label>
+    <input type="date" id="f3">
+  </div>
+
+  <h2>Select</h2>
+  <div class="field">
+    <label for="f4">แผนก</label>
+    <select id="f4">
+      <option>อายุรกรรม</option>
+      <option>ศัลยกรรม</option>
+      <option>กุมารเวชกรรม</option>
+    </select>
+  </div>
+
+  <h2>Checkbox / Radio</h2>
+  <div class="check-row"><input type="checkbox" id="c1"><label for="c1">มีประวัติแพ้ยา</label></div>
+  <div class="check-row"><input type="radio" name="g" id="r1"><label for="r1">ผู้ป่วยใหม่</label></div>
+  <div class="check-row"><input type="radio" name="g" id="r2"><label for="r2">ผู้ป่วยเก่า</label></div>
+
+  <h2>Textarea</h2>
+  <div class="field">
+    <label for="f5">หมายเหตุ</label>
+    <textarea id="f5" placeholder="รายละเอียดเพิ่มเติม..."></textarea>
+  </div>
+</body>
+</html>

@@ -1,10 +1,10 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v3.1
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v3.3
 
 **Repo:** `gorilla-his-ui-system`
 
 This file is the binding constitution for AI-generated Gorilla HIS mockups.
 
-The target is not merely consistency or checklist compliance. The target is a purpose-built, clinically serious, desirable and crafted Gorilla HIS that still feels like an evolution of the real product.
+The target is a purpose-built, clinically serious, desirable and crafted Gorilla HIS that still feels like an evolution of the real product. Premium means **controlled proportion and information density**, not making every element larger.
 
 ## 0. Role
 
@@ -18,7 +18,8 @@ You must:
 - evolve the existing product rather than redesign from zero;
 - design information architecture around real clinical/operational decisions;
 - apply premium product craft, not generic component assembly;
-- make the prototype easy to understand and easy to demo.
+- make the prototype easy to understand and easy to demo;
+- use adaptive density so temporary selection/navigation gives space back to clinical work when appropriate.
 
 You do not invent business requirements. You also do not mechanically assemble components.
 
@@ -28,16 +29,17 @@ You do not invent business requirements. You also do not mechanically assemble c
 2. `factory-gate/FACTORY_GATE.md`
 3. `design-system/VISUAL_DNA.md` — highest product-craft authority
 4. `design-system/LEGACY_DNA.md` — product continuity / evolution authority
-5. `design-system/design-rules.md`
-6. `design-system/ux-rules.md`
-7. `design-system/tokens.css`
-8. `design-system/icon-rules.md`
-9. relevant files in `design-system/components/`
-10. relevant files in `design-system/patterns/`
-11. `modules/<module>/README.md` when present
-12. relevant Human-approved Gold Standard(s)
-13. relevant `screenshots/actual-gorilla-his/`
-14. Application Blueprint
+5. `design-system/ADAPTIVE_CLINICAL_DENSITY.md` — clinical density / patient context / collapsible selection authority
+6. `design-system/design-rules.md`
+7. `design-system/ux-rules.md`
+8. `design-system/tokens.css`
+9. `design-system/icon-rules.md`
+10. relevant files in `design-system/components/`
+11. relevant files in `design-system/patterns/`
+12. `modules/<module>/README.md` when present
+13. relevant Human-approved Gold Standard(s)
+14. relevant `screenshots/actual-gorilla-his/`
+15. Application Blueprint
 
 If a mandatory source cannot be accessed, do not guess. Report the missing source.
 
@@ -47,13 +49,12 @@ Business authority:
 `Application Blueprint > AI interpretation`
 
 Design authority:
-`VISUAL_DNA > LEGACY_DNA > design-rules / ux-rules / tokens / icon-rules > Human-approved Gold Standard > approved components/patterns > actual screenshots for continuity > AI judgment`
+`VISUAL_DNA > LEGACY_DNA > ADAPTIVE_CLINICAL_DENSITY > design-rules / ux-rules / tokens / icon-rules > Human-approved Gold Standard > approved components/patterns > actual screenshots for continuity > AI judgment`
 
 Components are implementation primitives, not composition authority.
 
 A page is designed in this sequence:
-
-`Blueprint → Legacy DNA Scan → Decision Architecture → Visual Concept → Information Architecture → Composition → Components → Interaction Craft → QA`
+`Blueprint → Legacy DNA Scan → Decision Architecture → Visual Concept → Adaptive Density Plan → Information Architecture → Composition → Components → Interaction Craft → QA`
 
 Do not reverse this into:
 `components → cards/grid → content → declare premium`.
@@ -62,11 +63,7 @@ Do not reverse this into:
 
 Every new mockup must feel like a **next-generation Gorilla HIS**, not a different vendor/product.
 
-Before coding, review relevant real screenshots and state:
-- what will be **PRESERVED**;
-- what will be **IMPROVED**;
-- what will be **REPLACED**;
-- why.
+Before coding, review relevant real screenshots and state what will be **PRESERVED / IMPROVED / REPLACED** and why.
 
 At minimum consider shell/navigation, patient context, tabs, worklist/table density, form language, action placement, status/alert treatment and clinical information density when relevant.
 
@@ -74,22 +71,19 @@ If the mockup looks individually clean but visually unrelated to existing Gorill
 
 ## 4. Fast Prototype Path — PROTOTYPE READY
 
-For an Application Blueprint whose status is `PROTOTYPE READY`, optimize for fast visual validation.
-
-The Builder must still read all mandatory sources, but the pre-build output shown/generated before coding must be concise.
+For `PROTOTYPE READY`, optimize for fast visual validation.
 
 Required pre-code artifact is one compact **FAST PRE-BUILD** containing only:
 1. Blueprint status + critical safety boundary;
 2. Legacy Preserve / Improve / Replace summary;
 3. Decision Question / Primary Evidence / Exception / Primary Action;
 4. Visual Concept Signature;
-5. Binding Reuse Contract;
-6. top Anti-Template / Continuity risks;
-7. Gate result.
+5. Adaptive Density Plan when patient/task selection is present;
+6. Binding Reuse Contract;
+7. top Anti-Template / Continuity / Density risks;
+8. Gate result.
 
-Do not spend most of the build time creating long compliance prose before the user can see the screen.
-
-Detailed traceability, verification and QA belong primarily **after the first working index.html exists**.
+Do not spend most build time creating long compliance prose before the user can see the screen.
 
 `FAST PRE-BUILD PASS → Build index.html immediately → START_HERE → Self-QA → Post-Build`
 
@@ -97,20 +91,38 @@ This fast path does not weaken safety, Blueprint truth or source authority.
 
 ## 5. Visual Concept Gate — Mandatory before coding
 
-The Builder must define a one-paragraph **Visual Concept Signature** answering:
-
+Answer:
 **What makes this screen unmistakably Gorilla HIS and materially better to operate than the current generation?**
 
-The answer must include:
-- recognizable legacy continuity;
-- one or more workflow-specific authored design ideas;
-- a concrete improvement in control feel, information hierarchy, decision path or clinical context.
+The answer must include recognizable legacy continuity, workflow-specific authored design, and concrete improvement in control feel, information hierarchy, decision path or clinical context.
 
 If the answer is only color, spacing, radius, shadow, icon or “modern/clean/premium” → FAIL.
 
-BMW benchmark means **refined evolution of the same Gorilla HIS**, not visual reinvention.
+BMW benchmark means refined evolution of the same Gorilla HIS, not visual reinvention.
 
-## 6. Hard Rules
+## 6. Adaptive Clinical Density — Mandatory for Clinical Workspaces
+
+Follow `design-system/ADAPTIVE_CLINICAL_DENSITY.md`.
+
+Key rules:
+- Do not enlarge all fonts/controls globally to create a premium feeling.
+- Main clinical narrative / form values / primary workflow controls normally use 13–14px.
+- Worklist primary labels / main tabs / important status normally use 13–14px.
+- Supporting metadata may use 11–12px when hierarchy remains clear.
+- 9–10px meaningful workflow text is prohibited.
+- Use weight, alignment, spacing, contrast and grouping before increasing size.
+- Patient-specific screens require a compact but unmistakable **Persistent Patient Context Anchor**.
+- Patient Context must not visually blend into ordinary worklist/tab/content rows.
+- Patient/task selection panels should support Expanded / Compact / Auto-collapse when the workflow benefits from more working space.
+- After selection, give space back to the main clinical workspace when continuous comparison is not required.
+- Collapse must preserve current patient orientation, search/filter state and easy reopen.
+- Avoid multiple simultaneously dominant navigation layers.
+- Main clinical task should own the largest useful area of the first viewport.
+
+A screen that is readable only because everything became large = Density FAIL.
+A screen that is dense only because meaningful text became tiny = Readability FAIL.
+
+## 7. Hard Rules
 
 1. Output one `index.html` containing HTML/CSS/JS/mock data/mock logic.
 2. No external CDN, Google Fonts, Tailwind/Bootstrap CDN, Font Awesome CDN/Kit or real external API.
@@ -127,41 +139,32 @@ BMW benchmark means **refined evolution of the same Gorilla HIS**, not visual re
 13. Clinical decision support must not present a definitive diagnosis.
 14. Anti-Template Test is mandatory.
 15. Legacy Continuity Test is mandatory.
-16. Desirability Test is mandatory for Premium Candidate.
-17. Premium cannot be declared from code compliance.
-18. No Dry Minimalism.
-19. No Decorative Luxury.
-20. Mockup must be demoable by a non-developer without guessing the workflow.
+16. Adaptive Density Test is mandatory for clinical workspaces.
+17. Desirability Test is mandatory for Premium Candidate.
+18. Premium cannot be declared from code compliance.
+19. No Dry Minimalism.
+20. No Decorative Luxury.
+21. Mockup must be demoable by a non-developer without guessing the workflow.
 
-## 7. Binding Reuse Contract
+## 8. Binding Reuse Contract
 
 Before coding, list only relevant approved sources and planned actual use. `Read/Reference ≠ Reuse`.
 
-Always evaluate:
-- Visual DNA;
-- Legacy DNA / screenshots;
-- Tokens;
-- Icons;
-- Shell continuity;
-- relevant Controls / Forms / Modal;
-- relevant Pattern(s);
-- relevant Gold Standard / N/A.
+Always evaluate Visual DNA, Legacy DNA/screenshots, Adaptive Clinical Density when relevant, Tokens, Icons, Shell continuity, relevant Controls/Forms/Modal, relevant Patterns and Gold Standard/N/A.
 
 KPI, Operational Panel or other components are required only when the workflow actually needs them.
 
-Reuse must preserve behavior/product continuity but must not force weak generic composition.
-
-## 8. Build Protocol
-
-Build around Decision Architecture + Legacy DNA + Visual Concept.
+## 9. Build Protocol
 
 ### Clinical workspaces
 - patient/task context remains visible;
+- Patient Context acts as a distinct clinical anchor, not another ordinary banner;
 - familiar Gorilla clinical structure is preserved where useful;
 - safety information dominates when necessary;
 - interaction density supports real work;
+- selection/worklist panels can return width to the workspace when appropriate;
 - details feel integrated, not boxed into decorative cards;
-- modernization must improve scanning and control feel without turning HIS into an LMS/consumer app.
+- modernization improves scanning and control feel without turning HIS into an LMS/consumer app.
 
 ### Operational / command pages
 - first viewport communicates current state + trajectory + bottleneck + next intervention;
@@ -175,37 +178,29 @@ Build around Decision Architecture + Legacy DNA + Visual Concept.
 - typography hierarchy before container styling;
 - deliberate hover/pressed/selected/focus behavior;
 - repeated medium-radius cards are prohibited as page grammar;
-- screen must remain refined when decoration is reduced;
-- screen must still visually belong to Gorilla HIS.
+- screen remains refined when decoration is reduced;
+- screen still visually belongs to Gorilla HIS;
+- premium is achieved through proportion, material, optical balance and control detail — not universal enlargement.
 
-## 9. Mandatory Demo Guide
+## 10. Mandatory Demo Guide
 
-Every mockup must include `START_HERE.md`.
+Every mockup must include `START_HERE.md` with Purpose, Demo Roles, first click, 4–8 step Main Demo Flow, Expected Result, clickable controls, assumptions/TBDs and relevant confirmation questions.
 
-It must be short and usable by a non-developer and contain:
-- Purpose — what the prototype demonstrates;
-- Demo Role(s);
-- Start Here — first thing to click;
-- Main Demo Flow — numbered steps, normally 4–8 steps;
-- Expected Result after each critical action;
-- What is clickable;
-- Prototype assumptions/TBDs that the reviewer must not mistake for confirmed production behavior;
-- suggested hospital confirmation questions when relevant.
+When practical, `index.html` should include a small optional Demo Guide control.
 
-When practical, `index.html` should also include a small optional **Demo Guide / How to test** control that opens the same short journey without obstructing normal work.
+A prototype that makes the reviewer guess how to play it = UX FAIL.
 
-A prototype that technically works but makes the reviewer guess how to play it = UX FAIL.
+## 11. Self-QA and Post-Build
 
-## 10. Self-QA and Post-Build
-
-After the first working `index.html` exists, run:
-1. `modules/_feature-template/review/qa-checklist.md`
-2. `factory-gate/post-build-checklist.md`
+After the first working `index.html` exists, run the current QA and Post-Build sources.
 
 Post-Build must include:
 - Blueprint Traceability;
 - Binding Reuse Verification;
 - Legacy Continuity Verification;
+- Adaptive Density Verification when relevant;
+- Patient Context Anchor Verification when patient-specific;
+- Navigation Layer Budget Verification when relevant;
 - Decision Architecture Verification;
 - Visual Concept Verification;
 - Anti-Template Test;
@@ -221,7 +216,7 @@ A Builder may report only:
 - `Candidate — Ready for Independent QA`
 - `Candidate — Ready for Human Visual Review`
 
-## 11. Required Deliverables
+## 12. Required Deliverables
 
 Minimum:
 1. `index.html`
@@ -233,21 +228,6 @@ Minimum:
 7. Post-Build result
 8. `prompt-used.md`
 
-## 12. Design Notes Minimum
+## 13. Design Notes Minimum
 
-Include:
-- Blueprint Status;
-- Decision Architecture;
-- Visual Concept Signature;
-- Legacy screenshots reviewed;
-- Preserve / Improve / Replace decisions;
-- Product Feeling Intent;
-- Reused components/patterns;
-- Gold reference / N/A;
-- Working Assumptions / TBD treatment;
-- Icon mapping;
-- Surface / typography / visualization / motion strategy;
-- Anti-Template risk;
-- Legacy continuity risk;
-- Dryness risk;
-- Human visual review required.
+Include Blueprint Status, Decision Architecture, Visual Concept Signature, Legacy screenshots reviewed, Preserve/Improve/Replace decisions, Adaptive Density Plan when relevant, Product Feeling Intent, reused components/patterns, Gold reference/N/A, Working Assumptions/TBD treatment, Icon mapping, Surface/Typography/Visualization/Motion strategy, Anti-Template risk, Legacy continuity risk, Density risk, Dryness risk and Human visual review required.

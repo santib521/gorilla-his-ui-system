@@ -12,7 +12,7 @@ Factory Gate เป็นด่านบังคับสำหรับ Mockup
 
 ### Design Authority
 1. `AI_INSTRUCTIONS.md`
-2. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`
+2. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
 3. Approved Components — สำหรับ desktop รวม locked structural reference `application-shell.html`
 4. Approved Patterns
 5. Gold Standard ใน `approved-mockups/`
@@ -38,7 +38,7 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 ให้ Reject ทันทีเมื่อพบอย่างใดอย่างหนึ่ง:
 - ไม่ได้อ่าน Application Blueprint ที่เป็น input ของงาน
 - ไม่ได้อ่าน source ที่ `AI_INSTRUCTIONS.md` บังคับ
-- External CDN / external font / external JS/CSS
+- External CDN / external font / external JS/CSS รวมถึง Font Awesome CDN/Kit ใน mockup
 - สร้าง design language ใหม่แทน Gorilla HIS
 - Hardcode **สี, spacing, font size, radius, shadow หรือ design value ที่ `tokens.css` ครอบคลุมอยู่แล้ว** แทนการใช้ token
 - มี Main Workflow หรือ Critical Requirement จาก Blueprint หาย
@@ -49,6 +49,7 @@ Blueprint บอกว่า "ระบบต้องทำอะไร" ส่
 - ไม่ทำ Builder Self-QA ตาม `modules/_feature-template/review/qa-checklist.md`
 - Desktop module สร้าง application shell ใหม่แทน approved `application-shell.html` โดยไม่มี approved exception
 - ใช้ Emoji เป็น UI icon/navigation/section decoration
+- ใช้ custom SVG/icon ใหม่ทั้งที่มี approved Font Awesome semantic icon ตาม `design-system/icon-rules.md` โดยไม่มี approved exception
 - Operational screen ใช้ AI/futuristic/marketing visual theme แทน Gorilla HIS visual language
 - Semantic clinical colors ถูกใช้เป็น decoration หรือความหมายที่ขัดกับ `design-system/design-rules.md`
 
@@ -62,7 +63,7 @@ Builder Self-QA, Post-Build Gate และ Independent QA ต้องตรว�
 |---|---|---|
 | VG-01 Product Character | ดูเป็น Hospital Enterprise System หรือ generic SaaS/AI Dashboard? | Clinical / Operational / Trustworthy / Dense / Calm / Professional |
 | VG-02 Application Shell | ใช้ approved shell หรือ approved exception? | Desktop shell structure consistent across modules |
-| VG-03 Icon Language | มี Emoji/decorative icon หรือไม่? | Approved monochrome icon language; no Emoji UI |
+| VG-03 Font Awesome Compliance | ใช้ icon language กลางหรือไม่? มี Emoji/custom icon/CDN หรือไม่? | Font Awesome semantic mapping ตาม `design-system/icon-rules.md`; default `fa-solid`; no Emoji UI; no custom SVG when approved FA icon exists; no external FA CDN/Kit in mockup |
 | VG-04 Container Discipline | Card Everywhere หรือไม่? | Operational panels/tables/dividers/split layouts used as default when appropriate |
 | VG-05 KPI Discipline | Operational KPI ใหญ่แบบ marketing/stat-card grid หรือไม่? | `enterprise-kpi-strip.html` considered/preferred for operational dashboard; stat-card remains valid for suitable Home/Executive summary |
 | VG-06 Color Discipline | สีถูกใช้ตาม Design Rules หรือไม่? | Neutral-first; clinical semantic colors retain their strict meanings and are never decorative |

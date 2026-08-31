@@ -1,74 +1,49 @@
 <!--
-  Component: Alert Banner (Patient Safety)
-  กฎบังคับ: ใช้ --color-status-critical เท่านั้นสำหรับแพ้ยา/ความเสี่ยงถึงชีวิต
-  ต้องวางไว้บนสุดของหน้าจอผู้ป่วย เหนือ patient-banner เสมอ (ดู design-rules.md § 8)
+  Component: Alert / Context Banner v2
+  Authority: ../VISUAL_DNA.md + ../tokens.css + ../icon-rules.md
+  Critical clinical semantics must remain strict. Info/context mode is not patient-safety critical.
 -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Component Preview — Alert Banner</title>
+<title>Gorilla HIS — Alert / Context Banner v2</title>
 <link rel="stylesheet" href="../tokens.css">
 <style>
-  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
-  h2 { font-size: var(--font-size-lg); margin: var(--space-6) 0 var(--space-3); }
-
-  .alert-banner {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-5);
-    border-radius: var(--radius-md);
-    border: 1px solid;
-    margin-bottom: var(--space-4);
-    font-size: var(--font-size-sm);
+  body{font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary);padding:var(--space-7)}
+  h2{font-size:var(--font-size-lg);margin:var(--space-6) 0 var(--space-3)}
+  .banner{
+    position:relative;
+    display:grid;
+    grid-template-columns:34px 1fr auto;
+    align-items:start;
+    gap:var(--space-3);
+    padding:var(--space-4) var(--space-5);
+    border:1px solid;
+    border-left-width:4px;
+    border-radius:var(--radius-md);
+    box-shadow:var(--shadow-optical);
+    margin-bottom:var(--space-4);
   }
-  .alert-banner__icon { font-size: var(--font-size-xl); line-height: 1; }
-  .alert-banner__title { font-weight: var(--font-weight-bold); margin-bottom: var(--space-1); }
-
-  .alert-banner--critical {
-    background: var(--color-status-critical-bg);
-    border-color: var(--color-status-critical-border);
-    color: var(--color-status-critical);
+  .banner__icon{
+    width:34px;height:34px;border-radius:var(--radius-md);display:grid;place-items:center;
+    border:1px solid currentColor;background:rgba(255,255,255,.55)
   }
-  .alert-banner--warning {
-    background: var(--color-status-warning-bg);
-    border-color: var(--color-status-warning-border);
-    color: var(--color-status-warning);
-  }
-  .alert-banner--info {
-    background: var(--color-status-info-bg);
-    border-color: var(--color-status-info-border);
-    color: var(--color-status-info);
-  }
+  .banner__icon::before{content:"";width:10px;height:10px;border-radius:var(--radius-full);background:currentColor}
+  .banner__title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}
+  .banner__copy{margin-top:var(--space-1);font-size:var(--font-size-sm);line-height:var(--line-height-normal);color:var(--color-text-secondary)}
+  .banner__meta{align-self:center;padding:var(--space-1) var(--space-2);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);background:rgba(255,255,255,.72);border:1px solid currentColor}
+  .banner--critical{background:var(--color-status-critical-bg);border-color:var(--color-status-critical-border);color:var(--color-status-critical)}
+  .banner--warning{background:var(--color-status-warning-bg);border-color:var(--color-status-warning-border);color:var(--color-status-warning)}
+  .banner--info{background:linear-gradient(90deg,var(--color-status-info-bg),var(--color-white));border-color:var(--color-status-info-border);color:var(--color-status-info)}
 </style>
 </head>
 <body>
-  <h2>Critical — ใช้กับแพ้ยา / ความเสี่ยงถึงชีวิตเท่านั้น</h2>
-  <div class="alert-banner alert-banner--critical" role="alert">
-    <span class="alert-banner__icon">⚠️</span>
-    <div>
-      <div class="alert-banner__title">แพ้ยา (Drug Allergy) — Penicillin, Sulfa</div>
-      <div>ผู้ป่วยมีประวัติแพ้ยากลุ่ม Penicillin และ Sulfa รุนแรง (Anaphylaxis) — ห้ามสั่งจ่ายยากลุ่มนี้</div>
-    </div>
-  </div>
-
+  <h2>Critical</h2>
+  <div class="banner banner--critical" role="alert"><div class="banner__icon" aria-hidden="true"></div><div><div class="banner__title">แพ้ยา — Penicillin</div><div class="banner__copy">Patient-safety critical context ต้องอ่านเห็นทันทีและไม่พึ่งสีอย่างเดียว</div></div><div class="banner__meta">CRITICAL</div></div>
   <h2>Warning</h2>
-  <div class="alert-banner alert-banner--warning" role="alert">
-    <span class="alert-banner__icon">⚠</span>
-    <div>
-      <div class="alert-banner__title">ค่า Lab ผิดปกติ</div>
-      <div>ผลตรวจล่าสุดมีค่าที่สูง/ต่ำกว่าเกณฑ์ปกติ กรุณาตรวจสอบก่อนสั่งการรักษา</div>
-    </div>
-  </div>
-
-  <h2>Info</h2>
-  <div class="alert-banner alert-banner--info" role="status">
-    <span class="alert-banner__icon">ℹ️</span>
-    <div>
-      <div class="alert-banner__title">นัดหมายถัดไป</div>
-      <div>ผู้ป่วยมีนัดติดตามอาการในอีก 14 วัน</div>
-    </div>
-  </div>
+  <div class="banner banner--warning" role="alert"><div class="banner__icon" aria-hidden="true"></div><div><div class="banner__title">ผลตรวจมีค่าที่ต้องทบทวน</div><div class="banner__copy">แสดงเหตุผลสั้น กระชับ และผูกกับ action/บริบทที่เกี่ยวข้อง</div></div><div class="banner__meta">REVIEW</div></div>
+  <h2>Information / Mode Boundary</h2>
+  <div class="banner banner--info" role="status"><div class="banner__icon" aria-hidden="true"></div><div><div class="banner__title">Education Record — แยกจาก Actual Clinical Record</div><div class="banner__copy">Context boundary สำคัญต้องเด่นกว่าข้อความทั่วไป มี title + explanation + state ที่สแกนได้ใน first viewport</div></div><div class="banner__meta">EDUCATION MODE</div></div>
 </body>
 </html>

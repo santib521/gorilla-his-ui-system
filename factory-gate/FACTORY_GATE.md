@@ -1,4 +1,4 @@
-# Gorilla HIS UI Factory Gate — Evolution Craft v3.1
+# Gorilla HIS UI Factory Gate — Evolution Craft v3.2
 
 Factory Gate is mandatory for every Gorilla HIS mockup. It protects business truth, clinical safety, recognizable product continuity, speed of prototyping and premium craft.
 
@@ -41,6 +41,7 @@ Rules:
 - Self-QA FAIL = FIX before Post-Build
 - Post-Build FAIL = RETURN TO BUILDER
 - Legacy Continuity FAIL = RETURN TO BUILDER
+- Component Finish FAIL = RETURN TO BUILDER
 - Visual/Craft FAIL = RETURN TO BUILDER
 
 ## 3. FAST PRE-BUILD Gate — PROTOTYPE READY
@@ -141,6 +142,10 @@ Reject immediately when any applies:
 - easy-grid composition without workflow reason;
 - flat white spreadsheet with no authored hierarchy;
 - clean-sheet visual redesign that breaks Gorilla HIS continuity without approved reason;
+- main workflow text rendered primarily below 12px;
+- main tabs rendered as tiny text links without integrated active-state treatment;
+- important mode/safety banner visually weaker than surrounding ordinary content;
+- main navigation uses placeholder abbreviations because real icon rendering was skipped;
 - missing `START_HERE.md`;
 - reviewer cannot discover Main Demo Flow without guessing;
 - page self-labels Premium/Gold/World-class without Human Approval.
@@ -153,27 +158,30 @@ Rendered UI must be reviewed whenever rendering is possible.
 |---|---|---|
 | VG-01 Product Character | Purpose-built HIS or generic software? | Clinical / Operational / Trustworthy / Crafted / Desirable |
 | VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | Situation → evidence → exception → action is obvious |
-| VG-03 Icon System | Approved icon language? | FA semantic mapping; no Emoji/CDN |
+| VG-03 Icon System | Approved icon language? | FA semantic mapping; no Emoji/CDN; no placeholder abbreviation fallback for main nav |
 | VG-04 Composition | Authored or grid-generated? | Proportion follows importance |
 | VG-05 Surface Architecture | Too flat/decorative? | deliberate meaningful layers |
-| VG-06 Typography Craft | Does type carry hierarchy? | intentional rhythm |
+| VG-06 Typography Craft | Does type carry hierarchy and remain readable? | main workflow normally 14px; supporting metadata ≥12px; technical micro-labels may use 11px |
 | VG-07 Instrument Quality | Reading or spreadsheet cell? | contextual instrument treatment when relevant |
 | VG-08 Color Discipline | Controlled and semantic? | neutral-led, clinical semantics strict |
 | VG-09 Data Visualization | Answers a decision? | only meaningful visualization |
 | VG-10 Interaction Craft | State change deliberate? | hover/selected/pressed/causal feedback |
 | VG-11 AI Integration | AI showroom? | intelligence attached to evidence |
-| VG-12 Density | Real HIS density without noise? | meaningful first viewport |
+| VG-12 Density | Real HIS density without noise? | meaningful first viewport without unreadably tiny type |
 | VG-13 Anti-Template | Could labels become CRM/fintech? | No |
 | VG-14 Dryness / Barren | Sterile/unfinished? | No |
 | VG-15 Desirability | Crafted, not merely tidy? | visually compelling without decoration |
 | VG-16 Legacy Continuity | Same Gorilla HIS product family? | recognizable continuity + justified evolution |
 | VG-17 Demo Usability | Can a non-dev reviewer play it? | START_HERE + discoverable demo journey |
+| VG-18 Component Finish | Do buttons, tabs, banners, icons, fields and selectors feel expensive/precise? | consistent optical weight, readable sizing, intentional active/hover/pressed/focus states, no cheap/default-browser appearance |
 
 Automatic P0 Design FAIL:
 - VG-01, VG-02, VG-08, VG-13, VG-16;
 - clinical-safety misuse;
 - external asset violation;
 - workflow failure.
+
+Premium Candidate cannot pass Human Visual Review if VG-06 or VG-18 materially fail.
 
 ## 10. BMW Evolution Test
 
@@ -184,9 +192,11 @@ Ask:
 2. What legacy friction is materially improved?
 3. What specific control/information detail feels more precise and considered?
 4. Would an existing Gorilla user know where they are and how to work?
+5. Do the small touchpoints — button, tab, selector, banner and icon — feel like premium cockpit controls rather than generic web UI?
 
 If only color/logo/shadow/radius/icons changed → FAIL.
 If the result feels like another product → FAIL.
+If layout is good but controls still look cheap → FAIL Component Finish.
 
 ## 11. iPhone Test
 
@@ -233,7 +243,8 @@ Post-Build must include:
 - Dryness Test;
 - BMW Evolution Test;
 - iPhone Test;
-- Premium HIS Visual Gate VG-01..VG-17;
+- Premium HIS Visual Gate VG-01..VG-18;
+- Component Finish Verification;
 - Demo Usability Test;
 - Human Visual Review limitation/status.
 

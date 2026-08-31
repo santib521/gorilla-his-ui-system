@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gorilla HIS — Hospital Command Center</title>
+<style>
+
+:root {
+  --color-blue-50:#eef0fd;--color-blue-100:#dfe3fb;--color-blue-500:#6366f1;--color-blue-600:#4f46e5;--color-blue-700:#4338ca;
+  --color-brand-mark:#0f8b8d;
+  --color-green-50:#ecfdf3;--color-green-500:#16a34a;--color-green-700:#15803d;
+  --color-red-50:#fef2f2;--color-red-100:#fee2e2;--color-red-500:#dc2626;--color-red-600:#b91c1c;--color-red-700:#991b1b;
+  --color-orange-50:#fff7ed;--color-orange-500:#ea580c;--color-orange-600:#c2410c;
+  --color-yellow-50:#fffbeb;--color-yellow-500:#d97706;
+  --color-gray-50:#f8fafc;--color-gray-100:#f1f5f9;--color-gray-200:#e2e8f0;--color-gray-300:#cbd5e1;--color-gray-400:#94a3b8;--color-gray-500:#64748b;--color-gray-600:#475569;--color-gray-700:#334155;--color-gray-800:#1e293b;--color-gray-900:#0f172a;--color-white:#ffffff;
+  --color-status-critical:var(--color-red-600);--color-status-critical-bg:var(--color-red-50);--color-status-critical-border:var(--color-red-500);
+  --color-status-warning:var(--color-orange-600);--color-status-warning-bg:var(--color-orange-50);--color-status-warning-border:var(--color-orange-500);
+  --color-status-normal:var(--color-green-700);--color-status-normal-bg:var(--color-green-50);--color-status-normal-border:var(--color-green-500);
+  --color-status-info:var(--color-blue-700);--color-status-info-bg:var(--color-blue-50);--color-status-info-border:var(--color-blue-500);
+  --color-status-inactive:var(--color-gray-500);--color-status-inactive-bg:var(--color-gray-100);--color-status-inactive-border:var(--color-gray-300);
+  --color-primary-action:var(--color-blue-600);--color-primary-action-hover:var(--color-blue-700);--color-danger-action:var(--color-gray-700);--color-danger-action-hover:var(--color-gray-800);
+  --color-bg-page:var(--color-gray-50);--color-bg-surface:var(--color-white);--color-bg-sidebar:var(--color-gray-900);--color-border:var(--color-gray-200);--color-text-primary:var(--color-gray-900);--color-text-secondary:var(--color-gray-600);--color-text-inverse:var(--color-white);
+  --font-family-base:"Noto Sans Thai","Sarabun","Segoe UI",Tahoma,sans-serif;--font-family-mono:"Noto Sans Mono","Consolas",monospace;
+  --font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.375rem;--font-size-2xl:1.75rem;
+  --font-weight-normal:400;--font-weight-medium:500;--font-weight-bold:700;--line-height-tight:1.25;--line-height-normal:1.5;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-7:32px;--space-8:48px;
+  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-full:9999px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);--shadow-md:0 4px 12px rgba(15,23,42,.10);--shadow-lg:0 8px 24px rgba(15,23,42,.14);
+  --layout-sidebar-width:240px;--layout-topbar-height:56px;--layout-content-max-width:1600px;
+  --z-dropdown:100;--z-sticky:200;--z-modal-backdrop:900;--z-modal:1000;--z-toast:1100;--transition-fast:120ms ease;--transition-base:200ms ease;
+}
+
+*{box-sizing:border-box} body{margin:0;font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary);font-size:var(--font-size-sm)}
+button,input,select{font:inherit} button{min-height:44px}
+.app{display:grid;grid-template-columns:var(--layout-sidebar-width) 1fr;min-height:100vh}
+.sidebar{background:var(--color-bg-sidebar);color:var(--color-text-inverse);padding:var(--space-4);position:sticky;top:0;height:100vh}
+.brand{display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-5)} .brandmark{width:36px;height:36px;border-radius:var(--radius-md);background:var(--color-brand-mark);display:grid;place-items:center;font-weight:var(--font-weight-bold)}
+.navbtn{width:100%;text-align:left;border:0;background:transparent;color:var(--color-gray-300);padding:var(--space-3);border-radius:var(--radius-md);margin-bottom:var(--space-2);cursor:pointer}
+.navbtn.active,.navbtn:hover{background:var(--color-gray-800);color:var(--color-white)}
+.main{min-width:0} .topbar{height:var(--layout-topbar-height);background:var(--color-bg-surface);border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-5);position:sticky;top:0;z-index:var(--z-sticky)}
+.content{padding:var(--space-5);max-width:var(--layout-content-max-width);margin:auto}
+.row{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap} .spread{justify-content:space-between}
+.badge{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-1) var(--space-2);border-radius:var(--radius-full);font-size:var(--font-size-xs);font-weight:var(--font-weight-medium)}
+.normal{background:var(--color-status-normal-bg);color:var(--color-status-normal)} .warning{background:var(--color-status-warning-bg);color:var(--color-status-warning)} .critical{background:var(--color-status-critical-bg);color:var(--color-status-critical)} .info{background:var(--color-status-info-bg);color:var(--color-status-info)}
+.card{background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-4)} .c3{grid-column:span 3} .c4{grid-column:span 4} .c6{grid-column:span 6} .c8{grid-column:span 8} .c12{grid-column:span 12}
+.stat{display:flex;align-items:center;gap:var(--space-3)} .stat-icon{width:42px;height:42px;border-radius:var(--radius-full);display:grid;place-items:center;background:var(--color-blue-50);color:var(--color-blue-700);font-weight:var(--font-weight-bold)} .stat-val{font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)} .muted{color:var(--color-text-secondary)}
+h1{font-size:var(--font-size-xl);margin:0} h2{font-size:var(--font-size-lg);margin:0 0 var(--space-3)} h3{font-size:var(--font-size-base);margin:0 0 var(--space-2)}
+.btn{border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-2) var(--space-4);cursor:pointer;background:var(--color-bg-surface);color:var(--color-text-primary)}
+.btn.primary{background:var(--color-primary-action);border-color:var(--color-primary-action);color:var(--color-white)} .btn.primary:hover{background:var(--color-primary-action-hover)} .btn:disabled{opacity:.5;cursor:not-allowed}
+.scenario{display:flex;gap:var(--space-2)} .scenario button.active{background:var(--color-blue-100);border-color:var(--color-blue-500);color:var(--color-blue-700);font-weight:var(--font-weight-bold)}
+.alert{border-left:4px solid var(--color-status-warning-border);background:var(--color-status-warning-bg);padding:var(--space-3);border-radius:var(--radius-md)} .alert.crit{border-color:var(--color-status-critical-border);background:var(--color-status-critical-bg)}
+.tablewrap{overflow:auto} table{width:100%;border-collapse:collapse;font-size:var(--font-size-xs)} th,td{padding:var(--space-2);border-bottom:1px solid var(--color-border);text-align:left;white-space:nowrap} th{background:var(--color-gray-50);color:var(--color-text-secondary)}
+.beds{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-2)} .bed{border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);background:var(--color-bg-surface)} .bed small{display:block;color:var(--color-text-secondary)}
+.flow{display:flex;gap:var(--space-2);align-items:center;overflow:auto;padding:var(--space-2) 0} .node{min-width:130px;padding:var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-bg-surface);text-align:center} .arrow{color:var(--color-text-secondary)}
+.bar{height:10px;background:var(--color-gray-100);border-radius:var(--radius-full);overflow:hidden} .bar>i{display:block;height:100%;background:var(--color-blue-500);width:50%}
+.view{display:none} .view.active{display:block}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3)} label{display:block;font-weight:var(--font-weight-medium);margin-bottom:var(--space-1)} input,select{width:100%;min-height:44px;border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-2);background:var(--color-bg-surface)}
+.modalback{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;place-items:center;z-index:var(--z-modal-backdrop)} .modalback.show{display:grid} .modal{width:min(520px,92vw);background:var(--color-bg-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:var(--space-5);z-index:var(--z-modal)}
+.toast{position:fixed;right:var(--space-5);bottom:var(--space-5);background:var(--color-gray-900);color:var(--color-white);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);display:none;z-index:var(--z-toast)} .toast.show{display:block}
+@media(max-width:1100px){.app{grid-template-columns:200px 1fr}.c3{grid-column:span 6}.c4,.c6,.c8{grid-column:span 12}.beds{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<!--
+Gorilla HIS Factory Gate v1.0
+Module: hospital-command-center
+Blueprint: Application blueprint_Hospital Command Center.txt
+No external dependencies. Mock data only.
+Proposed New Patterns: Scenario Simulator, AI Data Flow, Bed Status Grid, Threshold Simulator, Low-Code Rule Builder.
+-->
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">G</div><div><strong>GORILLA HIS</strong><div style="font-size:var(--font-size-xs);color:var(--color-gray-400)">Command Center</div></div></div>
+  <button class="navbtn active" data-view="brain">AI Brain Engine</button>
+  <button class="navbtn" data-view="level1">Level 1 — Strategic</button>
+  <button class="navbtn" data-view="level2">Level 2 — Tactical</button>
+  <button class="navbtn" data-view="level3">Level 3 — Frontline</button>
+  <button class="navbtn" data-view="config">Self-Service Config</button>
+</aside>
+<div class="main">
+<header class="topbar">
+ <div class="row"><strong>Hospital Command Center</strong><span id="syncBadge" class="badge normal">● LIVE HIMS SYNC</span></div>
+ <div class="row"><span class="muted">Last refresh: <span id="refreshTime">10:42:18</span></span><button class="btn" id="refreshBtn">Refresh</button></div>
+</header>
+<main class="content">
+ <div class="row spread" style="margin-bottom:var(--space-4)">
+  <div><h1 id="pageTitle">AI Brain Engine</h1><div class="muted">Real-Time Operational Intelligence · Mock Simulation</div></div>
+  <div class="scenario" aria-label="Scenario Simulator">
+   <button class="btn active" data-scenario="normal">Normal</button>
+   <button class="btn" data-scenario="surge">Peak ER Surge</button>
+   <button class="btn" data-scenario="gridlock">Bed Gridlock Critical</button>
+  </div>
+ </div>
+ <div id="situationAlert" class="alert" style="display:none;margin-bottom:var(--space-4)"></div>
+
+ <section id="brain" class="view active">
+  <div class="card c12" style="margin-bottom:var(--space-4)">
+   <h2>AI Brain Data Flow</h2>
+   <div class="flow"><div class="node">HIMS / HIS</div><span class="arrow">→</span><div class="node">ADT · ER · LIS · RIS · Bed · EWS</div><span class="arrow">→</span><div class="node"><strong>AI Brain</strong><br>Predict · Detect · Recommend</div><span class="arrow">→</span><div class="node">Level Dispatcher</div><span class="arrow">→</span><div class="node">L1 · L2 · L3</div></div>
+  </div>
+  <div class="grid">
+   <div class="card c4"><h2>ER Admission Forecast</h2><div class="stat-val" id="forecast">+4%</div><div class="muted">next 4 hours</div><div class="bar"><i id="forecastBar"></i></div></div>
+   <div class="card c4"><h2>Discharge Predictor</h2><div class="stat-val" id="discharge">5 patients</div><div class="muted">confidence &gt; 85%</div></div>
+   <div class="card c4"><h2>EWS Risk Watch</h2><div class="stat-val" id="ewsRisk">1</div><div class="muted">patients require review</div></div>
+   <div class="card c8"><h2>Live Raw Data Feed</h2><div class="tablewrap"><table><thead><tr><th>Time</th><th>Source</th><th>Event</th><th>Status</th></tr></thead><tbody id="feedBody"></tbody></table></div></div>
+   <div class="card c4"><h2>Recommendation Engine</h2><div id="recommendation"></div><button class="btn primary" id="sendRecommendation" style="margin-top:var(--space-3)">Send to Level 2</button></div>
+  </div>
+ </section>
+
+ <section id="level1" class="view">
+  <div class="grid" id="kpis"></div>
+  <div class="grid" style="margin-top:var(--space-4)">
+   <div class="card c8"><h2>24-Hour Capacity Outlook</h2><div id="trendRows"></div></div>
+   <div class="card c4"><h2>Strategic Decision Console</h2><p id="strategicText">Capacity stable. No strategic escalation required.</p><button class="btn primary" id="strategicAction">Approve Flex Ward Opening</button></div>
+  </div>
+ </section>
+
+ <section id="level2" class="view">
+  <div class="grid">
+   <div class="card c4"><h2>ER Flow</h2><p>Triage Queue: <strong id="triageQ">6</strong></p><p>Waiting for Doctor: <strong id="waitDoc">4</strong></p><p>Waiting for Bed: <strong id="waitBed">3</strong></p><p>Diversion: <span id="diversion" class="badge normal">OFF</span></p></div>
+   <div class="card c4"><h2>IPD Bed Management</h2><p>Occupied <strong id="occBeds">142</strong></p><p>Reserved <strong id="resBeds">9</strong></p><p>Cleaning <strong id="cleanBeds">4</strong></p><p>Available <strong id="availBeds">25</strong></p></div>
+   <div class="card c4"><h2>Housekeeping / Logistics</h2><p>Cleaning TAT <strong id="cleanTat">18 min</strong></p><p>Transport Queue <strong id="transportQ">4</strong></p><p>Pending Tasks <strong id="pendingTasks">7</strong></p></div>
+   <div class="card c8"><h2>Bottleneck Detection</h2><div id="bottleneck" class="alert">No major cross-department bottleneck detected.</div><div class="row" style="margin-top:var(--space-3)"><button class="btn" data-action="gridlock">Trigger Gridlock Protocol</button><button class="btn" data-action="nurses">Reassign Floating Nurses</button><button class="btn primary" id="dispatchBtn">Dispatch Bed Cleaning Task</button></div></div>
+   <div class="card c4"><h2>Threshold Simulation</h2><label for="threshold">ER Queue Alert Threshold: <span id="thresholdVal">15</span></label><input id="threshold" type="range" min="8" max="25" value="15"><div id="thresholdImpact" class="muted">Current queue is below threshold.</div></div>
+  </div>
+ </section>
+
+ <section id="level3" class="view">
+  <div class="row spread" style="margin-bottom:var(--space-3)"><div class="row"><button class="btn active">ER</button><button class="btn">IPD Ward 5A</button><button class="btn">Housekeeping</button><button class="btn">Patient Transport</button></div><span class="badge info">Operational Frontline</span></div>
+  <div class="grid">
+   <div class="card c8"><h2>Ward Bed Grid</h2><div class="beds" id="bedGrid"></div></div>
+   <div class="card c4"><h2>Operational Task</h2><div id="taskPanel"><p class="muted">No dispatched task yet.</p></div></div>
+   <div class="card c12"><h2>Clinical / Operational Watch</h2><div class="tablewrap"><table><thead><tr><th>Mock Patient</th><th>Bed</th><th>EWS</th><th>Risk</th><th>Recommendation</th></tr></thead><tbody><tr><td>Mock Patient A</td><td>5A-03</td><td>2</td><td><span class="badge normal">Stable</span></td><td>Continue routine monitoring</td></tr><tr><td>Mock Patient B</td><td>5A-07</td><td>6</td><td><span class="badge warning">Deterioration risk</span></td><td>Recommend clinical review per hospital protocol</td></tr></tbody></table></div></div>
+  </div>
+ </section>
+
+ <section id="config" class="view">
+  <div class="grid">
+   <div class="card c6"><h2>Low-Code Rule Builder</h2><div class="formgrid"><div><label>IF Metric</label><select id="ruleMetric"><option>ER Queue</option><option>Bed Occupancy</option></select></div><div><label>Operator</label><select><option>&gt;</option><option>&gt;=</option></select></div><div><label>Threshold</label><input id="ruleThreshold" type="number" value="15"></div><div><label>THEN Action</label><select><option>Trigger Level 2 Alert</option><option>Notify Hospital Commander</option></select></div></div><button class="btn primary" id="saveRule" style="margin-top:var(--space-3)">Validate & Save Rule</button><div id="ruleResult" class="muted" style="margin-top:var(--space-2)">Rule not yet saved.</div></div>
+   <div class="card c6"><h2>Dashboard Configuration</h2><label><input type="checkbox" checked data-widget="Bed Occupancy"> Bed Occupancy</label><br><label><input type="checkbox" checked data-widget="ER Waiting Time"> ER Waiting Time</label><br><label><input type="checkbox" checked data-widget="Daily Census"> Daily Census</label><br><label><input type="checkbox" checked data-widget="Revenue / Census"> Revenue / Census</label><p class="muted">Toggle affects Level 1 KPI cards in this demo.</p></div>
+   <div class="card c12"><h2>Metric Mapping</h2><div class="tablewrap"><table><thead><tr><th>Source System</th><th>Source Field</th><th>Target Metric</th><th>Status</th></tr></thead><tbody><tr><td>ADT</td><td><code>ADT.current_inpatient</code></td><td><code>hospital.current_census</code></td><td><span class="badge normal">Mapped</span></td></tr><tr><td>ER Triage</td><td><code>ER.queue_count</code></td><td><code>er.current_queue</code></td><td><span class="badge normal">Mapped</span></td></tr></tbody></table></div></div>
+  </div>
+ </section>
+</main>
+</div></div>
+
+<div class="modalback" id="modalBack"><div class="modal"><h2 id="modalTitle">Confirm Action</h2><p id="modalText"></p><div class="row" style="justify-content:flex-end"><button class="btn" id="cancelModal">Cancel</button><button class="btn primary" id="confirmModal">Confirm</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const scenarios={
+ normal:{occupancy:79,alos:3.8,erIndex:0.42,wait:18,census:151,revenue:"1.42M",forecast:"+4%",discharge:"5 patients",ews:1,triage:6,doctor:4,bed:3,occ:142,res:9,clean:4,avail:25,tat:18,transport:4,pending:7,recommend:"Operations stable. Continue routine capacity monitoring.",severity:"normal"},
+ surge:{occupancy:87,alos:4.1,erIndex:0.73,wait:41,census:164,revenue:"1.55M",forecast:"+23%",discharge:"4 patients",ews:3,triage:19,doctor:11,bed:12,occ:157,res:12,clean:7,avail:11,tat:27,transport:8,pending:15,recommend:"Recommend prioritizing 6 bed cleanings and preparing Flex Ward 4B within 4 hours.",severity:"warning"},
+ gridlock:{occupancy:96,alos:4.6,erIndex:0.91,wait:68,census:178,revenue:"1.63M",forecast:"+31%",discharge:"3 patients",ews:5,triage:27,doctor:16,bed:18,occ:172,res:6,clean:9,avail:2,tat:39,transport:13,pending:24,recommend:"Critical capacity risk. Recommend Gridlock Protocol, prioritized cleaning, and Hospital Commander escalation.",severity:"critical"}
+};
+let state={scenario:"normal",view:"brain",taskStatus:null,actionApproved:false,widgets:new Set(["Bed Occupancy","ER Waiting Time","Daily Census","Revenue / Census"])};
+let pendingAction=null;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function badgeClass(sev){return sev==="critical"?"critical":sev==="warning"?"warning":"normal"}
+function showToast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function openModal(title,text,action){$("#modalTitle").textContent=title;$("#modalText").textContent=text;pendingAction=action;$("#modalBack").classList.add("show")}
+function closeModal(){$("#modalBack").classList.remove("show");pendingAction=null}
+function renderKpis(d){
+ const all=[
+  ["Bed Occupancy",d.occupancy+"%","BED"],["Average Length of Stay",d.alos+" d","ALOS"],["ER Overcrowding Index",d.erIndex,"ER"],["ER Waiting Time",d.wait+" min","WAIT"],["Daily Census",d.census,"CENSUS"],["Revenue / Census",d.revenue,"REV"]
+ ];
+ $("#kpis").innerHTML=all.filter(x=>state.widgets.has(x[0])||!["Bed Occupancy","ER Waiting Time","Daily Census","Revenue / Census"].includes(x[0])).map(x=>`<div class="card c4"><div class="stat"><div class="stat-icon">${x[2]}</div><div><div class="stat-val">${x[1]}</div><div class="muted">${x[0]}</div></div></div></div>`).join("");
+ $("#trendRows").innerHTML=[["Now",d.occupancy],["+8h",Math.min(99,d.occupancy+4)],["+16h",Math.max(60,d.occupancy-3)],["+24h",Math.max(58,d.occupancy-6)]].map(r=>`<div style="margin-bottom:var(--space-3)"><div class="row spread"><span>${r[0]}</span><strong>${r[1]}%</strong></div><div class="bar"><i style="width:${r[1]}%"></i></div></div>`).join("");
+}
+function renderFeed(){
+ const events=[["10:42:16","ER Triage","Queue updated"],["10:42:12","ADT","Patient admitted"],["10:42:05","Bed Mgmt","Bed cleaning completed"],["10:41:58","EWS","Score updated"],["10:41:44","LIS","Critical result flag received"]];
+ $("#feedBody").innerHTML=events.map((e,i)=>`<tr><td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td><td><span class="badge ${i===4?"warning":"info"}">${i===4?"Review":"Received"}</span></td></tr>`).join("");
+}
+function renderBeds(){
+ const statuses=state.scenario==="gridlock"?["Occupied","Occupied","Reserved","Cleaning","Occupied","Occupied","Discharge Ready","Cleaning","Occupied","Occupied","Available","Occupied"]:state.scenario==="surge"?["Occupied","Occupied","Reserved","Cleaning","Occupied","Available","Discharge Ready","Cleaning","Occupied","Occupied","Available","Reserved"]:["Occupied","Available","Reserved","Cleaning","Occupied","Available","Discharge Ready","Available","Occupied","Occupied","Available","Reserved"];
+ $("#bedGrid").innerHTML=statuses.map((s,i)=>`<div class="bed"><strong>5A-${String(i+1).padStart(2,"0")}</strong><small>${s}</small><span class="badge ${s==="Available"?"normal":s==="Cleaning"?"warning":s==="Discharge Ready"?"info":"info"}">${s}</span></div>`).join("");
+}
+function renderTask(){
+ const p=$("#taskPanel");
+ if(!state.taskStatus){p.innerHTML='<p class="muted">No dispatched task yet.</p>';return}
+ const next=state.taskStatus==="Pending"?"Start Task":state.taskStatus==="In Progress"?"Complete Task":"Completed";
+ p.innerHTML=`<div class="alert"><strong>Clean Bed 5A-04</strong><p>Priority task from Level 2 Command Center</p><span class="badge info">${state.taskStatus}</span></div><button class="btn primary" id="taskAction" style="margin-top:var(--space-3)" ${state.taskStatus==="Completed"?"disabled":""}>${next}</button>`;
+ if(state.taskStatus!=="Completed") $("#taskAction").onclick=()=>{state.taskStatus=state.taskStatus==="Pending"?"In Progress":"Completed"; if(state.taskStatus==="Completed"){scenarios[state.scenario].avail+=1;scenarios[state.scenario].clean=Math.max(0,scenarios[state.scenario].clean-1);showToast("Task completed — capacity updated");} renderAll()};
+}
+function renderAll(){
+ const d=scenarios[state.scenario];
+ $("#forecast").textContent=d.forecast;$("#forecastBar").style.width=Math.min(95,Math.abs(parseInt(d.forecast))*3)+"%";$("#discharge").textContent=d.discharge;$("#ewsRisk").textContent=d.ews;$("#recommendation").innerHTML=`<div class="alert ${d.severity==="critical"?"crit":""}"><strong>AI Recommendation</strong><p>${d.recommend}</p><span class="badge ${badgeClass(d.severity)}">${d.severity.toUpperCase()}</span></div>`;
+ [["triageQ","triage"],["waitDoc","doctor"],["waitBed","bed"],["occBeds","occ"],["resBeds","res"],["cleanBeds","clean"],["availBeds","avail"],["transportQ","transport"],["pendingTasks","pending"]].forEach(x=>$("#"+x[0]).textContent=d[x[1]]);
+ $("#cleanTat").textContent=d.tat+" min";
+ $("#diversion").textContent=d.severity==="normal"?"OFF":"WATCH";$("#diversion").className="badge "+badgeClass(d.severity);
+ $("#bottleneck").textContent=d.severity==="normal"?"No major cross-department bottleneck detected.":`ER waiting for Medical bed: ${d.bed} patients — average wait ${d.wait} min.`;
+ $("#bottleneck").className="alert "+(d.severity==="critical"?"crit":"");
+ $("#strategicText").textContent=d.severity==="normal"?"Capacity stable. No strategic escalation required.":d.recommend;
+ const a=$("#situationAlert");
+ if(d.severity==="normal"){a.style.display="none"} else {a.style.display="block";a.className="alert "+(d.severity==="critical"?"crit":"");a.innerHTML=`<strong>${d.severity==="critical"?"Critical capacity alert":"Operational warning"}</strong> — ${d.recommend}`}
+ renderKpis(d);renderBeds();renderTask();
+ const q=d.triage, th=+$("#threshold").value;$("#thresholdImpact").textContent=q>th?`Alert would trigger: queue ${q} > threshold ${th}`:`No alert: queue ${q} ≤ threshold ${th}`;
+}
+$$(".navbtn").forEach(b=>b.onclick=()=>{$$(".navbtn").forEach(x=>x.classList.remove("active"));b.classList.add("active");$$(".view").forEach(v=>v.classList.remove("active"));$("#"+b.dataset.view).classList.add("active");state.view=b.dataset.view;$("#pageTitle").textContent=b.textContent.trim()});
+$$("[data-scenario]").forEach(b=>b.onclick=()=>{$$("[data-scenario]").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.scenario=b.dataset.scenario;renderAll();showToast("Scenario changed: "+b.textContent)});
+$("#refreshBtn").onclick=()=>{$("#refreshTime").textContent=new Date().toLocaleTimeString("en-GB");showToast("HIMS data refreshed")};
+$("#sendRecommendation").onclick=()=>{openModal("Dispatch AI Recommendation","Send this recommendation to Level 2 Command Center?","send-recommendation")};
+$("#strategicAction").onclick=()=>openModal("Approve Flex Ward Opening","Confirm strategic approval before dispatching the action.","strategic");
+$("#dispatchBtn").onclick=()=>openModal("Dispatch Operational Task","Dispatch Clean Bed 5A-04 to Level 3 Housekeeping?","dispatch");
+$("#cancelModal").onclick=closeModal;$("#confirmModal").onclick=()=>{if(pendingAction==="dispatch"||pendingAction==="send-recommendation"){state.taskStatus="Pending";showToast("Task dispatched to Level 3")} if(pendingAction==="strategic"){state.actionApproved=true;showToast("Strategic action approved")} closeModal();renderAll()};
+$("#threshold").oninput=e=>{$("#thresholdVal").textContent=e.target.value;renderAll()};
+$("[data-action='gridlock']").onclick=()=>{state.scenario="gridlock";$$("[data-scenario]").forEach(x=>x.classList.toggle("active",x.dataset.scenario==="gridlock"));renderAll();showToast("Gridlock Protocol simulation triggered")};
+$("[data-action='nurses']").onclick=()=>showToast("Floating nurse reassignment simulated");
+$("#saveRule").onclick=()=>{const v=+$("#ruleThreshold").value;if(!v||v<1){$("#ruleResult").textContent="Validation error: threshold must be greater than 0";$("#ruleResult").style.color="var(--color-status-critical)"}else{$("#ruleResult").textContent=`Saved: IF ${$("#ruleMetric").value} > ${v} THEN Trigger Level 2 Alert`;$("#ruleResult").style.color="var(--color-status-normal)";showToast("Rule saved in simulation")}};
+$$("[data-widget]").forEach(c=>c.onchange=()=>{c.checked?state.widgets.add(c.dataset.widget):state.widgets.delete(c.dataset.widget);renderAll()});
+renderFeed();renderAll();
+</script>
+</body></html>

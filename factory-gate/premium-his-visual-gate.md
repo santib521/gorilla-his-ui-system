@@ -1,53 +1,221 @@
-# Factory Gate — Premium HIS Visual Gate
+# Gorilla HIS — Premium HIS Visual Gate v3.0
 
-**เพิ่มเข้า Factory Gate ตาม `design-system/design-rules.md` § 0.5.8**
+This gate evaluates rendered product quality. It supplements functional QA and clinical safety rules.
 
-> เหตุผลที่ต้องมี gate นี้แยกจาก Design Compliance เดิม: การตรวจ token/component/pattern (Post-Build Checklist § B) ไม่จับ "ความรู้สึกโดยรวม" (overall tone) ของหน้าจอ — mockup อาจใช้ token ถูกทุกตัว, reuse component ถูกทุกไฟล์ แต่ยัง**ประกอบกันออกมาเป็น AI/SaaS Dashboard Visual Stereotype** ได้ (gradient เกินจำเป็น, การ์ดใหญ่โล่ง, ตัวเลขใหญ่เกินบริบท, สีหลายสีแข่งกัน) โดยเฉพาะ feature ที่มีคำว่า "AI"/"Command Center"/"Intelligence" อยู่ใน requirement — gate นี้ตรวจจุดนั้นโดยเฉพาะ
+**Code compliance alone cannot PASS Premium.** When rendering is unavailable, mark `VISUAL REVIEW LIMITATION`.
 
-ใช้ควบคู่กับ `post-build-checklist.md` § G — ตอบทั้ง 7 ข้อก่อนถือว่า Post-Build Gate ผ่านได้ ข้อใดตอบ "ไม่ผ่าน" ถือเป็น **Hard Reject** ตาม `FACTORY_GATE.md` (ต้องแก้ก่อนส่ง Independent QA)
+## VG-01 Product Character
+Question: Does the page feel purpose-built for hospital work rather than generic software?
 
-## 7 คำถามบังคับ
+PASS:
+- clinical/operational seriousness;
+- crafted product identity;
+- dense but controlled information;
+- no AI-showcase visual language.
 
-### 1. ดูเหมือนระบบงานโรงพยาบาลหรือ SaaS Dashboard?
-เกณฑ์ผ่าน: หน้าจอให้ความรู้สึก Clinical/Operational/Trustworthy/Dense/Calm/Professional (ตาม § 0.5) ไม่ใช่ความรู้สึกแบบ marketing landing page, fintech dashboard หรือ AI product showcase
-**ไม่ผ่านถ้า:** มี hero banner, ข้อความหัวข้อเชิงโฆษณา, หรือ layout ที่เน้น "ว้าว" แยกแต่ละ section แทนที่จะเป็นระบบงานเดียวกัน
+## VG-02 Decision Hierarchy
+Question: Can the intended user grasp the situation/decision within ~5 seconds?
 
-### 2. มี Emoji หรือ decorative icon หรือไม่?
-เกณฑ์ผ่าน: ไอคอนทั้งหมดเป็น inline SVG line icon โทนสีเดียว (monochrome) ตาม § 0.5.1 ไม่มี emoji (🧠⚡🏥⚙️✨ ฯลฯ) ใช้เป็น production icon ที่ไหนเลย (ยกเว้นโลโก้ 🦍 ของแบรนด์ที่กำหนดไว้แล้วในทุกหน้า)
-**ไม่ผ่านถ้า:** เจอ emoji แม้แต่จุดเดียวนอกเหนือโลโก้แบรนด์
+PASS when:
+`Situation → Evidence → Exception → Action` is visually obvious before secondary detail.
 
-### 3. มี Card มากเกินจำเป็นหรือไม่?
-เกณฑ์ผ่าน: ใช้ card เฉพาะข้อมูลที่เป็นอิสระจริง ส่วนที่เหลือใช้ section/table/divider/split-panel ตาม § 0.5.2 — ไม่มีการห่อทุกกล่องข้อมูลด้วย card ที่มี shadow/border/radius เดียวกันซ้ำ ๆ จนหน้าจอดูเป็น "กล่องมนเรียงกัน"
-**ไม่ผ่านถ้า:** นับ card ที่ box-shadow+border-radius ในหน้าเดียวมากกว่าที่จำเป็นต่อการแยกข้อมูลจริง (ใช้วิจารณญาณเทียบกับ wireframe ใน § 0.5.2)
+## VG-03 Icon Language
+PASS:
+- Font Awesome semantic mapping from `icon-rules.md`;
+- no Emoji UI;
+- no external Font Awesome CDN/Kit;
+- no unnecessary custom icon where approved mapping exists.
 
-### 4. มีสีที่ไม่ได้สื่อ semantic meaning หรือไม่?
-เกณฑ์ผ่าน: สีที่ไม่ใช่กลาง (ขาว/เทา) ทุกจุดตอบได้ว่าสื่อความหมายอะไรตาม § 0.5.4 (indigo=nav/primary action, เขียว=normal, ส้ม=warning, แดง=critical) ไม่มีสีที่ใส่เพื่อความสวยงามล้วน ๆ
-**ไม่ผ่านถ้า:** ปุ่ม action ทั่วไปใช้สี warning/critical เพื่อให้เด่น ทั้งที่ไม่ใช่สถานะ warning/critical จริง, หรือมี gradient/สีตกแต่งที่ไม่ใช่ token semantic
+## VG-04 Authored Composition
+PASS:
+- proportion follows information importance;
+- composition is not an equal-card/equal-column convenience grid;
+- the page has a deliberate focal path and alignment spine.
 
-### 5. มี oversized heading/KPI หรือไม่?
-เกณฑ์ผ่าน: ตัวเลข KPI ใช้ `--font-size-xl` หรือเล็กกว่า (ตาม `enterprise-kpi-strip.html`) ไม่ใหญ่กว่าหรือเท่า page title โดยไม่มีเหตุผล
-**ไม่ผ่านถ้า:** ตัวเลข KPI ใช้ font-size ใหญ่กว่า page title หรือใหญ่จนดูเป็นจุดขายเชิงภาพมากกว่าข้อมูลที่ต้องอ่านเร็ว
+FAIL:
+- repeated boxes are the architecture;
+- a generic dashboard template would produce essentially the same screenshot.
 
-### 6. Shell ตรงกับ Master Application Shell หรือไม่?
-เกณฑ์ผ่าน: ใช้โครง `components/application-shell.html` ตรงตาม § 0.5.5 ทั้งหมด (Topbar สูง 56px สีเดียวกัน, Sidebar กว้าง 220px พื้นหลัง `--color-bg-sidebar`, Logo/Module selector/User profile ตำแหน่งเดียวกัน) ไม่มีการออกแบบ shell เอง
-**ไม่ผ่านถ้า:** feature ทำ top-nav-tabs, dark header เฉพาะตัว, หรือ shell รูปแบบอื่นที่ต่างจาก master
+## VG-05 Surface Architecture
+Evaluate S0 Canvas / S1 Work / S2 Instrument / S3 Elevated / S4 Semantic.
 
-### 7. ที่ 1366×768 information density เหมาะกับ HIS หรือไม่?
-เกณฑ์ผ่าน: เปิดหน้าจอแรกที่ 1366×768 แล้วเห็น Page context + KPI + Alert + ข้อมูลปฏิบัติการหลัก + Primary Action ครบโดยไม่ต้อง scroll (ตาม § 0.5.6) — ทดสอบจริงด้วย screenshot ไม่ใช่ประมาณเอา
-**ไม่ผ่านถ้า:** ต้อง scroll ก่อนเห็นองค์ประกอบใดข้างต้น หรือมี whitespace ว่างเปล่าเกินจำเป็นจนดันเนื้อหาสำคัญลงไปนอกจอ
+PASS:
+- depth/tonal change communicates hierarchy/interactivity;
+- work surface remains dominant;
+- elevated objects actually behave as elevated objects.
 
-## บันทึกผล
+FAIL:
+- flat white + hairlines everywhere;
+- shadow/card treatment everywhere;
+- decorative “luxury” surfaces without functional hierarchy.
 
-| # | คำถาม | ผ่าน/ไม่ผ่าน | หมายเหตุ/หลักฐาน (screenshot path) |
-|---|---|---|---|
-| 1 | ระบบงานโรงพยาบาล vs SaaS Dashboard | ✅ ผ่าน | ไม่มี hero banner/ข้อความโฆษณา — shell แบบ topbar+sidebar เรียบ, การ์ดแบน, โทนสีนิ่ง (`/tmp/hcc_v6_aibrain_1366.png`, `hcc_v6_level1_1366.png`, `hcc_v6_level2_1366.png`, `hcc_v6_level3_1366.png`) |
-| 2 | Emoji/decorative icon | ✅ ผ่าน | เปลี่ยน icon ทั้งหมดเป็น inline SVG monochrome (`icon()` helper) แล้ว เหลือเฉพาะ 🦍 โลโก้แบรนด์ตามข้อยกเว้นใน § 0.5.1 |
-| 3 | Card เกินจำเป็น | ✅ ผ่าน | เปลี่ยน `.panel-banner`→`.panel-header` (ไม่ใช่ card), KPI ใช้ `enterprise-kpi-strip` แถวเดียวแทนการห่อ card แยกรายตัว, ลด card ที่ไม่จำเป็นใน AI Brain Engine/Level 1/2 |
-| 4 | สีไม่สื่อความหมาย | ✅ ผ่าน | ตรวจ `.rec-card`/`.kpi-strip__value`/`.flow-node` ทุกจุด สีที่ไม่ใช่กลางสื่อ semantic (indigo=nav/primary, เขียว=normal, ส้ม=warning, แดง=critical) เท่านั้น ไม่มี gradient ตกแต่งเหลืออยู่ |
-| 5 | Oversized heading/KPI | ✅ ผ่าน | `kpi-strip__value` ใช้ `--font-size-xl` เท่ากับ/เล็กกว่า page title เสมอ ตรวจผ่าน screenshot ทุก view |
-| 6 | Shell ตรง Master | ✅ ผ่าน | ใช้โครง `components/application-shell.html` ตรงทุกจุด: Topbar 56px (`--layout-topbar-height`) พื้น `--color-blue-600`, Sidebar 220px พื้น `--color-bg-sidebar`, Logo/Module label/User profile ตำแหน่งเดียวกัน |
-| 7 | Density ที่ 1366×768 | ✅ ผ่าน | ยืนยันด้วย Playwright bounding-rect + screenshot จริงที่ 1366×768: AI Brain Engine เห็น Page context+KPI(Predictive Analytics)+Data Flow+Recommendation card (primary action "Dispatch to Level 2") ครบไม่ต้อง scroll (`contentScrollHeight` 731px < `contentClientHeight` 712px หลังปรับความสูง `feed-panel`/`flow-diagram`/`section-title` margin); Level 1/2/3 ผ่านเช่นกัน |
+## VG-06 Typography Craft
+PASS:
+- page title is controlled;
+- technical labels, values, units, metadata and narrative have distinct roles;
+- numerical comparison is optically precise;
+- typography creates hierarchy before container decoration.
 
-**ผลรวม:** ✅ ผ่านทั้ง 7 ข้อ (Post-Build Gate ไปต่อได้) ⬜ ไม่ผ่านอย่างน้อย 1 ข้อ (Hard Reject — กลับไปแก้ที่ Builder)
+## VG-07 Instrument Quality
+Operational metrics should feel like readings, not spreadsheet cells.
 
-> บันทึกโดย Builder เมื่อทำ Master Template v2 rollout เสร็จ (2026-08-31) — ยังต้องผ่าน Independent QA Agent/Human Review ตามปกติ การติ๊กผ่านที่นี่ไม่ใช่ Approval ขั้นสุดท้าย
+PASS when decision-relevant context is integrated, e.g.:
+- target / threshold;
+- delta;
+- micro-trend;
+- forecast;
+- time-to-threshold;
+- safe operating range.
+
+Not every metric requires every element.
+
+## VG-08 Color Discipline
+PASS:
+- refined neutral majority;
+- Precision Indigo used for interaction/intelligence accent;
+- Teal used with brand restraint;
+- clinical semantic colors retain strict meaning;
+- saturation is controlled.
+
+## VG-09 Data Visualization Quality
+PASS when visualization answers a decision question.
+
+Preferred families when relevant:
+- micro sparkline;
+- threshold/capacity rail;
+- Operational Flow Spine;
+- forecast band;
+- time-to-threshold;
+- bed/queue/matrix field.
+
+FAIL when charts exist only because “dashboard should have charts.”
+
+## VG-10 Interaction Craft
+PASS:
+- hover/pressed/selected states feel deliberate;
+- task/scenario/state transition explains causality;
+- motion is restrained;
+- controls feel like product controls, not prototype buttons.
+
+## VG-11 AI / Intelligence Integration
+PASS:
+- prediction/recommendation is connected to operational evidence;
+- recommendation states projected impact/rationale where Blueprint supports it;
+- AI is not a separate visual theme.
+
+Preferred grammar:
+`Current state → trajectory → expected threshold → intervention → projected impact`.
+
+## VG-12 Information Density
+PASS:
+- first viewport contains meaningful work;
+- useful density is preserved;
+- visual hierarchy prevents cognitive overload.
+
+Premium does not mean excessive whitespace.
+
+## VG-13 Anti-Template Test
+FAIL if changing labels could plausibly turn the screenshot into generic CRM/fintech/logistics/admin software.
+
+Also FAIL if:
+- major regions are equal because grid is easy;
+- repeated medium-radius cards dominate;
+- hierarchy depends mainly on brand color.
+
+## VG-14 Dryness / Barren Test
+FAIL when the interface feels:
+- sterile;
+- bureaucratic;
+- unfinished;
+- like a styled spreadsheet;
+- like a wireframe with production typography.
+
+Premium restraint must still contain product feeling through:
+- proportion;
+- surface hierarchy;
+- typography;
+- instrumentation;
+- visualization;
+- interaction detail.
+
+## VG-15 Desirability Test
+Human-facing question:
+**Does this feel precise, calm, expensive and intentionally designed — something a professional would want to use repeatedly?**
+
+PASS cannot be earned by gradients/glass/shadows alone.
+
+Evidence should include:
+- coherent visual identity;
+- refined material/surface feel;
+- custom workflow-specific visual grammar;
+- tactile control hierarchy;
+- detail/fit-and-finish;
+- meaningful delight.
+
+If the strongest reaction is only “clean / neat / usable / professional,” keep status **Candidate**.
+
+---
+
+# Quality Benchmark Tests
+
+## BMW Test
+Same feature set does not imply same design quality.
+
+Ask:
+“What makes this page materially more designed than another HIS with identical functions?”
+
+Valid evidence:
+proportion, material/surface, instrumentation, control feel, data visualization, motion, fit-and-finish, coherence.
+
+Color/logo/icons alone are insufficient.
+
+## iPhone Test
+Ask:
+- Is it still refined after decoration is reduced?
+- Does depth improve comprehension?
+- Does every interaction feel deliberate?
+- Is useful complexity simplified rather than merely hidden?
+
+A page that is flashy fails. A page that is barren also fails.
+
+---
+
+# Command Center / Operational Intelligence Interpretation
+
+Do not use a fixed layout formula.
+
+The page should normally make these understandable in the first viewport:
+1. current operating state;
+2. trajectory / time-to-threshold;
+3. bottleneck;
+4. evidence;
+5. intervention / projected impact.
+
+Potential visual primitives:
+- Hospital Instrument Band;
+- Operational Flow Spine;
+- Capacity / threshold visualization;
+- embedded exception;
+- Intelligence Intervention;
+- contextual timeline;
+- scenario transition.
+
+`premium-operational-layout.html` is deprecated and does not provide Premium evidence.
+
+---
+
+# Result
+
+For each gate record:
+`PASS / FAIL / N/A / VISUAL REVIEW LIMITATION`
+
+P0 Design FAIL:
+- VG-01
+- VG-02
+- VG-08 when semantic safety is violated
+- VG-11 when AI theme overrides HIS language
+- VG-13
+
+Premium Candidate cannot be recommended for Human Approval if VG-05, VG-06, VG-07, VG-10, VG-14 or VG-15 materially fail.
+
+Only Human Design Approval may confirm Premium quality.

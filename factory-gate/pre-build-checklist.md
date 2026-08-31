@@ -1,108 +1,106 @@
-# Gorilla HIS — Pre-Build Checklist v3.0
+# Gorilla HIS — Pre-Build Checklist v3.1
 
 Pre-Build must PASS before coding.
+
+For `PROTOTYPE READY`, use the **FAST PRE-BUILD** format below. Keep it concise and move detailed evidence to Post-Build.
 
 ## A. Source of Truth
 - [ ] Application Blueprint read completely
 - [ ] `AI_INSTRUCTIONS.md` read
 - [ ] `factory-gate/FACTORY_GATE.md` read
 - [ ] `design-system/VISUAL_DNA.md` read
+- [ ] `design-system/LEGACY_DNA.md` read
 - [ ] `design-system/design-rules.md` read
 - [ ] `design-system/ux-rules.md` read
 - [ ] `design-system/tokens.css` read
 - [ ] `design-system/icon-rules.md` read
 - [ ] relevant components/patterns reviewed
-- [ ] relevant Gold Standard reviewed, or `N/A — none available`
-- [ ] screenshot availability/limitation declared
+- [ ] relevant Gold Standard reviewed, or `N/A`
+- [ ] relevant real Gorilla HIS screenshots reviewed, or limitation declared
 
 Missing mandatory authority source = FAIL.
 
-## B. Blueprint Understanding
-- [ ] Objective stated from Blueprint only
-- [ ] Users/Roles stated from Blueprint only
-- [ ] Main Workflow stated
-- [ ] Critical Requirements stated
-- [ ] Unknown/missing item marked N/A/Question instead of invented
+## B. Blueprint Boundary
+State only:
+- Blueprint Status
+- Objective
+- Main Workflow
+- Critical safety/data boundary
+- Working Assumption/TBD treatment that affects the prototype
 
-## C. Decision Architecture
+Do not expand into long traceability before coding.
+
+## C. Legacy DNA Scan
+Create concise Preserve / Improve / Replace decisions.
+
+At minimum inspect when relevant:
+- shell/navigation
+- patient context/header
+- tabs
+- worklist/table density
+- form/control language
+- action placement
+- alert/status treatment
+
+If no relevant real screenshot exists, declare limitation.
+
+If the planned screen would look like a different product family = FAIL.
+
+## D. Decision Architecture
 - [ ] Decision Question
 - [ ] Primary Evidence
 - [ ] Exception
 - [ ] Primary Action
 - [ ] Secondary Evidence
 
-If the first 5-second decision cannot be stated = FAIL / clarify before coding.
+If the first 5-second decision cannot be stated = FAIL.
 
-## D. Product Feeling Intent
-- [ ] 3–5 intended product qualities declared
-- [ ] prohibited feelings declared
-- [ ] intended qualities are not only styling words such as “blue / rounded / shadow”
+## E. Visual Concept Signature
+Answer in one paragraph:
 
-Example:
-`precision / calm / responsive / crafted / confident`
+**What makes this screen unmistakably Gorilla HIS and materially better to operate than the current generation?**
 
-Must not feel like:
-`admin template / barren spreadsheet / AI showcase / consumer toy`
+Must include:
+- continuity;
+- workflow-specific authored idea;
+- concrete operating improvement.
 
-## E. Binding Reuse Contract
-For every relevant role record **source path + actual planned use**.
+Only “clean/modern/premium/blue/rounded” = FAIL.
+
+## F. Binding Reuse Contract
+For relevant roles record source path + actual planned use.
 
 | Role | Source | Planned actual reuse | Status |
 |---|---|---|---|
 | Visual DNA | `design-system/VISUAL_DNA.md` | | |
+| Legacy DNA | `design-system/LEGACY_DNA.md` + screenshots | | |
 | Tokens | `design-system/tokens.css` | | |
 | Icons | `design-system/icon-rules.md` | | |
-| Shell continuity | `design-system/components/application-shell.html` when suitable | | |
+| Shell continuity | approved shell / screenshot when suitable | | |
 | Controls/Forms/Modal | relevant component(s) | | |
 | Workflow pattern | relevant pattern(s) | | |
 | Gold Standard | relevant approved artifact / N/A | | |
 
 Rules:
 - `Read/Reference ≠ Reuse`.
-- Reuse behavior/product continuity when fit is real.
-- Do not mechanically copy a Candidate layout if it creates generic or barren composition.
-- `premium-operational-layout.html` is deprecated and is not a mandatory source.
+- Do not force irrelevant KPI/Operational components.
+- `premium-operational-layout.html` is deprecated and not mandatory.
 
-## F. Composition Intent
-- [ ] authored path stated as `Situation → Evidence → Exception → Action → Detail`
-- [ ] composition rationale is based on information importance, not easy grid structure
-- [ ] unequal information is allowed unequal visual proportion
-- [ ] page does not begin with “3/4/5 cards” as the architecture
+## G. Anti-Template + Continuity Risks
+State only the top two risks and mitigation.
 
-## G. Premium Craft Plan
-- [ ] Surface Architecture planned: Canvas / Work / Instrument / Elevated / Semantic
-- [ ] Typography hierarchy planned
-- [ ] numerical/instrument hierarchy planned
-- [ ] data visualization decision stated when relevant
-- [ ] depth/light strategy stated
-- [ ] color strategy stated
-- [ ] hover/selected/pressed behavior stated
-- [ ] causal motion stated when state transition matters
-- [ ] specific crafted detail stated beyond default component assembly
+Typical risks:
+- generic SaaS/LMS/admin composition;
+- clean-sheet redesign that loses Gorilla HIS continuity;
+- barren spreadsheet;
+- card dashboard.
 
-If the plan is only “clean/minimal/modern” = FAIL.
-
-## H. Anti-Template Risk
-- [ ] top two generic-template risks stated
-- [ ] mitigation stated
-- [ ] page would remain purpose-built if brand color/logo were hidden
-
-## I. Dryness / Barren Risk
-- [ ] identifies where over-minimalism could make the page sterile
-- [ ] explains how surface, type, instrumentation or interaction will retain richness
-- [ ] solution does not rely on decorative gradients/shadows/cards
-
-## J. Command Center / Operational Intelligence — when applicable
-- [ ] current operating state can be communicated
-- [ ] trajectory / time-to-threshold strategy exists
-- [ ] bottleneck/exception is visually attached to evidence
-- [ ] intervention + projected impact are planned
-- [ ] key measures will behave as instruments rather than spreadsheet KPI cells
-- [ ] operational visualization selected because it answers the decision question
-- [ ] no fixed 2/3 + 1/3 template is being forced without evidence-based reason
-
-## RESULT
+## H. Result
 
 `PASS / FAIL`
 
-If FAIL, STOP before coding and state missing/failed items.
+For `PROTOTYPE READY`:
+
+`PASS → begin index.html immediately.`
+
+Do not produce additional long pre-code documents unless a critical risk requires them.

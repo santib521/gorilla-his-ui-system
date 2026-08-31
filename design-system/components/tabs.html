@@ -1,52 +1,48 @@
 <!--
-  Component: Tabs
-  ใช้แบ่งเนื้อหาในหน้าเดียวกันเป็นหมวดที่สลับดูได้ (เช่น ประวัติผู้ป่วย: Vitals / Lab / Medication / Notes)
+  Component: Precision Tabs v2
+  Authority: ../VISUAL_DNA.md + ../tokens.css
+  Main workflow tabs are integrated controls, not underlined text links.
 -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Component Preview — Tabs</title>
+<title>Gorilla HIS — Precision Tabs</title>
 <link rel="stylesheet" href="../tokens.css">
 <style>
-  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
-  .tabs { background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
-  .tabs__list { display: flex; border-bottom: 1px solid var(--color-border); background: var(--color-gray-50); }
-  .tabs__tab {
-    font-family: var(--font-family-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium);
-    padding: var(--space-4) var(--space-5); background: none; border: none; cursor: pointer;
-    color: var(--color-text-secondary); border-bottom: 2px solid transparent; margin-bottom: -1px;
-  }
-  .tabs__tab.is-active { color: var(--color-primary-action); border-bottom-color: var(--color-primary-action); background: var(--color-bg-surface); }
-  .tabs__tab:focus-visible { outline: 2px solid var(--color-blue-500); outline-offset: -2px; }
-  .tabs__panel { display: none; padding: var(--space-5); font-size: var(--font-size-sm); color: var(--color-text-secondary); }
-  .tabs__panel.is-active { display: block; }
+  body{font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary);padding:var(--space-7)}
+  .tabs{background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-optical)}
+  .tabs__list{display:flex;align-items:flex-end;gap:var(--space-1);padding:var(--space-1) var(--space-1) 0;background:linear-gradient(180deg,var(--color-gray-50),var(--color-gray-100));border-bottom:1px solid var(--color-border)}
+  .tabs__tab{appearance:none;position:relative;min-height:42px;display:inline-flex;align-items:center;gap:var(--space-2);padding:0 var(--space-4);border:1px solid transparent;border-bottom:0;border-radius:var(--radius-md) var(--radius-md) 0 0;background:transparent;color:var(--color-text-secondary);font-family:var(--font-family-base);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);cursor:pointer;transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast),box-shadow var(--transition-fast)}
+  .tabs__tab:hover{background:rgba(255,255,255,.72);color:var(--color-text-primary)}
+  .tabs__tab:focus-visible{outline:0;box-shadow:0 0 0 3px var(--color-blue-100)}
+  .tabs__tab.is-active{background:var(--color-white);color:var(--color-blue-700);border-color:var(--color-border);font-weight:var(--font-weight-semibold);box-shadow:0 -1px 0 rgba(255,255,255,.9) inset}
+  .tabs__tab.is-active::after{content:"";position:absolute;left:var(--space-3);right:var(--space-3);bottom:0;height:3px;border-radius:var(--radius-full);background:var(--color-blue-600)}
+  .tabs__icon{width:18px;height:18px;display:grid;place-items:center;border-radius:var(--radius-sm);background:var(--color-gray-200);color:var(--color-text-secondary)}
+  .tabs__icon::before{content:"";width:7px;height:7px;border-radius:var(--radius-full);background:currentColor;opacity:.72}
+  .tabs__tab.is-active .tabs__icon{background:var(--color-blue-50);color:var(--color-blue-700)}
+  .tabs__panel{display:none;min-height:150px;padding:var(--space-5);background:var(--color-white);font-size:var(--font-size-sm);line-height:var(--line-height-normal);color:var(--color-text-secondary)}
+  .tabs__panel.is-active{display:block}
 </style>
 </head>
 <body>
-
 <div class="tabs">
   <div class="tabs__list" role="tablist">
-    <button class="tabs__tab is-active" role="tab" data-panel="vitals">Vitals</button>
-    <button class="tabs__tab" role="tab" data-panel="lab">Lab</button>
-    <button class="tabs__tab" role="tab" data-panel="med">Medication</button>
-    <button class="tabs__tab" role="tab" data-panel="notes">Notes</button>
+    <button class="tabs__tab is-active" role="tab" data-panel="doc"><span class="tabs__icon" aria-hidden="true"></span>Student Documentation</button>
+    <button class="tabs__tab" role="tab" data-panel="emr"><span class="tabs__icon" aria-hidden="true"></span>Actual EMR · Read Only</button>
+    <button class="tabs__tab" role="tab" data-panel="case"><span class="tabs__icon" aria-hidden="true"></span>Case / Procedure</button>
   </div>
-  <div class="tabs__panel is-active" id="panel-vitals">อุณหภูมิ 37.1°C · HR 78 bpm · BP 118/76 · SpO2 98%</div>
-  <div class="tabs__panel" id="panel-lab">Hemoglobin 13.5 g/dL (ปกติ), WBC 15.2 (สูง)</div>
-  <div class="tabs__panel" id="panel-med">Amoxicillin 500mg 3x/day x 5 วัน</div>
-  <div class="tabs__panel" id="panel-notes">ผู้ป่วยนัดติดตามอาการในอีก 14 วัน</div>
+  <div class="tabs__panel is-active" id="panel-doc">Active content visually attaches to the selected tab. Main workflow tabs use readable type and adequate hit area.</div>
+  <div class="tabs__panel" id="panel-emr">Actual EMR read-only context.</div>
+  <div class="tabs__panel" id="panel-case">Case and procedure context.</div>
 </div>
-
 <script>
-  document.querySelectorAll('.tabs__tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tabs__tab').forEach(t => t.classList.remove('is-active'));
-      document.querySelectorAll('.tabs__panel').forEach(p => p.classList.remove('is-active'));
-      tab.classList.add('is-active');
-      document.getElementById('panel-' + tab.dataset.panel).classList.add('is-active');
-    });
-  });
+  document.querySelectorAll('.tabs__tab').forEach(tab=>tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tabs__tab').forEach(t=>t.classList.remove('is-active'));
+    document.querySelectorAll('.tabs__panel').forEach(p=>p.classList.remove('is-active'));
+    tab.classList.add('is-active');
+    document.getElementById('panel-'+tab.dataset.panel).classList.add('is-active');
+  }));
 </script>
 </body>
 </html>

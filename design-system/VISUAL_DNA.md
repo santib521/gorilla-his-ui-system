@@ -1,126 +1,264 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v1.0
+# Gorilla HIS Visual DNA — Product Craft Standard v2.0
 
-> This document defines the visual character that makes Gorilla HIS recognizable without its logo. It is a design authority, not a styling suggestion.
+> This document defines the visual character that makes Gorilla HIS recognizable without its logo. It is the highest visual-design authority for mockups. It is not a styling checklist; it defines product taste, craft and desirability.
 
 ## 1. Design Ambition
 
-Gorilla HIS is not an admin template with hospital data inserted into it. It is a precision work instrument for clinicians and hospital operations.
+Gorilla HIS is a **precision clinical and operational instrument**. It must not feel like an admin template with hospital data inserted into it.
 
 Target quality:
 - **Purpose-built** — composition follows the clinical/operational decision, not a generic dashboard grid.
-- **Quiet confidence** — premium comes from proportion, alignment, typography and restraint, not decoration.
-- **High-density clarity** — more useful information with less visual noise.
-- **Clinical gravity** — safety signals are unmistakable; everything else stays calm.
-- **Crafted, not assembled** — a page must feel authored as one composition, not built from a pile of interchangeable cards.
+- **Quiet confidence** — premium comes from proportion, optical balance, typography, surface control and detail.
+- **High-density clarity** — more useful information with less cognitive noise.
+- **Clinical gravity** — safety signals are unmistakable; everything else remains calm.
+- **Crafted, not assembled** — a page feels authored as one product surface, not built from interchangeable cards.
+- **Desirable to use** — professional does not mean dry. The interface should feel considered, responsive and satisfying without becoming decorative.
 
-A successful page should still feel like Gorilla HIS if the logo, module name and brand color are temporarily hidden.
+A successful page should still feel like Gorilla HIS if logo, module name and brand color are temporarily hidden.
 
-## 2. The Gorilla Signature
+## 2. Premium Mental Model — BMW / iPhone Test
 
-### 2.1 One continuous work surface
-The primary workspace is a continuous canvas. Do not turn every information group into a floating card.
+BMW and iPhone are **quality benchmarks, not visual references to copy**. The lesson is that products with the same functions can feel radically different because of proportion, material, control feel, typography, motion and fit-and-finish.
 
-Use hierarchy in this order:
+Translate that into Gorilla HIS:
+
+| Product craft principle | Gorilla HIS equivalent |
+|---|---|
+| Proportion | Information hierarchy and page composition |
+| Material | Surface hierarchy and controlled depth |
+| Cockpit / instrument cluster | Clinical or operational workspace |
+| Control feel | Button, filter, selector and task interaction |
+| Typography | Reading priority and numerical instrumentation |
+| Ambient light / state change | Contextual emphasis and semantic state |
+| Motion / haptics | Micro-interaction and causal state transition |
+| Brand DNA | Gorilla visual signature across modules |
+| Fit & finish | Pixel-level alignment, rhythm, icon weight and optical balance |
+
+### BMW Test — Mandatory design question
+If two systems provide the same function, what in this page makes Gorilla HIS feel deliberately designed rather than merely functional?
+
+If the answer is only `brand color`, `more whitespace`, `rounded corners`, `shadow`, or `better icons` → **FAIL**.
+
+### iPhone Test — Mandatory design question
+Can the interface remain refined when decoration is reduced? Can controlled depth and motion improve comprehension without becoming ornament?
+
+If the page is only attractive because of gradients, large cards, glass effects or saturated color → **FAIL**.
+
+## 3. Gorilla Signature
+
+### 3.1 Authored work surface
+The primary workspace is composed as one coherent field. Do not turn every information group into an isolated card.
+
+Hierarchy tools, in preferred order:
 1. typography and alignment;
-2. whitespace rhythm;
-3. subtle dividers / tonal surface shift;
-4. border only when enclosure has functional meaning;
-5. shadow only for elevation that physically overlays another layer (menu, drawer, modal).
+2. spacing rhythm and proportion;
+3. tonal surface shift;
+4. subtle divider / optical border;
+5. bounded container when the object genuinely behaves as one object;
+6. shadow only when depth/elevation is meaningful.
 
-### 2.2 Precision rail, not heavy app chrome
-Navigation is compact and visually subordinate to the work. The work surface owns the screen.
+### 3.2 Precision navigation
+Navigation is visually subordinate to the work but must still feel crafted.
+- Product identity is controlled, not oversized.
+- Active navigation uses a precise indicator, tonal surface and clear icon treatment.
+- Module navigation can use rail + contextual lens/secondary navigation.
+- Do not use a large dark sidebar merely because enterprise templates do.
+- Navigation must feel like a product control, not a prototype index.
 
-- Product identity is small and controlled.
-- Active navigation uses a precise indicator/tonal treatment, not a large filled pill.
-- Module navigation may use a narrow rail plus contextual secondary navigation where appropriate.
-- Avoid a large dark rectangle occupying visual weight simply because a sidebar is conventional.
+### 3.3 Information has a spine
+Every page needs a deliberate alignment spine. Key labels, numbers, tables, timelines, visualizations and actions share baselines/columns. Random independent boxes are prohibited.
 
-### 2.3 Information has a spine
-Every page needs a strong alignment spine: key labels, numbers, tables, timelines and actions share deliberate baselines/columns. Random independent boxes are prohibited.
-
-### 2.4 Numbers are instruments
-Operational/clinical numbers must behave like instrument readings:
-- tabular/mono numerals where alignment matters;
-- unit visually subordinate but attached to value;
-- trend and threshold context close to the number;
+### 3.4 Numbers are instruments
+Operational/clinical numbers behave like instrument readings:
+- tabular numerals where alignment matters;
+- unit subordinate but optically attached to value;
+- threshold, target, delta and time context near the value;
+- micro-trend when it helps decision-making;
 - never giant marketing numbers;
-- never color a number unless the color carries approved meaning.
+- color only when semantic meaning exists.
 
-### 2.5 Action hierarchy is quiet until action is required
-Primary action is visually clear but compact. A screen must not be covered with equal-weight buttons.
-- routine actions = text/quiet controls;
-- primary workflow action = one controlled accent;
-- urgent patient-safety action = semantic treatment with icon + label + context.
+### 3.5 Intelligence is integrated
+AI is not a visual theme. Prediction/recommendation should appear as an intelligence layer attached to real evidence.
 
-## 3. Premium Craft Rules
+Preferred pattern:
+`Current state → trajectory → time-to-threshold → expected impact → recommended intervention`
 
-### 3.1 Composition before components
+Avoid generic `AI Brain`, sparkle, neon, futuristic panel or separate AI showroom.
+
+## 4. Surface Architecture — Premium without decoration
+
+Gorilla HIS uses controlled layers. A whole screen should not be pure white and flat, but it also must not become a pile of floating cards.
+
+### S0 Canvas
+Low-contrast cool/warm neutral environment behind the work surface.
+
+### S1 Work Surface
+Primary reading/working plane. Usually near-white; high legibility; owns most of the screen.
+
+### S2 Instrument Surface
+Compact bounded object for readings, controls or a meaningful instrument cluster. Uses subtle tonal contrast and optical border; not default for every section.
+
+### S3 Elevated Surface
+Menus, command selectors, drawers, contextual inspectors, floating controls. Uses real elevation/shadow.
+
+### S4 Semantic Surface
+Critical/warning/normal/info state. Semantic color is restrained and local; never repaint the whole application for decoration.
+
+Depth must communicate **hierarchy or interactivity**, not luxury decoration.
+
+## 5. Typography Craft
+
+Typography is the primary hierarchy system.
+
+A metric should normally contain multiple levels, for example:
+- technical label;
+- value;
+- smaller unit;
+- threshold or delta;
+- optional trend / forecast.
+
+Rules:
+- Avoid one weight/size everywhere.
+- Avoid uppercase except micro-labels/technical labels.
+- Headings remain compact but confident.
+- Numerical typography must be optically aligned and easy to compare.
+- Metadata is quieter but remains accessible.
+- Important narrative may use slightly larger body text rather than a new card.
+
+## 6. Shape Language
+
+Use shape to communicate object type.
+
+### Structural regions
+Low radius or square; stable and architectural.
+
+### Interactive controls
+Moderate radius; clear hover/pressed/selected states.
+
+### Floating contextual objects
+Largest radius and elevation because they physically sit above the workspace.
+
+Do not apply the same medium radius to every panel, button, table and section. Repeated rounded rectangles are a generic SaaS signature.
+
+## 7. Color and Light
+
+### Product palette
+- **Gorilla Ink** — deep neutral structure/text.
+- **Precision Indigo** — selection, primary interaction and intelligence accent.
+- **Clinical Teal** — controlled brand accent, not a substitute for semantic state.
+- **Refined Neutrals** — canvas/work surfaces with enough tonal difference to create depth.
+- **Clinical semantics** — critical/warning/normal/info retain strict meaning.
+
+Premium color is not “more color”; it is disciplined saturation, contrast and relationship.
+
+### Controlled light
+Use subtle optical borders, tonal surfaces and ambient shadow only where depth is real. Avoid both extremes:
+- flat white + hairlines everywhere = dry/unfinished;
+- shadow/gradient everywhere = ornamental/template-like.
+
+## 8. Motion & Micro-interaction
+
+Professional HIS may and should have **controlled delight**.
+
+Motion must explain causality:
+- scenario changes → values transition → affected flow changes → exception emerges → decision state updates;
+- task completion → capacity/status visibly resolves;
+- drawer/modal/selector has clear spatial transition.
+
+Recommended timing family:
+- micro state: 120–180 ms;
+- control/surface transition: 180–260 ms;
+- causal dashboard/visual transition: 240–360 ms.
+
+Respect reduced-motion preferences. No decorative perpetual animation.
+
+Premium interaction means the user feels that every response was designed, not that the interface is animated.
+
+## 9. Data Visualization Language
+
+Data visualization is a product component, not decoration.
+
+Preferred families:
+- **Micro sparkline** — trend context beside KPI.
+- **Threshold rail / capacity gauge** — current vs safe operating range.
+- **Operational flow spine** — flow, pressure, velocity and bottleneck across stages.
+- **Forecast band** — current trajectory + uncertainty + time horizon.
+- **Time-to-threshold** — when operationally more useful than percentage alone.
+- **Matrix / bed field / queue field** — operational state where spatial scanning matters.
+
+Example of a better operational instrument:
+`97.1% occupancy · Critical · ≈46 min to effective capacity · forecast 98.4% at 20:00`
+
+A visualization must answer a decision question. Do not add charts because dashboards are expected to have charts.
+
+## 10. Composition before Components
+
 Before choosing components, define:
-- **Decision Question:** what must the user know/decide in the first 5 seconds?
-- **Primary Evidence:** what information proves that situation?
-- **Exception:** what requires attention now?
-- **Action:** what is the next safe operational action?
-- **Secondary Evidence:** what supports deeper investigation?
+- **Decision Question** — what must the user know/decide in the first 5 seconds?
+- **Primary Evidence** — what proves that situation?
+- **Exception** — what requires attention now?
+- **Primary Action** — what is the next safe action?
+- **Secondary Evidence** — what supports deeper investigation?
 
-The page composition must answer these in this order. Component availability must not dictate the hierarchy.
+Then create an authored visual path:
+`Situation → Evidence → Exception → Action → Detail`
 
-### 3.2 Asymmetry with discipline
-Do not default to 3 equal cards, 4 equal cards, 50/50 columns, or repeated rectangles. Use unequal proportions when information importance is unequal. Alignment must remain rigorous.
+Component availability must not dictate composition.
 
-### 3.3 Surface discipline
-Default workspace surface is flat. Sections can be separated by spacing, rule lines or a very small tonal change. Rounded bordered containers are reserved for real bounded objects, not every section.
-
-### 3.4 Border and radius discipline
-Repeated medium-radius bordered cards create generic SaaS appearance. Do not use them as the page grammar. Radius communicates objecthood; if an area is simply part of the workspace, it usually should not be rounded.
-
-### 3.5 Shadow discipline
-No ambient card shadows in operational pages. Shadow is for overlays/elevation only.
-
-### 3.6 Color discipline
-80–90% of the screen should read as neutral ink/surface. Brand indigo is a controlled interaction accent, not a wash. Teal is brand mark only. Clinical semantic colors are meaning, never decoration.
-
-### 3.7 Typography rhythm
-Typography creates hierarchy before containers do.
-- Page identity: compact, confident, never poster scale.
-- Section label: small/precise, often paired with context or timestamp.
-- Body/data: optimized for scanning.
-- Metadata: quieter, but not low-contrast enough to impair use.
-- Avoid uppercase everywhere; use it sparingly for micro labels only.
-
-## 4. Anti-Template Test — Mandatory
+## 11. Anti-Template Test — Mandatory
 
 Before PASS, ask:
-1. Could this screenshot plausibly be a CRM, fintech, logistics SaaS or generic admin template after changing labels? **If yes → FAIL.**
-2. Is the page mainly a collection of rounded rectangles? **If yes → FAIL.**
-3. Are major regions equal-sized because a grid was easy, rather than because information importance is equal? **If yes → FAIL.**
+1. Could this plausibly be CRM, fintech, logistics SaaS or generic admin after changing labels? **If yes → FAIL.**
+2. Is the page mainly a collection of repeated rounded rectangles? **If yes → FAIL.**
+3. Are major regions equal-sized because a grid was easy? **If yes → FAIL.**
 4. Does removing color destroy hierarchy? **If yes → FAIL.**
-5. Does the primary operational story remain obvious in grayscale? **If no → FAIL.**
-6. Is there a clear authored focal path: situation → evidence → exception → action? **If no → FAIL.**
-7. Is any AI capability visually themed differently from the HIS? **If yes → FAIL.**
+5. Does the operational story remain obvious in grayscale? **If no → FAIL.**
+6. Is there a clear authored focal path? **If no → FAIL.**
+7. Is AI visually themed differently from the HIS? **If yes → FAIL.**
+8. Does it feel merely tidy/functional but visually lifeless? **If yes → FAIL Premium Craft.**
 
-## 5. Archetype: Command / Operational Intelligence
+## 12. Desirability Test — Mandatory for Premium Candidate
 
-The Command Center is a decision surface, not a dashboard gallery.
+A Premium Candidate must create the reaction:
+**“This feels precise, expensive, calm and intentionally designed — I want to use it.”**
 
-### First viewport story
-The first viewport must communicate:
+It must not depend on superficial luxury effects.
+
+Evaluate:
+- visual balance and proportion;
+- surface richness without clutter;
+- typography craftsmanship;
+- instrument quality of data;
+- meaningful depth;
+- micro-interaction quality;
+- custom operational visualization where the workflow deserves it;
+- coherent identity across the full page.
+
+If Human Visual Review returns only “clean”, “neat”, “usable” or “professional” but not “crafted/desirable” → keep status **Candidate**, not Premium.
+
+## 13. Archetype — Command / Operational Intelligence
+
+The Command Center is a **live decision instrument**, not a dashboard gallery.
+
+First viewport communicates:
 1. current hospital operating state;
-2. what changed / what is likely to happen;
-3. the bottleneck or exception;
-4. evidence behind it;
-5. the next coordinated action.
+2. trajectory / what is likely to happen;
+3. bottleneck or exception;
+4. evidence and time-to-threshold;
+5. the next coordinated intervention and projected impact.
 
-### Composition grammar
-- **Situation line:** a compact authored summary combining state, time, sync and scenario context.
-- **Instrument band:** a restrained row of key measures integrated into the surface; not detached KPI cards.
-- **Operational field:** the dominant area — flow, queue, capacity, timeline, matrix or trend chosen from the decision question.
-- **Exception lane:** alerts/exceptions embedded adjacent to the evidence they qualify.
-- **Decision rail:** narrow, ordered actions with rationale and ownership; not a promotional recommendation card.
-- **Detail layers:** secondary tables/timelines below or in contextual drill-down.
+Preferred visual grammar:
+- crafted situation/header layer;
+- integrated Hospital Instrument Band, not spreadsheet KPI cells;
+- dominant Operational Flow / Capacity Field;
+- exception integrated at the affected point;
+- Intelligence Intervention layer with rationale and projected impact;
+- contextual tactical/frontline drill-down;
+- subtle scenario transition that visibly changes the system state.
 
-The operational field must be visually dominant. AI prediction is annotation/evidence within it, not the hero.
+Do **not** lock this archetype to a fixed 2/3 + 1/3 template. Proportion follows the decision and evidence.
 
-## 6. Gold Standard Rule
+## 14. Gold Standard Rule
 
 No component, layout master or pattern may call itself **Premium**, **World-class**, **Gold**, or **Signature** solely because it passes Factory Gate.
 
@@ -128,15 +266,16 @@ Promotion requires:
 - rendered visual review;
 - Human Design Approval;
 - Anti-Template Test PASS;
-- comparison against at least one relevant real Gorilla HIS reference when available;
-- evidence that the page was designed around a decision/workflow rather than a generic component grid.
+- Desirability Test PASS;
+- comparison with relevant Gorilla HIS continuity reference when available;
+- evidence that composition was designed around workflow/decision;
+- evidence of craft beyond default component assembly.
 
-Until Human Design Approval exists, label the artifact **Candidate**, never Master/Gold Standard.
+Until Human Design Approval exists, label artifact **Candidate**.
 
-## 7. Extraction Rule
+## 15. Extraction Rule
 
-World-class pages come first; reusable primitives are extracted second.
+`Human-approved reference page → extract recurring Visual Grammar → extract components/patterns → Factory enforcement`
 
-`Human-approved reference page → identify recurring visual grammar → extract component/pattern → Factory enforcement`
-
-Do not reverse this into `generic components → assemble page → declare premium`.
+Never reverse this into:
+`generic components → assemble page → declare premium`.

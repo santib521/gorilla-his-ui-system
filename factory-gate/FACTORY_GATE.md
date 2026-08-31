@@ -1,6 +1,6 @@
-# Gorilla HIS UI Factory Gate — Premium Craft v3.0
+# Gorilla HIS UI Factory Gate — Evolution Craft v3.1
 
-Factory Gate is mandatory for every Gorilla HIS mockup. Its purpose is not only consistency. It must protect business truth, clinical safety, product continuity and premium craft.
+Factory Gate is mandatory for every Gorilla HIS mockup. It protects business truth, clinical safety, recognizable product continuity, speed of prototyping and premium craft.
 
 If this file conflicts with `AI_INSTRUCTIONS.md`, `AI_INSTRUCTIONS.md` wins.
 
@@ -10,85 +10,117 @@ If this file conflicts with `AI_INSTRUCTIONS.md`, `AI_INSTRUCTIONS.md` wins.
 1. Application Blueprint
 2. Workflow / Requirement / Function List / Business Rules explicitly derived from the Blueprint
 
-Missing Blueprint information = `N/A — not present in Blueprint`. Do not invent business rules to satisfy a checklist.
+Missing Blueprint information = `N/A — not present in Blueprint`. Do not invent business rules.
 
 ### Design Authority
 1. `design-system/VISUAL_DNA.md`
-2. `AI_INSTRUCTIONS.md`
-3. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
-4. Human-approved Gold Standard relevant to the archetype
-5. Approved Components / Patterns
-6. Relevant actual Gorilla HIS screenshots for continuity
-7. Candidate references
-8. AI design judgment
+2. `design-system/LEGACY_DNA.md`
+3. `AI_INSTRUCTIONS.md`
+4. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
+5. Human-approved Gold Standard relevant to the archetype
+6. Approved Components / Patterns
+7. Relevant actual Gorilla HIS screenshots for continuity
+8. Candidate references
+9. AI design judgment
 
-**Important:** component reuse does not override Visual DNA. A component is a primitive, not a composition master.
+Components are primitives, not composition masters.
 
-## 2. Gate Flow
+## 2. Factory Flow
 
-`Blueprint → Pre-Build → Decision Architecture → Product Feeling Intent → Reuse Contract → Craft Plan → Build → Self-QA → Post-Build → Independent QA → Human Visual Review → Approved → Gold Standard when explicitly promoted`
+For `PROTOTYPE READY`:
 
+`Blueprint → Legacy DNA Scan → FAST PRE-BUILD → Visual Concept → Build index.html → START_HERE → Self-QA → Post-Build → Independent QA → Human Prototype Review → Hospital Confirmation`
+
+For confirmed/product UI:
+
+`Confirmed Blueprint → Legacy DNA Scan → Full Pre-Build → Visual Concept → Build → Self-QA → Post-Build → Independent QA → Human Visual Review → Approved → Gold when explicitly promoted`
+
+Rules:
 - Pre-Build FAIL = STOP
+- Visual Concept FAIL = STOP
 - Self-QA FAIL = FIX before Post-Build
 - Post-Build FAIL = RETURN TO BUILDER
+- Legacy Continuity FAIL = RETURN TO BUILDER
 - Visual/Craft FAIL = RETURN TO BUILDER
-- Human Approved ≠ Gold Standard until explicitly promoted
 
-## 3. Binding Reuse Contract
+## 3. FAST PRE-BUILD Gate — PROTOTYPE READY
 
-Before coding, Builder declares relevant approved sources and planned use.
+The purpose is to reach a useful first `index.html` quickly without weakening safety.
 
-Minimum roles:
+Before coding, Builder must state only:
+1. Blueprint status + critical safety boundary;
+2. Legacy Preserve / Improve / Replace summary;
+3. Decision Question / Primary Evidence / Exception / Primary Action;
+4. Visual Concept Signature;
+5. Binding Reuse Contract;
+6. top Anti-Template / Legacy Continuity risks;
+7. PASS / FAIL.
 
+Do not generate long traceability or compliance prose before the first working screen. Detailed evidence moves to Post-Build.
+
+## 4. Legacy Continuity Gate
+
+Review relevant real Gorilla HIS screenshots and classify important product grammar as:
+- PRESERVE
+- IMPROVE
+- REPLACE
+
+PASS when:
+- the mockup remains recognizable as Gorilla HIS;
+- familiar clinical/operational navigation and context are retained where useful;
+- modernization improves hierarchy/control feel without inventing a different product family.
+
+FAIL when:
+- the page looks like another vendor, generic SaaS, LMS, CRM or fashionable clean-sheet redesign;
+- legacy density/navigation/context is discarded without workflow rationale;
+- continuity is claimed only through logo or brand color.
+
+## 5. Visual Concept Gate
+
+Before coding answer:
+
+**What makes this screen unmistakably Gorilla HIS and materially better to operate than the current generation?**
+
+PASS requires:
+- recognizable legacy continuity;
+- workflow-specific composition or interaction idea;
+- concrete operational/clinical improvement;
+- craft beyond color/radius/shadow/icons.
+
+If the concept is only `clean / modern / premium / blue / spacious` = FAIL.
+
+## 6. Binding Reuse Contract
+
+Before coding declare relevant approved sources and planned use.
+
+Minimum roles to evaluate:
 | Role | Source | Requirement |
 |---|---|---|
 | Visual DNA | `design-system/VISUAL_DNA.md` | composition/craft authority |
-| Design Tokens | `design-system/tokens.css` | approved palette, surfaces, depth, type, motion |
-| Icons | `design-system/icon-rules.md` | approved semantic Font Awesome mapping |
-| Shell continuity | `design-system/components/application-shell.html` | reuse product identity/navigation behavior where relevant |
-| Controls / Modal / Forms | relevant approved components | reuse interaction behavior and states |
-| Pattern | relevant approved pattern(s) | reuse when workflow genuinely fits |
-| Gold Standard | relevant Human-approved artifact | use only when archetype is close |
+| Legacy DNA | `design-system/LEGACY_DNA.md` + screenshots | continuity/evolution |
+| Tokens | `design-system/tokens.css` | approved values |
+| Icons | `design-system/icon-rules.md` | semantic Font Awesome |
+| Shell continuity | approved shell / relevant real screenshot | preserve product family where suitable |
+| Controls / Forms / Modal | relevant approved components | behavior/states |
+| Pattern | relevant approved pattern(s) | reuse when workflow fits |
+| Gold Standard | relevant Human-approved artifact / N/A | archetype continuity |
 
-`Read/Reference ≠ Reuse` — implementation evidence must exist in `index.html`.
+`Read/Reference ≠ Reuse`.
 
-However, **reuse must not force weak composition**. If an existing candidate/master creates generic or barren output, Visual DNA has higher authority. Declare the divergence and preserve behavior/continuity rather than mechanically copying layout.
+Do not require KPI/Operational components when irrelevant.
 
-## 4. Decision Architecture Gate
+## 7. Decision Architecture Gate
 
-Before coding Builder must state:
+State:
 - Decision Question
 - Primary Evidence
 - Exception
 - Primary Action
 - Secondary Evidence
 
-PASS only when these are grounded in the Blueprint.
+PASS only when grounded in Blueprint.
 
-## 5. Product Feeling Gate
-
-Builder must state:
-- 3–5 intended qualities, e.g. `precision / calm / responsive / crafted / confident`;
-- 2–4 prohibited feelings, e.g. `admin template / barren spreadsheet / AI showcase / consumer toy`.
-
-The rendered result is later evaluated against this intent.
-
-## 6. Premium Craft Plan
-
-Before Build declare how the page will achieve:
-- authored proportion and focal path;
-- Surface Architecture (Canvas / Work / Instrument / Elevated / Semantic);
-- typography hierarchy;
-- instrument-quality numbers;
-- meaningful data visualization where needed;
-- controlled depth;
-- restrained color;
-- micro-interaction / causal motion;
-- product-specific detail beyond default component assembly.
-
-A plan that only says `use cards / grid / colors / shadow / icons` = FAIL.
-
-## 7. Hard Reject
+## 8. Hard Reject
 
 Reject immediately when any applies:
 - Blueprint not read;
@@ -99,121 +131,114 @@ Reject immediately when any applies:
 - dead Main Workflow action;
 - workflow-breaking JS error;
 - hidden chain-of-thought in deliverables;
-- local palette/design-token aliases used to bypass `tokens.css`;
+- local palette used to bypass tokens;
 - patient-safety semantic colors used decoratively;
-- Emoji used as UI icon;
-- custom icon/SVG used when approved Font Awesome semantic icon exists without approved exception;
+- Emoji UI;
+- unapproved custom icon when approved FA semantic icon exists;
 - generic AI/futuristic theme;
-- repeated rounded-card grammar used as the page architecture;
-- visual hierarchy collapses when color is removed;
-- composition is explained by an easy grid rather than workflow importance;
-- page is merely a flat white spreadsheet/table with hairlines and no crafted surface hierarchy;
-- page calls itself Premium/Gold/World-class without Human Visual Approval.
+- repeated rounded-card grammar as architecture;
+- hierarchy collapses without color;
+- easy-grid composition without workflow reason;
+- flat white spreadsheet with no authored hierarchy;
+- clean-sheet visual redesign that breaks Gorilla HIS continuity without approved reason;
+- missing `START_HERE.md`;
+- reviewer cannot discover Main Demo Flow without guessing;
+- page self-labels Premium/Gold/World-class without Human Approval.
 
-## 8. Premium HIS Visual Gate
+## 9. Premium HIS Visual Gate
 
-Rendered UI must be reviewed whenever rendering is possible. If the tool cannot render, record `VISUAL REVIEW LIMITATION`; code inspection cannot self-certify Premium.
+Rendered UI must be reviewed whenever rendering is possible.
 
 | Gate | Question | PASS condition |
 |---|---|---|
 | VG-01 Product Character | Purpose-built HIS or generic software? | Clinical / Operational / Trustworthy / Crafted / Desirable |
-| VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | Situation → evidence → exception → action is visually obvious |
-| VG-03 Icon System | Approved icon language? | Font Awesome semantic mapping; no Emoji/CDN/unapproved replacement |
-| VG-04 Composition | Authored or grid-generated? | Proportion follows importance; no mechanical equal-card composition |
-| VG-05 Surface Architecture | Too flat or too decorative? | Deliberate Canvas/Work/Instrument/Elevated layers; depth has meaning |
-| VG-06 Typography Craft | Does typography carry hierarchy? | Values, units, labels, metadata and narrative have intentional rhythm |
-| VG-07 Instrument Quality | Do key measures feel like readings or spreadsheet cells? | Threshold/delta/trend/forecast/context used when decision-relevant |
-| VG-08 Color Discipline | Controlled and semantic? | Neutral-led; Indigo/Teal restrained; clinical semantics remain strict |
-| VG-09 Data Visualization | Does visualization answer a decision question? | Flow/trend/forecast/capacity visualization used where it improves comprehension |
-| VG-10 Interaction Craft | Does state change feel deliberate? | Hover/selected/pressed and relevant causal transitions are clear and restrained |
-| VG-11 AI Integration | AI showroom or integrated intelligence? | Prediction/recommendation is attached to evidence and operational impact |
-| VG-12 Density | Real HIS information density without noise? | First viewport carries meaningful work and remains scannable |
-| VG-13 Anti-Template | Could labels be swapped for CRM/fintech? | No — composition and visualization are purpose-built |
-| VG-14 Dryness / Barren Test | Does it feel sterile, unfinished or bureaucratic? | No — surface, type, instrument and interaction craft create a refined product feel |
-| VG-15 Desirability | Would a user describe it as crafted and desirable, not merely tidy? | Candidate is visually compelling without luxury decoration |
-
-### Severity
+| VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | Situation → evidence → exception → action is obvious |
+| VG-03 Icon System | Approved icon language? | FA semantic mapping; no Emoji/CDN |
+| VG-04 Composition | Authored or grid-generated? | Proportion follows importance |
+| VG-05 Surface Architecture | Too flat/decorative? | deliberate meaningful layers |
+| VG-06 Typography Craft | Does type carry hierarchy? | intentional rhythm |
+| VG-07 Instrument Quality | Reading or spreadsheet cell? | contextual instrument treatment when relevant |
+| VG-08 Color Discipline | Controlled and semantic? | neutral-led, clinical semantics strict |
+| VG-09 Data Visualization | Answers a decision? | only meaningful visualization |
+| VG-10 Interaction Craft | State change deliberate? | hover/selected/pressed/causal feedback |
+| VG-11 AI Integration | AI showroom? | intelligence attached to evidence |
+| VG-12 Density | Real HIS density without noise? | meaningful first viewport |
+| VG-13 Anti-Template | Could labels become CRM/fintech? | No |
+| VG-14 Dryness / Barren | Sterile/unfinished? | No |
+| VG-15 Desirability | Crafted, not merely tidy? | visually compelling without decoration |
+| VG-16 Legacy Continuity | Same Gorilla HIS product family? | recognizable continuity + justified evolution |
+| VG-17 Demo Usability | Can a non-dev reviewer play it? | START_HERE + discoverable demo journey |
 
 Automatic P0 Design FAIL:
-- VG-01, VG-02, VG-08, VG-11, VG-13
-- clear clinical-safety misuse
-- external asset violation
-- workflow failure
+- VG-01, VG-02, VG-08, VG-13, VG-16;
+- clinical-safety misuse;
+- external asset violation;
+- workflow failure.
 
-Premium Candidate cannot pass Human Visual Review when:
-- VG-05, VG-06, VG-07, VG-10, VG-14 or VG-15 materially fail.
+## 10. BMW Evolution Test
 
-## 9. BMW Test — Product Quality Benchmark
+BMW is a quality benchmark, not a visual-copy instruction.
 
-This is a quality metaphor, not a visual-copy instruction.
+Ask:
+1. What Gorilla HIS DNA is preserved?
+2. What legacy friction is materially improved?
+3. What specific control/information detail feels more precise and considered?
+4. Would an existing Gorilla user know where they are and how to work?
 
-Question:
-**If another HIS has the same features, what in this screen makes Gorilla HIS feel materially more designed?**
+If only color/logo/shadow/radius/icons changed → FAIL.
+If the result feels like another product → FAIL.
 
-Evidence may include:
-- better proportion;
-- richer but controlled surface hierarchy;
-- superior instrument readability;
-- clearer decision path;
-- refined control feel;
-- better causal motion;
-- precise micro-detail;
-- distinctive operational visualization.
+## 11. iPhone Test
 
-If the only answer is color/logo/shadow/radius/icons → FAIL Premium Craft.
+- refined when decoration is reduced;
+- depth improves hierarchy, not ornament;
+- controls feel deliberate;
+- visual complexity is reduced without removing useful information.
 
-## 10. iPhone Test — Restraint + Refinement Benchmark
+A page cannot pass by being flashy or barren.
 
-Questions:
-- When decoration is reduced, does the interface remain refined?
-- When depth is added, does it improve hierarchy instead of adding ornament?
-- Does every interaction feel deliberate?
-- Is visual complexity reduced without removing useful information?
-
-A page cannot pass by being either flashy **or** barren.
-
-## 11. Operational / Command Center Rule
+## 12. Operational / Command Center Rule
 
 Command Center is a live decision instrument, not a fixed layout template.
 
-The previous `premium-operational-layout.html` is **Candidate Reference only** and is not mandatory composition authority.
+`premium-operational-layout.html` is Candidate Reference only and is not mandatory composition authority.
 
-The first viewport should communicate:
-1. operating state;
-2. trajectory / time-to-threshold;
-3. bottleneck;
-4. evidence;
-5. intervention + projected impact.
+First viewport should communicate operating state, trajectory/time-to-threshold, bottleneck, evidence and intervention/projected impact.
 
-Prefer, when appropriate:
-- Hospital Instrument Band;
-- Operational Flow Spine;
-- Forecast / time-to-threshold;
-- embedded exception at the affected point;
-- Intelligence Intervention layer;
-- scenario transitions that propagate through the system.
+## 13. Demo Guide Gate
 
-Do not force a 2/3 + 1/3 arrangement. Proportion follows information importance.
+Every mockup must ship `START_HERE.md` containing:
+- purpose;
+- roles;
+- first click;
+- 4–8 step Main Demo Flow;
+- expected result for critical actions;
+- clickable controls;
+- prototype assumptions/TBDs;
+- confirmation questions when relevant.
 
-## 12. Post-Build Required Evidence
+When practical add an unobtrusive in-product `Demo Guide` control.
+
+No README/demo guide = FAIL.
+
+## 14. Post-Build Evidence
 
 Post-Build must include:
-- Blueprint Traceability Table
-- Binding Reuse Verification Table
-- Decision Architecture Verification
-- Product Feeling Verification
-- Anti-Template Test
-- Dryness / Barren Test
-- BMW Test
-- iPhone Test
-- Premium HIS Visual Gate VG-01..VG-15
-- Human Visual Review limitation/status
+- Blueprint Traceability;
+- Binding Reuse Verification;
+- Legacy Continuity Verification;
+- Visual Concept Verification;
+- Decision Architecture Verification;
+- Anti-Template Test;
+- Dryness Test;
+- BMW Evolution Test;
+- iPhone Test;
+- Premium HIS Visual Gate VG-01..VG-17;
+- Demo Usability Test;
+- Human Visual Review limitation/status.
 
-## 13. Gold Standard Rule
+## 15. Gold Standard Rule
 
-Factory PASS = technically/design-governed Candidate only.
+Factory PASS = governed Candidate only.
 
-Promotion sequence:
-`Candidate → Independent QA Passed → Human Approved → explicit Gold Standard promotion`
-
-Human visual judgment is required for Premium/Gold status.
+`Candidate → Independent QA Passed → Human Approved → explicit Gold promotion`

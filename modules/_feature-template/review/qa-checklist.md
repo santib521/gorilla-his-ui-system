@@ -1,75 +1,103 @@
-# QA Checklist — Directory สำหรับ "ตรวจสอบ Mockup" (1.2)
+# Gorilla HIS Mockup QA Checklist — v2.1
 
-**Feature:** << module/feature-name >>
-**ผู้ตรวจ (Design QA Agent หรือ Design QA Lead/Human):** << ชื่อ >>
-**วันที่ตรวจ:** << YYYY-MM-DD >>
-**ผลตรวจโดยรวม:** ⬜ Approved ⬜ Rejected — ต้องแก้ไข ⬜ Approved with comments
+**Feature:** << module/feature >>  
+**Blueprint:** << Application blueprint_*.txt >>  
+**Reviewer Mode:** ⬜ Builder Self-QA ⬜ Independent QA Agent ⬜ Human  
+**Overall:** ⬜ PASS ⬜ PASS WITH ISSUES ⬜ FAIL
 
-> ใช้ checklist นี้ทั้งแบบ **Human review** และแบบ **AI Design QA Agent** (ป้อน prompt ด้านล่างสุดของไฟล์นี้ให้ AI ตรวจแทนคน แล้วให้คนยืนยันผลอีกที)
+> ใช้ checklist เดียวกันได้ แต่ **Builder Self-QA ไม่มีสิทธิ์ตัดสิน READY FOR HUMAN REVIEW**; ต้องผ่าน Independent QA อีกครั้ง
 
-## 1. Compliance กับกฎเหล็ก (AI_INSTRUCTIONS.md § 2)
+## 1. Blueprint Traceability — Mandatory
+ใช้ ID ชุดเดียวกับ Pre-Build; ถ้า Blueprint ไม่มีประเภทนั้นให้ N/A ห้ามแต่งเพิ่ม
 
-- [ ] เป็นไฟล์ `index.html` ไฟล์เดียว ไม่มีไฟล์ `.css`/`.js` แยก
-- [ ] ไม่มีการเรียก CDN ภายนอกใด ๆ (เปิดแบบ offline/ตัดเน็ตแล้วยังใช้งานได้ครบ)
-- [ ] ไม่มีค่าสี/spacing hardcode ที่ไม่ได้มาจาก `tokens.css` (ตรวจแบบสุ่ม inspect element)
-- [ ] มี header comment ครบตามรูปแบบ (module, feature, author, date, based-on, version)
-- [ ] ไม่เชื่อมต่อ API จริงหรือส่งข้อมูลออกภายนอก
+| ID | Blueprint Item | Expected | Evidence in index.html | Result | Issue/Fix |
+|---|---|---|---|---|---|
 
-## 2. Component & Pattern Reuse (design-rules.md § 5)
+Result = `PASS / PARTIAL / FAIL / N/A`
 
-- [ ] Component ที่มีอยู่แล้วถูกนำมาใช้จริง (เทียบกับ `Design Notes` ที่แนบมา)
-- [ ] ถ้ามี component ใหม่ที่สร้างขึ้น → มีเหตุผลชัดเจนว่าทำไมของเดิมไม่พอ
-- [ ] หน้าตา/พฤติกรรมของ component ที่ reuse มา**ตรงกับต้นแบบ**ใน `design-system/components/` ไม่ถูกปรับจนเพี้ยน
+- [ ] Main Workflow ครบและ click-through ได้
+- [ ] Critical Requirements จาก Blueprint ไม่มี FAIL/PARTIAL
+- [ ] Function List ครบตาม Scope
+- [ ] Business Rules ที่ Blueprint ระบุถูก represent/enforce
+- [ ] Required States/Exceptions ครบ
 
-## 3. Semantic Color & Patient Safety (design-rules.md § 4, § 8)
+## 2. Factory Compliance
+- [ ] ผ่าน `factory-gate/post-build-checklist.md` (Independent QA ต้อง verify ซ้ำ ไม่เชื่อ Builder Result อย่างเดียว)
+- [ ] Single `index.html`
+- [ ] ไม่มี External CDN/font/CSS/JS
+- [ ] design values ที่ token รองรับไม่มี hardcode แทน token
+- [ ] ไม่มี Real API / data exfiltration
+- [ ] ไม่มีข้อมูลผู้ป่วยจริง
+- [ ] Header comment / required metadata ครบ
+- [ ] Design Notes และ `prompt-used.md` พร้อมสำหรับ traceability
 
-- [ ] สีแดง (critical) ใช้เฉพาะกรณีความเสี่ยงถึงชีวิต/แพ้ยา/ค่าวิกฤตเท่านั้น
-- [ ] Alert banner แพ้ยา/critical (ถ้ามีในบริบท) อยู่ตำแหน่งบนสุดของหน้าจอ
-- [ ] ไม่มีการสื่อความหมายด้วยสีอย่างเดียว (มี icon + label ข้อความประกอบเสมอ)
+## 3. Component / Pattern / Gold Standard
+- [ ] Existing Components ถูก reuse ตาม Design Notes
+- [ ] Existing Patterns ถูก reuse ตาม Design Notes
+- [ ] Gold Standard/reference ใช้เฉพาะเมื่อเกี่ยวข้อง; ถ้าไม่มีให้ N/A
+- [ ] New reusable UI ทุกจุด Declare `Proposed New Pattern`
+- [ ] ไม่มีการสร้าง Design System ใหม่ซ่อนอยู่
 
-## 4. Mock Data (design-rules.md § 7)
+## 4. Visual / UX / Patient Safety
+- [ ] Semantic color ถูกความหมาย
+- [ ] Critical/Allergy/Patient-safety alert มี icon + text ไม่พึ่งสีอย่างเดียว
+- [ ] Action hierarchy ถูกต้อง
+- [ ] Table/Form/Tabs/Modal/Drawer สอดคล้อง Gorilla HIS
+- [ ] ถ้ามี clinical decision support ไม่มี definitive diagnosis wording
+- [ ] ไม่มี hidden chain-of-thought
 
-- [ ] ไม่มีข้อมูลผู้ป่วยจริงปะปนอยู่
-- [ ] มีอย่างน้อย 1 record ที่เป็นค่าผิดปกติ/edge case ตามที่ requirement ระบุ
-- [ ] ค่าทางคลินิก (vitals/lab) อยู่ในช่วงอ้างอิงที่สมเหตุสมผลตามมาตรฐาน
+## 5. Interaction QA
+ทดสอบจริง ไม่ตรวจจากหน้าตาอย่างเดียว:
+- [ ] Buttons
+- [ ] Tabs/navigation
+- [ ] Search/filter (ถ้ามี)
+- [ ] Modal/Drawer/Confirmation (ถ้ามี)
+- [ ] Status/Scenario/Task transitions (ถ้ามี)
+- [ ] Validation/Disabled state
+- [ ] ไม่มี Dead Button ใน Main Workflow
 
-## 5. States ครบถ้วน (design-rules.md § 8)
+## 6. States / Mock Data
+- [ ] Loading ตามบริบท
+- [ ] Empty ตามบริบท
+- [ ] Error ตามบริบท
+- [ ] Success/confirmation ตามบริบท
+- [ ] Edge case ตาม Blueprint
+- [ ] Clinical mock values สมเหตุสมผลเมื่อเกี่ยวข้อง
 
-- [ ] Loading state (ถ้าเกี่ยวข้องกับการดึงข้อมูล)
-- [ ] Empty state (ถ้ารายการอาจว่างเปล่าได้)
-- [ ] Error state (ถ้ามี action ที่อาจล้มเหลว)
+## 7. Technical QA
+- [ ] ไม่มี Console Error
+- [ ] 1366×768 ใช้งานได้
+- [ ] 1920×1080 ใช้งานได้
+- [ ] ไม่มี overflow/overlay ที่ทำให้ action สำคัญใช้ไม่ได้
 
-## 6. Functional QA
+## 8. Severity / Decision
+- `P0` Critical — Main workflow, patient safety, critical requirement, broken app, Hard Reject
+- `P1` Major — function/compliance สำคัญไม่ครบ
+- `P2` Minor/Enhancement
 
-- [ ] เปิดไฟล์ใน browser แล้วไม่มี error ใน Console (เช็คด้วย DevTools)
-- [ ] ปุ่ม/ลิงก์/interaction หลักทำงานได้จริง ไม่ใช่แค่ตกแต่งเฉย ๆ
-- [ ] ทดสอบที่ความกว้างจอ 1366px และ 1920px แล้วเลย์เอาต์ไม่แตก
-- [ ] ตรวจตาม `ux-rules.md` § 2-4 (action/worklist/detail pattern เลือกใช้ถูกบริบท) และ § 5 (state ครบ 6 แบบตามที่เกี่ยวข้อง)
-- [ ] ถ้ามีเนื้อหาเชิงคลินิก/decision support: ไม่มีข้อความฟันธงวินิจฉัยโรค (ดู `AI_INSTRUCTIONS.md` § 2 ข้อ 11) และไม่มี chain-of-thought ของ AI หลุดปนมาในไฟล์/Design Notes (ข้อ 10)
+**Automatic FAIL:** มี P0, Critical Requirement FAIL/PARTIAL, Main Workflow FAIL/PARTIAL, Hard Reject, Console Error, หรือ Post-Build Gate FAIL
 
-## 7. ผลสรุปและ Action
+### Decision by Mode
+- Builder Self-QA PASS → `READY FOR POST-BUILD GATE / INDEPENDENT QA` เท่านั้น
+- Independent QA FAIL → `RETURN TO MOCKUP BUILDER`
+- Independent QA PASS → `READY FOR HUMAN REVIEW`
+- Human Approved → Approved Mockup; การ Promote เป็น Gold Standard เป็นขั้นตอนแยกตาม `approved-mockups/GOLD_STANDARD.md`
 
-**ปัญหาที่พบ (ถ้ามี):**
-```
-1. ...
-2. ...
-```
+## Independent QA Agent Prompt
+```text
+คุณคือ Independent Gorilla HIS Mockup QA & Design Compliance Agent
+ห้ามอาศัยผล PASS ของ Builder โดยไม่ตรวจซ้ำ
+อ่าน Application Blueprint, AI_INSTRUCTIONS.md, factory-gate, design-system,
+approved references ที่เกี่ยวข้อง, Builder traceability และ index.html
 
-**Action ถัดไป:**
-- ⬜ ส่งกลับให้ผู้สร้าง mockup แก้ไขตามข้อ (ระบุเลข) ด้านบน
-- ⬜ Approved → ย้ายไฟล์ไปที่ `approved-mockups/<module>/<feature>/`, ถ่าย screenshot ใส่ `screenshots/`, เพิ่มแถวใน `approved-mockups/INDEX.md`
+ตรวจ Blueprint Traceability (WF/REQ/FN/BR/ST), Factory Compliance, UI/UX,
+interaction, technical QA และ required deliverables ตาม checklist v2.1
 
----
-
-## Prompt สำหรับใช้กับ "Design QA Agent" (AI ตรวจแทนคนขั้นแรก)
-
-```
-คุณคือ Design QA Agent ของระบบ Gorilla HIS
-ตรวจสอบไฟล์ index.html ที่แนบมา โดยเทียบกับกฎใน AI_INSTRUCTIONS.md, design-system/design-rules.md,
-และไฟล์ component ต้นแบบใน design-system/components/ ที่เกี่ยวข้อง
-
-ให้ตรวจตาม checklist นี้ทีละข้อ (คัดลอก 6 หัวข้อด้านบนของไฟล์นี้) และตอบกลับเป็น:
-1. ตาราง ผ่าน/ไม่ผ่าน ทีละข้อ พร้อมเหตุผลสั้น ๆ
-2. รายการปัญหาที่ต้องแก้ (ถ้ามี) เรียงตามความรุนแรง
-3. สรุปผล: Approved / Rejected / Approved with comments
+รายงาน:
+1. Overall PASS / PASS WITH ISSUES / FAIL
+2. Blueprint Traceability Table พร้อม evidence
+3. Design/Factory deviations
+4. Interaction/Technical issues
+5. Fix List P0/P1/P2
+6. Final: RETURN TO MOCKUP BUILDER หรือ READY FOR HUMAN REVIEW
 ```

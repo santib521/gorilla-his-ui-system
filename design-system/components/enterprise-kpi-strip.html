@@ -1,25 +1,44 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enterprise KPI Strip</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gorilla HIS — Hospital Instrument Band Candidate</title>
 <link rel="stylesheet" href="../tokens.css">
 <style>
-*{box-sizing:border-box}body{margin:0;padding:var(--space-5);font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary)}
-.kpi-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--color-bg-surface);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
-.kpi{min-width:0;padding:var(--space-3) var(--space-4);border-right:1px solid var(--color-border)}.kpi:last-child{border-right:0}
-.kpi-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.02em}
-.kpi-value{margin-top:var(--space-1);font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}
-.kpi-meta{margin-top:var(--space-1);font-size:var(--font-size-xs);color:var(--color-text-secondary)}
-.kpi-meta.is-warning{color:var(--color-status-warning)}.kpi-meta.is-critical{color:var(--color-status-critical)}
-@media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi{border-bottom:1px solid var(--color-border)}}
+*{box-sizing:border-box}body{margin:0;padding:var(--space-5);font-family:var(--font-family-base);background:var(--color-bg-canvas);color:var(--color-text-primary)}
+.instrument-band{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-2);padding:var(--space-2);background:linear-gradient(180deg,var(--color-bg-surface-subtle),var(--color-bg-instrument));border:1px solid var(--color-border-optical);border-radius:var(--radius-lg);box-shadow:var(--shadow-optical)}
+.instrument{position:relative;min-width:0;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);background:rgba(255,255,255,.68);border:1px solid transparent;transition:background var(--transition-fast),border-color var(--transition-fast),transform var(--transition-fast)}
+.instrument:hover{background:var(--color-bg-surface);border-color:var(--color-border-subtle);transform:translateY(-1px)}
+.instrument__label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--color-text-technical);letter-spacing:var(--letter-spacing-technical);text-transform:uppercase}
+.instrument__reading{display:flex;align-items:baseline;gap:var(--space-1);margin-top:var(--space-1)}.instrument__value{font-size:var(--font-size-instrument);font-weight:var(--font-weight-heavy);line-height:1;font-variant-numeric:tabular-nums}.instrument__unit{font-size:var(--font-size-xs);color:var(--color-text-secondary);font-weight:var(--font-weight-medium)}
+.instrument__context{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);margin-top:var(--space-2);font-size:var(--font-size-2xs);color:var(--color-text-secondary)}
+.instrument__delta{font-weight:var(--font-weight-semibold)}
+.instrument__rail{position:relative;height:3px;margin-top:var(--space-3);border-radius:var(--radius-full);background:var(--color-gray-150);overflow:visible}.instrument__rail::after{content:"";position:absolute;left:var(--fill,50%);top:-2px;width:7px;height:7px;border-radius:var(--radius-full);background:var(--rail-color,var(--color-primary-action));box-shadow:0 0 0 3px rgba(79,70,229,.08)}.instrument__rail::before{content:"";position:absolute;left:0;top:0;height:100%;width:var(--fill,50%);border-radius:inherit;background:var(--rail-color,var(--color-primary-action));opacity:.72}
+.instrument.is-warning{--rail-color:var(--color-status-warning)}.instrument.is-warning .instrument__value,.instrument.is-warning .instrument__delta{color:var(--color-status-warning)}
+.instrument.is-critical{--rail-color:var(--color-status-critical)}.instrument.is-critical .instrument__value,.instrument.is-critical .instrument__delta{color:var(--color-status-critical)}
+.instrument.is-normal{--rail-color:var(--color-status-normal)}
+@media(max-width:1100px){.instrument-band{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.instrument{transition:none}}
 </style></head>
 <body>
-<!-- Enterprise KPI Strip: preferred over stat-card for operational/command-center screens. Compact and scan-first. Normal operational context stays neutral; warning/critical colors are used only when the requirement carries real risk meaning. -->
-<section class="kpi-strip" aria-label="Operational KPI summary">
- <div class="kpi"><div class="kpi-label">Bed Occupancy</div><div class="kpi-value">84.2%</div><div class="kpi-meta">Within operating range · &lt;85%</div></div>
- <div class="kpi"><div class="kpi-label">Average LOS</div><div class="kpi-value">3.4 d</div><div class="kpi-meta">−0.2 d vs previous period</div></div>
- <div class="kpi"><div class="kpi-label">ER Waiting</div><div class="kpi-value">32 min</div><div class="kpi-meta">SLA &lt;45 min</div></div>
- <div class="kpi"><div class="kpi-label">Current Census</div><div class="kpi-value">428</div><div class="kpi-meta">+12 since 08:00</div></div>
- <div class="kpi"><div class="kpi-label">Available Beds</div><div class="kpi-value">18</div><div class="kpi-meta is-warning">6 pending cleaning · capacity attention</div></div>
+<!--
+HOSPITAL INSTRUMENT BAND CANDIDATE
+Replaces the old spreadsheet-like KPI strip as the preferred operational metric primitive.
+
+Intent:
+- one integrated instrument cluster, not five disconnected marketing cards;
+- value + unit + threshold/delta + compact rail;
+- subtle material/surface feel without decorative shadows;
+- semantic color only when status has meaning;
+- supports micro-trend/sparkline extension when the Decision Question benefits from it.
+
+Candidate only until Human Design Approval.
+-->
+<section class="instrument-band" aria-label="Hospital operating instruments">
+ <article class="instrument is-warning" style="--fill:84%"><div class="instrument__label">Bed Occupancy</div><div class="instrument__reading"><span class="instrument__value">84.2</span><span class="instrument__unit">%</span></div><div class="instrument__context"><span>Target &lt;85%</span><span class="instrument__delta">+2.8% / 3h</span></div><div class="instrument__rail"></div></article>
+ <article class="instrument is-normal" style="--fill:56%"><div class="instrument__label">Average LOS</div><div class="instrument__reading"><span class="instrument__value">3.4</span><span class="instrument__unit">days</span></div><div class="instrument__context"><span>Target 3.5</span><span class="instrument__delta">−0.2 d</span></div><div class="instrument__rail"></div></article>
+ <article class="instrument" style="--fill:68%"><div class="instrument__label">ER Door → Doctor</div><div class="instrument__reading"><span class="instrument__value">32</span><span class="instrument__unit">min</span></div><div class="instrument__context"><span>SLA ≤45</span><span class="instrument__delta">−4 min</span></div><div class="instrument__rail"></div></article>
+ <article class="instrument" style="--fill:72%"><div class="instrument__label">Daily Census</div><div class="instrument__reading"><span class="instrument__value">428</span></div><div class="instrument__context"><span>Since 08:00</span><span class="instrument__delta">+12</span></div><div class="instrument__rail"></div></article>
+ <article class="instrument is-warning" style="--fill:32%"><div class="instrument__label">Ready Beds</div><div class="instrument__reading"><span class="instrument__value">18</span><span class="instrument__unit">beds</span></div><div class="instrument__context"><span>6 cleaning</span><span class="instrument__delta">≈46 min to threshold</span></div><div class="instrument__rail"></div></article>
 </section>
 </body></html>

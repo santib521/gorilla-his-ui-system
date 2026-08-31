@@ -1,97 +1,124 @@
-# Factory Gate — Post-Build Checklist
+# Gorilla HIS — Post-Build Checklist v3.0
 
-ตรวจ `index.html` หลัง Builder Self-QA ก่อนส่ง Independent QA
+Post-Build verifies implementation, business coverage and rendered product craft.
 
-## A. Structure / Security
-- [ ] Single `index.html`
-- [ ] ไม่มี External CDN/font/JS/CSS รวม Font Awesome CDN/Kit
-- [ ] ไม่มี Real API / data exfiltration
-- [ ] ไม่มีข้อมูลผู้ป่วยจริง
-- [ ] Header metadata ครบ
+## A. Blueprint Traceability
+Create:
 
-## B. Binding Reuse Verification — Mandatory
-
-> ห้ามให้ PASS จากข้อความใน Design Notes หรือ Pre-Build อย่างเดียว ต้องตรวจ implementation ใน `index.html` จริง
-
-| Pre-Build Commitment | Approved Source | Evidence in index.html | Actually Reused? | Result |
-|---|---|---|---|---|
-| Application Shell | `application-shell.html` | structure/class/section evidence | Yes/No | PASS/FAIL |
-| Premium Operational Layout | `premium-operational-layout.html` / N/A | compact header/context/KPI/alert/2:1 workspace/action rail evidence | Yes/No/N/A | PASS/N/A/FAIL |
-| Design Tokens | `tokens.css` | approved token names used directly | Yes/No | PASS/FAIL |
-| Icons | `icon-rules.md` | semantic Font Awesome classes/mapping | Yes/No | PASS/FAIL |
-| KPI | `enterprise-kpi-strip.html` / N/A | component structure evidence | Yes/No/N/A | PASS/N/A/FAIL |
-| Operational Container | `operational-panel.html` / N/A | panel/table/divider evidence | Yes/No/N/A | PASS/N/A/FAIL |
-| Other Components/Patterns | declared paths | implementation evidence | Yes/No/N/A | PASS/N/A/FAIL |
-
-Automatic FAIL เมื่อ:
-- [ ] Desktop module สร้าง custom header/nav/shell แทน `application-shell.html` โดยไม่มี approved exception
-- [ ] Command Center / Mission Control / Operations / Flow / Capacity page ไม่ derive จาก `premium-operational-layout.html` โดยไม่มี approved exception
-- [ ] พบ Hero Banner / dark AI hero / developer-terminal feed / 3-column equal-card showcase เป็น primary operational composition โดยไม่มี Blueprint requirement + approved exception
-- [ ] พบ local palette/token aliases เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` เมื่อ approved tokens รองรับอยู่แล้ว
-- [ ] พบ hardcoded design values ที่ `tokens.css` ครอบคลุม
-- [ ] Pre-Build ประกาศ Reuse แต่ implementation เขียน component/style ใหม่แทนโดยไม่มี approved exception
-- [ ] Operational dashboard ใช้ stat-card grid แทน `enterprise-kpi-strip.html` ทั้งที่ component รองรับ requirement และไม่มี approved exception
-- [ ] Card ถูกใช้เป็น default container อย่างเป็นระบบแทน approved operational panel/table/divider language
-
-## C. Design Compliance
-- [ ] design values ใช้ approved `tokens.css` names โดยตรง
-- [ ] Reuse Existing Components/Patterns ตาม Binding Reuse Contract
-- [ ] ไม่สร้าง design language ใหม่
-- [ ] New reusable UI Declare Proposed New Pattern
-- [ ] reference/limitation บันทึกไว้
-- [ ] semantic colors ถูกความหมาย
-
-## C2. Premium HIS Visual Gate — Mandatory
-- [ ] **VG-01 Product Character:** ดูเป็น Clinical / Operational / Trustworthy / Dense / Calm / Professional Hospital Enterprise System ไม่ใช่ generic SaaS/AI dashboard
-- [ ] **VG-02 Shell:** Desktop screen ใช้ implementation structure จาก `design-system/components/application-shell.html` จริง หรือมี approved exception
-- [ ] **VG-03 Font Awesome Compliance:** semantic mapping ตาม `icon-rules.md`, default `fa-solid`, no Emoji, no unnecessary custom SVG, no external FA CDN/Kit
-- [ ] **VG-04 Containers:** ไม่ Card Everywhere; operational data ใช้ panel/table/divider/split layout เป็นหลัก
-- [ ] **VG-05 KPI:** Operational dashboard reuse `enterprise-kpi-strip.html` เมื่อรองรับ requirement; ไม่สร้าง stat-card grid ทดแทนเอง
-- [ ] **VG-06 Color:** Neutral-first; ใช้ approved tokens โดยตรง; Green/Orange/Red ใช้เมื่อมี semantic meaning เท่านั้น
-- [ ] **VG-07 Density:** 1366×768 แสดง key operational state และ primary action ใน first viewport เมื่อ requirement เอื้อ
-- [ ] **VG-08 Scale:** ไม่มี oversized heading/KPI/button/card แบบ marketing UI
-- [ ] **VG-09 AI Theme:** AI/Prediction/Recommendation ใช้ Gorilla HIS visual language ไม่มี futuristic/marketing theme
-- [ ] **VG-10 Operational Composition:** Command Center/Operations derive จาก `premium-operational-layout.html`; ไม่มี hero/terminal/equal-card showcase; main workspace เน้น evidence + action rail
-
-VG-01/VG-02/VG-03/VG-06/VG-09/VG-10 FAIL = P0 / Automatic FAIL.
-Systematic Card Everywhere หรือ bypass approved KPI/container language สามารถยกระดับ VG-04/VG-05 เป็น P0 ได้
-
-## D. Blueprint Traceability
-| ID | Blueprint Item | Evidence in index.html | Interaction/State | Result |
+| ID / Item | Blueprint requirement | Evidence in index.html | Interaction / State | Result |
 |---|---|---|---|---|
 
-- [ ] WF-* ครบ
-- [ ] REQ-* ครบ
-- [ ] FN-* ครบ
-- [ ] BR-* ครบ
-- [ ] ST-* ครบตาม Blueprint
+- [ ] Main Workflow = PASS
+- [ ] Critical Requirement = PASS
+- [ ] Missing Blueprint categories are N/A, not invented
+- [ ] No critical item marked PARTIAL and still passed
 
-Result = PASS / PARTIAL / FAIL / N/A. PARTIAL ไม่ถือว่า PASS สำหรับ Main Workflow/Critical item.
+## B. Binding Reuse Verification
+Create:
 
-## E. Functional
-- [ ] Main Workflow click-through ได้
-- [ ] Main actions ทำงาน
-- [ ] Modal/Drawer/Tabs/Filter/Search ใน scope ทำงาน
-- [ ] ไม่มี Dead Button ใน Main Workflow
-- [ ] Loading/Empty/Error/required states ครบ
-- [ ] ไม่มี definitive diagnosis wording / hidden chain-of-thought
+| Pre-Build commitment | Approved source | Evidence in index.html | Actually reused? | Result |
+|---|---|---|---|---|
 
-## F. Technical / Viewport
-- [ ] ไม่มี Console Error
-- [ ] 1366×768 ใช้งานได้
-- [ ] 1920×1080 ใช้งานได้
-- [ ] ไม่มี workflow-blocking overflow/overlay
+- [ ] central tokens actually used
+- [ ] semantic icon mapping actually used
+- [ ] relevant approved interaction primitives actually reused
+- [ ] any deliberate divergence from Candidate component/layout is documented
+- [ ] no false “reuse” claim based only on reading/citing a file
 
-## G. Required Deliverables
-- [ ] Design Notes รวม Reuse Contract result + Icon Mapping
-- [ ] `prompt-used.md`
-- [ ] Builder Self-QA ตาม qa-checklist
-- [ ] Pre-Build Result + Blueprint Traceability
-- [ ] Binding Reuse Verification Table
-- [ ] Premium HIS Visual Gate result พร้อม evidence รวม VG-10 เมื่อ applicable
+## C. Functional QA
+- [ ] Main Workflow click-through works
+- [ ] no dead Main Workflow button
+- [ ] no workflow-breaking JS error
+- [ ] Loading/Empty/Error/Success/Disabled/Validation represented when relevant
+- [ ] confirmation for destructive/strategic action when required
+- [ ] fictional data only
+- [ ] no real external API/data transmission
 
-## Result
-- [ ] PASS → SEND TO INDEPENDENT QA
-- [ ] FAIL → RETURN TO BUILDER
+## D. Decision Architecture Verification
+- [ ] Decision Question remains visually answerable within first ~5 seconds
+- [ ] Primary Evidence is dominant enough
+- [ ] Exception is attached to relevant evidence
+- [ ] Primary Action is visible at decision point
+- [ ] Secondary Evidence does not compete with the main story
 
-Automatic FAIL: Hard Reject, Binding Reuse Verification FAIL, VG mandatory P0, Main Workflow FAIL/PARTIAL, Critical Requirement FAIL/PARTIAL, Console Error หรือ required deliverable ขาด
+## E. Product Feeling Verification
+Compare rendered output against Pre-Build intent.
+
+- [ ] intended qualities are visible
+- [ ] prohibited feelings are absent
+- [ ] page feels authored as one product surface
+- [ ] shell/chrome does not dominate the work
+
+## F. Surface / Depth Verification
+- [ ] Canvas vs Work Surface is intentional where appropriate
+- [ ] Instrument/Elevated surfaces are used only for meaningful objects
+- [ ] page is not flat white + hairlines everywhere
+- [ ] page is not Card Everywhere
+- [ ] shadows correspond to real elevation/interactivity
+- [ ] radius communicates object type rather than being uniformly applied
+
+## G. Typography / Instrument Verification
+- [ ] typography creates hierarchy before containers do
+- [ ] values/units/labels/metadata have deliberate scale and weight
+- [ ] comparable numbers use aligned/tabular treatment where appropriate
+- [ ] threshold/delta/trend/forecast/time context is close to key reading when decision-relevant
+- [ ] key operational measures do not look like spreadsheet cells or marketing stat cards
+
+## H. Interaction Craft
+- [ ] hover/selected/pressed states are deliberate
+- [ ] scenario/task/state changes have visible causal feedback
+- [ ] motion is restrained and functional
+- [ ] reduced-motion is respected when motion is material
+- [ ] no decorative perpetual animation
+
+## I. Anti-Template Test
+Answer PASS/FAIL:
+1. Could labels be swapped to CRM/fintech/logistics and still look plausible?
+2. Is the page mainly repeated rounded rectangles?
+3. Are proportions dictated by an easy grid rather than information importance?
+4. Does hierarchy collapse in grayscale?
+5. Is AI visually themed separately?
+
+Any clear YES to 1/2/3/5 or YES to 4 = FAIL Design.
+
+## J. Dryness / Barren Test
+Answer PASS/FAIL:
+- Does the page feel sterile, bureaucratic, unfinished or like a styled spreadsheet?
+- Did “minimal” remove visual richness, instrument quality or control feel?
+- Are borders doing all hierarchy work?
+- Are important areas visually dead despite rich operational meaning?
+
+Material YES = FAIL Premium Craft.
+
+## K. BMW Test
+Question:
+**What makes this screen materially more designed than another HIS with the same functions?**
+
+Evidence must include at least two beyond color/logo/icons, e.g. proportion, surface craft, instrumentation, visualization, control feel, causal motion, micro-detail.
+
+No meaningful evidence = FAIL Premium Craft.
+
+## L. iPhone Test
+- [ ] refined when decoration is reduced
+- [ ] depth improves hierarchy rather than ornament
+- [ ] controls feel deliberate
+- [ ] visual complexity is reduced without removing useful information
+
+## M. Premium HIS Visual Gate
+Run `factory-gate/premium-his-visual-gate.md` VG-01..VG-15.
+
+If rendered inspection is impossible, record:
+`VISUAL REVIEW LIMITATION — Premium status cannot be self-certified.`
+
+## N. Builder Status
+Allowed output status:
+- `FAIL — Return to Builder`
+- `Candidate — Ready for Independent QA`
+- `Candidate — Ready for Human Visual Review`
+
+Forbidden self-status:
+- Premium
+- World-class
+- Gold Standard
+
+Those require Human Design Approval / explicit promotion.

@@ -1,40 +1,48 @@
 # Components — Index
 
-**อ่านไฟล์นี้ก่อนสร้าง component ใหม่เสมอ** ตามกฎ Reuse Policy ใน `../design-rules.md`
+Read this file before creating a new component.
 
-ทุกไฟล์เป็น HTML preview/reference สำหรับคัดลอกโครงสร้างเข้า single-file mockup โดยใช้ `tokens.css` และไม่มี external dependency
+Components are reusable implementation/interaction primitives. They are **not composition authority**. Page composition is governed first by `../VISUAL_DNA.md` and the Decision Architecture.
 
-| ไฟล์ | ใช้ทำอะไร | ใช้ในโมดูล |
+Every HTML file is a preview/reference for single-file mockups using `tokens.css` with no external dependency.
+
+| File | Purpose | Status / Notes |
 |---|---|---|
-| `application-shell.html` | **Master desktop shell**: Topbar + Sidebar + Page Header + Content. ห้าม AI ออกแบบ shell ใหม่ต่อ module โดยไม่มี approved exception | ทุก desktop module |
-| `enterprise-kpi-strip.html` | KPI summary แบบ compact scan-first; preferred สำหรับ operational/command-center dashboard | Command Center, Operations, Executive operational view |
-| `operational-panel.html` | Panel/Table แบบข้อมูลหนาแน่น แทน Card Everywhere | ER, IPD, Bed Mgmt, Command Center, Operations |
-| `buttons.html` | ปุ่ม primary / secondary / danger / icon-button พร้อม state | ทุก module |
-| `form-controls.html` | Input/select/date/checkbox/radio/textarea พร้อม state | ทุก module |
-| `status-badges.html` | Status badge ตาม semantic color | ทุก module |
-| `alert-banner.html` | Alert banner สำหรับ clinical/operational attention | OPD, IPD, Pharmacy, Operations |
-| `patient-banner.html` | Patient context header | Patient-context modules |
-| `patient-search-bar.html` | Patient search + autocomplete mock | OPD, LAB, PHARMACY |
-| `vitals-form.html` | Vitals form + validation | OPD, IPD |
-| `lab-result-table.html` | Lab result table + flags | LAB |
-| `modal-dialog.html` | Standard confirmation/form modal | ทุก module |
-| `drawer.html` | Contextual short-task drawer | ทุก module |
-| `worklist.html` | Operational work queue | Registration, ER, LAB, Radiology, Pharmacy |
-| `tabs.html` | In-page category navigation | ทุก module |
-| `notification-toast.html` | Temporary success/error/info feedback | ทุก module |
-| `stat-card.html` | Home/Executive summary stat card; **ไม่ใช่ default สำหรับ operational dashboard** | Home/summary screens |
-| `patient-summary-panel.html` | Detailed patient context panel | Pharmacy, IPD, clinical context |
+| `application-shell.html` | Precision product-continuity shell: top identity + command rail + crafted work surface | **Candidate v3** — preserve continuity, do not mechanically force composition |
+| `enterprise-kpi-strip.html` | Hospital Instrument Band: integrated operational readings with threshold/delta context | **Candidate** — preferred over spreadsheet KPI cells / marketing stat cards when suitable |
+| `operational-panel.html` | Dense operational panel/table primitive | Approved primitive; do not use as Card Everywhere |
+| `buttons.html` | Primary / secondary / danger / icon-button states | Approved primitive |
+| `form-controls.html` | Input/select/date/checkbox/radio/textarea states | Approved primitive |
+| `status-badges.html` | Semantic status badges | Approved primitive |
+| `alert-banner.html` | Clinical/operational attention | Approved primitive |
+| `patient-banner.html` | Patient context header | Approved primitive |
+| `patient-search-bar.html` | Patient search + autocomplete | Approved primitive |
+| `vitals-form.html` | Vitals form + validation | Approved primitive |
+| `lab-result-table.html` | Lab result table + clinical flags | Approved primitive |
+| `modal-dialog.html` | Confirmation/form modal | Approved primitive |
+| `drawer.html` | Contextual short-task drawer | Approved primitive |
+| `worklist.html` | Operational work queue | Approved primitive |
+| `tabs.html` | In-page category navigation | Approved primitive |
+| `notification-toast.html` | Temporary feedback | Approved primitive |
+| `stat-card.html` | Home/Executive summary card | Use only when the archetype genuinely fits; not default operational grammar |
+| `patient-summary-panel.html` | Detailed patient context panel | Approved primitive |
+| `premium-operational-layout.html` | Historical rigid operational layout | **DEPRECATED Candidate — never use as Mandatory Master** |
 
 ## Selection Rule
 
-- Desktop feature → เริ่มจาก `application-shell.html`
-- Operational/Command Center KPI → ตรวจ `enterprise-kpi-strip.html` ก่อน `stat-card.html`
-- Dense operational information → ตรวจ `operational-panel.html` / table / worklist ก่อนสร้าง card
-- Emoji ห้ามใช้เป็น UI icon
+1. Start from the **Decision Question**, not from a component.
+2. Read `VISUAL_DNA.md` before choosing primitives.
+3. Reuse behavior and product continuity where a component fits.
+4. Do not let reuse force generic or visually barren composition.
+5. Operational metrics should feel like instruments: value + unit + target/threshold + delta/trend/forecast when decision-relevant.
+6. Dense information may use tables/worklists, but the full page must still pass Surface, Typography, Dryness and Desirability gates.
+7. Emoji is prohibited as UI icon; use `icon-rules.md`.
 
-## กฎการเพิ่มไฟล์ใหม่
+## New Component Rule
 
-1. ต้องผ่าน Design QA ก่อนเป็น shared standard
-2. ตั้งชื่อ `kebab-case.html` และลงทะเบียนใน index
-3. ใช้ `tokens.css`; ห้าม hardcode design values ที่ token ครอบคลุม
-4. มี comment อธิบาย use case และข้อจำกัด
+1. A new reusable component begins as **Candidate**.
+2. Use central `tokens.css`; no local palette escape.
+3. Document Decision Question / use case / limits.
+4. Render and visually review it.
+5. Only Human Design Approval can promote it to shared premium/Gold status.
+6. Use `kebab-case.html` and register it here.

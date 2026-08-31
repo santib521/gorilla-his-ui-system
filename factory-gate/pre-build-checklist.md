@@ -13,6 +13,7 @@
 - [ ] อ่าน `design-system/tokens.css` และบันทึก approved token names ที่จะใช้
 - [ ] อ่าน `design-system/icon-rules.md`
 - [ ] อ่าน `design-system/components/application-shell.html` สำหรับ desktop module
+- [ ] ถ้าเป็น Command Center / Mission Control / Operations / Flow / Capacity page ให้อ่าน `design-system/components/premium-operational-layout.html`
 - [ ] ตรวจ `approved-mockups/INDEX.md`
 - [ ] ตรวจ relevant screenshot/reference เท่าที่ tool เข้าถึงได้
 
@@ -36,6 +37,7 @@
 | UI Role | Approved Source / Repo Path | Exact Reuse Plan | Exception Requested? | Result |
 |---|---|---|---|---|
 | Application Shell | `design-system/components/application-shell.html` | ระบุว่าจะคง structure ส่วนใด | No / Requested | PASS/FAIL |
+| Premium Operational Layout | `design-system/components/premium-operational-layout.html` หรือ N/A | สำหรับ Command Center/Operations ให้ระบุ compact header/context/KPI/alert/2:1 workspace/action rail | No / Requested / N/A | PASS/N/A/FAIL |
 | Design Tokens | `design-system/tokens.css` | ระบุ token groups/names ที่จะใช้โดยตรง | No / Requested | PASS/FAIL |
 | Icons | `design-system/icon-rules.md` | ระบุ semantic mapping หลัก | No / Requested | PASS/FAIL |
 | KPI | `design-system/components/enterprise-kpi-strip.html` หรือ N/A | ระบุว่าจะ reuse อย่างไร | No / Requested / N/A | PASS/N/A/FAIL |
@@ -45,6 +47,9 @@
 
 Binding rules:
 - [ ] Desktop module จะเริ่มจาก approved `application-shell.html` ไม่สร้าง header/nav/shell ใหม่
+- [ ] Command Center / Mission Control / Operations / Flow / Capacity page จะ derive composition จาก `premium-operational-layout.html`
+- [ ] จะไม่มี Hero Banner / dark AI hero / developer-terminal feed / 3-column equal-card showcase เป็น primary operational composition เว้นแต่ Blueprint + approved exception ระบุ
+- [ ] Main operational workspace จะเน้น table/worklist/queue/trend/exception/action และใช้ 2/3 evidence + 1/3 decision/action rail เมื่อเหมาะสม
 - [ ] จะใช้ approved token names **โดยตรง** ไม่สร้าง local palette/token aliases เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` เมื่อ token เดิมรองรับ
 - [ ] Operational dashboard ตรวจ `enterprise-kpi-strip.html` และจะ reuse ถ้ารองรับ requirement
 - [ ] Operational content ตรวจ `operational-panel.html`; card จะไม่เป็น default container
@@ -65,6 +70,7 @@ Binding rules:
 - [ ] ระบุ Views/Screens ที่จะสร้าง
 - [ ] Mapping `WF/REQ/FN/BR/ST` ที่มีอยู่ไปยัง View/Interaction ที่วางแผนรองรับ
 - [ ] ระบุ Main Workflow ที่ **จะทำให้** click-through ได้หลัง Build
+- [ ] สำหรับ operational page ระบุ first viewport composition ที่ 1366×768 ว่าจะเห็น KPI + alert + main evidence + action rail อย่างไร
 
 ## Pre-Build Evidence Table
 | Gate Item | Evidence / Repo Path / Blueprint Section | Result |
@@ -72,6 +78,7 @@ Binding rules:
 | Source readiness | | PASS/FAIL |
 | Blueprint extraction | | PASS/FAIL |
 | Binding Reuse Contract | | PASS/FAIL |
+| Premium Operational Master (if applicable) | | PASS/N/A/FAIL |
 | Design references | | PASS/N/A/FAIL |
 | Screen/flow plan | | PASS/FAIL |
 

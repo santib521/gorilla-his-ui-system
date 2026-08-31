@@ -16,6 +16,7 @@
 | Pre-Build Commitment | Approved Source | Evidence in index.html | Actually Reused? | Result |
 |---|---|---|---|---|
 | Application Shell | `application-shell.html` | structure/class/section evidence | Yes/No | PASS/FAIL |
+| Premium Operational Layout | `premium-operational-layout.html` / N/A | compact header/context/KPI/alert/2:1 workspace/action rail evidence | Yes/No/N/A | PASS/N/A/FAIL |
 | Design Tokens | `tokens.css` | approved token names used directly | Yes/No | PASS/FAIL |
 | Icons | `icon-rules.md` | semantic Font Awesome classes/mapping | Yes/No | PASS/FAIL |
 | KPI | `enterprise-kpi-strip.html` / N/A | component structure evidence | Yes/No/N/A | PASS/N/A/FAIL |
@@ -24,6 +25,8 @@
 
 Automatic FAIL เมื่อ:
 - [ ] Desktop module สร้าง custom header/nav/shell แทน `application-shell.html` โดยไม่มี approved exception
+- [ ] Command Center / Mission Control / Operations / Flow / Capacity page ไม่ derive จาก `premium-operational-layout.html` โดยไม่มี approved exception
+- [ ] พบ Hero Banner / dark AI hero / developer-terminal feed / 3-column equal-card showcase เป็น primary operational composition โดยไม่มี Blueprint requirement + approved exception
 - [ ] พบ local palette/token aliases เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` เมื่อ approved tokens รองรับอยู่แล้ว
 - [ ] พบ hardcoded design values ที่ `tokens.css` ครอบคลุม
 - [ ] Pre-Build ประกาศ Reuse แต่ implementation เขียน component/style ใหม่แทนโดยไม่มี approved exception
@@ -48,8 +51,9 @@ Automatic FAIL เมื่อ:
 - [ ] **VG-07 Density:** 1366×768 แสดง key operational state และ primary action ใน first viewport เมื่อ requirement เอื้อ
 - [ ] **VG-08 Scale:** ไม่มี oversized heading/KPI/button/card แบบ marketing UI
 - [ ] **VG-09 AI Theme:** AI/Prediction/Recommendation ใช้ Gorilla HIS visual language ไม่มี futuristic/marketing theme
+- [ ] **VG-10 Operational Composition:** Command Center/Operations derive จาก `premium-operational-layout.html`; ไม่มี hero/terminal/equal-card showcase; main workspace เน้น evidence + action rail
 
-VG-01/VG-02/VG-03/VG-06/VG-09 FAIL = P0 / Automatic FAIL.
+VG-01/VG-02/VG-03/VG-06/VG-09/VG-10 FAIL = P0 / Automatic FAIL.
 Systematic Card Everywhere หรือ bypass approved KPI/container language สามารถยกระดับ VG-04/VG-05 เป็น P0 ได้
 
 ## D. Blueprint Traceability
@@ -84,7 +88,7 @@ Result = PASS / PARTIAL / FAIL / N/A. PARTIAL ไม่ถือว่า PASS �
 - [ ] Builder Self-QA ตาม qa-checklist
 - [ ] Pre-Build Result + Blueprint Traceability
 - [ ] Binding Reuse Verification Table
-- [ ] Premium HIS Visual Gate result พร้อม evidence
+- [ ] Premium HIS Visual Gate result พร้อม evidence รวม VG-10 เมื่อ applicable
 
 ## Result
 - [ ] PASS → SEND TO INDEPENDENT QA

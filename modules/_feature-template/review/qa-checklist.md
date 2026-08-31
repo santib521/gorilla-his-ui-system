@@ -1,4 +1,4 @@
-# Gorilla HIS Mockup QA Checklist — v2.1
+# Gorilla HIS Mockup QA Checklist — v2.3
 
 **Feature:** << module/feature >>  
 **Blueprint:** << Application blueprint_*.txt >>  
@@ -24,7 +24,7 @@ Result = `PASS / PARTIAL / FAIL / N/A`
 ## 2. Factory Compliance
 - [ ] ผ่าน `factory-gate/post-build-checklist.md` (Independent QA ต้อง verify ซ้ำ ไม่เชื่อ Builder Result อย่างเดียว)
 - [ ] Single `index.html`
-- [ ] ไม่มี External CDN/font/CSS/JS
+- [ ] ไม่มี External CDN/font/CSS/JS รวม Font Awesome CDN/Kit
 - [ ] design values ที่ token รองรับไม่มี hardcode แทน token
 - [ ] ไม่มี Real API / data exfiltration
 - [ ] ไม่มีข้อมูลผู้ป่วยจริง
@@ -38,15 +38,52 @@ Result = `PASS / PARTIAL / FAIL / N/A`
 - [ ] New reusable UI ทุกจุด Declare `Proposed New Pattern`
 - [ ] ไม่มีการสร้าง Design System ใหม่ซ่อนอยู่
 
-## 4. Visual / UX / Patient Safety
-- [ ] Semantic color ถูกความหมาย
+## 4. Premium HIS Visual Gate — v2.3 Additive
+
+> ส่วนนี้เพิ่มจาก QA เดิม; ไม่แทนที่ Blueprint, Factory, Patient Safety, Interaction หรือ Technical QA เดิม
+
+| ID | Check | Result | Evidence / Fix |
+|---|---|---|---|
+| VG-01 | Hospital Enterprise Product Character; not generic SaaS/AI dashboard | | |
+| VG-02 | Approved Application Shell or approved exception | | |
+| VG-03 | Font Awesome Compliance ตาม `design-system/icon-rules.md`: semantic mapping, default `fa-solid`, no Emoji, no unnecessary custom SVG, no external FA CDN/Kit | | |
+| VG-04 | No Card Everywhere; dense operational containers used appropriately | | |
+| VG-05 | Compact KPI strip considered/preferred on operational dashboard; N/A if not relevant | | |
+| VG-06 | Neutral-first and semantic clinical colors retain strict Design Rules meaning | | |
+| VG-07 | 1366×768 operational density appropriate when feasible | | |
+| VG-08 | No oversized heading/KPI/button/card | | |
+| VG-09 | AI is capability, not futuristic visual theme | | |
+
+**VG-01/VG-02/VG-03/VG-06/VG-09 FAIL = P0 / Automatic FAIL เมื่อเป็น clear violation และไม่มี approved exception.**
+
+### VG-03 Font Awesome QA — Mandatory Evidence
+
+- [ ] อ่าน `design-system/icon-rules.md`
+- [ ] Main Workflow icons ใช้ approved Font Awesome semantic mapping หรือมี Design Notes อธิบาย exception
+- [ ] Default icon style ใช้ `fa-solid`; style อื่นมีเหตุผลและไม่ทำให้ visual language แตก
+- [ ] ไม่มี Emoji UI
+- [ ] ไม่มี custom SVG/icon ใหม่เมื่อมี approved Font Awesome icon ที่เหมาะสม
+- [ ] ไม่มี Font Awesome CDN/Kit/external asset ใน mockup
+- [ ] Important action ใช้ icon + text เมื่อ icon-only อาจกำกวม
+- [ ] Warning/Critical มี icon + text/label ไม่พึ่งสีอย่างเดียว
+- [ ] Design Notes มี Icon Mapping สำหรับ icon ที่เกี่ยวข้องกับ Main Workflow
+
+Independent QA ต้องตอบคำถามนี้ด้วยประโยคเดียว:
+> “ถ้าเอาชื่อ Gorilla HIS ออกจากหน้าจอ หน้านี้ยังดูเป็นระบบ Hospital Enterprise ที่ออกแบบอย่างมืออาชีพ หรือดูเป็น generic AI/SaaS template?”
+
+ถ้าคำตอบคือ generic AI/SaaS template → VG-01 FAIL.
+
+ถ้า tool ไม่สามารถ render หน้าจอจริงได้ ให้ระบุ `VISUAL REVIEW LIMITATION` และห้ามสรุป Visual Gate PASS จาก code อย่างเดียว; ส่งต่อ Human/Visual QA สำหรับข้อที่ต้องดูภาพ
+
+## 5. Visual / UX / Patient Safety
+- [ ] Semantic color ถูกความหมายตาม `design-system/design-rules.md`
 - [ ] Critical/Allergy/Patient-safety alert มี icon + text ไม่พึ่งสีอย่างเดียว
 - [ ] Action hierarchy ถูกต้อง
 - [ ] Table/Form/Tabs/Modal/Drawer สอดคล้อง Gorilla HIS
 - [ ] ถ้ามี clinical decision support ไม่มี definitive diagnosis wording
 - [ ] ไม่มี hidden chain-of-thought
 
-## 5. Interaction QA
+## 6. Interaction QA
 ทดสอบจริง ไม่ตรวจจากหน้าตาอย่างเดียว:
 - [ ] Buttons
 - [ ] Tabs/navigation
@@ -56,7 +93,7 @@ Result = `PASS / PARTIAL / FAIL / N/A`
 - [ ] Validation/Disabled state
 - [ ] ไม่มี Dead Button ใน Main Workflow
 
-## 6. States / Mock Data
+## 7. States / Mock Data
 - [ ] Loading ตามบริบท
 - [ ] Empty ตามบริบท
 - [ ] Error ตามบริบท
@@ -64,18 +101,18 @@ Result = `PASS / PARTIAL / FAIL / N/A`
 - [ ] Edge case ตาม Blueprint
 - [ ] Clinical mock values สมเหตุสมผลเมื่อเกี่ยวข้อง
 
-## 7. Technical QA
+## 8. Technical QA
 - [ ] ไม่มี Console Error
 - [ ] 1366×768 ใช้งานได้
 - [ ] 1920×1080 ใช้งานได้
 - [ ] ไม่มี overflow/overlay ที่ทำให้ action สำคัญใช้ไม่ได้
 
-## 8. Severity / Decision
-- `P0` Critical — Main workflow, patient safety, critical requirement, broken app, Hard Reject
-- `P1` Major — function/compliance สำคัญไม่ครบ
+## 9. Severity / Decision
+- `P0` Critical — Main workflow, patient safety, critical requirement, broken app, Hard Reject, mandatory Visual Gate clear violation
+- `P1` Major — function/compliance สำคัญไม่ครบ หรือ visual hierarchy/density inconsistency ที่มีนัยสำคัญ
 - `P2` Minor/Enhancement
 
-**Automatic FAIL:** มี P0, Critical Requirement FAIL/PARTIAL, Main Workflow FAIL/PARTIAL, Hard Reject, Console Error, หรือ Post-Build Gate FAIL
+**Automatic FAIL:** มี P0, Critical Requirement FAIL/PARTIAL, Main Workflow FAIL/PARTIAL, Hard Reject, mandatory Visual Gate P0, Console Error, หรือ Post-Build Gate FAIL
 
 ### Decision by Mode
 - Builder Self-QA PASS → `READY FOR POST-BUILD GATE / INDEPENDENT QA` เท่านั้น
@@ -87,17 +124,21 @@ Result = `PASS / PARTIAL / FAIL / N/A`
 ```text
 คุณคือ Independent Gorilla HIS Mockup QA & Design Compliance Agent
 ห้ามอาศัยผล PASS ของ Builder โดยไม่ตรวจซ้ำ
-อ่าน Application Blueprint, AI_INSTRUCTIONS.md, factory-gate, design-system,
+อ่าน Application Blueprint, AI_INSTRUCTIONS.md, factory-gate, design-system รวม icon-rules.md,
 approved references ที่เกี่ยวข้อง, Builder traceability และ index.html
 
-ตรวจ Blueprint Traceability (WF/REQ/FN/BR/ST), Factory Compliance, UI/UX,
-interaction, technical QA และ required deliverables ตาม checklist v2.1
+ตรวจ Blueprint Traceability (WF/REQ/FN/BR/ST), Factory Compliance, Premium HIS Visual Gate,
+Font Awesome Compliance, UI/UX, patient safety, interaction, technical QA และ required deliverables ตาม checklist v2.3
+
+ต้องตรวจ rendered UI จริงสำหรับ Visual Gate เมื่อ tool รองรับ
+ถ้า render ไม่ได้ ให้ระบุ VISUAL REVIEW LIMITATION ห้ามเดาว่า PASS
 
 รายงาน:
 1. Overall PASS / PASS WITH ISSUES / FAIL
 2. Blueprint Traceability Table พร้อม evidence
-3. Design/Factory deviations
-4. Interaction/Technical issues
-5. Fix List P0/P1/P2
-6. Final: RETURN TO MOCKUP BUILDER หรือ READY FOR HUMAN REVIEW
+3. Factory + Premium HIS Visual Gate deviations
+4. Font Awesome Icon Compliance + Icon Mapping deviations
+5. Interaction/Technical issues
+6. Fix List P0/P1/P2
+7. Final: RETURN TO MOCKUP BUILDER หรือ READY FOR HUMAN REVIEW
 ```

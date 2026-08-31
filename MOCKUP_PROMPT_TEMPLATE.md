@@ -14,7 +14,7 @@
 - ห้าม AI แต่ง Business Rule/Requirement เพื่อเติมช่องว่าง ถ้า Blueprint ไม่มี ให้ระบุ N/A หรือ Question
 
 ## STEP 0 — READ SOURCE OF TRUTH
-1. อ่าน `AI_INSTRUCTIONS.md` และทำตาม **mandatory read order ที่ระบุในไฟล์นั้นครบก่อน**
+1. อ่าน `AI_INSTRUCTIONS.md` และทำตาม mandatory read order ที่ระบุในไฟล์นั้นครบก่อน
 2. อ่าน `factory-gate/FACTORY_GATE.md`
 3. อ่าน `factory-gate/pre-build-checklist.md`
 4. อ่าน Application Blueprint ทั้งหมด
@@ -22,7 +22,7 @@
 
 > Factory Gate/Prompt นี้ห้าม override หรือลดทอน `AI_INSTRUCTIONS.md`. ถ้าขัดกันให้ `AI_INSTRUCTIONS.md` ชนะ
 
-ถ้า source ที่ mandatory เข้าถึงไม่ได้ → STOP และแจ้งสิ่งที่ขาด ห้ามเดา  
+ถ้า source ที่ mandatory เข้าถึงไม่ได้ → STOP และแจ้งสิ่งที่ขาด ห้ามเดา
 ถ้าดู screenshot binary ไม่ได้ ให้บอก limitation ห้ามเดารายละเอียดภาพ
 
 ## STEP 1 — PRE-BUILD ANALYSIS
@@ -31,25 +31,35 @@
 สรุป Objective, Users/Roles, Scope/Out of Scope และ Main Workflow จาก Blueprint เท่านั้น
 
 ### B. Traceable IDs
-สกัดโดยคงสาระเดิม:
-- `WF-*` Workflow
-- `REQ-*` Requirements
-- `FN-*` Functions
-- `BR-*` Business Rules
-- `ST-*` States/Exceptions
-
-ถ้าประเภทใดไม่มีใน Blueprint ให้ `N/A — not present in Blueprint`
+สกัดโดยคงสาระเดิม: `WF-*`, `REQ-*`, `FN-*`, `BR-*`, `ST-*`. ถ้าประเภทใดไม่มีใน Blueprint ให้ `N/A — not present in Blueprint`
 
 ### C. Gorilla HIS References
 ระบุ path จริงของ Components, Patterns, Gold Standard และ Actual Screenshot ที่เกี่ยวข้อง พร้อม N/A/limitation เมื่อไม่มีหรือดูไม่ได้
 
-### D. Gap Analysis
+### D. Binding Reuse Contract — MANDATORY
+
+**Read/Reference ≠ Reuse.** ก่อน Coding ต้องประกาศว่าจะนำ approved source ใดไปใช้จริง และหลัง Build ต้องพิสูจน์ได้จาก `index.html`.
+
+อย่างน้อยต้องประกาศ:
+- `Application Shell → design-system/components/application-shell.html`
+- `Design Tokens → design-system/tokens.css` และใช้ approved token names โดยตรง
+- `Icons → design-system/icon-rules.md`
+- Operational dashboard → ตรวจ/reuse `enterprise-kpi-strip.html` เมื่อรองรับ requirement
+- Operational content → ตรวจ/reuse `operational-panel.html`; card ไม่ใช่ default container
+- Components/Patterns อื่น → path + view/function ที่จะ reuse
+
+ห้ามสร้าง custom header/nav/shell แทน Master Shell.
+ห้ามสร้าง local palette/token aliases เช่น `--primary-color`, `--success-color`, `--danger-color`, `--card-bg`, `--bg-main` เมื่อ approved token รองรับ.
+ห้ามเขียน component ใหม่ด้วย visual CSS คนละชุดเพียงเพราะอ่าน component เดิมแล้ว.
+หากจำเป็นต้องไม่ใช้ required source ให้ Declare `Approved Exception Requested` พร้อมเหตุผล **ก่อน Coding** และ STOP รอ approval; Builder ห้าม approve exception เอง.
+
+### E. Gap Analysis
 ของเดิมไม่รองรับ → Declare `Proposed New Pattern` พร้อมเหตุผล ห้ามสร้าง reusable design ใหม่แบบเงียบ ๆ
 
-### E. Screen / Flow Plan
+### F. Screen / Flow Plan
 Mapping `WF/REQ/FN/BR/ST` ที่มีอยู่ไปยัง Screen/View/Interaction ที่วางแผน
 
-ตรวจ `factory-gate/pre-build-checklist.md` พร้อม Evidence Table  
+ตรวจ `factory-gate/pre-build-checklist.md` พร้อม Evidence Table และ Binding Reuse Contract
 **FAIL = STOP / PASS = BUILD ALLOWED**
 
 ## STEP 2 — BUILD
@@ -57,9 +67,14 @@ Mapping `WF/REQ/FN/BR/ST` ที่มีอยู่ไปยัง Screen/View
 
 ข้อบังคับทั้งหมดใน `AI_INSTRUCTIONS.md` ยังคงใช้ รวมถึง:
 - Single HTML; CSS/JS/Mock Data inline
-- NO external CDN/font/CSS/JS
-- สี, spacing, font size, radius, shadow และ design value ที่ token รองรับ ต้องใช้ `tokens.css`
-- Reuse components/patterns ก่อนสร้างใหม่
+- NO external CDN/font/CSS/JS รวม Font Awesome CDN/Kit
+- ใช้ structure ของ approved `application-shell.html` สำหรับ desktop module
+- สี, spacing, font size, radius, shadow และ design value ที่ token รองรับ ต้องใช้ approved names จาก `tokens.css` โดยตรง
+- ห้ามสร้าง local palette/token alias เพื่อเปลี่ยน design language
+- Reuse components/patterns ตาม Binding Reuse Contract; ไม่ใช่เพียงอ้างชื่อ
+- Operational KPI reuse `enterprise-kpi-strip.html` เมื่อรองรับ requirement
+- Operational content ใช้ panel/table/divider language; ห้าม Card Everywhere
+- Font Awesome semantic mapping ตาม `icon-rules.md`; no Emoji; no unnecessary custom SVG
 - Main Workflow click-through ได้; ไม่มี dead button
 - Loading/Empty/Error และ states อื่นตาม context/rules
 - Mock data fictional และ clinically reasonable เมื่อเกี่ยวข้อง
@@ -73,28 +88,33 @@ Mapping `WF/REQ/FN/BR/ST` ที่มีอยู่ไปยัง Screen/View
 ก่อนประกาศว่างานเสร็จ Builder ต้องตรวจ `modules/_feature-template/review/qa-checklist.md` ด้วยตนเองและแก้ P0/P1 ที่พบก่อนส่งต่อ
 
 ## STEP 4 — POST-BUILD FACTORY GATE
-ตรวจ `factory-gate/post-build-checklist.md` และสร้าง Traceability Table:
+ตรวจ `factory-gate/post-build-checklist.md` และสร้างทั้ง 2 ตาราง:
 
+### Blueprint Traceability Table
 | ID | Blueprint Item | Evidence in index.html | Interaction/State | Result |
+|---|---|---|---|---|
+
+### Binding Reuse Verification Table
+| Pre-Build Commitment | Approved Source | Evidence in index.html | Actually Reused? | Result |
 |---|---|---|---|---|
 
 Result = `PASS / PARTIAL / FAIL / N/A`
 
-Main Workflow หรือ Critical Requirement ที่ FAIL/PARTIAL → `RETURN TO BUILDER`  
+Main Workflow/Critical Requirement FAIL/PARTIAL หรือ Binding Reuse Verification FAIL → `RETURN TO BUILDER`
 ผ่าน Gate → `READY FOR INDEPENDENT QA AGENT`
 
 ## REQUIRED OUTPUT / TRACEABILITY
 1. `index.html`
-2. Design Notes ตาม format ใน `AI_INSTRUCTIONS.md`
-3. Pre-Build Gate Result + Evidence
+2. Design Notes ตาม format ใน `AI_INSTRUCTIONS.md` รวม Reused Sources + Icon Mapping
+3. Pre-Build Gate Result + Evidence + Binding Reuse Contract
 4. Blueprint Traceability Table
 5. Builder Self-QA Result
-6. Post-Build Gate Result
-7. `prompt-used.md` — เก็บ prompt/instruction ที่ใช้เพื่อ trace ย้อนหลัง ตาม convention ของ feature template
+6. Post-Build Gate Result + Binding Reuse Verification + Premium HIS Visual Gate
+7. `prompt-used.md`
 
 ## AUTHORITY
-Business: `Application Blueprint > AI interpretation`  
-Design: `AI_INSTRUCTIONS > Design/UX/Tokens > Approved Components > Approved Patterns > Gold Standard > Actual Screenshots > Proposed New Pattern > AI creativity`
+Business: `Application Blueprint > AI interpretation`
+Design: `AI_INSTRUCTIONS > Design/UX/Tokens/Icon Rules > Approved Components > Approved Patterns > Gold Standard > Actual Screenshots > Proposed New Pattern > AI creativity`
 
 === PROMPT END ===
 
@@ -102,6 +122,6 @@ Design: `AI_INSTRUCTIONS > Design/UX/Tokens > Approved Components > Approved Pat
 1. Attach `Application blueprint_<application>.txt`
 2. เปิด AI Agent ที่เข้าถึง repo ได้
 3. บอก AI ให้ใช้ `MOCKUP_PROMPT_TEMPLATE.md`
-4. AI ต้องแสดง Pre-Build Gate = PASS พร้อม evidence ก่อน Build
-5. หลัง Build ต้อง Self-QA + Post-Build Gate = PASS
+4. AI ต้องแสดง Pre-Build Gate = PASS พร้อม Evidence + Binding Reuse Contract ก่อน Build
+5. หลัง Build ต้อง Self-QA + Post-Build Gate + Reuse Verification = PASS
 6. ส่งต่อ Independent QA Agent

@@ -25,7 +25,7 @@ modules/<module>/<feature-kebab-case>/
 
 **ห้ามสร้าง Design System เฉพาะของ module ตัวเอง** — ทุก module ใช้ `design-system/` ชุดเดียวกันทั้งหมด (สี, ฟอนต์, component, pattern) ต่างกันแค่ "ธุรกิจ/ข้อมูล/workflow" ที่อยู่ใน README ของแต่ละ module เท่านั้น
 
-## Module ปัจจุบัน (9 module)
+## Module ปัจจุบัน (11 module)
 
 | Module | โฟลเดอร์ | บริบทธุรกิจ |
 |---|---|---|
@@ -38,5 +38,7 @@ modules/<module>/<feature-kebab-case>/
 | รังสีวิทยา | `radiology/` | รับ order ตรวจภาพ, นัดคิว, รังสีแพทย์อ่านผล |
 | นัดหมาย | `appointment/` | จองนัด/เลื่อนนัด/จัดการตารางแพทย์ |
 | ช่องทางผู้ป่วย | `patient-portal/` | ผู้ป่วยเข้าถึงข้อมูลตัวเอง (เว็บ/แอป) |
+| ห้องผ่าตัด/วิสัญญี | `or-anesthesia/` | OR Request, Theatre WorkList, Anesthesia Record — เพิ่มหลัง Visual Audit |
+| การเงิน/แคชเชียร์ | `billing/` | Billed WorkList, Cashier worklist, รับชำระเงิน — เพิ่มหลัง Visual Audit |
 
 เพิ่ม module ใหม่: สร้างโฟลเดอร์ใหม่ใต้ `modules/`, เพิ่ม `README.md` อธิบายบริบทธุรกิจ, แจ้งทีมในที่ประชุม weekly sync

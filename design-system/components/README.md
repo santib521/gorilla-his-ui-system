@@ -21,6 +21,8 @@
 | `worklist.html` | คิวงานที่ต้องดำเนินการต่อ พร้อม action ต่อแถว (ต่างจาก data table ที่แสดงผลอย่างเดียว) | Registration, ER, LAB, Radiology, Pharmacy |
 | `tabs.html` | สลับดูเนื้อหาหลายหมวดในหน้าเดียวกัน (เช่น ประวัติผู้ป่วย: Vitals/Lab/Medication/Notes) | ทุก module |
 | `notification-toast.html` | แจ้งผลลัพธ์ action แบบชั่วคราว (Success/Error/Info ทั่วไป — ไม่ใช่ patient-safety critical) | ทุก module |
+| `stat-card.html` | ตัวเลขสรุปภาพรวม (ไอคอนวงกลมสี + ตัวเลข + label) — พบจริงใน Visual Audit | หน้า Dashboard/Home ของทุก module |
+| `patient-summary-panel.html` | แผงข้อมูลผู้ป่วยแบบละเอียด (vitals + allergy + underlying + social history) — พบจริงใน Visual Audit | Pharmacy, IPD, หน้าที่ต้องดู context ผู้ป่วยตลอดเวลา |
 
 ## กฎการเพิ่มไฟล์ใหม่ในโฟลเดอร์นี้
 

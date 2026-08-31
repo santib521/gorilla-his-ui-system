@@ -9,6 +9,7 @@ Design System + Mockup Factory สำหรับระบบ Gorilla HIS (Hospi
 
 ## เริ่มต้นใช้งานเร็ว (Quick Start)
 
+0. **อัปเดต 2026-08-31 — Visual Audit v1.2:** เทียบกับภาพหน้าจอจริง 29 ภาพใน `screenshots/actual-gorilla-his/` แล้ว — ปรับสีหลักเป็นโทน indigo/periwinkle, เพิ่ม component `stat-card.html` / `patient-summary-panel.html`, เพิ่ม pattern `dashboard-home.md`, เพิ่ม module `or-anesthesia/` และ `billing/` (ยืนยันว่ามีจริง) ดูรายละเอียดที่ `design-system/design-rules.md` § 0 และ changelog ใน `AI_INSTRUCTIONS.md` § 8
 1. อ่าน [`AI_INSTRUCTIONS.md`](./AI_INSTRUCTIONS.md) — กติกาทั้งหมด (อ่านครั้งแรกที่เข้าร่วมทีม)
 2. Copy `modules/_feature-template/` ไปเริ่มงานใน `modules/<module>/<feature>/` แล้วกรอก `feature-spec.md` ก่อน
 3. เปิด [`MOCKUP_PROMPT_TEMPLATE.md`](./MOCKUP_PROMPT_TEMPLATE.md) — copy พรอมป์นี้ไปใช้ทุกครั้งที่สร้าง feature ใหม่
@@ -29,19 +30,20 @@ gorilla-his-ui-system/
 │   ├── design-rules.md         ← หลักการออกแบบเชิงภาพ, กฎสี, accessibility
 │   ├── ux-rules.md              ← หลักการเชิงพฤติกรรม/โต้ตอบ (action, worklist, state)
 │   ├── tokens.css               ← Design tokens (สี/spacing/font) — ใช้เท่านั้น ห้าม hardcode
-│   ├── components/              ← 13 component จริงที่ใช้งานได้ (copy ไปใช้ต่อ)
-│   └── patterns/                 ← โครงหน้าจอระดับ pattern (list-detail, order-entry, approval, ฯลฯ)
+│   ├── components/              ← 15 component จริงที่ใช้งานได้ (copy ไปใช้ต่อ)
+│   └── patterns/                 ← โครงหน้าจอระดับ pattern (list-detail, order-entry, approval, dashboard-home ฯลฯ)
 ├── screenshots/
-│   ├── actual-gorilla-his/        ← ภาพหน้าจอของจริง (sanitized) สอน AI ให้รู้จักผลิตภัณฑ์จริง
+│   ├── actual-gorilla-his/        ← ภาพหน้าจอของจริง 29 ภาพ (sanitized) — ใช้ทำ Visual Audit v1.2 แล้ว
 │   └── approved-mockups/          ← ภาพหน้าจอของ mockup ที่ approved แล้ว
 ├── approved-mockups/              ← ⭐ Source of Truth — mockup ที่ผ่าน QA แล้ว
-└── modules/                        ← 📁 ที่สร้าง mockup ใหม่ (9 module ธุรกิจ)
+└── modules/                        ← 📁 ที่สร้าง mockup ใหม่ (11 module ธุรกิจ)
     ├── _feature-template/           ← Template สำหรับเริ่ม feature ใหม่ (copy ทั้งโฟลเดอร์)
     │   ├── feature-spec.md          ← สเปกเชิงธุรกิจ/ฟังก์ชัน (กรอกก่อนเริ่ม)
     │   └── review/qa-checklist.md   ← 📋 ที่ตรวจสอบ mockup ก่อน approve
     ├── registration/  ├── opd/      ├── ipd/
     ├── er/             ├── pharmacy/ ├── lab/
-    ├── radiology/      ├── appointment/ └── patient-portal/
+    ├── radiology/      ├── appointment/ ├── patient-portal/
+    ├── or-anesthesia/  └── billing/
 ```
 
 ## สถาปัตยกรรมของระบบ

@@ -14,6 +14,7 @@ Pattern = โครงหน้าจอระดับ **หน้าเต็�
 | `result-review.md` | ตรวจทานผลก่อนรับรอง/ส่งต่ออย่างเป็นทางการ | รับรองผล Lab, อ่านผล X-ray |
 | `approval-confirmation.md` | ยืนยัน action ที่มีผลกระทบสำคัญ ก่อนดำเนินการจริง | ยกเลิกนัด, สั่งยาที่มีความเสี่ยง, รับรองผล critical |
 | `error-handling.md` | ออกแบบ error/failure state ให้ครบทุกจุดที่อาจล้มเหลว | ทุก feature ที่มีการบันทึก/ดึงข้อมูล |
+| `dashboard-home.md` | หน้าแรกของ module: stat card สรุปภาพรวม + worklist หลัก — พบจริงใน Visual Audit | หน้า Home/Dashboard ของทุก module |
 
 ## กฎการเพิ่ม pattern ใหม่
 

@@ -23,7 +23,7 @@ gorilla-his-ui-system/
 │   ├── design-rules.md               กฎเชิง "หน้าตา" (สี, layout, typography, accessibility)
 │   ├── ux-rules.md                   กฎเชิง "พฤติกรรม" (action, worklist, drawer/modal, state)
 │   ├── tokens.css                    ตัวแปร design ทั้งหมด (สี/spacing/font) — ใช้เท่านั้น ห้าม hardcode
-│   ├── components/                   13 component พร้อมใช้งานจริง (เปิดดูได้ในเบราว์เซอร์)
+│   ├── components/                   15 component พร้อมใช้งานจริง (เปิดดูได้ในเบราว์เซอร์)
 │   │   ├── README.md                   ดัชนี + กฎการเพิ่ม component ใหม่
 │   │   ├── buttons.html
 │   │   ├── form-controls.html
@@ -37,8 +37,10 @@ gorilla-his-ui-system/
 │   │   ├── drawer.html
 │   │   ├── worklist.html
 │   │   ├── tabs.html
-│   │   └── notification-toast.html
-│   └── patterns/                     7 pattern ระดับหน้าจอ (โครง wireframe เชิงข้อความ)
+│   │   ├── notification-toast.html
+│   │   ├── stat-card.html              ★ เพิ่มหลัง Visual Audit — พบใน OR Team Dashboard จริง
+│   │   └── patient-summary-panel.html  ★ เพิ่มหลัง Visual Audit — เวอร์ชันละเอียดของ patient-banner.html
+│   └── patterns/                     8 pattern ระดับหน้าจอ (โครง wireframe เชิงข้อความ)
 │       ├── README.md                   ดัชนี + กฎการเพิ่ม pattern ใหม่
 │       ├── list-detail-page.md
 │       ├── search-and-table.md
@@ -46,22 +48,23 @@ gorilla-his-ui-system/
 │       ├── order-entry.md
 │       ├── result-review.md
 │       ├── approval-confirmation.md
-│       └── error-handling.md
+│       ├── error-handling.md
+│       └── dashboard-home.md           ★ เพิ่มหลัง Visual Audit — stat-card row + worklist
 │
 ├── screenshots/                     ภาพหน้าจอ 2 ประเภท (คนละจุดประสงค์กัน)
 │   ├── README.md                      อธิบายความต่างของ 2 โฟลเดอร์ด้านล่าง
-│   ├── actual-gorilla-his/            ภาพจอ "ของจริง" จากโปรดักชัน (sanitized) — สอน AI ให้รู้จักของจริง
+│   ├── actual-gorilla-his/            ภาพจอ "ของจริง" จากโปรดักชัน (sanitized) — 29 ภาพ ใช้ทำ Visual Audit v1.2 แล้ว
 │   │   └── README.md                    กฎการเบลอข้อมูลผู้ป่วย + ขั้นตอน Visual Audit
 │   └── approved-mockups/              ภาพจอของ mockup ที่ผ่าน QA แล้ว (ยังว่าง รอ mockup แรก)
 │
 ├── approved-mockups/                ★★ Source of Truth — mockup ที่ผ่าน QA แล้วเท่านั้น
 │   ├── README.md                      ขั้นตอนย้ายไฟล์เข้ามาหลัง approve
 │   ├── INDEX.md                       ตาราง registry: มี mockup อะไร approve ไปแล้วบ้าง
-│   └── <module>/                      โฟลเดอร์ว่างของทั้ง 9 module รอ mockup แรกที่ approve
-│       (registration, opd, ipd, er, pharmacy, lab, radiology, appointment, patient-portal)
+│   └── <module>/                      โฟลเดอร์ว่างของทั้ง 11 module รอ mockup แรกที่ approve
+│       (registration, opd, ipd, er, pharmacy, lab, radiology, appointment, patient-portal, or-anesthesia, billing)
 │
 └── modules/                         ★★ ที่ "สร้าง" mockup ใหม่ (แยกตาม module ธุรกิจ)
-    ├── README.md                      ดัชนี 9 module + กฎ "ห้ามสร้าง design system เฉพาะ module"
+    ├── README.md                      ดัชนี 11 module + กฎ "ห้ามสร้าง design system เฉพาะ module"
     ├── _feature-template/             ต้นแบบสำหรับเริ่ม feature ใหม่ — copy ทั้งโฟลเดอร์นี้
     │   ├── README.md                    วิธีใช้ template นี้
     │   ├── feature-spec.md              สเปกเชิงธุรกิจ/ฟังก์ชัน (กรอกก่อนเริ่ม)
@@ -77,7 +80,9 @@ gorilla-his-ui-system/
     ├── lab/README.md                   บริบทธุรกิจ: ห้องปฏิบัติการ
     ├── radiology/README.md             บริบทธุรกิจ: รังสีวิทยา
     ├── appointment/README.md           บริบทธุรกิจ: นัดหมาย
-    └── patient-portal/README.md        บริบทธุรกิจ: ช่องทางผู้ป่วย
+    ├── patient-portal/README.md        บริบทธุรกิจ: ช่องทางผู้ป่วย
+    ├── or-anesthesia/README.md         ★ บริบทธุรกิจ: ห้องผ่าตัด/วิสัญญี (เพิ่มหลัง Visual Audit)
+    └── billing/README.md               ★ บริบทธุรกิจ: การเงิน/แคชเชียร์ (เพิ่มหลัง Visual Audit)
 ```
 
 ---
@@ -115,7 +120,7 @@ gorilla-his-ui-system/
 
 ไฟล์ CSS เดียวที่มี design tokens ทุกตัว: สี (primitive + semantic เช่น `--color-status-critical`), typography scale, spacing scale, radius/shadow, z-index, breakpoint — **ต้อง copy ทั้งไฟล์ไปฝังใน `<style>` ของทุก mockup**
 
-### 3.3 `components/` — 13 component ใช้งานได้จริง
+### 3.3 `components/` — 15 component ใช้งานได้จริง
 
 แต่ละไฟล์เปิดในเบราว์เซอร์ได้ตรง ๆ เพื่อดู preview จริง (ไม่ใช่แค่ภาพนิ่ง)
 
@@ -134,10 +139,12 @@ gorilla-his-ui-system/
 | `worklist.html` | คิวงานที่ต้องดำเนินการต่อ พร้อม action ต่อแถว (ต่างจากตารางแสดงผลอย่างเดียว) |
 | `tabs.html` | สลับดูเนื้อหาหลายหมวดในหน้าเดียว |
 | `notification-toast.html` | แจ้งผล action ชั่วคราว (Success/Error/Info ทั่วไป) |
+| `stat-card.html` | ★ เพิ่มหลัง Visual Audit — ตัวเลขสรุปภาพรวม (ไอคอนวงกลมสี + ตัวเลข + label) พบจริงใน OR Team Dashboard |
+| `patient-summary-panel.html` | ★ เพิ่มหลัง Visual Audit — แผงข้อมูลผู้ป่วยแบบละเอียด (vitals/allergy/underlying/social history) เวอร์ชันละเอียดกว่า `patient-banner.html` |
 
 `README.md` ในโฟลเดอร์นี้คือดัชนีตารางเดียวกันนี้ + กฎว่าจะเพิ่ม component ใหม่ต้องผ่านที่ประชุม weekly sync ก่อน
 
-### 3.4 `patterns/` — 7 pattern ระดับหน้าจอ
+### 3.4 `patterns/` — 8 pattern ระดับหน้าจอ
 
 โครง wireframe เชิงข้อความที่ประกอบจากหลาย component (ไม่ใช่ไฟล์ HTML รันได้)
 
@@ -150,6 +157,7 @@ gorilla-his-ui-system/
 | `result-review.md` | ตรวจทานผลก่อนรับรอง/ส่งต่ออย่างเป็นทางการ |
 | `approval-confirmation.md` | ยืนยัน action ที่มีผลกระทบสำคัญ (3 ระดับความเข้ม) |
 | `error-handling.md` | ออกแบบ error/failure state ให้ครบทุกจุด |
+| `dashboard-home.md` | ★ เพิ่มหลัง Visual Audit — stat-card row (สรุปภาพรวม) + worklist หลัก ใช้เป็นหน้า Home/Dashboard ของ module |
 
 ---
 
@@ -157,14 +165,14 @@ gorilla-his-ui-system/
 
 | โฟลเดอร์ | เก็บอะไร | สถานะตอนนี้ |
 |---|---|---|
-| `actual-gorilla-his/` | ภาพหน้าจอ**ของจริง**จากระบบที่ใช้งานอยู่ในโรงพยาบาล (ต้องเบลอข้อมูลผู้ป่วยก่อน) ใช้สอน AI ให้รู้จักหน้าตาจริงของผลิตภัณฑ์ | ยังว่าง — รอภาพจริงจากทีม |
+| `actual-gorilla-his/` | ภาพหน้าจอ**ของจริง**จากระบบที่ใช้งานอยู่ในโรงพยาบาล (ต้องเบลอข้อมูลผู้ป่วยก่อน) ใช้สอน AI ให้รู้จักหน้าตาจริงของผลิตภัณฑ์ | มี 29 ภาพแล้ว — ใช้ทำ Visual Audit v1.2 เสร็จสมบูรณ์ |
 | `approved-mockups/` | ภาพหน้าจอของ mockup ที่ approve แล้ว ใช้ดูภาพรวมเร็ว ๆ ไม่ต้องเปิดไฟล์ HTML | ยังว่าง — รอ mockup แรกที่ approve |
 
 ---
 
 ## 5. `approved-mockups/` — Source of Truth (⭐ สำคัญที่สุด)
 
-โฟลเดอร์นี้เก็บเฉพาะ mockup ที่ผ่าน QA แล้วเท่านั้น มีโฟลเดอร์ย่อยของทั้ง 9 module รอไว้ (ตอนนี้ว่างเปล่า เพราะยังไม่มี mockup ไหน approve) พร้อม:
+โฟลเดอร์นี้เก็บเฉพาะ mockup ที่ผ่าน QA แล้วเท่านั้น มีโฟลเดอร์ย่อยของทั้ง 11 module รอไว้ (ตอนนี้ว่างเปล่า เพราะยังไม่มี mockup ไหน approve) พร้อม:
 
 - `README.md` — ขั้นตอนย้ายไฟล์เข้ามาหลัง approve (copy → ถ่าย screenshot → อัปเดต INDEX.md)
 - `INDEX.md` — ตาราง registry ว่ามี mockup อะไร approve ไปแล้วบ้าง module/feature ไหน ใครอนุมัติ วันที่เท่าไหร่ — **AI ต้องเช็คไฟล์นี้ก่อนเริ่มงานใหม่ทุกครั้ง**
@@ -173,7 +181,7 @@ gorilla-his-ui-system/
 
 ## 6. `modules/` — ที่ "สร้าง" mockup ใหม่ทั้งหมด
 
-`README.md` เป็นดัชนีของทั้ง 9 module พร้อมกฎ **"ห้ามสร้าง Design System เฉพาะของ module ตัวเอง"**
+`README.md` เป็นดัชนีของทั้ง 11 module พร้อมกฎ **"ห้ามสร้าง Design System เฉพาะของ module ตัวเอง"**
 
 ### 6.1 `_feature-template/` — ต้นแบบที่ต้อง copy ทุกครั้งที่เริ่ม feature ใหม่
 
@@ -185,7 +193,7 @@ gorilla-his-ui-system/
 | `index.html` | Mockup ไฟล์เดียว — placeholder ที่รอ AI แทนที่ด้วยของจริง | AI (Claude/Gemini) |
 | `review/qa-checklist.md` | จุดตรวจสอบก่อน approve — 6 หมวด + prompt สำหรับ "Design QA Agent" | Peer/Design QA Lead |
 
-### 6.2 โฟลเดอร์ทั้ง 9 module (แต่ละอันมีแค่ README.md บริบทธุรกิจ รอ feature จริง)
+### 6.2 โฟลเดอร์ทั้ง 11 module (แต่ละอันมีแค่ README.md บริบทธุรกิจ รอ feature จริง)
 
 | Module | บริบทธุรกิจโดยย่อ |
 |---|---|
@@ -198,6 +206,8 @@ gorilla-his-ui-system/
 | `radiology/` | รับ order ตรวจภาพ, นัดคิว, อ่านผล |
 | `appointment/` | จองนัด/เลื่อนนัด/จัดการตารางแพทย์ |
 | `patient-portal/` | ช่องทางที่ผู้ป่วยเข้าถึงข้อมูลตัวเอง |
+| `or-anesthesia/` | ★ ห้องผ่าตัด/วิสัญญี: OR Request, Theatre WorkList, Anesthesia Record (เพิ่มหลัง Visual Audit) |
+| `billing/` | ★ การเงิน/แคชเชียร์: Billed WorkList, Cashier worklist, รับชำระเงิน (เพิ่มหลัง Visual Audit) |
 
 เมื่อจะเริ่มงานจริงในแต่ละ module: **copy `_feature-template/` ทั้งโฟลเดอร์ไปวางเป็น `modules/<module>/<feature-kebab-case>/`**
 
@@ -231,8 +241,10 @@ gorilla-his-ui-system/
 
 ## 8. สรุปตัวเลข
 
-- ไฟล์ทั้งหมด: **60 ไฟล์**
-- Component พร้อมใช้: **13**
-- Pattern: **7**
-- Module: **9**
+อัปเดตหลัง Visual Audit v1.2 (2026-08-31) — เทียบกับภาพหน้าจอจริง 29 ภาพใน `screenshots/actual-gorilla-his/` แล้ว
+
+- Component พร้อมใช้: **15** (+2: `stat-card.html`, `patient-summary-panel.html`)
+- Pattern: **8** (+1: `dashboard-home.md`)
+- Module: **11** (+2: `or-anesthesia/`, `billing/`)
 - เอกสารกติกาหลัก: **2** (design-rules.md แยกจาก ux-rules.md)
+- ช่องว่างที่ทราบแล้วแต่ยังไม่มี component รองรับ: กราฟสัญญาณชีพ time-series ระดับ Critical Care Flowsheet (ดู `design-system/design-rules.md` § 0) — ต้องปรึกษา weekly design sync ก่อนออกแบบ feature ที่ต้องใช้กราฟนี้

@@ -6,7 +6,17 @@
 
 ## 0. Product Character
 
-Premium hospital software, ทันสมัย, สงบ น่าเชื่อถือ มีประสิทธิภาพ, ข้อมูลแน่นแต่ไม่รก (information-dense without being crowded) — นี่คือ character baseline เริ่มต้น เมื่อมีภาพหน้าจอ HIS จริงใน `screenshots/actual-gorilla-his/` แล้ว ให้ทีมทำ visual audit แล้วอัปเดตหมวดนี้ + `tokens.css` ให้ตรงกับของจริง
+**อัปเดตแล้วตาม Visual Audit จริง** (เทียบจากภาพใน `screenshots/actual-gorilla-his/` 29 ภาพ — เดิมเป็นแค่ baseline สมมติ ตอนนี้อ้างอิงของจริงแล้ว):
+
+- **โทนสีหลัก:** Indigo/Periwinkle blue (ไม่ใช่ฟ้าสดแบบเดิม) ใช้กับ top bar, ปุ่มหลัก, ลิงก์ — ปรับใน `tokens.css` แล้ว (`--color-blue-*`)
+- **แบรนด์:** โรงพยาบาลใช้โลโก้สีเขียวอมฟ้า (teal) — เก็บเป็น `--color-brand-mark` แยกจากสีเชิงความหมาย ใช้เฉพาะจุดโลโก้/หัวเอกสารพิมพ์เท่านั้น
+- **ความหนาแน่นของข้อมูลสูงมาก** — ตารางงานจริง (worklist, order, billing) แน่นกว่าที่ mockup เดิมออกแบบไว้พอสมควร มีคอลัมน์เยอะ, scroll แนวนอนเป็นเรื่องปกติ, ฟอนต์เล็ก (~12-14px) ทั่วทั้งตาราง
+- **Dashboard ใช้ stat card แบบวงกลมสี** — ไอคอนวงกลมสี + ตัวเลขใหญ่ + label (ดู pattern `dashboard-home.md` และ component `stat-card.html` ที่เพิ่มใหม่)
+- **Patient panel ด้านข้างมีรายละเอียดเยอะกว่าที่คิด** — ไม่ใช่แค่ HN/ชื่อ/อายุ แต่มี Vitals mini-table, Allergy, Underlying conditions, Social History อยู่ในแผงเดียวกัน (ดู component `patient-summary-panel.html` ที่เพิ่มใหม่ — ใช้แทน `patient-banner.html` เดิมได้เมื่อหน้าจอต้องการรายละเอียดเยอะ)
+- **แถวที่ต้องการความสนใจ ใช้พื้นหลังไฮไลต์สีเหลือง/ส้มอ่อนทั้งแถว** (ไม่ใช่แค่ badge) เมื่อมีไอคอนเตือนประกอบ (เช่น OR Worklist ที่มีเคสรอ) — เป็นอีกวิธีหนึ่งที่ยอมรับได้นอกจาก left-border-stripe ที่ใช้ใน `lab-result-table.html`
+- **ค่าวิกฤต/ผิดปกติในตัวเลข** แสดงด้วยสีข้อความแดงตรง ๆ (ไม่ใช่ badge เสมอไป) ตรงกับแนวทางที่ `vitals-form.html` ทำอยู่แล้ว — ยืนยันว่าถูกทาง
+
+**ช่องว่างที่ยังไม่มี component รองรับ (รู้ไว้ ยังไม่ได้สร้าง):** กราฟสัญญาณชีพแบบ time-series ระดับ Critical Care Flowsheet (ดู `17Graphic sheet.jpg`) ซับซ้อนกว่า component ปัจจุบันมาก — ถ้ามี feature ต้องใช้ ให้ปรึกษาที่ weekly design sync ก่อนแทนที่จะเดาออกแบบเอง
 
 ## 1. หลักการออกแบบ (Design Principles)
 

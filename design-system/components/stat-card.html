@@ -1,0 +1,61 @@
+<!--
+  Component: Stat Card
+  เพิ่มหลัง Visual Audit — พบใน OR Team Dashboard จริง (ไอคอนวงกลมสี + ตัวเลขใหญ่ + label)
+  ใช้ประกอบแถวบนสุดของหน้า Dashboard/Home ของแต่ละ module (ดู pattern dashboard-home.md)
+  สีของวงกลมไอคอนต้องมาจาก semantic token เท่านั้น (ห้ามคิดสีใหม่เอง — ดู design-rules.md § 4)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Stat Card</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .stat-row { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+  .stat-card {
+    flex: 1 1 200px;
+    display: flex; align-items: center; gap: var(--space-4);
+    background: var(--color-bg-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-card__icon {
+    width: 56px; height: 56px; border-radius: var(--radius-full);
+    display: flex; align-items: center; justify-content: center;
+    font-size: var(--font-size-xl); flex: 0 0 auto;
+  }
+  .stat-card__icon--info     { background: var(--color-status-info-bg);     color: var(--color-status-info); }
+  .stat-card__icon--warning  { background: var(--color-status-warning-bg);  color: var(--color-status-warning); }
+  .stat-card__icon--critical { background: var(--color-status-critical-bg); color: var(--color-status-critical); }
+  .stat-card__icon--normal   { background: var(--color-status-normal-bg);   color: var(--color-status-normal); }
+
+  .stat-card__number { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); color: var(--color-text-primary); line-height: 1; }
+  .stat-card__label { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-1); }
+  .stat-card__sub { font-size: var(--font-size-xs); color: var(--color-text-secondary); }
+</style>
+</head>
+<body>
+
+<div class="stat-row">
+  <div class="stat-card">
+    <div class="stat-card__icon stat-card__icon--info">🧍</div>
+    <div><div class="stat-card__number">12</div><div class="stat-card__label">Out Patient</div></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__icon stat-card__icon--warning">📅</div>
+    <div><div class="stat-card__number">4</div><div class="stat-card__label">Appointment</div></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__icon stat-card__icon--critical">⏳</div>
+    <div><div class="stat-card__number">2</div><div class="stat-card__label">Waiting for open result</div><div class="stat-card__sub">(2/2)</div></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__icon stat-card__icon--normal">✅</div>
+    <div><div class="stat-card__number">0/0</div><div class="stat-card__label">Verify Book / Result</div></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!--
+  Component: Patient Summary Panel
+  เพิ่มหลัง Visual Audit — พบใช้ซ้ำในหลายหน้าจอจริง (Pharmacy dispensing, Nurse Assessment, Doctor screen sidebar)
+  เป็นเวอร์ชัน "รายละเอียดเยอะ" ของ patient-banner.html — ใช้เมื่อหน้าจอต้องเห็น vitals/allergy/underlying ตลอดเวลาที่ทำงาน
+  ไม่ได้แทนที่ patient-banner.html — เลือกใช้ตามความจำเป็น (ดู design-rules.md § 0)
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Component Preview — Patient Summary Panel</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  body { font-family: var(--font-family-base); background: var(--color-bg-page); padding: var(--space-7); }
+  .panel {
+    width: 320px; background: var(--color-bg-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;
+  }
+  .panel__header { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .panel__avatar { width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--color-blue-100); color: var(--color-blue-700); display: flex; align-items: center; justify-content: center; font-weight: var(--font-weight-bold); flex: 0 0 auto; }
+  .panel__name { font-weight: var(--font-weight-bold); font-size: var(--font-size-base); }
+  .panel__meta { font-size: var(--font-size-xs); color: var(--color-text-secondary); }
+
+  .panel__section { padding: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .panel__section:last-child { border-bottom: none; }
+  .panel__section-title { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-text-secondary); margin-bottom: var(--space-2); }
+
+  .panel__allergy { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); color: var(--color-status-critical); font-weight: var(--font-weight-medium); }
+
+  .vitals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2) var(--space-3); font-size: var(--font-size-sm); }
+  .vitals-grid .v-label { color: var(--color-text-secondary); }
+  .vitals-grid .v-value { font-family: var(--font-family-mono); font-weight: var(--font-weight-medium); text-align: right; }
+  .vitals-grid .v-value.is-abnormal { color: var(--color-status-critical); }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .tag { font-size: var(--font-size-xs); background: var(--color-gray-100); color: var(--color-text-primary); padding: 2px 8px; border-radius: var(--radius-sm); }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <div class="panel__header">
+    <div class="panel__avatar">สช</div>
+    <div>
+      <div class="panel__name">นายสมชาย ใจดี</div>
+      <div class="panel__meta">HN6805-00231 · ชาย · 45 ปี</div>
+    </div>
+  </div>
+
+  <div class="panel__section">
+    <div class="panel__section-title">Allergy (1)</div>
+    <div class="panel__allergy">⚠️ Drug: Penicillin</div>
+  </div>
+
+  <div class="panel__section">
+    <div class="panel__section-title">Vital Signs</div>
+    <div class="vitals-grid">
+      <span class="v-label">Weight</span><span class="v-value">65 kg</span>
+      <span class="v-label">Height</span><span class="v-value">172 cm</span>
+      <span class="v-label">BMI</span><span class="v-value">22.0</span>
+      <span class="v-label">Temperature</span><span class="v-value is-abnormal">38.6 °C</span>
+      <span class="v-label">Pulse</span><span class="v-value">88</span>
+      <span class="v-label">Resp. Rate</span><span class="v-value">22</span>
+    </div>
+  </div>
+
+  <div class="panel__section">
+    <div class="panel__section-title">Underlying (2)</div>
+    <div class="tag-list">
+      <span class="tag">I10 — Hypertension</span>
+      <span class="tag">E78.4 — Hyperlipidaemia</span>
+    </div>
+  </div>
+
+  <div class="panel__section">
+    <div class="panel__section-title">Social History</div>
+    <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">Nicotine use: No · Alcohol use: No</div>
+  </div>
+</div>
+
+</body>
+</html>

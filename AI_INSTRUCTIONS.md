@@ -150,3 +150,4 @@ Mockup นับว่า "เสร็จ" (พร้อมส่งเข้�
 |---------|------------|----------------------------------|---------|
 | v1.0    | 2026-08-31 | เอกสารกติกาเริ่มต้นของระบบ        | Ti MKT  |
 | v1.1    | 2026-08-31 | รวมแนวคิดจาก starter kit: แยก ux-rules.md, เพิ่มกฎ clinical-safety, Definition of Done, feature-spec.md, real-screenshot reference | Ti MKT  |
+| v1.2    | 2026-08-31 | Visual Audit จากภาพจริง 29 ภาพ: ปรับ `tokens.css` เป็นโทน indigo/periwinkle + เพิ่ม `--color-brand-mark`, อัปเดต `design-rules.md` § 0 Product Character, เพิ่ม component `stat-card.html`/`patient-summary-panel.html`, เพิ่ม pattern `dashboard-home.md`, เพิ่ม module `or-anesthesia/`, `billing/`, ระบุช่องว่าง component กราฟ Critical Care Flowsheet | Ti MKT  |

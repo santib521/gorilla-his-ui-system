@@ -1,4 +1,4 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v2.0
+# Gorilla HIS Visual DNA — Product Craft Standard v2.1
 
 > This document defines the visual character that makes Gorilla HIS recognizable without its logo. It is the highest visual-design authority for mockups. It is not a styling checklist; it defines product taste, craft and desirability.
 
@@ -13,6 +13,7 @@ Target quality:
 - **Clinical gravity** — safety signals are unmistakable; everything else remains calm.
 - **Crafted, not assembled** — a page feels authored as one product surface, not built from interchangeable cards.
 - **Desirable to use** — professional does not mean dry. The interface should feel considered, responsive and satisfying without becoming decorative.
+- **Refined at touchpoint level** — buttons, tabs, banners, icon treatment, fields, selectors and status indicators must look and feel like parts of one expensive precision product, not default browser controls with color applied.
 
 A successful page should still feel like Gorilla HIS if logo, module name and brand color are temporarily hidden.
 
@@ -117,6 +118,13 @@ A metric should normally contain multiple levels, for example:
 - threshold or delta;
 - optional trend / forecast.
 
+### Readability floor — mandatory
+- Normal body / form / worklist / tab text should normally use `--font-size-sm` (14px) or larger.
+- `--font-size-xs` (12px) is for secondary metadata, compact labels and dense supporting information only.
+- `--font-size-2xs` (11px) is reserved for technical micro-labels and low-priority metadata; it must never carry an instruction, primary action, clinical narrative, patient identity or important status.
+- Do not invent 9px/10px local text merely to make more content fit.
+- At 1366×768 the user must not need browser zoom to comfortably read the main workflow.
+
 Rules:
 - Avoid one weight/size everywhere.
 - Avoid uppercase except micro-labels/technical labels.
@@ -124,6 +132,7 @@ Rules:
 - Numerical typography must be optically aligned and easy to compare.
 - Metadata is quieter but remains accessible.
 - Important narrative may use slightly larger body text rather than a new card.
+- Thai body text needs enough line-height and visual breathing room; density must not become cramped typography.
 
 ## 6. Shape Language
 
@@ -133,7 +142,7 @@ Use shape to communicate object type.
 Low radius or square; stable and architectural.
 
 ### Interactive controls
-Moderate radius; clear hover/pressed/selected states.
+Moderate radius; clear hover/pressed/selected/focus states.
 
 ### Floating contextual objects
 Largest radius and elevation because they physically sit above the workspace.
@@ -186,9 +195,6 @@ Preferred families:
 - **Time-to-threshold** — when operationally more useful than percentage alone.
 - **Matrix / bed field / queue field** — operational state where spatial scanning matters.
 
-Example of a better operational instrument:
-`97.1% occupancy · Critical · ≈46 min to effective capacity · forecast 98.4% at 20:00`
-
 A visualization must answer a decision question. Do not add charts because dashboards are expected to have charts.
 
 ## 10. Composition before Components
@@ -205,7 +211,47 @@ Then create an authored visual path:
 
 Component availability must not dictate composition.
 
-## 11. Anti-Template Test — Mandatory
+## 11. Premium Fit & Finish — Component Jewelry Standard
+
+A premium Gorilla HIS page can still fail if the small touchpoints look cheap. Evaluate controls as if they are the switches, knobs and trim pieces of a premium cockpit.
+
+### Buttons
+- Primary button must have clear silhouette, optical balance, icon/text spacing when an icon is used, and distinct hover/pressed/focus feedback.
+- Avoid tiny short buttons, browser-default select styling, weak border-only buttons and arbitrary radii.
+- Important actions should normally use at least `--font-size-sm` and a comfortable 36–44px control height depending on density.
+- Secondary controls must look intentionally subordinate, not disabled or unfinished.
+
+### Tabs
+- Tabs must feel integrated into the work surface, not like underlined text links.
+- Active state requires at least two cues chosen from: tonal surface, precise indicator, type weight, icon treatment, spatial attachment to active content.
+- Tabs need enough vertical hit area and readable type. Tiny 10–11px tabs are prohibited for main workflow navigation.
+
+### Banners / context strips
+- A banner representing a mode, safety boundary or workflow constraint must be visually unmistakable within the first viewport.
+- Use strong hierarchy: icon/mark + title + concise explanation + optional action/status.
+- A critical context banner must not look like a pale decorative strip that can be ignored.
+- The banner must remain distinguishable in grayscale through shape, border, weight and placement — not color alone.
+
+### Icons
+- Icons must have consistent optical size, weight and container relationship.
+- Main navigation and important actions must not fall back to raw abbreviations such as `EDU`, `CASE`, `EMR` when a standard semantic icon is available.
+- Text label may accompany the icon, but icon treatment should feel intentional rather than placeholder-like.
+- If Font Awesome cannot render because local assets are unavailable, the mockup must use an approved non-deceptive fallback strategy documented in Design Notes; do not silently hide icon space or replace it with cheap placeholder text.
+
+### Fields / selectors
+- Form controls need refined focus, hover and selected states, aligned heights and consistent internal padding.
+- Native-looking browser selects/inputs without crafted states are not Premium Candidate quality.
+
+### Fit & Finish FAIL examples
+- readable content is mostly 9–11px;
+- mode/safety banner is visually weaker than ordinary content;
+- tabs read like plain links;
+- buttons look like default Bootstrap/browser controls;
+- icons are missing, hidden or replaced with abbreviations;
+- spacing inside controls is inconsistent;
+- repeated thin borders make the page look low-cost or unfinished.
+
+## 12. Anti-Template Test — Mandatory
 
 Before PASS, ask:
 1. Could this plausibly be CRM, fintech, logistics SaaS or generic admin after changing labels? **If yes → FAIL.**
@@ -217,7 +263,7 @@ Before PASS, ask:
 7. Is AI visually themed differently from the HIS? **If yes → FAIL.**
 8. Does it feel merely tidy/functional but visually lifeless? **If yes → FAIL Premium Craft.**
 
-## 12. Desirability Test — Mandatory for Premium Candidate
+## 13. Desirability Test — Mandatory for Premium Candidate
 
 A Premium Candidate must create the reaction:
 **“This feels precise, expensive, calm and intentionally designed — I want to use it.”**
@@ -232,11 +278,12 @@ Evaluate:
 - meaningful depth;
 - micro-interaction quality;
 - custom operational visualization where the workflow deserves it;
-- coherent identity across the full page.
+- coherent identity across the full page;
+- component jewelry quality: buttons, tabs, banners, icons, selectors and field details.
 
 If Human Visual Review returns only “clean”, “neat”, “usable” or “professional” but not “crafted/desirable” → keep status **Candidate**, not Premium.
 
-## 13. Archetype — Command / Operational Intelligence
+## 14. Archetype — Command / Operational Intelligence
 
 The Command Center is a **live decision instrument**, not a dashboard gallery.
 
@@ -258,7 +305,7 @@ Preferred visual grammar:
 
 Do **not** lock this archetype to a fixed 2/3 + 1/3 template. Proportion follows the decision and evidence.
 
-## 14. Gold Standard Rule
+## 15. Gold Standard Rule
 
 No component, layout master or pattern may call itself **Premium**, **World-class**, **Gold**, or **Signature** solely because it passes Factory Gate.
 
@@ -273,7 +320,7 @@ Promotion requires:
 
 Until Human Design Approval exists, label artifact **Candidate**.
 
-## 15. Extraction Rule
+## 16. Extraction Rule
 
 `Human-approved reference page → extract recurring Visual Grammar → extract components/patterns → Factory enforcement`
 

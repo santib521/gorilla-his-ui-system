@@ -1,26 +1,26 @@
 /*
   Gorilla HIS Design System — Design Tokens
   ------------------------------------------
-  v1.2 — ผ่าน Visual Audit แล้ว (เทียบกับภาพจริงใน screenshots/actual-gorilla-his/)
-  ห้ามแก้ไฟล์นี้เพื่องานเฉพาะ feature ใด feature หนึ่ง
-  ถ้าต้องการ token ใหม่ ให้เสนอใน weekly design sync ก่อน (ดู docs/TEAM_ONBOARDING.md)
+  v2.0 — Premium Craft Token Layer
+  Base palette remains compatible with existing mockups. New tokens add authored surface hierarchy,
+  optical depth, numerical instrumentation and controlled motion.
 
-  วิธีใช้ใน mockup: คัดลอกทั้งไฟล์นี้ไปวางใน <style> บนสุดของ index.html
-  แล้วเรียกใช้ค่าผ่าน var(--token-name) เท่านั้น ห้าม hardcode ค่าเอง
+  Feature teams must not invent a local palette. Propose missing reusable tokens centrally.
 */
 
 :root {
   /* ============ COLOR — PRIMITIVE ============ */
-  /* v1.2 — ปรับ hue ของ blue scale ให้เป็น indigo/periwinkle ตาม Visual Audit
-     จากภาพหน้าจอจริงใน screenshots/actual-gorilla-his/ (top bar, ปุ่ม login, OR dashboard) */
   --color-blue-50:  #eef0fd;
   --color-blue-100: #dfe3fb;
+  --color-blue-200: #c8cdf8;
   --color-blue-500: #6366f1;
   --color-blue-600: #4f46e5;
   --color-blue-700: #4338ca;
+  --color-blue-900: #24205f;
 
-  /* Brand mark เท่านั้น (โลโก้/หัวเอกสารพิมพ์) — ไม่ใช่สีเชิงความหมาย ห้ามใช้กับ UI ทั่วไป */
   --color-brand-mark: #0f8b8d;
+  --color-teal-50: #edf8f8;
+  --color-teal-100: #d7efef;
 
   --color-green-50:  #ecfdf3;
   --color-green-500: #16a34a;
@@ -33,87 +33,108 @@
   --color-red-700: #991b1b;
 
   --color-orange-50:  #fff7ed;
+  --color-orange-100: #ffedd5;
   --color-orange-500: #ea580c;
   --color-orange-600: #c2410c;
 
   --color-yellow-50:  #fffbeb;
   --color-yellow-500: #d97706;
 
-  --color-gray-50:  #f8fafc;
-  --color-gray-100: #f1f5f9;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-500: #64748b;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1e293b;
-  --color-gray-900: #0f172a;
-
+  /* refined neutrals: cool enough for clinical precision, slightly softened to avoid sterile flat-white UI */
+  --color-gray-25:  #fbfcfd;
+  --color-gray-50:  #f7f9fb;
+  --color-gray-75:  #f2f5f8;
+  --color-gray-100: #edf1f5;
+  --color-gray-150: #e7ebf0;
+  --color-gray-200: #dce2e8;
+  --color-gray-300: #c7d0d9;
+  --color-gray-400: #96a2af;
+  --color-gray-500: #687584;
+  --color-gray-600: #4d5967;
+  --color-gray-700: #374250;
+  --color-gray-800: #222d3a;
+  --color-gray-900: #121b27;
+  --color-gray-950: #0b121d;
   --color-white: #ffffff;
 
   /* ============ COLOR — SEMANTIC (Clinical) ============ */
-  /* ดูความหมายเต็มใน design-rules.md § 4 — ห้ามใช้ผิดความหมาย */
-  --color-status-critical:      var(--color-red-600);
-  --color-status-critical-bg:   var(--color-red-50);
+  --color-status-critical: var(--color-red-600);
+  --color-status-critical-bg: var(--color-red-50);
   --color-status-critical-border: var(--color-red-500);
-
-  --color-status-warning:       var(--color-orange-600);
-  --color-status-warning-bg:    var(--color-orange-50);
+  --color-status-warning: var(--color-orange-600);
+  --color-status-warning-bg: var(--color-orange-50);
   --color-status-warning-border: var(--color-orange-500);
-
-  --color-status-normal:        var(--color-green-700);
-  --color-status-normal-bg:     var(--color-green-50);
+  --color-status-normal: var(--color-green-700);
+  --color-status-normal-bg: var(--color-green-50);
   --color-status-normal-border: var(--color-green-500);
-
-  --color-status-info:          var(--color-blue-700);
-  --color-status-info-bg:       var(--color-blue-50);
-  --color-status-info-border:   var(--color-blue-500);
-
-  --color-status-inactive:      var(--color-gray-500);
-  --color-status-inactive-bg:   var(--color-gray-100);
+  --color-status-info: var(--color-blue-700);
+  --color-status-info-bg: var(--color-blue-50);
+  --color-status-info-border: var(--color-blue-500);
+  --color-status-inactive: var(--color-gray-500);
+  --color-status-inactive-bg: var(--color-gray-100);
   --color-status-inactive-border: var(--color-gray-300);
 
-  /* Lab flag semantics (แยกจาก status ทั่วไปเพราะใช้บ่อยเฉพาะตาราง Lab) */
-  --color-lab-flag-high:     var(--color-orange-600);
-  --color-lab-flag-low:      var(--color-blue-700);
+  --color-lab-flag-high: var(--color-orange-600);
+  --color-lab-flag-low: var(--color-blue-700);
   --color-lab-flag-critical: var(--color-red-600);
-  --color-lab-flag-normal:   var(--color-gray-600);
+  --color-lab-flag-normal: var(--color-gray-600);
 
-  /* Action colors (แยกจาก clinical semantic — ปุ่มลบทั่วไป ไม่ใช่ patient-safety) */
-  --color-primary-action:   var(--color-blue-600);
+  /* ============ ACTION ============ */
+  --color-primary-action: var(--color-blue-600);
   --color-primary-action-hover: var(--color-blue-700);
-  --color-danger-action:    var(--color-gray-700);
+  --color-primary-action-pressed: var(--color-blue-900);
+  --color-primary-action-soft: var(--color-blue-50);
+  --color-danger-action: var(--color-gray-700);
   --color-danger-action-hover: var(--color-gray-800);
 
-  /* Surface / text */
-  --color-bg-page:      var(--color-gray-50);
-  --color-bg-surface:   var(--color-white);
-  --color-bg-sidebar:   var(--color-gray-900);
-  --color-border:       var(--color-gray-200);
-  --color-text-primary:   var(--color-gray-900);
+  /* ============ SURFACE ARCHITECTURE ============ */
+  --color-bg-page: var(--color-gray-75);             /* S0 Canvas */
+  --color-bg-canvas: var(--color-gray-75);
+  --color-bg-surface: var(--color-white);            /* S1 Work Surface */
+  --color-bg-surface-subtle: var(--color-gray-25);
+  --color-bg-instrument: #f9fafc;                    /* S2 Instrument Surface */
+  --color-bg-instrument-selected: var(--color-blue-50);
+  --color-bg-elevated: var(--color-white);           /* S3 Elevated Surface */
+  --color-bg-sidebar: var(--color-gray-900);
+  --color-bg-command-rail: #101927;
+
+  --color-border: var(--color-gray-200);
+  --color-border-subtle: var(--color-gray-150);
+  --color-border-strong: var(--color-gray-300);
+  --color-border-optical: rgba(18,27,39,.10);
+
+  --color-text-primary: var(--color-gray-900);
   --color-text-secondary: var(--color-gray-600);
-  --color-text-inverse:   var(--color-white);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-text-inverse: var(--color-white);
+  --color-text-technical: var(--color-gray-500);
 
   /* ============ TYPOGRAPHY ============ */
   --font-family-base: "Noto Sans Thai", "Sarabun", "Segoe UI", Tahoma, sans-serif;
   --font-family-mono: "Noto Sans Mono", "Consolas", monospace;
 
-  --font-size-xs:   0.75rem;   /* 12px */
-  --font-size-sm:   0.875rem;  /* 14px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg:   1.125rem;  /* 18px */
-  --font-size-xl:   1.375rem;  /* 22px */
-  --font-size-2xl:  1.75rem;   /* 28px */
+  --font-size-2xs: 0.6875rem; /* 11px technical labels */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-instrument: 2rem;
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
-  --font-weight-bold:   700;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 760;
 
-  --line-height-tight:  1.25;
+  --line-height-tight: 1.22;
   --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+  --letter-spacing-technical: 0.045em;
+  --letter-spacing-product: 0.06em;
 
-  /* ============ SPACING SCALE ============ */
+  /* ============ SPACING ============ */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -122,30 +143,48 @@
   --space-6: 24px;
   --space-7: 32px;
   --space-8: 48px;
+  --space-9: 64px;
 
-  /* ============ RADIUS / SHADOW ============ */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* ============ SHAPE ============ */
+  --radius-xs: 3px;
+  --radius-sm: 4px;       /* structural / precise */
+  --radius-md: 8px;       /* controls */
+  --radius-lg: 12px;      /* contextual/elevated */
+  --radius-xl: 16px;      /* rare floating object */
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.10);
-  --shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.14);
+  /* ============ DEPTH / LIGHT ============ */
+  --shadow-none: none;
+  --shadow-optical: 0 1px 0 rgba(255,255,255,.72) inset, 0 1px 2px rgba(18,27,39,.035);
+  --shadow-control: 0 1px 2px rgba(18,27,39,.08), 0 1px 0 rgba(255,255,255,.82) inset;
+  --shadow-elevated: 0 8px 28px rgba(18,27,39,.12), 0 2px 6px rgba(18,27,39,.07);
+  --shadow-overlay: 0 18px 48px rgba(18,27,39,.18), 0 4px 12px rgba(18,27,39,.08);
+
+  /* legacy aliases retained for compatibility; do not use as an excuse for Card Everywhere */
+  --shadow-sm: var(--shadow-optical);
+  --shadow-md: var(--shadow-elevated);
+  --shadow-lg: var(--shadow-overlay);
 
   /* ============ LAYOUT ============ */
   --layout-sidebar-width: 240px;
-  --layout-topbar-height: 56px;
+  --layout-command-rail-width: 64px;
+  --layout-topbar-height: 52px;
   --layout-content-max-width: 1600px;
 
-  /* ============ Z-INDEX SCALE ============ */
+  /* ============ MOTION ============ */
+  --duration-micro: 140ms;
+  --duration-control: 220ms;
+  --duration-causal: 320ms;
+  --ease-standard: cubic-bezier(.2,.7,.2,1);
+  --ease-emphasized: cubic-bezier(.16,1,.3,1);
+  --transition-fast: var(--duration-micro) var(--ease-standard);
+  --transition-base: var(--duration-control) var(--ease-standard);
+  --transition-causal: var(--duration-causal) var(--ease-emphasized);
+
+  /* ============ Z-INDEX ============ */
   --z-dropdown: 100;
   --z-sticky: 200;
   --z-modal-backdrop: 900;
   --z-modal: 1000;
   --z-toast: 1100;
-
-  /* ============ MOTION ============ */
-  --transition-fast: 120ms ease;
-  --transition-base: 200ms ease;
 }

@@ -1,78 +1,32 @@
 <!doctype html>
 <html lang="th">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gorilla HIS — Operational Composition Candidate</title>
-<link rel="stylesheet" href="../tokens.css">
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:var(--font-family-base);background:var(--color-bg-page);color:var(--color-text-primary)}
-.reference{max-width:var(--layout-content-max-width);margin:0 auto;padding:var(--space-5)}
-.reference-kicker{font-size:var(--font-size-xs);color:var(--color-text-secondary)}
-.reference-title{margin:var(--space-1) 0 var(--space-2);font-size:var(--font-size-xl)}
-.reference-note{max-width:70ch;font-size:var(--font-size-sm);color:var(--color-text-secondary)}
-.instrument-band{display:flex;align-items:baseline;gap:var(--space-6);margin-top:var(--space-5);padding:var(--space-3) 0;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
-.instrument{display:flex;align-items:baseline;gap:var(--space-2);min-width:0}.instrument-label{font-size:var(--font-size-xs);color:var(--color-text-secondary)}.instrument-value{font-family:var(--font-family-mono);font-size:var(--font-size-lg);font-weight:var(--font-weight-bold)}
-.decision-surface{display:grid;grid-template-columns:minmax(0,3fr) minmax(16rem,1fr);gap:var(--space-6);margin-top:var(--space-5)}
-.operational-field{min-width:0}.field-heading{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);padding-bottom:var(--space-2);border-bottom:1px solid var(--color-border)}.field-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold)}.field-context{font-size:var(--font-size-xs);color:var(--color-text-secondary)}
-.flow{width:100%;border-collapse:collapse;font-size:var(--font-size-sm)}.flow th,.flow td{padding:var(--space-2) var(--space-2);border-bottom:1px solid var(--color-border);text-align:left}.flow th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-text-secondary)}
-.exception{background:var(--color-status-warning-bg)}.exception td:last-child{color:var(--color-status-warning);font-weight:var(--font-weight-bold)}
-.decision-rail{border-left:1px solid var(--color-border);padding-left:var(--space-5)}.rail-label{font-size:var(--font-size-xs);color:var(--color-text-secondary)}.rail-item{padding:var(--space-3) 0;border-bottom:1px solid var(--color-border)}.rail-item:last-child{border-bottom:0}.rail-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold)}.rail-copy{margin-top:var(--space-1);font-size:var(--font-size-xs);color:var(--color-text-secondary)}.rail-action{margin-top:var(--space-2);border:0;background:transparent;color:var(--color-primary-action);font:inherit;font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);padding:0;cursor:pointer}
-</style>
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deprecated Candidate — Operational Layout</title></head>
 <body>
 <!--
-STATUS: CANDIDATE REFERENCE — NOT GOLD STANDARD, NOT MANDATORY VISUAL MASTER.
+DEPRECATED CANDIDATE — DO NOT USE AS COMPOSITION MASTER
 
-This file was previously named/used as a Premium Operational Layout Master. That status was too strong.
-It is intentionally demoted after visual review because compliance with a fixed shell/KPI/panel recipe can still produce generic admin/SaaS UI.
+This file previously forced:
+  compact header → KPI strip → alert → 2/3 evidence + 1/3 action rail.
 
-AUTHORITATIVE SOURCE: ../VISUAL_DNA.md
+Human visual review showed that rigid reuse can create a generic, dry enterprise dashboard.
+It is retained only as historical reference so old mockups remain traceable.
 
-Use this file only to illustrate these craft ideas:
-- continuous work surface;
-- instrument readings integrated into the page instead of KPI cards;
-- operational evidence visually dominates;
-- exception is embedded in evidence;
-- decision rail is subordinate and ordered;
-- minimal enclosure, radius and shadow.
+CURRENT AUTHORITY:
+1. ../VISUAL_DNA.md
+2. ../../AI_INSTRUCTIONS.md
+3. ../../factory-gate/FACTORY_GATE.md
+4. Human-approved Gold Standard when available
 
-Do NOT copy this composition mechanically. The Blueprint Decision Question determines the composition.
-Human Design Approval is required before any operational page becomes Gold Standard.
+For Command Center / Operational Intelligence, design from the Decision Architecture and Premium Craft rules.
+Preferred concepts may include Hospital Instrument Band, Operational Flow Spine, Forecast/Time-to-threshold,
+embedded exceptions and Intelligence Intervention — but composition proportion must follow the actual decision.
+
+DO NOT:
+- copy this old 2/3 + 1/3 formula mechanically;
+- cite this file as Mandatory Visual Master;
+- claim reuse of this file as Premium evidence;
+- promote any replacement layout before Human Design Approval.
 -->
-<main class="reference">
-  <div class="reference-kicker">OPERATIONS · 14:38 · HIMS CONNECTED</div>
-  <h1 class="reference-title">Hospital operating state</h1>
-  <div class="reference-note">Candidate composition study. The operational story should remain clear without decorative cards, hero treatment or an AI-specific visual theme.</div>
-
-  <section class="instrument-band" aria-label="Operational instruments">
-    <div class="instrument"><span class="instrument-label">Occupancy</span><span class="instrument-value">84.2%</span></div>
-    <div class="instrument"><span class="instrument-label">ER wait</span><span class="instrument-value">32 min</span></div>
-    <div class="instrument"><span class="instrument-label">Available beds</span><span class="instrument-value">18</span></div>
-    <div class="instrument"><span class="instrument-label">High-risk EWS</span><span class="instrument-value">3</span></div>
-  </section>
-
-  <section class="decision-surface">
-    <div class="operational-field">
-      <div class="field-heading"><span class="field-title">Patient flow / capacity evidence</span><span class="field-context">Live · last 15 min</span></div>
-      <table class="flow">
-        <thead><tr><th>Area</th><th>Queue</th><th>Wait</th><th>Capacity</th><th>Operational signal</th></tr></thead>
-        <tbody>
-          <tr><td>ER Triage</td><td>8</td><td>7 min</td><td>68%</td><td>Within range</td></tr>
-          <tr class="exception"><td>ER Medical</td><td>12</td><td>45 min</td><td>96%</td><td>Medical-bed bottleneck</td></tr>
-          <tr><td>IPD Medical</td><td>6 admits</td><td>22 min</td><td>91%</td><td>Near threshold</td></tr>
-          <tr><td>Housekeeping</td><td>6 beds</td><td>18 min</td><td>—</td><td>In progress</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <aside class="decision-rail">
-      <div class="rail-label">NEXT COORDINATED ACTION</div>
-      <div class="rail-item"><div class="rail-title">Release medical-bed capacity before projected ER peak</div><div class="rail-copy">Prediction indicates demand may exceed staffed capacity within four hours. Review 3 discharge-ready cases and housekeeping queue first.</div><button class="rail-action">Review evidence →</button></div>
-      <div class="rail-item"><div class="rail-title">Open Flex Ward 4B</div><div class="rail-copy">Escalation option after first-line capacity actions are reviewed.</div><button class="rail-action">Review action →</button></div>
-    </aside>
-  </section>
-</main>
+<p>This historical candidate has been deprecated. Read <code>design-system/VISUAL_DNA.md</code>.</p>
 </body>
 </html>

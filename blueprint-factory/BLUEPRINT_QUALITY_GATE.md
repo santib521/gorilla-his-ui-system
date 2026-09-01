@@ -1,184 +1,86 @@
-# Gorilla HIS — Blueprint Quality Gate v2.2
+# Gorilla HIS — Blueprint Quality Gate v2.3
 
-Purpose: allow fast hospital prototype discovery while using broad hospital/HIS expert challenge without turning AI recommendations into false hospital requirements or low-value questions.
+Purpose: hospital prototype discovery with broad expert challenge, strict relevance, and auditable evidence without turning AI recommendations into false requirements.
 
 ## Gate 1 — Source Truth
-- [ ] Hospital-confirmed facts are clearly identified.
-- [ ] Recommendations, assumptions and TBD are separated.
-- [ ] No AI/expert-created item is labeled Hospital Confirmed.
-
-**HARD FAIL:** invented requirement presented as hospital truth.
+- Hospital-confirmed facts identified; recommendations/assumptions/TBD separate; no AI item labeled Hospital Confirmed.
+**HARD FAIL:** invented requirement as hospital truth.
 
 ## Gate 2 — Expert Coverage & Domain Activation
-- [ ] EXPERT_GAP_ANALYSIS_TEMPLATE.md was used.
-- [ ] Module domain(s) were identified.
-- [ ] Relevant expert perspectives were activated with reasons.
-- [ ] Unrelated roles are marked N/A.
-- [ ] Conditional roles identify an explicit trigger.
-- [ ] Relevant clinical, operational, HIM, quality/safety, HIS, integration, security/privacy perspectives were considered.
-- [ ] Standards perspectives were considered only where applicable.
-
-**HARD FAIL:** a critical relevant perspective is omitted, or irrelevant roles are treated as active current-scope owners without a traceable trigger.
+- Expert template used; domains identified; relevant perspectives activated with reasons; unrelated roles N/A; conditional roles have trigger; standards only when applicable.
+**HARD FAIL:** critical relevant perspective omitted or irrelevant role treated current-scope without trigger.
 
 ## Gate 3 — Relevance Gate
-For every active GAP and confirmation question:
-- [ ] Traceable to REQ/BR/workflow, direct safety/data/privacy risk, direct downstream effect, or applicable standard principle.
-- [ ] In current module scope or a direct dependency.
-- [ ] Material enough to change workflow, permission, record/data effect, integration/source-of-truth, safety, privacy/security, financial integrity, AC or meaningful prototype decision.
-- [ ] Actionable with an identifiable decision/owner.
-- [ ] Timing is justified: Prototype / Before Dev / Later.
-- [ ] Future-only concerns are suppressed or marked CONDITIONALLY RELEVANT with explicit trigger.
-
-**HARD FAIL:** a Critical/High GAP or surfaced hospital question cannot explain why it is relevant to the current module and what decision/risk it changes.
+Every active GAP/question is traceable, current/direct dependency, material, actionable, and timed. Future-only concerns suppressed or conditional with trigger.
+**HARD FAIL:** Critical/High GAP/question cannot explain current relevance and decision/risk changed.
 
 ## Gate 4 — Hospital System Soundness
-- [ ] Main users/actors known enough for intended prototype.
-- [ ] Patient/encounter context handled when relevant.
-- [ ] Permission/authorization gaps identified when material.
-- [ ] Clinical documentation/order/data-source boundaries identified when relevant.
-- [ ] Audit/accountability/history considered when material.
-- [ ] Exceptions/correction/cancellation/reversal considered when relevant.
-- [ ] Source-of-truth and downstream effects considered.
-
-Unknowns may be Recommendation/WA/TBD; must not be hidden.
+Actors, patient/encounter context, material permissions, record/order/data boundaries, audit, exceptions, source-of-truth and downstream effects considered where relevant. Unknowns visible.
 
 ## Gate 5 — Main Workflow
-- [ ] Hospital-confirmed/requested workflow preserved.
-- [ ] Missing workflow steps not fabricated as confirmed.
-- [ ] Recommended Future Flow separated from Hospital Confirmed Flow.
-- [ ] Prototype can demonstrate coherent flow using confirmed facts + safe labeled WA.
+Confirmed/requested flow preserved; missing steps not fabricated; recommended future flow separated; prototype coherent with safe labeled WA.
 
 ## Gate 6 — Clinical & Data Safety
-- [ ] No unconfirmed assumption causes real medication/order/clinical action.
-- [ ] No unconfirmed assumption changes legal/actual medical record.
-- [ ] No unsafe irreversible action invented.
-- [ ] Real-vs-training/draft/preview effects explicit.
-- [ ] Patient identification/handoff/safety implications reviewed when relevant.
-
-**HARD FAIL:** unconfirmed clinical/data effect treated as production truth.
+No unconfirmed real medication/order/clinical action, legal/actual medical-record change, or irreversible action. Real-vs-training/draft explicit.
+**HARD FAIL:** unconfirmed clinical/data effect as production truth.
 
 ## Gate 7 — Evidence Strength
-For every expert-created CRITICAL/HIGH GAP, HSR or CR:
-- [ ] Reviewing Agent recorded.
-- [ ] Evidence Basis recorded.
-- [ ] Trace Source recorded.
-- [ ] Verification Status recorded.
-- [ ] Confirmation Owner recorded.
-- [ ] Severity is proportionate to evidence and risk.
-- [ ] EXPERT REASONING ONLY is not used to inflate severity without explicit reviewer acceptance.
-
-Allowed Evidence Basis:
-- RAW REQUIREMENT
-- DIRECT WORKFLOW DEPENDENCY
-- DIRECT DOWNSTREAM EFFECT
-- ESTABLISHED HIS / HOSPITAL PRACTICE
-- AUTHORITATIVE STANDARD / LAW
-- STANDARD PRINCIPLE — NEED VERIFICATION
-- EXPERT REASONING ONLY
-
-**HARD FAIL:** Critical/High expert-created item has no evidence trail, or speculative reasoning is presented as verified fact.
+For every expert-created Critical/High GAP/HSR/CR: Reviewing Agent, Evidence Basis, Trace Source, Verification Status, Confirmation Owner; severity proportionate; expert-only reasoning cannot inflate severity without reviewer acceptance.
+Allowed basis: RAW REQUIREMENT / DIRECT WORKFLOW DEPENDENCY / DIRECT DOWNSTREAM EFFECT / ESTABLISHED HIS-HOSPITAL PRACTICE / AUTHORITATIVE STANDARD-LAW / STANDARD PRINCIPLE-NEED VERIFICATION / EXPERT REASONING ONLY.
+**HARD FAIL:** no evidence trail or speculation as verified fact.
 
 ## Gate 8 — Standards, Privacy & Security
-- [ ] Relevant JCI/HA/ISO/PDPA considerations reviewed only where applicable.
-- [ ] HIPAA applicability not assumed merely because this is HIS.
-- [ ] Compliance claims identify source/topic/applicability/verification status.
-- [ ] No fabricated clause numbers or unsupported mandatory claims.
-- [ ] Best practice not mislabeled as formal requirement.
-
+Relevant JCI/HA/ISO/PDPA only when applicable; HIPAA not assumed; source/topic/applicability/verification recorded; no fabricated clauses; best practice not formal requirement.
 **HARD FAIL:** unsupported compliance/legal claim.
 
-## Gate 9 — Gap Analysis Quality
-- [ ] Gaps use GAP-xx.
-- [ ] Each important gap explains why it matters.
-- [ ] Impact is CRITICAL/HIGH/MEDIUM/LOW.
-- [ ] Treatment is HSR/CR/WA/TBD.
-- [ ] Relevance is DIRECT or CONDITIONAL.
-- [ ] Confirmation owner identified.
-- [ ] Blocking point identified.
-- [ ] Critical/High gaps visible in summary.
-- [ ] Duplicate gaps removed.
-- [ ] Candidate issues that failed relevance are suppressed, not turned into questions.
+## Gate 9 — Evidence Assurance & Authoritative Source Gate — v3.3
+For every expert-created Critical/High item and every formal standard/legal claim, where applicable:
+- [ ] Evidence Assurance Level A/B/C/D/E recorded.
+- [ ] Source Owner recorded.
+- [ ] Document/Source Title recorded when external evidence is invoked.
+- [ ] Edition/Version/Effective Date recorded when material to the claim.
+- [ ] Section/Topic/Clause recorded only if exactly verified.
+- [ ] Official Source Locator recorded for Level B/C external evidence.
+- [ ] Verified Date recorded.
+- [ ] Applicability recorded.
+- [ ] Claim Type recorded: HOSPITAL REQUIREMENT / FORMAL REQUIREMENT / AUTHORITATIVE GUIDANCE / BEST PRACTICE / EXPERT REASONING.
+- [ ] Verification Status recorded.
+- [ ] Evidence Assurance was applied only AFTER Gate 3 relevance passed.
+- [ ] No suppressed/irrelevant candidate was resurrected merely because a standard/source exists.
+- [ ] Formal `requires/shall/mandatory/must comply` wording is used only with verified Level-B authoritative evidence + exact support + applicability.
+- [ ] If formal evidence is incomplete, wording is downgraded to guidance/best-practice/standard-verification-required.
 
-## Gate 10 — Independent Challenge Pass
-- [ ] Second-pass reviewer challenged the first-pass result.
-- [ ] Reviewer checked Hospital Truth contamination.
-- [ ] Reviewer checked unsupported Critical/High items.
-- [ ] Reviewer checked missing material safety/permission/source-of-truth risks.
-- [ ] Reviewer checked contradictions.
-- [ ] Reviewer actively removed irrelevant/duplicate/low-value questions.
-- [ ] Reviewer challenged overstated severity.
-- [ ] Reviewer verified conditional downstream concerns are not presented as current requirements.
-- [ ] Disposition recorded: ACCEPT / DOWNGRADE / RECLASSIFY / SUPPRESS / NEEDS VERIFICATION.
+**HARD FAIL:** formal external requirement claim lacks verified authoritative source/applicability, or an authoritative source is used to manufacture relevance.
 
-**HARD FAIL:** Independent Challenge Pass is omitted for a completed run.
+## Gate 10 — Gap Analysis Quality
+Stable GAP IDs; why it matters; impact; treatment; relevance; owner; block point; Critical/High summary; duplicates removed; failed candidates suppressed.
 
-## Gate 11 — Functions, Rules & Traceability
-- [ ] FN-xx functions.
-- [ ] REQ-xx only hospital requirements.
-- [ ] BR-xx only confirmed business rules.
-- [ ] HSR-xx recommendations.
-- [ ] CR-xx compliance recommendations.
-- [ ] WA-xx prototype assumptions.
-- [ ] TBD-xx unresolved gaps/conflicts.
-- [ ] AC-xx important expected behavior.
-- [ ] Blueprint recommendations/WA/TBD reference originating GAP when relevant.
+## Gate 11 — Independent Challenge Pass
+Second reviewer checks truth contamination, unsupported Critical/High, missing material risks, contradictions, irrelevant/duplicate questions, severity, conditional downstream and evidence/standards classification. Disposition recorded.
+**HARD FAIL:** omitted.
 
-## Gate 12 — Working Assumption Safety
-Every WA must be clearly labeled, reversible, non-clinically dangerous, not a false compliance claim, and assigned a confirmation point. Otherwise convert to TBD.
+## Gate 12 — Functions, Rules & Traceability
+FN functions; REQ only hospital requirements; BR only confirmed rules; HSR recommendations; CR compliance recommendations; WA assumptions; TBD unresolved; AC expected behavior; advisory items trace to GAP where relevant.
 
-## Gate 13 — Dual Deliverable Separation
-- [ ] File 1 Application Blueprint exists.
-- [ ] File 2 Expert Gap & Recommendation Analysis exists.
-- [ ] File 1 clearly Business Source of Truth.
-- [ ] File 2 clearly ADVISORY / CHALLENGE ANALYSIS.
-- [ ] Expert recommendations did not silently become REQ/BR.
-- [ ] Items promoted to REQ/BR have explicit hospital/user confirmation.
+## Gate 13 — Working Assumption Safety
+WA labeled, reversible, non-dangerous, not false compliance claim, confirmation point assigned; otherwise TBD.
 
-**HARD FAIL:** Expert Gap Analysis contaminates Hospital Truth without classification/confirmation.
+## Gate 14 — Dual Deliverable Separation
+File 1 Business Source; File 2 Advisory; no silent promotion; REQ/BR promotion only with explicit hospital/user confirmation.
+**HARD FAIL:** Expert Gap contaminates Hospital Truth.
 
-## Gate 14 — Confirmation Value Gate
-Every surfaced question must have:
-- [ ] Decision affected.
-- [ ] Why answer is needed.
-- [ ] Confirmation owner.
-- [ ] Timing: Before Dev / Prototype Review / Later Refinement.
-- [ ] It is not duplicative.
-- [ ] It cannot be safely suppressed as a reversible prototype detail.
-
-**HARD FAIL:** hospital is asked to confirm a question with no clear decision value, no current relevance, or only hypothetical downstream scope.
+## Gate 15 — Confirmation Value Gate
+Every surfaced question has Decision affected, Why needed, Owner, Timing; not duplicate; cannot be safely suppressed as reversible detail.
+**HARD FAIL:** no decision value/current relevance or hypothetical downstream only.
 
 # Readiness Decision
-
-## DRAFT
-Insufficient information to build coherent/safe prototype even with reversible labeled assumptions.
-
-## PROTOTYPE READY
-Enough hospital truth exists for discovery mockup. Recommendations/WA separated. Critical unsafe effects safely contained. Expert Gap Analysis may still contain unresolved recommendations that passed relevance/evidence gates.
-
-## HOSPITAL CONFIRMED
-Hospital reviewed/confirmed Main Workflow and critical rules/assumptions represented in Blueprint.
-
-## READY FOR DEV HANDOFF
-Critical permissions, workflow, actual record/order effects, integration/source-of-truth behavior and acceptance criteria confirmed or explicitly excluded. Relevant compliance claims have verification status.
+DRAFT — insufficient for coherent/safe prototype.
+PROTOTYPE READY — enough truth for discovery; recommendations/WA separated; unsafe effects contained; evidence status visible.
+HOSPITAL CONFIRMED — hospital confirmed Main Workflow and critical represented rules/assumptions.
+READY FOR DEV HANDOFF — critical permissions/workflow/actual record-order effects/integration/source-of-truth/AC confirmed or excluded; relevant formal compliance claims verified or explicitly marked unresolved/not applicable.
 
 # Hard Reject
-1. AI/expert recommendation disguised as hospital requirement.
-2. Invented clinical logic or unsafe data effect.
-3. Invented standard/law clause or unsupported mandatory claim.
-4. HIPAA applicability assumed without basis.
-5. Critical unresolved issue hidden as assumption.
-6. Working Assumption silently promoted to Dev requirement.
-7. Main Workflow cannot be explained coherently.
-8. Critical relevant hospital perspective omitted.
-9. Expert Gap Analysis silently contaminates Blueprint truth.
-10. One mandatory artifact missing.
-11. Critical/High GAP has no evidence trail.
-12. Irrelevant/speculative GAP is surfaced as current hospital question.
-13. Conditional downstream effect is treated as current requirement without trigger.
-14. Independent Challenge Pass omitted.
-15. Confirmation question has no decision value.
+1 invented hospital requirement; 2 invented clinical logic/unsafe data effect; 3 invented standard/law clause; 4 HIPAA assumed; 5 critical issue hidden; 6 WA promoted; 7 incoherent workflow; 8 critical expert omitted; 9 advisory contaminates truth; 10 artifact missing; 11 Critical/High no evidence; 12 irrelevant/speculative question; 13 conditional downstream treated current; 14 independent challenge omitted; 15 no confirmation decision value; 16 formal requirement without Level-B authoritative verification/applicability; 17 authoritative source used to manufacture relevance; 18 best-practice/guidance mislabeled formal requirement; 19 stale/unverified edition or clause presented as verified.
 
 # Factory Rule
-`PROTOTYPE READY` may enter UI Factory only as a Discovery Prototype using File 1 Application Blueprint as Business Source of Truth.
-File 2 is used for challenge/review and hospital confirmation, not as automatic UI/Dev requirement.
-`READY FOR DEV HANDOFF` may be treated as implementation-ready business source, subject to normal project governance and technical validation.
+PROTOTYPE READY may enter UI Factory only as Discovery Prototype using File 1 as Business Source of Truth. File 2 is challenge/review/confirmation input, not automatic UI/Dev requirement. READY FOR DEV HANDOFF remains subject to normal project governance and technical/clinical validation.

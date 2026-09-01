@@ -1,165 +1,144 @@
-# Gorilla HIS — Template การวิเคราะห์ช่องว่างและข้อเสนอแนะโดยผู้เชี่ยวชาญ v1.2
+# Gorilla HIS — Template การวิเคราะห์ช่องว่างและข้อเสนอแนะโดยผู้เชี่ยวชาญ v1.3
 
-**Module / Application:**  
-**Analysis Version:** v0.x  
-**Related Blueprint:**  
-**Document Type:** เอกสารวิเคราะห์/ข้อเสนอแนะ (ADVISORY / CHALLENGE ANALYSIS) — **ยังไม่ถือเป็น HOSPITAL CONFIRMED**
+**Module / Application:**
+**Analysis Version:** v0.x
+**Related Blueprint:**
+**Document Type:** ADVISORY / CHALLENGE ANALYSIS — **ยังไม่ถือเป็น HOSPITAL CONFIRMED**
 
-> ภาษาหลักคือภาษาไทย คงคำศัพท์ HIS/Clinical/Technical ภาษาอังกฤษเมื่อชัดกว่า
-
-## 1. สรุปผลการวิเคราะห์ (Executive Assessment)
+## 1. Executive Assessment
 - Requirement ที่ชัดเจน/แข็งแรง:
-- Critical/High gaps ที่ผ่าน Relevance Gate แล้ว:
-- Candidate gaps ที่ถูก Suppress เพราะไม่เกี่ยว/ยังไม่ถึงเวลา:
+- Critical/High gaps ที่ผ่าน Relevance Gate:
+- Candidate gaps ที่ Suppress:
 - ผลต่อ Prototype:
 - ผลต่อ Dev Handoff:
 
 ## 2. Domain Classification & Expert Coverage Matrix
 | มุมมอง / Agent | สถานะ | เหตุผล / Trigger | ประเด็นที่ตรวจ |
 |---|---|---|---|
-| Patient / Caregiver | RELEVANT / CONDITIONALLY RELEVANT / N/A / NEEDS REVIEW | | |
-| Registration / Patient Access | | | |
-| Medical Records / HIM | | | |
+| Patient/Caregiver | RELEVANT / CONDITIONAL / N/A / NEEDS REVIEW | | |
+| Registration/Patient Access | | | |
+| Medical Records/HIM | | | |
 | Nursing | | | |
-| Physician / Clinical | | | |
-| ER / IPD / OR / Specialty | | | |
+| Physician/Clinical | | | |
+| ER/IPD/OR/Specialty | | | |
 | Pharmacy | | | |
-| Lab / Blood Bank | | | |
-| Radiology / PACS | | | |
+| Lab/Blood Bank | | | |
+| Radiology/PACS | | | |
 | Allied Health | | | |
 | Infection Control | | | |
-| Quality / Patient Safety / Risk | | | |
-| Case Management / Referral | | | |
-| Finance / Billing | | | |
-| Claim / Coding / DRG | | | |
-| Inventory / Supply | | | |
+| Quality/Patient Safety/Risk | | | |
+| Case Management/Referral | | | |
+| Finance/Billing | | | |
+| Claim/Coding/DRG | | | |
+| Inventory/Supply | | | |
 | Hospital Operations | | | |
 | HIS Solution Architect | | | |
-| Clinical Informatics / BA | | | |
-| Integration / Interoperability | | | |
-| Data / Source of Truth | | | |
-| UX / Human Factors | | | |
-| Security / Audit | | | |
-| Privacy / Minimum Necessary | | | |
+| Clinical Informatics/BA | | | |
+| Integration/Interoperability | | | |
+| Data/Source of Truth | | | |
+| UX/Human Factors | | | |
+| Security/Audit | | | |
+| Privacy/Minimum Necessary | | | |
 | JCI | | | |
-| HA / HAI | | | |
+| HA/HAI | | | |
 | HIPAA | | | |
-| ISO/IEC 27001:2022 | | | |
+| ISO/IEC 27001 | | | |
 | Thailand PDPA | | | |
 
-ห้ามบังคับทุก Agent ให้เกี่ยวข้องทุก Module. `CONDITIONALLY RELEVANT` ต้องระบุ trigger ชัดเจน เช่น “เฉพาะเมื่อ approved order สร้าง real Clinical Order”.
+Do not activate every Agent. CONDITIONAL requires explicit trigger.
 
-## 3. ความเข้าใจ Workflow ที่ผู้ใช้ร้องขอ
+## 3. Requested Workflow
 `Start → ... → End`
-
 ### Actors / Handoffs
-| ขั้นตอน | ผู้ปฏิบัติ | Input | Action / Decision | Output / Record | ผู้รับช่วงถัดไป | Evidence |
+| ขั้นตอน | ผู้ปฏิบัติ | Input | Action/Decision | Output/Record | Next | Evidence |
 |---|---|---|---|---|---|---|
-| | | | | | | |
 
 ## 4. Relevance Filter Summary
-ก่อนสร้าง Gap Register ให้สรุป candidate ที่ถูกคัดออก
-
-| Candidate | เหตุผลที่ Suppress | Trigger ที่จะทำให้กลับมา Relevant |
+| Candidate | เหตุผลที่ Suppress | Trigger to become Relevant |
 |---|---|---|
-| | Not current scope / no direct effect / duplicate / reversible detail / future-only | |
 
-**กฎ:** Expert curiosity ไม่เพียงพอที่จะสร้าง GAP หรือคำถามให้โรงพยาบาล
+**Expert curiosity is not sufficient. Evidence/source existence is also not sufficient to create relevance.**
 
 ## 5. Gap Register — Surviving Gaps Only
-| ID | ด้าน | Gap / Risk | Trace Source | Relevance | ทำไมสำคัญ | Impact | Evidence Basis | Reviewing Agent | Verification | Classification | Confirmation Owner | Blocks |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| GAP-01 | | | REQ/BR/WF/Risk/Standard | DIRECT / CONDITIONAL | | CRITICAL/HIGH/MEDIUM/LOW | RAW REQUIREMENT / DIRECT WORKFLOW DEPENDENCY / DIRECT DOWNSTREAM EFFECT / ESTABLISHED HIS-HOSPITAL PRACTICE / AUTHORITATIVE STANDARD-LAW / STANDARD PRINCIPLE-NEED VERIFICATION / EXPERT REASONING ONLY | | VERIFIED / NEEDS VERIFICATION / NOT APPLICABLE | HSR/CR/WA/TBD | | Prototype / Dev / Neither |
+| ID | ด้าน | Gap/Risk | Trace Source | Relevance | Why Material | Impact | Evidence Basis | Assurance | Reviewing Agent | Verification | Classification | Confirmation Owner | Blocks |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| GAP-01 | | | REQ/BR/WF/Risk/Standard | DIRECT/CONDITIONAL | | CRITICAL/HIGH/MEDIUM/LOW | allowed basis | A/B/C/D/E | | VERIFIED/PARTIAL/NEEDS VERIFICATION/N/A | HSR/CR/WA/TBD | | Prototype/Dev/Neither |
 
-Gap ทุกข้อจะต้องตอบได้ว่า: **มาจากอะไร → เกี่ยวกับ Module นี้อย่างไร → ถ้าไม่ตอบจะเปลี่ยน decision/risk อะไร → ใครควรยืนยัน → เมื่อใด**
+Critical/High expert-created item requires complete evidence trail and assurance classification.
 
-Critical/High ที่เป็น Expert-created item ต้องมี Evidence Basis + Reviewing Agent + Trace Source + Verification + Confirmation Owner ครบ
+## 6. Evidence Assurance Register — v3.3
+Use only for items that already passed Relevance Gate.
+| Ref | Assurance Level | Claim Type | Source Owner | Document / Source | Edition / Effective Date | Section / Topic / Clause | Official Source Locator | Verified Date | Applicability | Verification Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| GAP/HSR/CR | A/B/C/D/E | HOSPITAL REQUIREMENT / FORMAL REQUIREMENT / AUTHORITATIVE GUIDANCE / BEST PRACTICE / EXPERT REASONING | | | | exact only if verified | | YYYY-MM-DD | | VERIFIED / PARTIALLY VERIFIED / NEEDS VERIFICATION / N/A |
 
-## 6. Independent Challenge Review
+Rules:
+- Level A is hospital/project primary evidence, not external standards.
+- Formal external requirement wording requires verified Level B + exact support + applicability.
+- Level C/D/E MUST NOT be described as a formal mandatory standard requirement.
+- If evidence is incomplete, downgrade wording/status; do not inflate severity.
+- Source evidence MUST NOT resurrect a candidate suppressed by Relevance Gate.
+
+## 7. Independent Challenge Review
 | Ref | Reviewer Challenge | Disposition | เหตุผล |
 |---|---|---|---|
-| GAP/HSR/CR | unsupported / irrelevant / duplicate / overstated / missing risk / standards issue | ACCEPT / DOWNGRADE / RECLASSIFY / SUPPRESS / NEEDS VERIFICATION | |
+Reviewer must challenge unsupported evidence level, stale edition, unverified clause, relevance-by-standard, duplicates and overstated severity.
 
-Reviewer มีหน้าที่ทั้งหา “สิ่งที่ขาด” และ “สิ่งที่ถามเกินจำเป็น”
-
-## 7. ผลกระทบข้ามหน่วยงาน / Upstream-Downstream
-แสดงเฉพาะ Direct effect หรือ Conditional effect ที่มี trigger ชัดเจน
-
-| หน่วยงาน / ระบบ | Effect Type | Trigger / Evidence | ผลกระทบ | Gap / Recommendation |
+## 8. Upstream-Downstream
+Direct or Conditional with explicit trigger only.
+| หน่วยงาน/ระบบ | Effect Type | Trigger/Evidence | Impact | Gap/Recommendation |
 |---|---|---|---|---|
-| | DIRECT / CONDITIONAL | | | |
 
-ห้ามขอ Confirmation จาก downstream department เพียงเพราะ department นั้นมีอยู่ใน HIS
+## 9. Patient Safety / Clinical Risk Review
+Use N/A rather than invented issues. Review patient context; medication/order effect; documentation ownership/actual record effect; critical result/escalation; handoff; correction/cancel/reversal when relevant.
 
-## 8. Patient Safety / Clinical Risk Review
-ระบุ `N/A` เมื่อไม่เกี่ยวข้องแทนการสร้างประเด็นสมมติ
-- Patient identification/context:
-- Medication/Order effect:
-- Documentation ownership / Actual Medical Record effect:
-- Critical result / Alert / Escalation:
-- Handoff / Continuity:
-- Correction / Cancellation / Reversal:
-- อื่น ๆ:
-
-## 9. Permission / Accountability Review
-| Action | Create | Edit | Review | Approve | Cancel / Reverse | Audit | Evidence / Gap |
+## 10. Permission / Accountability Review
+| Action | Create | Edit | Review | Approve | Cancel/Reverse | Audit | Evidence/Gap |
 |---|---|---|---|---|---|---|---|
-| | | | | | | | |
 
-## 10. Data / Integration / Source-of-Truth Review
-| Data / Object | Source of Truth | Producer | Consumer | Timing | Failure / Exception | Evidence / Gap |
+## 11. Data / Integration / Source-of-Truth Review
+| Data/Object | Source of Truth | Producer | Consumer | Timing | Failure/Exception | Evidence/Gap |
 |---|---|---|---|---|---|---|
-| | | | | | | |
 
-## 11. Privacy / Security Review
-พิจารณาเฉพาะสิ่งที่มี relevance ต่อข้อมูล/สิทธิ์/การเปิดเผยจริง เช่น Minimum Necessary Access, Authentication/Authorization, Sensitive Data, Auditability, Export/Download/Print, Retention, Correction, Disclosure, Interface Security และ Downtime.
+## 12. Privacy / Security Review
+Only relevant access, authorization, sensitive data, audit, export/download/print, retention, correction, disclosure, interface security and downtime.
 
-## 12. Standards / Governance Review
-| มาตรฐาน / แหล่งอ้างอิง | Applicability | Topic / Principle | Evidence Source | Recommendation | Verification |
-|---|---|---|---|---|---|
-| JCI | Applicable / N/A / Needs Review | | | | VERIFIED / NEED STANDARD VERIFICATION |
-| HA / HAI | | | | | |
-| HIPAA | | | | | |
-| ISO/IEC 27001:2022 | | | | | |
-| Thailand PDPA | | | | | |
+## 13. Standards / Governance Review
+| Standard / Source | Applicability | Topic/Principle | Assurance | Claim Type | Evidence Source | Recommendation | Verification |
+|---|---|---|---|---|---|---|---|
+| JCI | Applicable/N/A/Needs Review | | B/C/E | | | | VERIFIED/NEED STANDARD VERIFICATION |
+| HA/HAI | | | | | | | |
+| HIPAA | | | | | | | |
+| ISO/IEC 27001 | | | | | | | |
+| Thailand PDPA | | | | | | | |
 
-ห้ามสร้าง Clause หรือ Mandatory Claim ที่ไม่ได้ Verify และห้ามถือว่า HIPAA ใช้กับโรงพยาบาลไทยโดยอัตโนมัติ
+Never fabricate clause or mandatory claim. Do not assume HIPAA. Follow standards-registry policy.
 
-## 13. Recommended Future Flow
-แยกจาก Hospital Confirmed Flow อย่างชัดเจน
-`Start → ... → End`
-ทุก step ที่เพิ่มต้องอ้าง HSR/CR/WA/TBD
+## 14. Recommended Future Flow
+Separate from Hospital Confirmed Flow. Every added step references HSR/CR/WA/TBD.
 
-## 14. Recommended Requirements / Controls
-| Ref | ข้อเสนอแนะ | Trace / Evidence | Risk ที่แก้ | Priority | Proposed Classification | Verification |
-|---|---|---|---|---|---|---|
-| | | | | CRITICAL/HIGH/MEDIUM/LOW | HSR/CR/WA/TBD | |
+## 15. Recommended Requirements / Controls
+| Ref | Recommendation | Trace/Evidence | Risk | Priority | Classification | Assurance | Verification |
+|---|---|---|---|---|---|---|---|
 
-## 15. Confirmation Value Gate
-เฉพาะคำถามที่ผ่าน Relevance Gate เท่านั้น
-
+## 16. Confirmation Value Gate
 ### MUST CONFIRM BEFORE DEV
 | Question | Decision affected | Why needed | Owner |
 |---|---|---|---|
-| | | | |
-
 ### CONFIRM DURING PROTOTYPE REVIEW
 | Question | Decision affected | Why needed | Owner |
 |---|---|---|---|
-| | | | |
-
 ### LATER REFINEMENT
 | Question | Decision affected | Why needed | Owner |
 |---|---|---|---|
-| | | | |
+If Decision affected/Why needed is unclear, suppress.
 
-ถ้าอธิบาย `Decision affected` หรือ `Why needed` ไม่ได้ ให้ Suppress คำถาม
+## 17. Expert Panel Conclusion
+- Prototype Yes/No/Conditional
+- Critical/High surviving gaps
+- Suppressed question count/groups
+- Highest risks
+- Next hospital confirmation topics
+- Evidence Assurance exceptions still needing verification
 
-## 16. ข้อสรุปจาก Expert Panel
-- สามารถทำ Prototype ต่อได้: Yes / No / Conditional
-- Critical/High gaps ที่ผ่าน Gate:
-- จำนวนคำถามที่ถูก Suppress เพราะไม่เกี่ยว/ยังไม่ถึงเวลา:
-- ความเสี่ยงสำคัญที่สุด:
-- หัวข้อที่ควรคุยกับโรงพยาบาลลำดับถัดไป:
-
-> **Expert Gap Analysis เป็นเอกสาร Advisory** รายการจะกลายเป็น Hospital Requirement / Business Rule ได้ต่อเมื่อโรงพยาบาลหรือผู้ใช้ยืนยันอย่างชัดเจนและ Update เข้า Application Blueprint แล้วเท่านั้น
+> Expert Gap Analysis remains Advisory. HSR/CR/WA/TBD becomes Hospital Requirement/Business Rule only after explicit hospital/user confirmation and Blueprint update.

@@ -1,13 +1,13 @@
-# Gorilla HIS — Interaction Completeness, Hospital Realism & Role Swimlane Standard v1.0
+# Gorilla HIS — Interaction Completeness, Hospital Realism, Scenario Branch & Role Swimlane Standard v1.1
 
 This standard is binding for every interactive Gorilla HIS mockup.
 
 ## 1. Purpose
-A mockup is not complete merely because it renders. It must behave like a coherent hospital application, communicate cross-role workflow, and be suitable for realistic hospital review without looking like an AI prototype.
+A mockup is not complete merely because it renders. It must behave like a coherent hospital application, communicate scenario branches and cross-role workflow, and be suitable for realistic hospital review without looking like an AI prototype.
 
 Core rule:
 
-`Business Truth → Role/Handoff Model → Working Interaction → Premium Clinical Composition → QA Evidence`
+`Business Truth → Scenario Branch Model → Role/Handoff Model → Working Interaction → Premium Clinical Composition → QA Evidence`
 
 ## 2. Reference Baseline Rule
 When the user supplies an existing mockup, screenshot, HTML candidate or explicit visual benchmark, treat it as a **minimum benchmark**, not as optional inspiration.
@@ -18,163 +18,139 @@ Before rebuilding, record:
 - what visual/UX weaknesses must be materially improved;
 - what must not regress.
 
-The new candidate must be materially better in at least three of these dimensions:
-1. workflow clarity;
-2. interaction completeness;
-3. decision hierarchy;
-4. component/control finish;
-5. information density and scanability;
-6. role/handoff visibility;
-7. product continuity;
-8. hospital-facing realism.
+The new candidate must be materially better in at least three dimensions: workflow clarity, interaction completeness, decision hierarchy, component finish, information density/scanability, role/handoff visibility, product continuity, hospital-facing realism.
 
-A candidate that is only visually different, cleaner, more spacious, or recolored but loses interaction depth = FAIL.
+A candidate that is only visually different/cleaner/recolored but loses interaction depth = FAIL.
 
 ## 3. Interaction Completeness Gate — Mandatory
 Every primary interactive control visible in the main workflow must have observable behavior.
 
-This includes, when present:
-- primary navigation menu;
-- secondary module navigation;
-- worklist row/open action;
-- tabs;
-- search/filter/sort controls;
-- primary and secondary workflow buttons;
-- modal/drawer open/close/confirm/cancel;
-- status/state-changing actions;
-- add/edit/save/cancel/reverse interactions;
-- upload/select/lookup actions represented in the mockup;
-- role switch / permission behavior when present;
-- dashboard drill-down where a KPI is presented as actionable.
+Includes when present: primary/secondary navigation; worklist open; tabs; search/filter/sort; workflow buttons; modal/drawer open-close-confirm-cancel; status actions; add/edit/save/cancel/reverse; upload/select/lookup; role switch/permission; dashboard drill-down.
 
 Observable behavior means at least one of:
 - navigate to another screen/workspace;
-- open a populated modal/drawer;
+- open populated modal/drawer;
 - mutate visible local state/data;
 - filter/search/sort visible data;
-- add/update/remove a visible row/object;
+- add/update/remove visible row/object;
 - change workflow state with visible feedback;
 - enforce validation/disabled/permission behavior;
-- display the intended detail/result context.
+- display intended detail/result context.
 
-A toast that says an action happened while no state or workflow evidence changes is not sufficient for a material workflow action.
+A toast without visible state/workflow evidence is insufficient for a material workflow action.
 
 ### Dead-Control Hard Reject
-FAIL immediately when:
-- a visible primary menu does nothing;
-- a main-workflow tab has no meaningful content;
-- a primary workflow button has no behavior;
-- modal confirm/cancel does not work;
-- action claims success but the represented data/state does not change where a state change is expected.
+FAIL when visible primary menu, main-workflow tab or primary workflow button has no meaningful behavior, modal confirm/cancel fails, or action claims success without represented state change where expected.
 
-## 4. Mandatory Interaction Inventory
-Before Post-Build PASS, create an inventory:
+## 4. Scenario Branch Completeness — Mandatory
+When File 1 Blueprint defines materially distinct in-scope scenarios, each scenario is a separate Main Workflow test path.
 
-| Control ID / Label | Type | Screen / Role | Expected Behavior | Observable Result | Test Result |
-|---|---|---|---|---|---|
+Examples of material difference:
+- different entry trigger or starting actor;
+- different primary identifier/context (e.g. existing HN vs no HN);
+- different source-of-truth relationship;
+- different custody/authorization/handoff;
+- different end state/output;
+- different access or legal/operational boundary.
 
-Every visible primary menu and every Main Workflow control must appear in this inventory.
+### Scenario Requirements
+For every in-scope scenario:
+1. the worklist/intake must let the reviewer select/create a representative case;
+2. scenario identity/context must remain visible during the workflow;
+3. all required stages must be reachable without manually editing source code;
+4. scenario-specific fields/steps/exceptions must actually differ where Blueprint says they differ;
+5. the path must reach a meaningful end state/output;
+6. state changes must be observable;
+7. the Smoke Test must execute the scenario separately.
 
-## 5. Mandatory Functional Smoke Test
+A single generic case with labels changed to imitate multiple scenarios = FAIL.
+
+If Scenario A requires HN linkage and Scenario B explicitly may have no HN, both must be exercised as distinct paths rather than one case with a cosmetic HN value.
+
+## 5. Mandatory Interaction Inventory
+Before Post-Build PASS create:
+
+| Control ID / Label | Type | Scenario | Screen / Role | Expected Behavior | Observable Result | Test Result |
+|---|---|---|---|---|---|---|
+
+Every visible primary menu and Main Workflow control must appear.
+
+## 6. Mandatory Functional Smoke Test
 Run the mockup, not only static source inspection.
 
 Minimum test:
-1. click every primary navigation item at least once;
-2. click every main-workflow tab at least once;
-3. open and close every modal/drawer family at least once;
-4. execute at least one valid save/add/update action for each major workflow stage;
+1. click every primary navigation item;
+2. click every main-workflow tab;
+3. open/close every modal/drawer family;
+4. execute at least one valid save/add/update for each major stage;
 5. exercise at least one validation/permission/error path when relevant;
 6. verify visible state/data changes after material actions;
 7. verify no workflow-breaking console error;
 8. verify search/filter if present;
-9. verify back/context preservation where the workflow relies on it.
+9. verify context preservation where workflow relies on it;
+10. **execute every Blueprint scenario marked `Smoke Test Required = Yes` end-to-end**;
+11. verify each tested branch demonstrates its actual scenario-specific difference, not merely a different label.
 
-If runtime/browser execution is blocked, the candidate cannot claim Functional Smoke Test PASS. Record the limitation and keep status below QA Passed.
+If runtime/browser execution is blocked, candidate cannot claim Functional Smoke Test PASS.
 
-## 6. Hospital-Facing Realism Rule
-The rendered product surface used for hospital review should look like the intended application, not like Factory documentation.
+## 7. Hospital-Facing Realism Rule
+Rendered product surface should look like intended application, not Factory documentation.
 
-Do not show these governance labels in normal hospital-facing UI unless the user explicitly asks for them:
-- Demo / Discovery Mockup / Prototype;
-- WA / Working Assumption;
-- GAP / TBD / CR / HSR identifiers;
-- AI-generated / AI note;
-- internal Factory QA text;
-- “simulation” wording used only to explain Factory limitations.
+Do not show normal hospital-facing UI labels such as Demo/Discovery Mockup/Prototype, WA/GAP/TBD/CR/HSR identifiers, AI/internal QA text, or “simulation” wording used only for Factory limitations unless user explicitly requests them.
 
-Keep governance truth in:
-- Blueprint;
-- Gap Analysis;
-- Design Notes;
-- START_HERE;
-- QA/Post-Build evidence.
+Keep governance truth in Blueprint, Gap Analysis, Design Notes, START_HERE and QA/Post-Build evidence.
 
-When an unresolved rule must be visible for safety, express it as realistic product language such as `รอการยืนยันสิทธิ์`, `รอตรวจทาน`, `ยังไม่อนุมัติ`, `ข้อมูลไม่ครบ`, or a disabled state — while preserving the real governance classification in supporting documents.
+When unresolved rule must be visible for safety, use realistic product language such as `รอการยืนยันสิทธิ์`, `รอตรวจทาน`, `ยังไม่อนุมัติ`, `ข้อมูลไม่ครบ`, while preserving governance classification in supporting docs.
 
-## 7. Role-Based Swimlane Workflow — Mandatory When Applicable
-When the workflow has **3 or more meaningful roles**, or has repeated handoffs/approvals across roles, include a Role-Based Swimlane view in the mockup or a directly accessible workflow view.
+## 8. Role-Based Swimlane Workflow — Mandatory When Applicable
+When workflow has 3+ meaningful roles or repeated cross-role handoffs/approvals, include a Role-Based Swimlane view.
 
-### Lane Rules
-- one lane per meaningful role/team;
-- lane labels use hospital roles, not system components;
-- steps appear in chronological order;
-- handoffs visibly cross lane boundaries;
-- current case position/status is distinguishable;
-- ownership of the next action is obvious;
-- exceptions/returns may be shown as secondary branches;
-- avoid decorative BPMN complexity unless required.
+Lane rules:
+- one lane per meaningful hospital role/team;
+- chronological steps;
+- visible cross-lane handoffs;
+- current case position/status;
+- obvious next-action ownership;
+- exceptions/returns as secondary branches where useful;
+- no decorative BPMN complexity.
 
-### Recommended Swimlane Contents
-For each step show only what helps hospital review:
-- action;
-- responsible role;
-- input/context;
-- resulting record/state;
-- next handoff.
+For multi-scenario modules, Swimlane must either:
+- switch between scenarios, or
+- clearly show scenario-specific entry/branch paths.
 
-The Swimlane is a workflow-communication instrument, not a decorative process diagram.
+A single swimlane that hides a materially different entry scenario = incomplete workflow communication.
 
-## 8. Role Consistency Rule
-Role labels used in Swimlane, permission behavior, worklists and action ownership must be consistent.
+## 9. Role Consistency Rule
+Role labels in Swimlane, permission behavior, worklists and action ownership must agree. If lane owner and executable role conflict without explanation, FAIL.
 
-If an action is shown in one role lane but executable by a different role in the mockup without explanation, FAIL role consistency.
+## 10. Premium Interaction Craft Rule
+Premium is not larger cards/more whitespace.
 
-## 9. Premium Interaction Craft Rule
-Premium is not achieved by larger cards or more whitespace.
+Require precise primary/secondary/quiet/destructive hierarchy; integrated hover/focus/pressed/selected states; compact comfortable targets; contextual action placement; causal state feedback; no default-browser-looking controls; no generic SaaS card-grid grammar; no decorative empty zones reducing hospital working area.
 
-For interactive controls, require:
-- precise visual hierarchy between primary/secondary/quiet/destructive actions;
-- integrated selected/hover/focus/pressed states;
-- compact but comfortable hit targets;
-- contextual actions located where the decision is made;
-- state changes that feel causal and immediate;
-- no browser-default-looking controls;
-- no generic SaaS card grid as the main grammar;
-- no large decorative empty zones that reduce hospital working area.
-
-## 10. Benchmark Delta Evidence
-When a reference candidate exists, Post-Build must include:
+## 11. Benchmark Delta Evidence
+When reference candidate exists:
 
 | Dimension | Reference Baseline | New Candidate | Better / Same / Worse | Evidence |
 |---|---|---|---|---|
 
-Any `Worse` result in Main Workflow interaction, role clarity, or hospital-facing realism = RETURN TO BUILDER.
+Any `Worse` in Main Workflow interaction, scenario coverage, role clarity or hospital-facing realism = RETURN TO BUILDER.
 
-## 11. Angular Mapping
-Role Swimlane and interactive controls must still have a feasible Angular 22 path.
-
+## 12. Angular Mapping
 Typical mapping:
-- role swimlane → authored Angular component using CSS grid/flex + CDK accessibility; no special external diagram library required unless justified;
+- scenario selector/worklist → Angular state/router + Material/CDK list/table;
+- role swimlane → authored Angular component using CSS grid/flex + CDK accessibility;
 - tabs → MatTabs;
 - dialogs → MatDialog;
 - drawers → MatSidenav/CDK Overlay;
-- worklists → Material/CDK table/list as appropriate;
 - state feedback → MatSnackBar or inline state region;
-- permission/disabled state → Angular authorization state + Material/CDK accessible disabled behavior.
+- permission/disabled → authorization state + Material/CDK accessible disabled behavior.
 
-## 12. QA Decision
-A mockup cannot be `Candidate — Ready for Human Visual Review` when any primary navigation/menu/tab is dead or when the role-based workflow cannot be explained end-to-end.
+## 13. QA Decision
+A mockup cannot be `Candidate — Ready for Human Visual Review` when:
+- primary navigation/menu/tab is dead;
+- role workflow cannot be explained end-to-end;
+- an in-scope material scenario branch cannot be played end-to-end;
+- two distinct scenarios are represented only by cosmetic text changes.
 
-A visually attractive but functionally shallow mockup = FAIL.
-A functionally rich but generic/AI-looking mockup = FAIL.
-The target is both: **operationally complete enough for review + purpose-built premium Gorilla HIS craft**.
+The target is both: **scenario-complete operational review + purpose-built premium Gorilla HIS craft**.

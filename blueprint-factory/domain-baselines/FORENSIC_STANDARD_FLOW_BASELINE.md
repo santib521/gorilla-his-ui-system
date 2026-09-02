@@ -1,4 +1,4 @@
-# Gorilla HIS — Forensic Medicine / Mortuary Standard Flow Baseline v1.0
+# Gorilla HIS — Forensic Medicine / Mortuary Standard Flow Baseline v1.1
 
 Status: `REFERENCE BASELINE — NOT HOSPITAL CONFIRMED`
 
@@ -8,135 +8,261 @@ Purpose: provide a source-backed starting workflow for forensic/autopsy/mortuary
 Use current official sources where available and record retrieval/verification date in each Blueprint run.
 
 Primary source families:
-1. Thailand Ministry of Public Health (MOPH) — official forensic/post-mortem practice manuals and guidance, including the published `คู่มือการดำเนินงานชันสูตรพลิกศพ` and `คู่มือการปฏิบัติงานนิติเวช (สำหรับแพทย์และบุคลากรทางการแพทย์)` available on the MOPH download portal.
-2. Central Institute of Forensic Science (CIFS), Ministry of Justice — current official forensic knowledge/service material, including autopsy support manuals and evidence-handling / Chain of Custody guidance.
-3. Healthcare Accreditation Institute (HAI) — current applicable Hospital and Healthcare Standards. HA 6th Edition becomes effective for assessment from 1 October 2026.
-4. Joint Commission International — Hospital 8th Edition, effective 1 January 2025, used only where the hospital adopts/seeks JCI and only for relevant patient-safety, records/information, healthcare-technology, governance and related principles.
-5. Hospital-approved Forensic/Mortuary SOPs, forms and policies — required to establish actual local workflow, authority, custody checkpoints, report finality and release rules.
+1. Thailand Ministry of Public Health (MOPH) — official forensic/post-mortem practice manuals and guidance.
+2. Central Institute of Forensic Science (CIFS), Ministry of Justice — official forensic pathology, clinical forensic, evidence/custody and service material.
+3. Healthcare Accreditation Institute (HAI) — current applicable Hospital and Healthcare Standards.
+4. Joint Commission International — current Hospital standards only when hospital applies/seeks JCI or explicitly uses it as benchmark.
+5. Hospital-approved Forensic/Mortuary SOPs, forms, finance rules and privacy policy — required to establish local workflow.
 
 Official source locators:
 - MOPH forensic manuals: https://phdb.moph.go.th/main/index/downloadlist/53/7
+- CIFS Clinical Forensic Medicine mission: https://www.cifs.go.th/index.php?mod=department
 - CIFS evidence service / Chain of Custody: https://eservice.cifs.go.th/index.php?mod=service&page=witness&route=government
-- CIFS knowledge base: https://www.cifs.go.th/
+- CIFS e-service / requester categories: https://eservice.cifs.go.th/
 - HA standards: https://www.ha.or.th/TH/Contents/มาตรฐานโรงพยาบาลและบริการสุขภาพ%20(HA)
 - JCI Hospital 8th Edition overview: https://store.jointcommissioninternational.org/joint-commission-international-standards-for-hospitals-8th-edition/
 
-Do not copy copyrighted standards text into the repository. Store only metadata, principles, workflow implications and verification status.
+Do not copy copyrighted standards text into repository. Store metadata, principles, workflow implications and verification status only.
 
 ---
 
-## Scenario A — Death Occurring Inside Hospital / Existing HN
+# 1. Mandatory Forensic Case Lifecycle Challenge
+Every Forensic Blueprint run MUST explicitly review these lifecycle questions, even when Raw Requirement does not mention them. A missing answer becomes GAP/HSR/TBD only when it passes Relevance Gate.
+
+## FLC-01 Case Population — Living / Deceased
+- Does the service cover deceased forensic cases?
+- Does it cover **living forensic patients (Clinical Forensic Medicine / Forensic OPD)** such as injury assessment, sexual assault/violence-related examination, evidence collection and medico-legal certification?
+- Are living and deceased cases separated in identifier/encounter/workflow/access/reporting?
+
+Evidence note: CIFS officially maintains a Clinical Forensic Medicine service that examines living case-patients, including injury/assault/sexual-offence related examinations. Therefore a forensic domain review must not assume “forensic = deceased only”.
+
+## FLC-02 Request / Referral Origin
+For each scenario identify:
+- who initiates the request;
+- requester type (internal hospital unit/physician, police/investigator, court/authorized agency, patient/relative where locally permitted, other);
+- request document/reference number;
+- receiving unit;
+- date/time;
+- urgency/priority if relevant;
+- who accepts responsibility for the case.
+
+External requester examples from CIFS service context include investigator/case owner, authorized representative, directly affected person and direct relative, but this MUST NOT be copied as the hospital's accepted requester list without confirmation.
+
+## FLC-03 Accept / Reject / Return-for-Information
+Every intake workflow MUST challenge whether request can be:
+- Accepted;
+- Rejected;
+- Returned/Pending for missing information;
+- Redirected to another service.
+
+If reject/return exists, capture reason, actor, date/time, notification recipient and audit history. Exact reject criteria are Hospital Policy/TBD unless authoritative local criteria are supplied.
+
+## FLC-04 Identity Context — AF / HN / VN / Encounter
+Challenge separately:
+- AF-only external body;
+- AF linked to existing HN history;
+- living forensic patient using HN/VN/Encounter;
+- unknown identity and later identity correction;
+- multiple possible HN match / duplicate identity.
+
+Important distinction:
+`Can link/read historical HN` does NOT automatically mean `may use that HN/VN for new clinical orders`.
+
+## FLC-05 HN Link Governance
+When an AF-only case is later linked to an HN, review:
+- search/match method;
+- evidence supporting the match;
+- whether dual review/approval is required by hospital policy;
+- who may link/unlink/correct;
+- audit before/after;
+- effect on existing forensic records/orders/results;
+- duplicate/wrong-link reversal.
+
+There is no universal rule in this Master that HN linkage **must** require approval. Approval is a material governance question that must be confirmed when wrong-link risk is significant.
+
+## FLC-06 Physician Coverage / Duty Roster
+Review how a request is assigned to a forensic physician:
+- duty/on-call/exam roster;
+- service date/time/location;
+- responsible physician;
+- substitute/coverage/consult;
+- unavailable/no physician path;
+- handover between physicians.
+
+A physician roster is an operational recommendation unless Hospital Requirement/SOP confirms it. It becomes relevant when request routing, ownership or SLA depends on physician availability.
+
+## FLC-07 Diagnostic Order Context
+Before any Lab/Radiology/CT order, explicitly determine:
+- whether the target system requires HN/VN/Encounter;
+- whether an AF-only case may order directly;
+- whether a temporary/special encounter must be created;
+- which identifier is sent downstream;
+- how specimen/accession/order/result returns to AF;
+- cancellation/result correction behavior.
+
+Do not show a production order path from AF alone unless the integration contract confirms it.
+
+## FLC-08 Finance / Charging
+For each scenario challenge:
+- chargeable vs non-chargeable cost;
+- payer/recipient of charge;
+- HN/VN/AF billing context;
+- service price/quantity/time basis (e.g. cold storage days) where hospital defines it;
+- waive/exempt/discount if relevant;
+- posting source of truth;
+- cancellation/refund/reversal;
+- whether external/public-authority cases follow a different finance route.
+
+MOPH service fee schedules may be reference evidence only when applicable to the hospital; they do not automatically set this hospital's price.
+
+## FLC-09 Sensitive Identity / Name Masking
+Review whether highly sensitive forensic cases require:
+- masked name in worklists/queues;
+- restricted photographs/documents;
+- role-based reveal of full identity;
+- print/export/download restrictions;
+- access log / break-glass where locally defined;
+- special handling of sexual-assault, child, violence or other sensitive cases.
+
+HA information security/privacy principles support confidentiality and protection against unauthorized access, but exact masking rule must be Hospital Policy/Privacy-confirmed.
+
+---
+
+# 2. Scenario A — Death Occurring Inside Hospital / Existing HN
 
 ### Entry Trigger
-A patient with an existing HN/encounter dies in the hospital and enters the forensic/post-mortem pathway according to hospital/legal criteria.
+Patient with existing HN/encounter dies in hospital and is referred/requested into forensic/post-mortem pathway.
 
 ### Reference Flow
-A1. Detect/record death event in hospital clinical context.
-A2. Determine/receive forensic referral or post-mortem request according to local authority.
-A3. Create/assign forensic case identifier (e.g. AF) and link existing HN/encounter.
-A4. Verify deceased identity and preserve HN↔AF relationship.
-A5. Register request/investigator/informant/context required for the forensic case.
-A6. Receive body into forensic/mortuary custody and record location/time/staff.
-A7. Forensic physician reviews clinical history and available investigations.
-A8. Perform/document forensic examination / post-mortem examination as applicable.
-A9. Create Lab / Radiology / CT or other investigation requests when clinically/forensically required; maintain HN/AF/order/result source-of-truth linkage.
-A10. Collect/label/transfer specimens or evidence with traceable custody where applicable.
-A11. Review results and complete medico-legal report workflow.
-A12. Store body / record mortuary services and movements as applicable.
-A13. Print / hand over report with recipient traceability.
-A14. Verify authority/identity/supporting documents for body release/disposition.
-A15. Record release/disposition, close case status and include case in reporting/statistics.
+A1. Death event recorded in clinical context.
+A2. Internal requester/referring unit submits forensic request; requester/authority must be identified.
+A3. Forensic service reviews request → Accept / Return / Reject if local policy allows.
+A4. Create AF and link existing HN/encounter.
+A5. Verify deceased identity and HN↔AF relationship; HN-link approval requirement = LOCAL POLICY/TBD.
+A6. Assign responsible forensic physician using local roster/coverage model where applicable.
+A7. Register investigator/informant/context.
+A8. Receive body into forensic/mortuary custody; record location/time/staff.
+A9. Forensic physician reviews clinical history.
+A10. Perform forensic/post-mortem examination.
+A11. Before Lab/Radiology/CT, verify valid HN/VN/Encounter/order context required by downstream system.
+A12. Collect/label/transfer specimens/evidence with traceable custody where applicable.
+A13. Review results and complete medico-legal report workflow.
+A14. Record mortuary services/costs with confirmed billing context.
+A15. Store/move body with location history.
+A16. Print / hand over report with recipient traceability.
+A17. Verify authority/identity/supporting documents for body release.
+A18. Record disposition, close case and include in statistics.
 
 ### Material Distinctions
-- Existing HN and hospital encounter are available.
-- Historical diagnosis/treatment/lab/radiology data may be referenced.
-- Death event and forensic AF record must not silently overwrite each other's source of truth.
+- Existing HN/encounter available.
+- Historical clinical data can be referenced.
+- AF and clinical encounter remain distinct source-of-truth contexts.
 
 ---
 
-## Scenario B — External Death / Body Brought from Outside Hospital
+# 3. Scenario B — External Death / Body Brought from Outside Hospital
 
 ### Entry Trigger
-Police/authorized external party or relevant service brings/refers a deceased person from outside the hospital for forensic examination/autopsy/mortuary services.
+Police/authorized external party/relevant service requests or brings a deceased person from outside hospital.
 
 ### Reference Flow
-B1. Receive forensic request/referral and external case context.
-B2. Create AF as primary forensic case identifier.
-B3. Record known/unknown identity, place found, preliminary circumstances, police/investigator/informant details.
-B4. Record body receipt, identity evidence available, date/time, receiving staff and current location.
-B5. If no HN exists, continue forensic workflow using AF as the case anchor; whether/when a hospital HN is created is `LOCAL POLICY / TBD` unless explicitly confirmed.
-B6. Perform/document forensic examination / post-mortem examination as applicable.
-B7. Request Lab/Radiology/CT using an explicitly defined AF/HN/encounter/order linkage model; no silent assumption that HN exists.
-B8. Collect/label/transfer specimens/evidence with traceable Chain of Custody where applicable.
-B9. Review results and complete medico-legal report workflow.
-B10. Manage mortuary cabinet/location/movement and relevant services/costs.
-B11. Hand over report to authorized recipient with identity/request-document traceability.
-B12. Verify authority/identity/supporting documents for body release; support relative/foundation/unclaimed-body path as applicable.
-B13. Record disposition and close case; include in statistics.
+B1. Receive external request and requester authority/document context.
+B2. Review request → Accept / Return / Reject if local policy permits.
+B3. Create AF as primary forensic case identifier.
+B4. Record known/unknown identity, place found, circumstances, police/investigator/informant.
+B5. Receive body + identity evidence + receiving staff/time/location.
+B6. Search for possible existing HN only when identifying data makes this appropriate; historical HN may be linked for review after match governance.
+B7. If HN candidate found, Link/Approve/Reject Match according to Hospital Policy; preserve audit and reversible unlink/correction.
+B8. If no HN exists, AF remains case anchor. Whether a new HN/encounter/VN must be created for clinical orders is LOCAL INTEGRATION POLICY/TBD.
+B9. Assign forensic physician / duty coverage.
+B10. Perform forensic/post-mortem examination.
+B11. If Lab/Radiology/CT is required, establish valid order context first; do not assume AF-alone ordering is accepted by downstream systems.
+B12. Collect/label/transfer specimens/evidence with Chain of Custody where applicable.
+B13. Review results and complete report.
+B14. Record mortuary cabinet/movement/services/costs with scenario-specific finance path.
+B15. Hand over report to authorized recipient.
+B16. Verify body release recipient/authority; support relative/foundation/unclaimed-body route as applicable.
+B17. Record disposition/closure/statistics.
 
 ### Material Distinctions
 - HN may be absent at entry.
-- AF is the primary case anchor until local policy determines whether an HN/encounter is created/linked.
-- Police/investigator/external recipient context is commonly more central.
-- Unknown/unidentified deceased and later identity correction/linkage must be considered when relevant.
+- AF is primary case anchor.
+- Historical HN linking and new HN/VN/encounter creation are separate decisions.
+- Unknown identity/later correction can be material.
 
 ---
 
-## Scenario C — Forensic OPD / Living Patient
+# 4. Scenario C — Forensic OPD / Living Patient
 
 ### Entry Trigger
-A living patient presents for forensic clinical assessment, injury documentation, sexual-assault/violence-related examination or another medico-legal OPD service within hospital scope.
+Living patient presents/referred for forensic clinical assessment, injury documentation, sexual-assault/violence-related examination or other medico-legal service.
 
 ### Reference Flow
-C1. Identify patient using HN/VN/encounter.
-C2. Establish access relationship/authorization for attending physician, consulted case physician and forensic physician according to hospital policy.
-C3. Review relevant clinical history.
-C4. Perform/document forensic clinical examination and injury findings.
-C5. Capture/upload forensic photographs/documents with restricted access and audit.
-C6. Order relevant diagnostic tests when required, preserving normal clinical source-of-truth and result linkage.
-C7. Draft/review/finalize forensic report/certificate according to hospital policy.
-C8. Print/handover report/certificate with printer/date/recipient/contact/supporting-document traceability.
-C9. Maintain restricted longitudinal record/audit/history.
+C1. Receive/referral/request and identify requester/source.
+C2. Review intake → Accept / Return / Redirect/Reject if local service criteria permit.
+C3. Identify patient using HN/VN/Encounter; create valid visit context before orders/documentation according to HIS policy.
+C4. Apply sensitive-name masking/restricted queue behavior if Hospital Privacy Policy requires it.
+C5. Establish attending/consult/forensic physician access relationship.
+C6. Assign responsible forensic physician / roster where relevant.
+C7. Review relevant clinical history.
+C8. Perform forensic examination/injury documentation.
+C9. Capture restricted photographs/documents/evidence.
+C10. Order Lab/Radiology using HN/VN/Encounter source of truth.
+C11. Draft/review/finalize forensic report/certificate according to hospital policy.
+C12. Print/handover with recipient/contact/supporting-document traceability.
+C13. Maintain restricted longitudinal record/audit/history.
 
 ### Material Distinctions
-- Patient is alive and remains within normal clinical HN/VN context.
-- Forensic documentation may have medico-legal sensitivity but must not be confused with deceased/mortuary workflow.
-- Permission scope may be narrower than ordinary OPD access.
+- Person is alive and remains in normal clinical HN/VN context.
+- Clinical Forensic Medicine is a valid forensic service branch.
+- Permission/name masking may be stricter than ordinary OPD.
 
 ---
 
-## Cross-Scenario Control Baseline
-The following are reference control topics and still require relevance + local confirmation:
-
-1. Identity / case linkage: HN, AF, encounter, unknown identity and later correction.
-2. Role / authority: who may create, edit, review, finalize, amend, print, hand over, move or release.
-3. Chain of Custody: specimens/evidence/documents/media where custody materially affects forensic integrity.
-4. Forensic photography/media: case association, uploader, time, access, audit and integrity controls.
-5. Diagnostic source of truth: Lab/Radiology/CT order/result IDs and HN/AF/encounter mapping.
-6. Report governance: author/reviewer/final/sign/amend/supersede/print/handover history.
-7. Mortuary movement: receive/store/move/release location history and identity checks.
-8. Release/handover: recipient authority, identity and supporting documents.
-9. Correction/cancellation/reversal: identity corrections, order cancellations/result corrections, report amendments, cabinet movement corrections and financial reversals where relevant.
-10. Sensitive access/disclosure: minimum necessary access, print/export/download and audit.
-11. Downtime/manual continuity: only when material to hospital workflow and current project scope.
-
----
-
-## Standards Overlay Guidance
-### HA
-Use the current applicable HA edition to review quality/safety, patient/person identification, information/record governance, diagnostic process, continuity/handoff, privacy/security and organizational controls when relevant. Do not infer UI fields/buttons solely from HA principles.
-
-### JCI
-If JCI is applicable/selected by the hospital, use Hospital 8th Edition principles relevant to patient safety, information management/medical records, Healthcare Technology/EHR/cybersecurity, governance and applicable clinical/service processes. Do not claim exact JCI clause compliance without verified licensed source and applicability.
-
-### CIFS / MOPH
-Use to strengthen domain workflow completeness, evidence integrity, Chain of Custody, forensic photography, autopsy/post-mortem practice and evidence/specimen handling. Do not copy CIFS/MOPH local organizational workflow as this hospital's exact process.
+# 5. Cross-Scenario Control Baseline
+1. Request/Referral Source + requester authority.
+2. Accept / Reject / Return-for-information lifecycle.
+3. Living vs deceased case classification.
+4. AF/HN/VN/Encounter identity and source-of-truth.
+5. HN link/unlink/correction governance and approval question.
+6. Physician duty roster/assignment/handover.
+7. Diagnostic order context and downstream identifiers.
+8. Chain of Custody for relevant specimens/evidence/media/documents.
+9. Forensic photography/media access/integrity.
+10. Report author/reviewer/final/amend/print/handover.
+11. Mortuary receive/store/move/release identity checks.
+12. Finance/charging/reversal by scenario.
+13. Sensitive identity masking/confidentiality/access audit.
+14. Correction/cancellation/reversal/history.
+15. Downtime/manual continuity only when material to project scope.
 
 ---
 
-## Blueprint / Mockup Coverage Rule
-Forensic Blueprint must classify Scenario A, B and C as `IN SCOPE / OUT OF SCOPE / PARTIAL / TBD` from the supplied requirement.
+# 6. Standards Overlay Guidance
+## HA
+Use current applicable HA edition to review quality/safety, identification, information/record governance, confidentiality/information security, diagnostic process and continuity/handoff. Do not infer exact UI fields solely from HA principles.
 
-If a scenario is IN SCOPE, UI Factory must provide a playable end-to-end case path for that scenario, and Functional Smoke Test must execute at least one representative case for the branch.
+## JCI
+If applicable/selected, use current Hospital standards relevant to patient safety, information/medical records, healthcare technology/EHR/cybersecurity, governance and clinical/service processes. Do not claim exact clause compliance without verified source/applicability.
 
-For the current Gorilla HIS forensic requirement family, both **Scenario A: in-hospital death with HN** and **Scenario B: external death without guaranteed HN** are materially distinct and must not be collapsed into one generic AF case flow. Forensic OPD is a third distinct branch when included by requirement.
+## CIFS / MOPH
+Use to strengthen domain completeness for living forensic patients, autopsy/post-mortem, evidence integrity, Chain of Custody, forensic photography and specimen handling. Do not copy organizational workflow as this hospital's exact process.
+
+---
+
+# 7. Blueprint / Mockup Coverage Rule
+Forensic Blueprint must classify Scenario A, B and C as `IN SCOPE / OUT OF SCOPE / PARTIAL / TBD`.
+
+If IN SCOPE, UI Factory must provide a playable end-to-end case path and Smoke Test it separately.
+
+For every in-scope scenario, mockup must also demonstrate where relevant:
+- Request source;
+- Accept/Reject/Return path;
+- case identifier context;
+- physician assignment/roster;
+- order-context rule;
+- finance route;
+- sensitive-name behavior;
+- HN-link governance.
+
+A mockup that shows only examination/report tabs but omits intake, ownership, order context and closure is not a complete forensic workflow review.

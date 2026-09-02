@@ -1,4 +1,4 @@
-# Gorilla HIS — Application Blueprint Template v2.1
+# Gorilla HIS — Application Blueprint Template v2.2
 
 **Blueprint Version:** v0.x / v1.x  
 **Status:** DRAFT / PROTOTYPE READY / HOSPITAL CONFIRMED / READY FOR DEV HANDOFF  
@@ -9,7 +9,7 @@
 ## Evidence Classification
 - `HOSPITAL CONFIRMED` — hospital/user explicitly supplied or confirmed.
 - `HOSPITAL STANDARD RECOMMENDATION` — expert HIS/hospital recommendation; not hospital-confirmed.
-- `COMPLIANCE RECOMMENDATION` — recommendation tied to an identified applicable JCI/HA/HIPAA-if-applicable/ISO 27001/PDPA basis.
+- `COMPLIANCE RECOMMENDATION` — recommendation tied to an identified applicable authoritative basis.
 - `WORKING ASSUMPTION` — temporary reversible prototype choice; must be confirmed later.
 - `TBD` — unknown; do not guess.
 
@@ -25,7 +25,6 @@
 
 ## 3. Main Workflow
 `Start → ... → End`
-
 Clearly mark any step that is not Hospital Confirmed.
 
 ## 4. Core Functions
@@ -42,8 +41,7 @@ Clearly mark any step that is not Hospital Confirmed.
 | ID | Business Rule | Evidence |
 |---|---|---|
 | BR-01 | | HOSPITAL CONFIRMED |
-
-Do not place AI/expert recommendations in this section.
+Do not place AI/expert recommendations here.
 
 ## 7. Hospital Standard Recommendations
 | ID | Recommendation | Rationale | Gap Ref | Confirmation Needed |
@@ -53,9 +51,14 @@ Do not place AI/expert recommendations in this section.
 ## 8. Standards & Compliance Review
 | ID | Standard / Source | Applicability | Topic / Principle | Recommendation | Verification | Gap Ref |
 |---|---|---|---|---|---|---|
-| CR-01 | JCI / HA / HIPAA-if-applicable / ISO/IEC 27001 / PDPA | | | | VERIFIED / NEED STANDARD VERIFICATION | GAP-xx |
+| CR-01 | | | | | VERIFIED / NEED STANDARD VERIFICATION | GAP-xx |
 
-Do not fabricate clause numbers. HIPAA applicability must be established; HIS alone does not make HIPAA applicable. Accreditation/security/privacy principles do not automatically dictate a UI control.
+### 8A. Domain Compliance Coverage — Mandatory when a domain-specific authority registry is activated
+| Domain Topic | Hospital REQ / Workflow Trace | Authoritative Source | Principle Supported | Coverage | Evidence Classification | Verification | Decision / Owner |
+|---|---|---|---|---|---|---|---|
+| | | | | COVERED / PARTIAL / GAP / N/A | HOSPITAL CONFIRMED / HSR / CR / TBD | | |
+
+For Forensic/Mortuary modules this is the **Forensic Standard Compliance Review**. External guidance may expose a gap or support a principle but must not silently become Hospital Workflow or a Hospital Requirement.
 
 ## 9. Data / Integration
 | Data/System | Expected Relationship | Evidence |
@@ -64,14 +67,13 @@ Do not fabricate clause numbers. HIPAA applicability must be established; HIS al
 
 ## 10. Workflow / Record States
 `State A → State B → ...`
-
 Mark unconfirmed states as Working Assumption or TBD.
 
 ## 11. Key Information Required
-- 
+-
 
 ## 12. Reports / Outputs
-- 
+-
 
 ## 13. Working Assumption Register
 | ID | Working Assumption | Why Needed for Prototype | Risk if Wrong | Gap Ref | Confirm When |
@@ -85,13 +87,11 @@ Mark unconfirmed states as Working Assumption or TBD.
 
 ## 15. Questions
 ### MUST CONFIRM BEFORE DEV
-1. 
-
+1.
 ### CONFIRM DURING PROTOTYPE REVIEW
-1. 
-
+1.
 ### LATER REFINEMENT
-1. 
+1.
 
 ## 16. Acceptance Criteria
 | ID | Acceptance Criterion | Related IDs | Evidence |
@@ -112,9 +112,7 @@ Mark unconfirmed states as Working Assumption or TBD.
 **Compliance verification pending:**
 
 ### Readiness Rule
-`PROTOTYPE READY` means enough truth exists to build a safe discovery mockup while clearly labeling reversible assumptions/recommendations.  
-`READY FOR DEV HANDOFF` requires critical workflow, permission, clinical/data effects, integration behavior and implementation acceptance criteria to be confirmed or explicitly out of scope.
+`PROTOTYPE READY` means enough truth exists to build a safe discovery mockup while clearly classifying reversible assumptions/recommendations. `READY FOR DEV HANDOFF` requires critical workflow, permission, clinical/data/legal effects, integration behavior and implementation acceptance criteria to be confirmed or explicitly out of scope.
 
 ### Separation Rule
-`Expert Gap Analysis ≠ Hospital Truth.`
-An expert recommendation becomes REQ/BR only after explicit hospital/user confirmation.
+`Expert Gap Analysis ≠ Hospital Truth.` An expert recommendation becomes REQ/BR only after explicit hospital/user confirmation.

@@ -1,149 +1,147 @@
-# Gorilla HIS — Interaction Completeness, Hospital Realism, Scenario Branch & Role Swimlane Standard v1.2
+# Gorilla HIS — Interaction Completeness, Hospital Realism & Scenario Execution Standard v1.3
 
 This standard is binding for every interactive Gorilla HIS mockup.
 
-## 1. Purpose
-A mockup is not complete merely because it renders. It must behave like a coherent hospital application, communicate scenario branches and cross-role workflow, and be suitable for realistic hospital review without looking like an AI prototype.
+## 1. Core Rule
+`Blueprint Business Truth → Scenario Entry → Working Interaction → Observable State → Exception → End State → Independent Test`
 
-Core rule:
-`Business Truth → Scenario Branch Model → Role/Handoff Model → Working Interaction → Premium Clinical Composition → QA Evidence`
+The mockup proves that the workflow described in the Blueprint can actually be operated. It is not a workflow-documentation canvas.
 
-## 2. Reference Baseline Rule
-User-supplied existing mockup/screenshot/HTML is a minimum benchmark. Record what works, interaction depth to preserve, UX weaknesses to improve and no-regression points.
+## 2. Swimlane Boundary
+Role-Based Swimlane is primarily a **Blueprint/document artifact** used to explain actors, decisions and handoffs.
 
-New candidate must be materially better in at least three dimensions: workflow clarity, interaction completeness, decision hierarchy, component finish, information density/scanability, role/handoff visibility, product continuity, hospital-facing realism.
+UI Factory MUST NOT add a Swimlane screen solely because the Blueprint contains a Swimlane. Add a workflow/swimlane visualization to hospital-facing UI only when:
+1. the Hospital Requirement explicitly asks for workflow monitoring/visualization; or
+2. the product genuinely needs an operational workflow tracker and the Blueprint marks it as a product function.
 
-## 3. Interaction Completeness Gate
-Every primary interactive control in Main Workflow must have observable behavior: navigation, worklist open, tabs, search/filter/sort, workflow buttons, modal/drawer, state actions, add/edit/save/cancel/reverse, upload/select/lookup, role switch/permission, KPI drill-down when actionable.
+Role/handoff truth still governs permissions, ownership, queues and executable actions in the mockup.
 
-Observable result = navigation, populated overlay, visible state/data mutation, filter/sort, object add/update/remove, workflow state change, validation/permission behavior, or intended detail/result.
+## 3. Entry-First Scenario Rule
+Every material in-scope scenario must begin from its real operational Entry, not only from a pre-populated case.
 
-Toast-only success without visible material state change is insufficient.
+Examples: New Request, Key Request, Referral, Registration, Order, Appointment, Admission, Specimen Receipt, Stock Request — according to the domain.
 
-### Dead-Control Hard Reject
-Visible primary menu/tab/button with no meaningful behavior, broken confirm/cancel, or fake success without represented state change = FAIL.
+For each scenario, reviewer must be able to:
+`Entry → Key required data → Validate → Decision → Create/Accept work → Assignment/Handoff → Main work → Transaction/Result → Review/Final → Handover/Close`
+
+Only include steps relevant to that domain.
+
+A mockup containing only completed/pre-created cases when Blueprint requires creation/intake = FAIL.
 
 ## 4. Scenario Branch Completeness
-Each materially distinct in-scope Blueprint scenario is a separate Main Workflow test path.
-
-Material differences include entry trigger, starting actor, primary identifier/context, source-of-truth, custody/authorization/handoff, end state/output, access/legal boundary.
+Each materially distinct Blueprint scenario is a separate Main Workflow test path. Differences may include entry trigger, actor, identifier/encounter, authority, source-of-truth, handoff, finance, privacy, exception or end state.
 
 For each in-scope scenario:
-1. reviewer can select/create representative case;
-2. scenario context remains visible;
-3. all required stages reachable without editing source;
-4. scenario-specific steps/fields actually differ;
-5. path reaches meaningful end state;
-6. state changes observable;
-7. Smoke Test executes scenario separately.
+1. start from real Entry;
+2. enter/choose meaningful data;
+3. validate required information;
+4. exercise material decision(s);
+5. create observable state/data;
+6. perform scenario-specific main work;
+7. exercise material handoff/transaction;
+8. reach meaningful end state;
+9. exercise at least one relevant exception;
+10. test branch separately.
 
 One generic case with label changes = FAIL.
 
-## 5. Forensic Lifecycle Interaction Coverage — Mandatory when Forensic Blueprint activates FLC
-For Forensic/Mortuary/Forensic OPD, UI Factory must make the Blueprint lifecycle decisions reviewable, not hide them in documentation.
+## 5. Interaction Completeness
+Every visible primary workflow control must have meaningful observable behavior. Material state-changing actions must mutate visible state/data; toast-only success is insufficient.
 
-When relevant to the Blueprint, the mockup must visibly support:
+Dead primary navigation/menu/tab/action, fake success, broken confirm/cancel, unreachable next stage = FAIL.
 
-### FUI-01 Living vs Deceased
-- separate deceased case and living Forensic OPD pathways;
-- no shared tab structure that falsely implies identical record context.
+## 6. Data Continuity
+Data entered at Entry must persist through downstream screens where the Blueprint requires it. Identifier/context/owner/status must not silently change. A workflow that visually advances but loses or contradicts entered data = FAIL.
 
-### FUI-02 Request Source
-- intake shows who requested/referred the case and request source/type;
-- internal and external request paths must differ when Blueprint says they differ.
+## 7. Role / Permission Execution
+Role model comes from Blueprint Swimlane/Role Matrix. Mockup must enforce relevant ownership and permission behavior through worklists, enabled/disabled actions, restricted data and handoffs. Do not create a decorative role diagram as a substitute.
 
-### FUI-03 Accept / Reject / Return
-- request intake has working Accept and, where Blueprint marks relevant, Reject/Return-for-information actions;
-- Reject/Return requires reason and creates visible status/audit evidence.
+## 8. Exception Execution
+Material exceptions from Blueprint must be executable when relevant: Reject, Return for Information, Cancel, Correction, Wrong Identifier, Missing Required Data, Duplicate, Unavailable Resource/Person, Failed Interface, Reversal, Restricted Access.
 
-### FUI-04 AF / HN / VN Context
-- External body can remain AF-only before hospital identity/encounter policy is resolved;
-- historical HN lookup/link must be separate from creation of a new HN/VN/Encounter;
-- living Forensic OPD must show HN/VN/Encounter context.
+## 9. Hospital-Facing Realism
+Do not expose Demo/Prototype/WA/GAP/TBD/CR/HSR/AI/internal QA language in normal hospital-facing UI unless explicitly requested. Use realistic operational statuses.
 
-### FUI-05 HN Link Governance
-- when Blueprint marks HN-link approval/review as relevant, mockup must show Match Candidate → Review/Approve/Reject Link or equivalent governance;
-- link action must update visible case context and history;
-- unlink/correction path represented when required by Blueprint.
-
-### FUI-06 Physician Assignment / Duty Roster
-- request can be assigned to responsible forensic physician from duty/exam roster or equivalent operational ownership model when relevant;
-- unavailable/substitute path should be reviewable if Blueprint requires it.
-
-### FUI-07 Diagnostic Order Context
-- order action must show required identifier context before sending;
-- if AF-only case lacks required HN/VN/Encounter, order is blocked or routes through the defined create/link encounter step;
-- do not allow a fake successful AF-only Lab/Radiology order when Blueprint says downstream context is unresolved/required.
-
-### FUI-08 Finance
-- chargeable vs non-charge cost visible;
-- scenario/payer/billing context visible where relevant;
-- add/change/cancel/reverse must mutate visible financial state where represented.
-
-### FUI-09 Sensitive Identity / Name Masking
-- sensitive living forensic case worklist supports masked display when Blueprint requires it;
-- authorized role may reveal full identity through controlled interaction;
-- unauthorized role remains masked/restricted;
-- print/export/photo access follows role behavior represented by Blueprint.
-
-## 6. Mandatory Interaction Inventory
+## 10. Mandatory Interaction Inventory
 Create:
-| Control ID / Label | Type | Scenario | Screen / Role | Expected Behavior | Observable Result | Test Result |
+| Control ID / Label | Scenario | Entry/Stage | Role | Expected Behavior | Observable Result | Test Result |
 
-Every primary menu/Main Workflow control appears.
+Every primary Main Workflow control appears.
 
-## 7. Mandatory Functional Smoke Test
-Run browser/runtime, not static source only.
+## 11. Runtime Functional Smoke Test
+Run browser/runtime, not static source only. Minimum:
+1. every primary nav;
+2. every main workflow tab/screen;
+3. modal/drawer families;
+4. Entry/create/intake for every material scenario;
+5. required-field validation;
+6. valid state-changing action per major stage;
+7. scenario-specific decision/handoff;
+8. one material exception per scenario where relevant;
+9. data continuity from Entry to downstream work;
+10. search/filter/context preservation when relevant;
+11. no workflow-breaking console/page error;
+12. meaningful end state for every required scenario.
 
-Minimum:
-1. click every primary nav;
-2. every main tab;
-3. every modal/drawer family;
-4. valid save/add/update per major stage;
-5. one validation/permission/error path when relevant;
-6. visible state/data change after material action;
-7. no workflow-breaking console error;
-8. search/filter;
-9. context preservation;
-10. every Blueprint scenario with Smoke Test Required=Yes end-to-end;
-11. each branch demonstrates actual difference, not label-only;
-12. Forensic FLC/FUI controls required by Blueprint are exercised, including Accept/Reject/Return, HN-link governance, order-context blocking/enabling, finance path and sensitive-name permission where applicable.
+If runtime execution is blocked, Functional Smoke Test cannot be PASS.
 
-If runtime execution blocked, cannot claim Functional Smoke Test PASS.
+## 12. Independent Agent Function Test — Mandatory Release Gate
+After Builder completes the mockup, a separate review pass acts as Hospital User + Senior BA + Domain Expert + QA Tester. It must not rely on Builder explanation to understand how to work.
 
-## 8. Hospital-Facing Realism
-Do not expose Demo/Prototype/WA/GAP/TBD/CR/HSR/AI/internal QA language in normal hospital-facing UI unless explicitly requested. Use realistic states such as รอข้อมูลเพิ่มเติม, ไม่รับคำขอ, รออนุมัติเชื่อม HN, รอเปิด Visit, จำกัดสิทธิ์.
+Test dimensions:
+- Workflow Completeness
+- Function Completeness
+- Role/Permission
+- Scenario Completeness
+- Exception Handling
+- Data Continuity
+- State Transition
+- Usability / discoverability
+- Dead Controls
+- Blueprint Traceability
 
-Governance truth stays in Blueprint/Gap/Design Notes/QA.
+Allowed results:
+- `PASS`
+- `FAIL — FUNCTION MISSING`
+- `FAIL — WORKFLOW BROKEN`
+- `FAIL — SCENARIO INCOMPLETE`
+- `FAIL — UNUSABLE`
+- `FAIL — REQUIREMENT TRACEABILITY`
 
-## 9. Role-Based Swimlane
-When 3+ meaningful roles or repeated handoffs exist, include Role Swimlane.
+Critical/High failure blocks release.
 
-One lane per role/team; chronological steps; cross-lane handoffs; current case position; next-action ownership; exceptions/returns as useful.
+Required loop:
+`BUILD → AGENT FUNCTION TEST → FAIL → FIX → RETEST`
 
-For multi-scenario modules, Swimlane must switch scenario or clearly show distinct branch entry. A single swimlane hiding material scenario difference = incomplete.
+Stop the loop only when PASS or when an unresolved Hospital Decision prevents safe completion. In the latter case report `BLOCKED — HOSPITAL DECISION REQUIRED`, not PASS.
 
-For forensic flows, requester/intake, forensic physician, diagnostic service, mortuary, finance when material, and recipient handoffs should appear only when relevant to the selected scenario.
+## 13. Usability Hard Gate
+The independent reviewer must be able to identify:
+- where to start;
+- what information is required;
+- current status/owner;
+- next action;
+- why an action is blocked;
+- how to recover from relevant error/return;
+- how to finish the work.
 
-## 10. Role Consistency
-Swimlane role, permission behavior, worklist ownership and executable actions must agree.
+If the reviewer must guess the workflow or consult source code, `FAIL — UNUSABLE`.
 
-## 11. Premium Interaction Craft
-Premium = precise hierarchy, deliberate control states, compact comfortable targets, contextual actions, causal state feedback, no browser-default controls, no generic SaaS card-grid grammar, no decorative dead space.
+## 14. Reference Benchmark
+A user-supplied existing mockup is a minimum benchmark. New candidate must not regress workflow depth, interaction completeness, information density, product continuity or usability.
 
-## 12. Benchmark Delta
-Any Worse in Main Workflow interaction, scenario coverage, role clarity or hospital-facing realism = RETURN TO BUILDER.
+## 15. Angular Mapping
+Use Angular Material/CDK as implementation primitives where appropriate while preserving Gorilla HIS design authority and clinical density. Scenario state, permission state and transaction state must map cleanly to implementable Angular state/services.
 
-## 13. Angular Mapping
-- scenario/worklist → Angular state/router + Material/CDK table/list
-- swimlane → authored Angular component + CDK accessibility
-- tabs → MatTabs
-- dialogs → MatDialog
-- overlays → MatSidenav/CDK Overlay
-- state feedback → MatSnackBar/inline region
-- permissions → authorization state + accessible disabled behavior
+## 16. QA Decision
+Cannot become Candidate — Ready for Human Visual Review when:
+- a material scenario cannot start from real Entry;
+- primary controls are dead;
+- scenario branch is cosmetic-only;
+- data continuity breaks;
+- material exception is missing;
+- Independent Agent Function Test has Critical/High failure;
+- runtime test is unverified;
+- user cannot understand how to complete the workflow.
 
-## 14. QA Decision
-Cannot be Candidate — Ready for Human Visual Review when primary navigation/menu/tab dead, role flow unclear, in-scope scenario unplayable, distinct scenarios are cosmetic-only, or required Forensic Lifecycle interaction is absent.
-
-Target: **scenario-complete operational review + purpose-built premium Gorilla HIS craft**.
+Target: **complete operational scenario execution + independent functional proof + premium Gorilla HIS craft**.

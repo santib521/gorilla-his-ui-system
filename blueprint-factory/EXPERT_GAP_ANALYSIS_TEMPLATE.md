@@ -1,160 +1,201 @@
-# Gorilla HIS — Template การวิเคราะห์ช่องว่างและข้อเสนอแนะโดยผู้เชี่ยวชาญ v1.3
+# Gorilla HIS — Template การวิเคราะห์ช่องว่างและข้อเสนอแนะโดยผู้เชี่ยวชาญ v1.4
 
 **Module / Application:**  
 **Analysis Version:** v0.x  
 **Related Blueprint:**  
-**Document Type:** ADVISORY / CHALLENGE ANALYSIS — **ยังไม่ถือเป็น HOSPITAL CONFIRMED**
+**Document Type:** ADVISORY / REQUIREMENT DISCOVERY / CHALLENGE ANALYSIS — **ยังไม่ถือเป็น HOSPITAL CONFIRMED**
 
 > ภาษาหลักคือภาษาไทย คงคำศัพท์ HIS/Clinical/Technical ภาษาอังกฤษเมื่อชัดกว่า
 
-## 1. สรุปผลการวิเคราะห์
+## 1. Executive Summary
 - Requirement ที่ชัดเจน/แข็งแรง:
-- Critical/High gaps ที่ผ่าน Relevance Gate:
-- Candidate gaps ที่ Suppress:
+- Critical/High decisions ที่ยังไม่ Confirm:
+- จำนวน Workshop Questions แยก Critical/High/Medium:
 - ผลต่อ Prototype:
 - ผลต่อ Dev Handoff:
 
-## 2. Domain Classification & Expert Coverage Matrix
+## 2. Domain Classification & Expert Coverage
 | มุมมอง / Agent | สถานะ | เหตุผล / Trigger | ประเด็นที่ตรวจ |
 |---|---|---|---|
-| Patient / Caregiver | | | |
+| Domain Expert / Thai Workflow | | | |
+| Senior HIS BA / Clinical Informatics | | | |
 | Registration / Patient Access | | | |
 | Medical Records / HIM | | | |
-| Nursing | | | |
 | Physician / Clinical | | | |
-| ER / IPD / OR / Specialty | | | |
-| Pharmacy | | | |
+| Nursing / Operations | | | |
 | Lab / Blood Bank | | | |
 | Radiology / PACS | | | |
-| Quality / Patient Safety / Risk | | | |
 | Finance / Billing | | | |
-| Hospital Operations | | | |
-| HIS Solution Architect | | | |
-| Clinical Informatics / BA | | | |
-| Integration / Interoperability | | | |
-| Data / Source of Truth | | | |
-| UX / Human Factors | | | |
-| Security / Audit | | | |
-| Privacy / Minimum Necessary | | | |
-| Forensic Medicine / Mortuary | RELEVANT / N/A | activate only for forensic/mortuary scope | identity, custody, mortuary, report/evidence/handover |
-| JCI | | | |
+| Integration / Source of Truth | | | |
+| Privacy / Security / Audit | | | |
+| Quality / Patient Safety | | | |
+| Forensic Medicine / Mortuary | RELEVANT / N/A | activate only for forensic/mortuary scope | classification, identity, custody, report/body/evidence/handover |
 | HA / HAI | | | |
-| HIPAA | | | |
-| ISO/IEC 27001:2022 | | | |
-| Thailand PDPA | | | |
+| JCI | | | |
+| Thailand PDPA / Local Privacy | | | |
 
-## 3. ความเข้าใจ Workflow ที่ผู้ใช้ร้องขอ
-`Start → ... → End`
+## 3. Legal / Operational Case Classification
+| Classification ID | Case Type / Trigger | Actor / Authority | Required Evidence / Data | Workflow Branch | End State | Source | Local Confirmation |
+|---|---|---|---|---|---|---|---|
+| CLS-01 | | | | | | | |
+
+## 4. Standard Domain Workflow Understanding
+`Start / Classification → Entry → ... → Exception / Alternate Route → Closure`
 
 ### Actors / Handoffs
 | ขั้นตอน | ผู้ปฏิบัติ | Input | Action / Decision | Output / Record | ผู้รับช่วงถัดไป | Evidence |
 |---|---|---|---|---|---|---|
 | | | | | | | |
 
-## 4. Relevance Filter Summary
-| Candidate | เหตุผลที่ Suppress | Trigger ที่จะทำให้กลับมา Relevant |
-|---|---|---|
-| | | |
+## 5. Expert Requirement Discovery Coverage Matrix — Mandatory
+Disposition every applicable dimension as `COVERED / PARTIAL / NOT STATED / N/A / NEED HOSPITAL CONFIRMATION`.
 
-## 5. Gap Register — Surviving Gaps Only
-| ID | ด้าน | Gap / Risk | Trace Source | Relevance | ทำไมสำคัญ | Impact | Evidence Basis | Reviewing Agent | Verification | Classification | Confirmation Owner | Blocks |
+| Discovery Dimension | Status | Raw Requirement Trace | Missing Decision / Exception | Question IDs |
+|---|---|---|---|---|
+| Scope / case eligibility / classification | | | | |
+| Entry / request / referral / trigger | | | | |
+| Requester / actor authority | | | | |
+| Accept / Reject / Return / Redirect | | | | |
+| Identity / case / encounter / episode | | | | |
+| Ownership / assignment / roster / handoff | | | | |
+| Core professional workflow | | | | |
+| Approval / dual review / decision points | | | | |
+| Documents / forms / media / signatures | | | | |
+| Orders / results / external services | | | | |
+| Evidence / specimen / physical custody | | | | |
+| State / lifecycle / reopen / correction / cancellation | | | | |
+| Exception / missing data / duplicate / wrong identity | | | | |
+| Integration / source of truth / timing | | | | |
+| Downtime / manual continuity / reconciliation | | | | |
+| Finance / payer / waive / refund / reversal | | | | |
+| Privacy / masking / reveal / print / export | | | | |
+| Audit / accountability | | | | |
+| Reporting / statistics / definitions | | | | |
+| Closure / handover / release / archive | | | | |
+| SLA / priority / escalation | | | | |
+| Configuration / numbering / template / master data | | | | |
+| Search / history / version / amendment | | | | |
+| Operational usability / worklist / next action | | | | |
+
+## 6. Workshop Question Bank — Mandatory
+Do not ask generic questions. Each question must narrow a real decision and, when possible, offer an expert recommendation or decision options.
+
+| Question ID | Domain / Scenario | Workflow Stage | คำถาม | ทำไมต้องถาม | Requirement ปัจจุบันบอกอะไร | Expert Recommendation / Options | Decision Affected | Risk if Unconfirmed | Confirmation Owner | Priority | Confirm When | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| GAP-01 | | | | DIRECT / CONDITIONAL | | CRITICAL/HIGH/MEDIUM/LOW | | | | HSR/CR/WA/TBD | | Prototype/Dev/Neither |
+| Q-001 | | | | | | | | | | CRITICAL/HIGH/MEDIUM/LOW | | OPEN / ANSWERED / RECOMMENDATION AVAILABLE / HOSPITAL DECISION REQUIRED / DEFERRED / N/A |
 
-## 6. Independent Challenge Review
-| Ref | Reviewer Challenge | Disposition | เหตุผล |
-|---|---|---|---|
-| | | ACCEPT / DOWNGRADE / RECLASSIFY / SUPPRESS / NEEDS VERIFICATION | |
+### Question Quality Rule
+Each question must classify missing information as one of:
+1. `ALREADY ANSWERED` — do not ask again.
+2. `EXPERT RECOMMENDATION AVAILABLE` — Expert proposes a concrete option for hospital confirmation.
+3. `HOSPITAL DECISION REQUIRED` — local policy/legal/integration/finance/privacy/role authority cannot be guessed.
 
-## 7. ผลกระทบข้ามหน่วยงาน / Upstream-Downstream
-| หน่วยงาน / ระบบ | Effect Type | Trigger / Evidence | ผลกระทบ | Gap / Recommendation |
+## 7. Decision Tree & Exception Challenge
+For every material main action challenge:
+`Precondition → Valid Action → Invalid Action → Alternate Route → Exception → Cancel/Reverse → Correct/Amend → Reopen/Re-entry → Handoff → Closure`.
+
+| Workflow Action | Preconditions | Alternate / Invalid Route | Exception | Cancel / Reverse | Correct / Amend | Reopen | Related Q/GAP |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+## 8. Role Interview Lens
+| Role | Worklist / Trigger | Information Needed | Allowed Actions | Blocked Action / Reason | Handoff | Recovery / Search Need | Question IDs |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+## 9. Data / Source-of-Truth Interview Lens
+| Object / Record | Creator | Primary ID | Editable / Immutable Boundary | Correction Authority | Version History | Source of Truth | Conflict / Reconciliation | Q/GAP |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | |
+
+## 10. Gap Register — Surviving Gaps Only
+| ID | ด้าน | Gap / Risk | Trace Source | Relevance | ทำไมสำคัญ | Impact | Evidence Basis | Verification | Classification | Confirmation Owner | Related Question IDs | Blocks |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| GAP-01 | | | | DIRECT / CONDITIONAL | | CRITICAL/HIGH/MEDIUM/LOW | | | HSR/CR/WA/TBD | | | Prototype/Dev/Neither |
+
+## 11. Independent Challenge Review
+Reviewer must ask: **ถ้ามีผู้เชี่ยวชาญ Domain ในประเทศไทยและ User ที่ทำงานจริงนั่งอยู่ตรงนี้ เขาจะทักว่ายังขาดอะไร?**
+
+| Ref | Reviewer Challenge | Missing Question / Gap? | Disposition | เหตุผล |
+|---|---|---|---|---|
+| | | | ACCEPT / DOWNGRADE / RECLASSIFY / SUPPRESS / ADD QUESTION / NEEDS VERIFICATION | |
+
+## 12. Cross-Department / Upstream-Downstream Impact
+| หน่วยงาน / ระบบ | Effect Type | Trigger / Evidence | ผลกระทบ | Gap / Recommendation / Question |
 |---|---|---|---|---|
 | | DIRECT / CONDITIONAL | | | |
 
-## 8. Patient / Clinical / Forensic Safety Review
+## 13. Clinical / Domain Safety Review
 - Patient/deceased identification/context:
 - Medication/Order effect:
 - Documentation ownership / actual record effect:
 - Evidence/specimen integrity when relevant:
-- Body movement/release when relevant:
+- Physical-object/body movement/release when relevant:
 - Critical result/alert/escalation:
 - Handoff/continuity:
 - Correction/cancellation/reversal:
 
-## 9. Permission / Accountability Review
-| Action | Create | Edit | Review | Approve | Cancel / Reverse | Audit | Evidence / Gap |
+## 14. Permission / Accountability Review
+| Action | Create | Edit | Review | Approve | Cancel / Reverse | Audit | Evidence / Question / Gap |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 
-## 10. Data / Integration / Source-of-Truth Review
-| Data / Object | Source of Truth | Producer | Consumer | Timing | Failure / Exception | Evidence / Gap |
+## 15. Data / Integration / Source-of-Truth Review
+| Data / Object | Source of Truth | Producer | Consumer | Timing | Failure / Exception | Evidence / Question / Gap |
 |---|---|---|---|---|---|---|
 | | | | | | | |
 
-## 11. Privacy / Security Review
-พิจารณา Minimum Necessary Access, Authentication/Authorization, Sensitive Data, Auditability, Export/Download/Print, Retention, Correction, Disclosure, Interface Security และ Downtime เฉพาะที่ relevant.
+## 16. Finance Review
+Challenge payer, charge basis, chargeable/non-charge, waive/exempt, posting, cancellation, refund/reversal and reconciliation only where relevant.
 
-## 12. Standards / Governance Review
+## 17. Privacy / Security Review
+Challenge Minimum Necessary Access, sensitive-data classification, masking/reveal, print/export/download, authentication/authorization, audit, disclosure, retention, correction and downtime only where relevant.
+
+## 18. Standards / Governance Review
 | มาตรฐาน / แหล่งอ้างอิง | Applicability | Topic / Principle | Evidence Source | Recommendation | Verification |
 |---|---|---|---|---|---|
-| JCI | | | | | |
+| Thai Domain Authority | | | | | |
 | HA / HAI | | | | | |
-| HIPAA | | | | | |
+| JCI | | | | | |
 | ISO/IEC 27001:2022 | | | | | |
-| Thailand PDPA | | | | | |
-| Domain Authority | | | | | |
+| Thailand PDPA / Local Privacy | | | | | |
 
-### 12A. Authoritative Source Registry — Mandatory when external standards/guidance are used
+### 18A. Authoritative Source Registry
 | Source Organization | Document / Resource | Source Type | Publication / Effective Date | Topic / Principle | Applicability | Verification | URL / Repo Ref |
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 
-### 12B. Forensic Standard Compliance Review — Mandatory for Forensic/Mortuary
-| Domain Topic | REQ / Workflow Trace | Authoritative Source | Principle Supported | Coverage | Classification | Verification | Decision / Owner |
+## 19. Recommended Future Flow
+Separate clearly from Hospital Confirmed Flow; every added step references HSR/CR/WA/TBD and related Question IDs.
+
+## 20. Recommended Requirements / Controls
+| Ref | ข้อเสนอแนะ | Trace / Evidence | Risk ที่แก้ | Priority | Proposed Classification | Related Question IDs | Verification |
 |---|---|---|---|---|---|---|---|
-| Deceased / Case Identity | | | | COVERED/PARTIAL/GAP/N/A | | | |
-| Body Custody / Movement / Release | | | | | | | |
-| Evidence / Specimen Chain of Custody | | | | | | | |
-| Forensic Photography / Media | | | | | | | |
-| Medico-Legal Report Governance | | | | | | | |
-| Diagnostic Source of Truth | | | | | | | |
-| Sensitive Access / Disclosure | | | | | | | |
-| Handover / Audit / History | | | | | | | |
-| Correction / Amendment | | | | | | | |
+| | | | | | | | |
 
-Rules:
-- Use MOPH/CIFS/HA/applicable Thai authority and Hospital-approved SOP/forms as source families when relevant.
-- Wikipedia/social media/marketing pages are not authoritative evidence for Critical/High compliance claims.
-- External forensic guidance can verify a principle but cannot establish this hospital's local workflow without confirmation.
-- Use `PRINCIPLE VERIFIED — LOCAL IMPLEMENTATION NEEDS HOSPITAL CONFIRMATION` when appropriate.
-
-## 13. Recommended Future Flow
-แยกจาก Hospital Confirmed Flow ชัดเจน; ทุก step เพิ่มต้องอ้าง HSR/CR/WA/TBD.
-
-## 14. Recommended Requirements / Controls
-| Ref | ข้อเสนอแนะ | Trace / Evidence | Risk ที่แก้ | Priority | Proposed Classification | Verification |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-
-## 15. Confirmation Value Gate
+## 21. Confirmation Prioritization
 ### MUST CONFIRM BEFORE DEV
-| Question | Decision affected | Why needed | Owner |
-|---|---|---|---|
-| | | | |
+| Question ID | Decision affected | Why needed | Owner | Timing |
+|---|---|---|---|---|
+| | | | | |
+
 ### CONFIRM DURING PROTOTYPE REVIEW
-| Question | Decision affected | Why needed | Owner |
-|---|---|---|---|
-| | | | |
-### LATER REFINEMENT
-| Question | Decision affected | Why needed | Owner |
-|---|---|---|---|
-| | | | |
+| Question ID | Decision affected | Why needed | Owner | Timing |
+|---|---|---|---|---|
+| | | | | |
 
-## 16. ข้อสรุปจาก Expert Panel
+### SAFE TO DEFER
+| Question ID | Why safe to defer | Trigger / Timing |
+|---|---|---|
+| | | |
+
+## 22. Expert Panel Conclusion
 - สามารถทำ Prototype ต่อได้: Yes / No / Conditional
-- Critical/High gaps ที่ผ่าน Gate:
-- จำนวนคำถามที่ Suppress:
+- Critical/High gaps:
+- Open Critical/High Workshop Questions:
+- Discovery dimensions incomplete:
+- Questions suppressed because already answered/irrelevant:
 - ความเสี่ยงสำคัญที่สุด:
-- หัวข้อที่ควรคุยกับโรงพยาบาลลำดับถัดไป:
+- หัวข้อ Workshop รอบถัดไป:
 
-> Expert Gap Analysis เป็น Advisory. รายการจะกลายเป็น Hospital Requirement / Business Rule ได้ต่อเมื่อโรงพยาบาลหรือผู้ใช้ยืนยันอย่างชัดเจนและ Update เข้า Application Blueprint แล้วเท่านั้น.
+> Expert output is advisory. A recommendation/question becomes Hospital Requirement / Business Rule only after explicit hospital confirmation and Blueprint update.

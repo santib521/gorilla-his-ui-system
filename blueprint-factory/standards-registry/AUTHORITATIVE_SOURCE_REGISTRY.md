@@ -1,6 +1,8 @@
-# Gorilla HIS — Authoritative Source Registry v1.0
+# Gorilla HIS — Authoritative Source Registry v1.1
 
 This registry is a source-discovery and verification index, not a substitute for applicability review. Always apply `AUTHORITATIVE_SOURCE_POLICY.md` and the Relevance Gate first.
+
+Verified date for this revision: 2026-09-02.
 
 ## JCI — Hospitals / Academic Medical Center
 - Source Owner: Joint Commission International (JCI)
@@ -13,11 +15,20 @@ This registry is a source-discovery and verification index, not a substitute for
 
 ## Thailand HA / HAI
 - Source Owner: The Healthcare Accreditation Institute (Public Organization), Thailand
-- Verified family: Hospital and Healthcare Standards, 5th Edition
-- Official HAI source indicates 5th Edition and provides the official standard publication.
-- Relevant topics when triggered: organization quality systems, patient care/process safety, information/record/accountability and other applicable HA topics.
+- Transition verified 2026-09-02: HAI states Hospital and Healthcare Standards, 6th Edition becomes effective for accreditation assessment from 1 October 2026.
+- Before 1 October 2026, verify which edition governs the hospital's current assessment; for implementation/go-live on or after that date, explicitly assess 6th Edition applicability.
+- Relevant topics when triggered: organization quality systems, patient/process safety, medical records/information, privacy/accountability and other applicable HA topics.
 - Assurance: Level B when exact official standard/section and applicability are verified; otherwise `STANDARD PRINCIPLE — NEED VERIFICATION`.
 - Guardrail: do not infer a specific HIS screen/function merely from accreditation principles.
+
+## Thailand Forensic Medicine / Autopsy / Mortuary
+- Source Owner: Institute of Forensic Science (CIFS), Ministry of Justice; Ministry of Public Health Health Administration Division; other official Thai legal/professional authorities when directly applicable.
+- CIFS official `คู่มือการให้บริการงานชันสูตรศพ`, SD-FSP-007, issue date 25 September 2025: authoritative current service guidance for medicolegal autopsy service context, service steps, documents and reporting/contact process.
+- CIFS official Mortuary Staff/Prosector guidance published in 2026: verified topics include direct forensic-physician supervision, evidence integrity, chain of custody, forensic photography, evidence/specimen handling and biosafety.
+- MOPH official catalogue includes `คู่มือการดำเนินงานชันสูตรพลิกศพ` and `คู่มือการปฏิบัติงานนิติเวช (สำหรับแพทย์และบุคลากรทางการแพทย์)`; catalogue/procurement records also indicate an updated post-mortem operations manual in 2018. Always verify the newest accessible official edition applicable to the hospital before a formal claim.
+- Mandatory Gorilla review when triggered: `FORENSIC_STANDARD_COMPLIANCE_REVIEW.md`.
+- Assurance: Level B only when exact official requirement + applicability are verified; Level C for official guidance principles where mandatory status is not established.
+- Guardrail: CIFS/MOPH workflow is not automatically the hospital's workflow; never promote guidance to Hospital Confirmed.
 
 ## ISO/IEC 27001
 - Source Owner: ISO / IEC

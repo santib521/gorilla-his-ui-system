@@ -1,328 +1,164 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v2.1
+# Gorilla HIS Visual DNA — Product Craft Standard v2.2
 
-> This document defines the visual character that makes Gorilla HIS recognizable without its logo. It is the highest visual-design authority for mockups. It is not a styling checklist; it defines product taste, craft and desirability.
+> Highest visual-design authority. Gorilla HIS is a precision clinical/operational instrument, not an admin template. Premium means controlled proportion, typography, density, interaction craft and authored workflow composition.
 
 ## 1. Design Ambition
+Target: Purpose-built, quiet confidence, high-density clarity, clinical gravity, crafted-not-assembled, desirable to use, refined at touchpoint level.
 
-Gorilla HIS is a **precision clinical and operational instrument**. It must not feel like an admin template with hospital data inserted into it.
+A successful page still feels Gorilla HIS if logo/module/brand color are hidden.
 
-Target quality:
-- **Purpose-built** — composition follows the clinical/operational decision, not a generic dashboard grid.
-- **Quiet confidence** — premium comes from proportion, optical balance, typography, surface control and detail.
-- **High-density clarity** — more useful information with less cognitive noise.
-- **Clinical gravity** — safety signals are unmistakable; everything else remains calm.
-- **Crafted, not assembled** — a page feels authored as one product surface, not built from interchangeable cards.
-- **Desirable to use** — professional does not mean dry. The interface should feel considered, responsive and satisfying without becoming decorative.
-- **Refined at touchpoint level** — buttons, tabs, banners, icon treatment, fields, selectors and status indicators must look and feel like parts of one expensive precision product, not default browser controls with color applied.
+## 2. Premium Mental Model
+BMW and Apple/iPhone are quality benchmarks, not visual references to copy.
 
-A successful page should still feel like Gorilla HIS if logo, module name and brand color are temporarily hidden.
+`BMW cockpit discipline × Apple interaction discipline × Hospital-grade information density × Gorilla HIS continuity`.
 
-## 2. Premium Mental Model — BMW / iPhone Test
+Translate:
+- Proportion → information hierarchy/composition/navigation footprint
+- Cockpit → clinical/operational workspace
+- Control feel → buttons/filters/selectors/task actions
+- Typography → reading priority/Thai readability/numerical instrumentation
+- Fit & finish → alignment/rhythm/icon/control detail
+- Brand DNA → recognizable Gorilla continuity
 
-BMW and iPhone are **quality benchmarks, not visual references to copy**. The lesson is that products with the same functions can feel radically different because of proportion, material, control feel, typography, motion and fit-and-finish.
+BMW Test: same functions, why does Gorilla feel deliberately designed?
+iPhone Test: does refinement survive when decoration is removed?
+If answer is only color/whitespace/radius/shadow/icons → FAIL.
 
-Translate that into Gorilla HIS:
+## 3. Authored Work Surface
+Do not turn every information group into a card. Preferred hierarchy tools:
+1 typography/alignment;
+2 spacing/proportion;
+3 tonal surface shift;
+4 subtle divider;
+5 bounded container only when object behaves as one object;
+6 shadow only for real elevation.
 
-| Product craft principle | Gorilla HIS equivalent |
-|---|---|
-| Proportion | Information hierarchy and page composition |
-| Material | Surface hierarchy and controlled depth |
-| Cockpit / instrument cluster | Clinical or operational workspace |
-| Control feel | Button, filter, selector and task interaction |
-| Typography | Reading priority and numerical instrumentation |
-| Ambient light / state change | Contextual emphasis and semantic state |
-| Motion / haptics | Micro-interaction and causal state transition |
-| Brand DNA | Gorilla visual signature across modules |
-| Fit & finish | Pixel-level alignment, rhythm, icon weight and optical balance |
+Every page needs a visual spine and an authored path:
+`Context → Situation → Evidence/Work → Exception → Next Action → Detail`.
 
-### BMW Test — Mandatory design question
-If two systems provide the same function, what in this page makes Gorilla HIS feel deliberately designed rather than merely functional?
+## 4. Precision Navigation — Hard Gate
+Navigation is subordinate to work.
+- Never use a large dark sidebar merely because enterprise templates do.
+- Persistent navigation width must be justified by actual labels/actions.
+- Prefer compact rail/collapsible navigation/contextual lens when it returns useful width to clinical work.
+- Expanded navigation may be used for discovery, but after selection it should collapse/compact when continuous visibility is unnecessary.
+- Preserve current module/selection orientation in compact mode.
+- Do not allow sidebar + topbar + tabs + secondary navigation to all compete visually.
+- Main task must own the largest useful portion of the first viewport.
 
-If the answer is only `brand color`, `more whitespace`, `rounded corners`, `shadow`, or `better icons` → **FAIL**.
+If navigation visually dominates the task or causes large unused workspace → Design FAIL.
 
-### iPhone Test — Mandatory design question
-Can the interface remain refined when decoration is reduced? Can controlled depth and motion improve comprehension without becoming ornament?
+## 5. Space Utilization
+Premium is not empty space. Whitespace must improve comprehension.
 
-If the page is only attractive because of gradients, large cards, glass effects or saturated color → **FAIL**.
+FAIL when:
+- important work is compressed into a narrow region while a large blank region remains;
+- fixed max-width/template columns waste desktop space;
+- action controls are detached from the object they affect;
+- equal-sized cards/grids define the page despite unequal importance.
 
-## 3. Gorilla Signature
+Use responsive/adaptive width so high-value clinical/operational content uses available space intelligently.
 
-### 3.1 Authored work surface
-The primary workspace is composed as one coherent field. Do not turn every information group into an isolated card.
+## 6. Surface Architecture
+S0 Canvas: low-contrast neutral environment.
+S1 Work Surface: primary reading/working plane.
+S2 Instrument Surface: compact bounded object for readings/controls.
+S3 Elevated Surface: menus/drawers/inspectors.
+S4 Semantic Surface: critical/warning/normal/info.
 
-Hierarchy tools, in preferred order:
-1. typography and alignment;
-2. spacing rhythm and proportion;
-3. tonal surface shift;
-4. subtle divider / optical border;
-5. bounded container when the object genuinely behaves as one object;
-6. shadow only when depth/elevation is meaningful.
+Depth communicates hierarchy/interactivity, not luxury decoration.
 
-### 3.2 Precision navigation
-Navigation is visually subordinate to the work but must still feel crafted.
-- Product identity is controlled, not oversized.
-- Active navigation uses a precise indicator, tonal surface and clear icon treatment.
-- Module navigation can use rail + contextual lens/secondary navigation.
-- Do not use a large dark sidebar merely because enterprise templates do.
-- Navigation must feel like a product control, not a prototype index.
-
-### 3.3 Information has a spine
-Every page needs a deliberate alignment spine. Key labels, numbers, tables, timelines, visualizations and actions share baselines/columns. Random independent boxes are prohibited.
-
-### 3.4 Numbers are instruments
-Operational/clinical numbers behave like instrument readings:
-- tabular numerals where alignment matters;
-- unit subordinate but optically attached to value;
-- threshold, target, delta and time context near the value;
-- micro-trend when it helps decision-making;
-- never giant marketing numbers;
-- color only when semantic meaning exists.
-
-### 3.5 Intelligence is integrated
-AI is not a visual theme. Prediction/recommendation should appear as an intelligence layer attached to real evidence.
-
-Preferred pattern:
-`Current state → trajectory → time-to-threshold → expected impact → recommended intervention`
-
-Avoid generic `AI Brain`, sparkle, neon, futuristic panel or separate AI showroom.
-
-## 4. Surface Architecture — Premium without decoration
-
-Gorilla HIS uses controlled layers. A whole screen should not be pure white and flat, but it also must not become a pile of floating cards.
-
-### S0 Canvas
-Low-contrast cool/warm neutral environment behind the work surface.
-
-### S1 Work Surface
-Primary reading/working plane. Usually near-white; high legibility; owns most of the screen.
-
-### S2 Instrument Surface
-Compact bounded object for readings, controls or a meaningful instrument cluster. Uses subtle tonal contrast and optical border; not default for every section.
-
-### S3 Elevated Surface
-Menus, command selectors, drawers, contextual inspectors, floating controls. Uses real elevation/shadow.
-
-### S4 Semantic Surface
-Critical/warning/normal/info state. Semantic color is restrained and local; never repaint the whole application for decoration.
-
-Depth must communicate **hierarchy or interactivity**, not luxury decoration.
-
-## 5. Typography Craft
-
-Typography is the primary hierarchy system.
-
-A metric should normally contain multiple levels, for example:
-- technical label;
-- value;
-- smaller unit;
-- threshold or delta;
-- optional trend / forecast.
-
-### Readability floor — mandatory
-- Normal body / form / worklist / tab text should normally use `--font-size-sm` (14px) or larger.
-- `--font-size-xs` (12px) is for secondary metadata, compact labels and dense supporting information only.
-- `--font-size-2xs` (11px) is reserved for technical micro-labels and low-priority metadata; it must never carry an instruction, primary action, clinical narrative, patient identity or important status.
-- Do not invent 9px/10px local text merely to make more content fit.
-- At 1366×768 the user must not need browser zoom to comfortably read the main workflow.
+## 7. Thai Typography Craft — Mandatory
+Typography is primary hierarchy. Thai text is not a fallback concern.
 
 Rules:
-- Avoid one weight/size everywhere.
-- Avoid uppercase except micro-labels/technical labels.
-- Headings remain compact but confident.
-- Numerical typography must be optically aligned and easy to compare.
-- Metadata is quieter but remains accessible.
-- Important narrative may use slightly larger body text rather than a new card.
-- Thai body text needs enough line-height and visual breathing room; density must not become cramped typography.
+- use a local Thai-capable font stack available in target environment; production design must explicitly recommend an approved Thai-capable product font without bundling/distributing font files through Factory artifacts;
+- tune Thai line-height and weight for readability; do not reuse cramped Latin metrics blindly;
+- body/form/worklist/main tabs/actions normally 13–14px or larger;
+- 12px only secondary metadata/compact labels;
+- 11px only low-priority technical metadata; never instruction, patient identity, main status or primary action;
+- mixed Thai/English must align optically and have coherent weight;
+- avoid excessive bold Thai text;
+- headings compact/confident, not marketing-sized;
+- tabular numerals for IDs/times/metrics where supported;
+- use weight/alignment/spacing before increasing size.
 
-## 6. Shape Language
+If rendered Thai looks like poor OS/browser fallback, cramped, weak or visually inconsistent → Typography FAIL.
 
-Use shape to communicate object type.
+## 8. Shape Language
+Structural regions: low radius/square.
+Interactive controls: moderate radius with crafted states.
+Floating contextual objects: larger radius/elevation.
+Repeated medium-radius rectangles everywhere = generic SaaS signature → FAIL.
 
-### Structural regions
-Low radius or square; stable and architectural.
+## 9. Color and Light
+Disciplined product neutrals + semantic color. Premium is controlled saturation/contrast, not more color. Avoid flat-white hairlines everywhere and gradients/shadows everywhere.
 
-### Interactive controls
-Moderate radius; clear hover/pressed/selected/focus states.
+## 10. Motion & Micro-interaction
+Motion explains causality. Typical families: micro 120–180ms; control/surface 180–260ms; causal transition 240–360ms. Respect reduced motion. No decorative perpetual animation.
 
-### Floating contextual objects
-Largest radius and elevation because they physically sit above the workspace.
+## 11. Composition Before Components
+Before choosing components define:
+- Decision Question
+- Primary Evidence
+- Exception
+- Primary Action
+- Secondary Evidence
+- Navigation footprint
+- Space utilization plan
+- Progressive disclosure plan
 
-Do not apply the same medium radius to every panel, button, table and section. Repeated rounded rectangles are a generic SaaS signature.
+Then compose the page. Never start from card/grid/component availability.
 
-## 7. Color and Light
+## 12. Progressive Disclosure
+Intake shows only what is needed to classify/validate/accept work. Case workspace reveals deeper functions after case creation. Rare/advanced detail belongs in contextual drawer/accordion/inspector where appropriate. Persistent context remains compact.
 
-### Product palette
-- **Gorilla Ink** — deep neutral structure/text.
-- **Precision Indigo** — selection, primary interaction and intelligence accent.
-- **Clinical Teal** — controlled brand accent, not a substitute for semantic state.
-- **Refined Neutrals** — canvas/work surfaces with enough tonal difference to create depth.
-- **Clinical semantics** — critical/warning/normal/info retain strict meaning.
+## 13. Component Jewelry Standard
+Buttons/tabs/fields/selectors/badges/table headers/focus/hover/pressed/selected/disabled/validation/loading/empty/error must look like one product.
 
-Premium color is not “more color”; it is disciplined saturation, contrast and relationship.
+Primary controls normally 36–44px high depending on density. Native/browser/Bootstrap/default-Material-looking controls without Gorilla craft = FAIL.
 
-### Controlled light
-Use subtle optical borders, tonal surfaces and ambient shadow only where depth is real. Avoid both extremes:
-- flat white + hairlines everywhere = dry/unfinished;
-- shadow/gradient everywhere = ornamental/template-like.
+Tabs require more than underlined text. Safety/context banners must remain distinct in grayscale. Icons must have consistent optical weight.
 
-## 8. Motion & Micro-interaction
+## 14. Numbers as Instruments
+Use tabular numerals where useful; unit subordinate but attached; threshold/delta/time near value; no giant marketing numbers; semantic color only.
 
-Professional HIS may and should have **controlled delight**.
+## 15. Anti-Template Test — Mandatory
+Ask:
+1 Could this be CRM/fintech/logistics after labels change? yes=FAIL.
+2 Is page mainly dark sidebar + white rounded cards? yes=FAIL.
+3 Are major regions equal because grid was easy? yes=FAIL.
+4 Does removing color destroy hierarchy? yes=FAIL.
+5 Is authored focal path unclear? yes=FAIL.
+6 Does it feel AI/template generated? yes=FAIL.
+7 Is it tidy but lifeless? yes=FAIL Premium Craft.
 
-Motion must explain causality:
-- scenario changes → values transition → affected flow changes → exception emerges → decision state updates;
-- task completion → capacity/status visibly resolves;
-- drawer/modal/selector has clear spatial transition.
+## 16. Desirability Test
+Premium Candidate reaction: “precise, expensive, calm, intentionally designed — I want to use it.”
+Evaluate balance/proportion, surface richness, Thai typography, instrument quality, meaningful depth, micro-interaction, operational visualization, coherent identity and control craftsmanship.
 
-Recommended timing family:
-- micro state: 120–180 ms;
-- control/surface transition: 180–260 ms;
-- causal dashboard/visual transition: 240–360 ms.
+Clean/neat/usable/professional alone is not Premium.
 
-Respect reduced-motion preferences. No decorative perpetual animation.
+## 17. Responsive / Adaptive Density
+Inspect representative desktop and narrower workspace.
+- navigation can compact/collapse where appropriate;
+- context remains visible;
+- tables/workspace adapt without hiding primary action;
+- actions wrap intentionally;
+- no decorative fixed width creates horizontal failure;
+- after patient/task selection, give width back to work when continuous comparison is unnecessary.
 
-Premium interaction means the user feels that every response was designed, not that the interface is animated.
+## 18. Independent Premium Design Review
+`design-system/PREMIUM_PRODUCT_DESIGN_GATE.md` is mandatory after build.
 
-## 9. Data Visualization Language
+`Functional PASS + Design FAIL = Factory FAIL`.
+Builder cannot self-declare Premium. Independent critic must review rendered screenshots. If rendering is blocked: `NOT VERIFIED — HUMAN/RENDER REVIEW REQUIRED`.
 
-Data visualization is a product component, not decoration.
+## 19. Gold Standard Rule
+No artifact may call itself Premium/World-class/Gold/Signature solely because Factory Gate passes. Promotion requires rendered visual review, Human Design Approval, Anti-Template PASS, Desirability PASS, Gorilla continuity evidence and workflow-authored composition.
 
-Preferred families:
-- **Micro sparkline** — trend context beside KPI.
-- **Threshold rail / capacity gauge** — current vs safe operating range.
-- **Operational flow spine** — flow, pressure, velocity and bottleneck across stages.
-- **Forecast band** — current trajectory + uncertainty + time horizon.
-- **Time-to-threshold** — when operationally more useful than percentage alone.
-- **Matrix / bed field / queue field** — operational state where spatial scanning matters.
+Until Human Design Approval exists, label artifact Candidate.
 
-A visualization must answer a decision question. Do not add charts because dashboards are expected to have charts.
-
-## 10. Composition before Components
-
-Before choosing components, define:
-- **Decision Question** — what must the user know/decide in the first 5 seconds?
-- **Primary Evidence** — what proves that situation?
-- **Exception** — what requires attention now?
-- **Primary Action** — what is the next safe action?
-- **Secondary Evidence** — what supports deeper investigation?
-
-Then create an authored visual path:
-`Situation → Evidence → Exception → Action → Detail`
-
-Component availability must not dictate composition.
-
-## 11. Premium Fit & Finish — Component Jewelry Standard
-
-A premium Gorilla HIS page can still fail if the small touchpoints look cheap. Evaluate controls as if they are the switches, knobs and trim pieces of a premium cockpit.
-
-### Buttons
-- Primary button must have clear silhouette, optical balance, icon/text spacing when an icon is used, and distinct hover/pressed/focus feedback.
-- Avoid tiny short buttons, browser-default select styling, weak border-only buttons and arbitrary radii.
-- Important actions should normally use at least `--font-size-sm` and a comfortable 36–44px control height depending on density.
-- Secondary controls must look intentionally subordinate, not disabled or unfinished.
-
-### Tabs
-- Tabs must feel integrated into the work surface, not like underlined text links.
-- Active state requires at least two cues chosen from: tonal surface, precise indicator, type weight, icon treatment, spatial attachment to active content.
-- Tabs need enough vertical hit area and readable type. Tiny 10–11px tabs are prohibited for main workflow navigation.
-
-### Banners / context strips
-- A banner representing a mode, safety boundary or workflow constraint must be visually unmistakable within the first viewport.
-- Use strong hierarchy: icon/mark + title + concise explanation + optional action/status.
-- A critical context banner must not look like a pale decorative strip that can be ignored.
-- The banner must remain distinguishable in grayscale through shape, border, weight and placement — not color alone.
-
-### Icons
-- Icons must have consistent optical size, weight and container relationship.
-- Main navigation and important actions must not fall back to raw abbreviations such as `EDU`, `CASE`, `EMR` when a standard semantic icon is available.
-- Text label may accompany the icon, but icon treatment should feel intentional rather than placeholder-like.
-- If Font Awesome cannot render because local assets are unavailable, the mockup must use an approved non-deceptive fallback strategy documented in Design Notes; do not silently hide icon space or replace it with cheap placeholder text.
-
-### Fields / selectors
-- Form controls need refined focus, hover and selected states, aligned heights and consistent internal padding.
-- Native-looking browser selects/inputs without crafted states are not Premium Candidate quality.
-
-### Fit & Finish FAIL examples
-- readable content is mostly 9–11px;
-- mode/safety banner is visually weaker than ordinary content;
-- tabs read like plain links;
-- buttons look like default Bootstrap/browser controls;
-- icons are missing, hidden or replaced with abbreviations;
-- spacing inside controls is inconsistent;
-- repeated thin borders make the page look low-cost or unfinished.
-
-## 12. Anti-Template Test — Mandatory
-
-Before PASS, ask:
-1. Could this plausibly be CRM, fintech, logistics SaaS or generic admin after changing labels? **If yes → FAIL.**
-2. Is the page mainly a collection of repeated rounded rectangles? **If yes → FAIL.**
-3. Are major regions equal-sized because a grid was easy? **If yes → FAIL.**
-4. Does removing color destroy hierarchy? **If yes → FAIL.**
-5. Does the operational story remain obvious in grayscale? **If no → FAIL.**
-6. Is there a clear authored focal path? **If no → FAIL.**
-7. Is AI visually themed differently from the HIS? **If yes → FAIL.**
-8. Does it feel merely tidy/functional but visually lifeless? **If yes → FAIL Premium Craft.**
-
-## 13. Desirability Test — Mandatory for Premium Candidate
-
-A Premium Candidate must create the reaction:
-**“This feels precise, expensive, calm and intentionally designed — I want to use it.”**
-
-It must not depend on superficial luxury effects.
-
-Evaluate:
-- visual balance and proportion;
-- surface richness without clutter;
-- typography craftsmanship;
-- instrument quality of data;
-- meaningful depth;
-- micro-interaction quality;
-- custom operational visualization where the workflow deserves it;
-- coherent identity across the full page;
-- component jewelry quality: buttons, tabs, banners, icons, selectors and field details.
-
-If Human Visual Review returns only “clean”, “neat”, “usable” or “professional” but not “crafted/desirable” → keep status **Candidate**, not Premium.
-
-## 14. Archetype — Command / Operational Intelligence
-
-The Command Center is a **live decision instrument**, not a dashboard gallery.
-
-First viewport communicates:
-1. current hospital operating state;
-2. trajectory / what is likely to happen;
-3. bottleneck or exception;
-4. evidence and time-to-threshold;
-5. the next coordinated intervention and projected impact.
-
-Preferred visual grammar:
-- crafted situation/header layer;
-- integrated Hospital Instrument Band, not spreadsheet KPI cells;
-- dominant Operational Flow / Capacity Field;
-- exception integrated at the affected point;
-- Intelligence Intervention layer with rationale and projected impact;
-- contextual tactical/frontline drill-down;
-- subtle scenario transition that visibly changes the system state.
-
-Do **not** lock this archetype to a fixed 2/3 + 1/3 template. Proportion follows the decision and evidence.
-
-## 15. Gold Standard Rule
-
-No component, layout master or pattern may call itself **Premium**, **World-class**, **Gold**, or **Signature** solely because it passes Factory Gate.
-
-Promotion requires:
-- rendered visual review;
-- Human Design Approval;
-- Anti-Template Test PASS;
-- Desirability Test PASS;
-- comparison with relevant Gorilla HIS continuity reference when available;
-- evidence that composition was designed around workflow/decision;
-- evidence of craft beyond default component assembly.
-
-Until Human Design Approval exists, label artifact **Candidate**.
-
-## 16. Extraction Rule
-
-`Human-approved reference page → extract recurring Visual Grammar → extract components/patterns → Factory enforcement`
-
-Never reverse this into:
-`generic components → assemble page → declare premium`.
+## 20. Extraction Rule
+`Human-approved reference → extract Visual Grammar → components/patterns → Factory enforcement`.
+Never reverse into `generic components → assemble → declare premium`.

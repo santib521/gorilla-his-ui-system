@@ -1,147 +1,117 @@
-# Gorilla HIS — Interaction Completeness, Hospital Realism & Scenario Execution Standard v1.3
+# Gorilla HIS — Interaction Completeness, Hospital Realism & Scenario Execution Standard v1.4
 
-This standard is binding for every interactive Gorilla HIS mockup.
+Binding for every interactive Gorilla HIS mockup.
 
 ## 1. Core Rule
-`Blueprint Business Truth → Scenario Entry → Working Interaction → Observable State → Exception → End State → Independent Test`
-
-The mockup proves that the workflow described in the Blueprint can actually be operated. It is not a workflow-documentation canvas.
+`Blueprint Business Truth → Real Domain Entry → Classification/Decision → Working Interaction → Observable State → Exception → End State → Independent Function Test → Independent Design Review`
 
 ## 2. Swimlane Boundary
-Role-Based Swimlane is primarily a **Blueprint/document artifact** used to explain actors, decisions and handoffs.
+Role-Based Swimlane is primarily a Blueprint/document artifact. Do not add a Swimlane screen solely because Blueprint contains one. Add operational workflow visualization only when Hospital Requirement/product function requires it.
 
-UI Factory MUST NOT add a Swimlane screen solely because the Blueprint contains a Swimlane. Add a workflow/swimlane visualization to hospital-facing UI only when:
-1. the Hospital Requirement explicitly asks for workflow monitoring/visualization; or
-2. the product genuinely needs an operational workflow tracker and the Blueprint marks it as a product function.
+## 3. Classification-First Entry Rule
+Every material scenario must begin at the earliest operational Entry that is in scope. If the domain requires classification/triage before registration, the mockup must not skip directly to a pre-created case.
 
-Role/handoff truth still governs permissions, ownership, queues and executable actions in the mockup.
+Examples:
+- forensic: death/event/notification → medico-legal classification → request/referral → intake;
+- ER: arrival → triage;
+- OR: surgical request → scheduling/readiness;
+- lab: order/specimen receipt according to scope.
 
-## 3. Entry-First Scenario Rule
-Every material in-scope scenario must begin from its real operational Entry, not only from a pre-populated case.
+For each scenario:
+`Entry → Classification/Eligibility → Required Data → Validate → Decision → Create/Accept Work → Assignment/Handoff → Main Work → Transaction/Result → Review/Final → Handover/Disposition/Close`.
 
-Examples: New Request, Key Request, Referral, Registration, Order, Appointment, Admission, Specimen Receipt, Stock Request — according to the domain.
-
-For each scenario, reviewer must be able to:
-`Entry → Key required data → Validate → Decision → Create/Accept work → Assignment/Handoff → Main work → Transaction/Result → Review/Final → Handover/Close`
-
-Only include steps relevant to that domain.
-
-A mockup containing only completed/pre-created cases when Blueprint requires creation/intake = FAIL.
+Only include domain-relevant steps, but never omit an upstream stage merely because it is harder to mock.
 
 ## 4. Scenario Branch Completeness
-Each materially distinct Blueprint scenario is a separate Main Workflow test path. Differences may include entry trigger, actor, identifier/encounter, authority, source-of-truth, handoff, finance, privacy, exception or end state.
+Separate branches when Classification, Entry, Actor, Location, Identifier/Encounter, Authority, Source-of-Truth, Handoff, Custody, Finance, Privacy, Exception or End State materially differs.
 
-For each in-scope scenario:
-1. start from real Entry;
-2. enter/choose meaningful data;
-3. validate required information;
-4. exercise material decision(s);
-5. create observable state/data;
-6. perform scenario-specific main work;
-7. exercise material handoff/transaction;
-8. reach meaningful end state;
-9. exercise at least one relevant exception;
-10. test branch separately.
+Each in-scope branch must start from real Entry, enter meaningful data, validate, exercise material decision, create observable state, perform scenario-specific work/handoff, reach meaningful end state and execute at least one relevant exception.
 
-One generic case with label changes = FAIL.
+Generic case with label changes = FAIL.
 
 ## 5. Interaction Completeness
-Every visible primary workflow control must have meaningful observable behavior. Material state-changing actions must mutate visible state/data; toast-only success is insufficient.
-
-Dead primary navigation/menu/tab/action, fake success, broken confirm/cancel, unreachable next stage = FAIL.
+Every visible primary workflow control has meaningful observable behavior. State-changing actions mutate visible state/data; toast-only success insufficient. Dead nav/menu/tab/action, fake success, broken confirm/cancel, unreachable stage = FAIL.
 
 ## 6. Data Continuity
-Data entered at Entry must persist through downstream screens where the Blueprint requires it. Identifier/context/owner/status must not silently change. A workflow that visually advances but loses or contradicts entered data = FAIL.
+Data entered at Entry/classification persists downstream where Blueprint requires it. Identifier/context/owner/status/classification must not silently change.
 
 ## 7. Role / Permission Execution
-Role model comes from Blueprint Swimlane/Role Matrix. Mockup must enforce relevant ownership and permission behavior through worklists, enabled/disabled actions, restricted data and handoffs. Do not create a decorative role diagram as a substitute.
+Blueprint Swimlane/Role Matrix governs ownership/permissions through worklists, enabled actions, restricted data and handoffs. Decorative role diagrams do not substitute.
 
 ## 8. Exception Execution
-Material exceptions from Blueprint must be executable when relevant: Reject, Return for Information, Cancel, Correction, Wrong Identifier, Missing Required Data, Duplicate, Unavailable Resource/Person, Failed Interface, Reversal, Restricted Access.
+Material exceptions must be executable when relevant: Reject, Return, Redirect, Cancel, Correction, Wrong Identifier, Missing Data, Duplicate, Unavailable Resource/Person, Failed Interface, Reversal, Restricted Access, invalid classification/route.
 
 ## 9. Hospital-Facing Realism
-Do not expose Demo/Prototype/WA/GAP/TBD/CR/HSR/AI/internal QA language in normal hospital-facing UI unless explicitly requested. Use realistic operational statuses.
+No Demo/Prototype/WA/GAP/TBD/CR/HSR/AI/internal QA labels on normal hospital-facing surfaces unless requested. Use real operational language.
 
-## 10. Mandatory Interaction Inventory
-Create:
-| Control ID / Label | Scenario | Entry/Stage | Role | Expected Behavior | Observable Result | Test Result |
+## 10. Adaptive Navigation / Workspace
+Navigation must not dominate the task. Where workflow benefits, support expanded/compact/collapsed state while preserving orientation. Main work should reclaim space after selection when appropriate. Large unused blank workspace + oversized navigation = UX/Design FAIL.
 
+## 11. Mandatory Interaction Inventory
+`Control ID | Scenario | Entry/Stage | Role | Expected Behavior | Observable Result | Test Result`
 Every primary Main Workflow control appears.
 
-## 11. Runtime Functional Smoke Test
+## 12. Runtime Functional Smoke Test
 Run browser/runtime, not static source only. Minimum:
-1. every primary nav;
-2. every main workflow tab/screen;
-3. modal/drawer families;
-4. Entry/create/intake for every material scenario;
-5. required-field validation;
-6. valid state-changing action per major stage;
-7. scenario-specific decision/handoff;
-8. one material exception per scenario where relevant;
-9. data continuity from Entry to downstream work;
-10. search/filter/context preservation when relevant;
-11. no workflow-breaking console/page error;
-12. meaningful end state for every required scenario.
+1 every primary nav;
+2 main workflow screens/tabs;
+3 modal/drawer families;
+4 real Entry + classification/intake for every material scenario;
+5 required-field validation;
+6 valid state-changing action per major stage;
+7 scenario decision/handoff;
+8 material exception per scenario where relevant;
+9 data continuity;
+10 search/filter/context preservation;
+11 no workflow-breaking console/page error;
+12 meaningful end state.
 
-If runtime execution is blocked, Functional Smoke Test cannot be PASS.
+If runtime blocked, cannot PASS.
 
-## 12. Independent Agent Function Test — Mandatory Release Gate
-After Builder completes the mockup, a separate review pass acts as Hospital User + Senior BA + Domain Expert + QA Tester. It must not rely on Builder explanation to understand how to work.
+## 13. Independent Agent Function Test
+Separate pass acts as Hospital User + Senior BA + Domain Expert + QA Tester and must not rely on Builder explanation.
 
-Test dimensions:
-- Workflow Completeness
-- Function Completeness
-- Role/Permission
-- Scenario Completeness
-- Exception Handling
-- Data Continuity
-- State Transition
-- Usability / discoverability
-- Dead Controls
-- Blueprint Traceability
+Test: Workflow Completeness, Function Completeness, Domain Classification, Role/Permission, Scenario, Exception, Data Continuity, State Transition, Usability/discoverability, Dead Controls, Blueprint Traceability.
 
-Allowed results:
-- `PASS`
-- `FAIL — FUNCTION MISSING`
-- `FAIL — WORKFLOW BROKEN`
-- `FAIL — SCENARIO INCOMPLETE`
-- `FAIL — UNUSABLE`
-- `FAIL — REQUIREMENT TRACEABILITY`
+Results:
+`PASS`
+`FAIL — FUNCTION MISSING`
+`FAIL — WORKFLOW BROKEN`
+`FAIL — SCENARIO INCOMPLETE`
+`FAIL — DOMAIN CLASSIFICATION MISSING`
+`FAIL — UNUSABLE`
+`FAIL — REQUIREMENT TRACEABILITY`
 
 Critical/High failure blocks release.
+Loop: `BUILD → TEST → FAIL → FIX → RETEST`.
+Unresolved Hospital Decision: `BLOCKED — HOSPITAL DECISION REQUIRED`.
 
-Required loop:
-`BUILD → AGENT FUNCTION TEST → FAIL → FIX → RETEST`
+## 14. Usability Hard Gate
+Reviewer can identify where to start, why this case belongs in this workflow, required information, current status/owner, next action, why blocked, recovery path and finish state. Guessing/source-code consultation = FAIL — UNUSABLE.
 
-Stop the loop only when PASS or when an unresolved Hospital Decision prevents safe completion. In the latter case report `BLOCKED — HOSPITAL DECISION REQUIRED`, not PASS.
+## 15. Independent Premium Design Review
+After functional review, run `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md` on rendered screens.
 
-## 13. Usability Hard Gate
-The independent reviewer must be able to identify:
-- where to start;
-- what information is required;
-- current status/owner;
-- next action;
-- why an action is blocked;
-- how to recover from relevant error/return;
-- how to finish the work.
+`Function PASS + Design FAIL = Factory FAIL`.
 
-If the reviewer must guess the workflow or consult source code, `FAIL — UNUSABLE`.
+Design review must explicitly inspect navigation footprint, space utilization, Thai typography, hierarchy/task focus, progressive disclosure, component craft, generic-admin appearance, Gorilla continuity and responsive/collapse behavior.
 
-## 14. Reference Benchmark
-A user-supplied existing mockup is a minimum benchmark. New candidate must not regress workflow depth, interaction completeness, information density, product continuity or usability.
+## 16. Reference Benchmark
+User-supplied candidate is minimum benchmark. New candidate cannot regress workflow depth, information density, usability, interaction or visual craft.
 
-## 15. Angular Mapping
-Use Angular Material/CDK as implementation primitives where appropriate while preserving Gorilla HIS design authority and clinical density. Scenario state, permission state and transaction state must map cleanly to implementable Angular state/services.
+## 17. Angular Mapping
+Use Angular Material/CDK as implementation primitives where appropriate while preserving Gorilla design authority/density. Material default appearance is not design authority.
 
-## 16. QA Decision
+## 18. QA Decision
 Cannot become Candidate — Ready for Human Visual Review when:
-- a material scenario cannot start from real Entry;
-- primary controls are dead;
-- scenario branch is cosmetic-only;
+- material scenario cannot start from real Entry/classification;
+- primary controls dead;
+- scenario cosmetic-only;
 - data continuity breaks;
-- material exception is missing;
-- Independent Agent Function Test has Critical/High failure;
-- runtime test is unverified;
-- user cannot understand how to complete the workflow.
+- material exception missing;
+- Agent Function Test has Critical/High failure;
+- runtime unverified;
+- user cannot understand workflow;
+- Independent Design Review fails or is unverified when rendered review is required.
 
-Target: **complete operational scenario execution + independent functional proof + premium Gorilla HIS craft**.
+Target: complete operational execution + independent functional proof + independent premium design proof.

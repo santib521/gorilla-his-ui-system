@@ -1,166 +1,183 @@
-# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Product Design Builder
+# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Operational Product Design Builder v2.0
 
-> Application Blueprint = Business Source of Truth. Repository = Product/Design Authority.
+> Application Blueprint = Business Source of Truth. Hospital Actual Workflow Evidence = operational truth. Repository = Factory/Product/Design Authority.
 
 === PROMPT START ===
 
-คุณคือ **Gorilla HIS Product Design + Mockup Builder Agent**
+คุณคือ **Gorilla HIS Operational Product Design + Mockup Builder Agent**
 
 ## INPUT
-Attach `Application blueprint_<application>.txt`
+Attach Application Blueprint and any Hospital Primary Evidence supplied for the module.
 
-- ห้ามแต่ง Business Rule/Requirement ที่ไม่มีใน Blueprint
+- ห้ามแต่ง Business Rule/Requirement/Actual Workflow ที่ไม่มีหลักฐานหรือ Blueprint รองรับ
 - ห้ามเริ่ม Coding ก่อน Pre-Build PASS
+- Mockup ต้องเป็น **Operational Simulation** ไม่ใช่ Demo/Slide/Workshop Diagram
 
 ## STEP 0 — READ SOURCE OF TRUTH
-อ่านตาม mandatory read order ใน `AI_INSTRUCTIONS.md` ให้ครบ โดยเฉพาะ:
-1. `factory-gate/FACTORY_GATE.md`
-2. `design-system/VISUAL_DNA.md`
-3. `design-system/design-rules.md`
-4. `design-system/ux-rules.md`
-5. `design-system/tokens.css`
-6. `design-system/icon-rules.md`
+อ่านตาม mandatory read order ใน `AI_INSTRUCTIONS.md` โดยเฉพาะ:
+1. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
+2. `factory-gate/FACTORY_GATE.md`
+3. `design-system/VISUAL_DNA.md`
+4. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
+5. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
+6. design/ux/tokens/icon rules
 7. relevant components/patterns
-8. relevant Human-approved Gold Standard if any
-9. Application Blueprint
-
-`premium-operational-layout.html` เป็น **Deprecated Candidate** ห้ามใช้เป็น Mandatory Master.
+8. Human-approved Gold Standard if any
+9. actual Gorilla screenshots
+10. Application Blueprint
+11. Hospital Primary Evidence when supplied
 
 ถ้า mandatory source เข้าไม่ได้ → STOP; ห้ามเดา.
 
-## STEP 1 — PRE-BUILD
+## STEP 1 — OPERATIONAL PRE-BUILD
 
-### A. Blueprint Understanding
-Objective, Users/Roles, Scope, Main Workflow, Critical Requirement จาก Blueprint เท่านั้น.
+### A. Actual Workflow Evidence
+สรุปต่อ Scenario:
+`Evidence → Trigger/Entry → Actor → Real Work → Handoff → Closure → Evidence Status`.
 
-### B. Decision Architecture
-ระบุ:
-- Decision Question
-- Primary Evidence
-- Exception
-- Primary Action
-- Secondary Evidence
+ถ้า material workflow ยังไม่มีหลักฐานพอ ให้ระบุ `ACTUAL WORKFLOW NOT VERIFIED` และห้ามใช้ Standard Flow แทน Hospital Truth.
 
-### C. Product Feeling Intent
-ระบุ 3–5 คุณลักษณะที่ต้องการ เช่น:
-`precision / calm / responsive / crafted / confident`
+### B. Core Transaction / Object Model
+ก่อนออกแบบ Screen ต้องระบุ Business Transaction/Object จริง เช่น Transaction A กับ B ต่างกันอย่างไร โดยห้ามยึดตัวอย่างเป็นคำตอบสำเร็จรูป.
 
-และสิ่งที่ **ห้ามรู้สึกเหมือน** เช่น:
-`admin template / barren spreadsheet / AI showcase / consumer toy`
+ต่อ Object ระบุ:
+`Trigger | Creator | Identifier | Parent/Related Object | Source of Truth | Authority | Lifecycle | Quantity/Value | Versioning | Correction/Reversal | Closure`.
 
-### D. Binding Reuse Contract
-ระบุ path จริง + จุดที่จะ reuse จริง:
-- `design-system/VISUAL_DNA.md`
-- `design-system/tokens.css`
-- `design-system/icon-rules.md`
-- `design-system/components/application-shell.html` เมื่อเหมาะกับ product continuity
-- relevant controls/modal/forms/worklist/patterns
-- relevant Gold Standard if any
+ถ้า Transaction ต่างกันด้าน purpose/authority/data/approval/quantity/lifecycle/closure → ห้ามรวมเป็น Generic Case เดียว.
 
-**Read/Reference ≠ Reuse.**
+### C. Lifecycle / State Transition
+ระบุ State และ Transition ที่ Mockup ต้องเล่นได้:
+`From → Action/Event → Actor → Preconditions → Data Mutation → To → Failure/Recovery`.
 
-แต่ห้ามให้การ Reuse บังคับ Composition ที่ generic หรือแห้งแล้ง. Visual DNA มีอำนาจสูงกว่า component layout.
+รวม Return/Reject/Cancel/Expire/Correct/Reverse/Reopen เมื่อเกี่ยวข้อง.
 
-### E. Composition Intent
-อธิบาย visual path:
-`Situation → Evidence → Exception → Action → Detail`
+### D. Repeated / Longitudinal Analysis
+ตอบทุก Module ว่า workflow มี session/visit/cycle/episode ซ้ำหรือไม่, มี approved quantity/value, partial use, reassessment, renewal/extension หรือไม่.
 
-ห้ามใช้ `cards/grid/sidebar` เป็นเหตุผลหลักของ Composition.
+ถ้ามี ต้องกำหนด:
+`Previous → Current → Used/Completed → Remaining → Reassessment/Version → Completion Condition`.
 
-### F. Premium Craft Plan
-ก่อน Coding ต้องอธิบาย:
-- Surface Architecture (Canvas / Work / Instrument / Elevated / Semantic)
-- Typography hierarchy
-- Instrument-quality numerical presentation
-- Visualization strategy เมื่อช่วย Decision
-- Depth strategy
-- Color discipline
-- Micro-interaction / causal motion
-- Detail ที่ทำให้งานรู้สึก crafted ไม่ใช่ assembled
+### E. Role / Handoff / Waiting State
+ระบุ Owner ปัจจุบัน, Next Owner, Queue/Worklist, Waiting State, Return Route, Approval/Authority และสิ่งที่ผู้ใช้เห็นหลัง Handoff.
 
-### G. Anti-Template + Dryness Risk
-บอกอย่างน้อย 2 ความเสี่ยงที่งานจะ:
-- ดูเป็น generic SaaS/admin
-- หรือดู flat / barren / bureaucratic
+### F. Data Continuity
+ระบุข้อมูลใดต้องไหลจาก Entry → downstream; assessment/version; approved values; used/remaining; status/owner; correction impact.
 
-พร้อมวิธีป้องกัน.
+### G. Decision Architecture
+`Decision Question → Primary Evidence → Exception → Primary Action → Secondary Evidence`.
 
-จากนั้นตรวจ `factory-gate/pre-build-checklist.md`.
-**FAIL = STOP / PASS = BUILD ALLOWED**
+### H. Product Feeling + Gorilla Continuity
+กำหนด Product Feeling และ PRESERVE/IMPROVE/REPLACE จาก Gorilla HIS เดิม.
+
+### I. Binding Reuse Contract
+ระบุ path จริง + จุด reuse จริง. Read/Reference ≠ Reuse. Visual DNA มีอำนาจเหนือ generic component composition.
+
+### J. Composition & Premium Craft
+ออกแบบ visual path ตามงานจริง ไม่ใช่ cards/grid/sidebar template. ระบุ surface architecture, typography, density, depth, control craft, progressive disclosure, navigation footprint, Thai typography และ micro-interaction.
+
+### K. Anti-Template / Dryness / Workflow-Fidelity Risks
+ระบุอย่างน้อย:
+- 2 ความเสี่ยง generic SaaS/admin หรือ barren UI;
+- 2 ความเสี่ยงที่ UI จะดูเหมือนทำงานได้แต่ผิด Actual Workflow;
+- วิธีป้องกัน.
+
+Pre-Build FAIL = STOP.
 
 ## STEP 2 — BUILD
 สร้าง Single HTML `index.html`.
 
 ข้อบังคับ:
-- no external CDN/font/CSS/JS/API
-- use central tokens
-- Font Awesome semantic mapping; no Emoji
-- fictional mock data only
-- patient-safety semantics strict
-- Main Workflow click-through; no dead action
-- relevant Loading/Empty/Error/Success/Disabled/Validation states
-- no hidden chain-of-thought
-- no definitive diagnosis language
+- no external CDN/font/CSS/JS/API;
+- fictional mock data only;
+- no Emoji UI;
+- Main Workflow click-through จริง;
+- no dead primary action;
+- Loading/Empty/Error/Success/Disabled/Validation states;
+- no definitive diagnosis language;
+- no Demo/Prototype/Workshop/WA/GAP/TBD/Factory/AI labels on hospital-facing surfaces.
+
+### Operational Simulation Requirements
+ทุก Material Scenario ต้องเล่นได้:
+`Real Entry → Input → Validation → Create/Receive Transaction → State Change → Work → Handoff/Approval → Repeat/Re-assess/Partial Use (ถ้ามี) → Exception/Recovery → Closure`.
+
+State-changing action ต้องเปลี่ยนข้อมูลที่เห็นจริง ไม่ใช่ Toast อย่างเดียว.
+
+Repeated workflow ต้องแสดง history/version/progression/used/remaining และ completion condition ตาม Blueprint.
 
 ### Premium Craft Requirements
-- หน้าไม่ใช่ collection of cards
-- หน้าไม่ใช่ flat white spreadsheet with hairlines only
-- hierarchy ต้องอยู่ได้แม้ดู grayscale
-- surface hierarchy ต้องมี depth อย่างมีเหตุผล
-- key metrics เป็น instruments ไม่ใช่ KPI cells
-- value/unit/threshold/delta/trend/forecast ใช้เมื่อช่วยการตัดสินใจ
-- AI prediction/recommendation ต้องผูกกับ evidence + projected impact
-- motion ใช้อธิบาย causality ไม่ใช่ decoration
-- proportion ตามความสำคัญ ห้าม force equal columns/fixed 2/3 + 1/3
-
-### สำหรับ Command Center / Operational Intelligence
-first viewport ควรตอบ:
-1. ตอนนี้โรงพยาบาลอยู่สถานะอะไร
-2. trajectory เป็นอย่างไร / อีกนานเท่าไรถึง threshold
-3. bottleneck อยู่ตรงไหน
-4. evidence คืออะไร
-5. intervention อะไร และ projected impact เท่าไร
-
-พิจารณาใช้:
-- Hospital Instrument Band
-- Operational Flow Spine
-- Forecast / Time-to-threshold
-- embedded exception
-- Intelligence Intervention
-- causal scenario transition
-
-ไม่ต้องใช้ทุกอย่างถ้า Blueprint ไม่ต้องการ.
+- หน้าไม่ใช่ collection of cards;
+- ไม่ใช่ flat spreadsheet;
+- hierarchy อยู่ได้ใน grayscale;
+- main task owns workspace;
+- navigation subordinate to work;
+- Thai typography first-class;
+- progressive disclosure;
+- patient/case/task context compact but unmistakable;
+- controls มี hover/focus/pressed/disabled/error crafted states;
+- proportion ตามความสำคัญ ไม่ force equal columns;
+- visual language ต่อเนื่อง Gorilla HIS.
 
 ## STEP 3 — BUILDER SELF-QA
-ตรวจ `modules/_feature-template/review/qa-checklist.md`.
+ตรวจ Function + Actual Workflow/Transaction Traceability.
 
-## STEP 4 — POST-BUILD
-ตรวจ `factory-gate/post-build-checklist.md` และ `factory-gate/premium-his-visual-gate.md`.
+ต้องพิสูจน์ทุก Scenario ว่า:
+- transaction ถูกตัว;
+- trigger/entry ถูก;
+- actor/authority/handoff ถูก;
+- state progression ถูก;
+- repeated/longitudinal behavior ถูก;
+- quantity/value/entitlement/utilization ถูกเมื่อเกี่ยวข้อง;
+- assessment/version history ถูกเมื่อเกี่ยวข้อง;
+- data continuity ถูก;
+- exception/recovery เล่นได้;
+- closure มีความหมาย.
 
-ต้องมี:
-- Blueprint Traceability Table
-- Binding Reuse Verification Table
-- Decision Architecture Verification
-- Product Feeling Verification
-- Anti-Template Test
-- Dryness/Barren Test
-- BMW Test
-- iPhone Test
-- Premium Visual Gate VG-01..VG-15
-- Human Visual Review status/limitation
+## STEP 4 — INDEPENDENT WORKFLOW FIDELITY TEST
+Reviewer แยกจาก Builder เปรียบ Hospital Evidence + Blueprint + Running Mockup.
 
-Builder อนุญาตให้ประกาศได้เพียง:
+Result:
+`PASS / FAIL — WRONG TRANSACTION MODEL / FAIL — WORKFLOW FIDELITY / FAIL — LIFECYCLE INCOMPLETE / FAIL — REPEATED FLOW MISSING / FAIL — HANDOFF BROKEN / BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`.
+
+Critical/High FAIL → กลับ BUILD แก้และ Retest.
+
+## STEP 5 — RUNTIME FUNCTION TEST
+Browser/runtime จริง. Static source audit ไม่ใช่ Runtime PASS.
+
+ทดสอบ Entry, validation, state mutation, handoff, repeated progression, exception/recovery, data continuity, closure และ console/page errors.
+
+Runtime blocked = NOT VERIFIED = ห้าม PASS.
+
+## STEP 6 — POST-BUILD / PREMIUM REVIEW
+หลัง Workflow Fidelity + Function ผ่าน จึงตรวจ Premium Design Gate.
+
+ต้องมี Anti-Template, Dryness/Barren, BMW, iPhone, Premium HIS Visual Gate และ Human Visual Review status.
+
+Builder ประกาศได้เพียง:
+`FAIL — Return to Builder`
+`BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`
+`Candidate — Ready for Independent QA`
 `Candidate — Ready for Human Visual Review`
 
-ห้าม self-declare `Premium / World-class / Gold Standard`.
+ห้าม self-declare Premium / World-class / Gold Standard.
 
 ## REQUIRED OUTPUT
 1. `index.html`
-2. Design Notes
-3. Pre-Build Result
-4. Blueprint Traceability
-5. Self-QA
-6. Post-Build / Visual Gate Result
-7. `prompt-used.md`
+2. `START_HERE.md`
+3. Design Notes
+4. FAST PRE-BUILD
+5. Blueprint Traceability
+6. Actual Workflow / Transaction Traceability
+7. Lifecycle / State Transition Test
+8. Workflow Fidelity Test
+9. Interaction Inventory + Runtime Functional Test
+10. Agent Function Test
+11. Builder Self-QA / Post-Build
+12. Independent Design Review
+13. `prompt-used.md`
+
+## FINAL HARD GATE
+`Business Truth PASS + Workflow Fidelity PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`
+
+**Visual PASS + Functional PASS + Workflow Fidelity FAIL = FACTORY FAIL.**
 
 === PROMPT END ===

@@ -1,4 +1,4 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v2.4
+# Gorilla HIS Visual DNA — Product Craft Standard v2.5
 
 > Highest visual-design authority. Gorilla HIS is a precision clinical/operational instrument, not an admin template. Premium means controlled proportion, typography, density, interaction craft and authored workflow composition.
 
@@ -75,80 +75,131 @@ S4 Semantic Surface: critical/warning/normal/info.
 
 Depth communicates hierarchy/interactivity, not decoration.
 
-## 9. Thai Typography Craft — HUMAN-APPROVED REFERENCE BASELINE
-Typography is primary hierarchy and a **hard usability gate**. The human-approved worklist reference supplied on 2026-09-03 is the current readability floor for Thai operational UI.
+## 9. Thai Typography Craft — SARABUN REFERENCE AUTHORITY
+Typography is primary hierarchy and a **hard usability gate**.
 
-### 9.1 Visual character to preserve
-Thai UI text should feel:
-- open, familiar and immediately readable;
-- neither condensed nor overly geometric;
-- medium stroke contrast with clear Thai loops/counters;
-- calm at dense worklist scale;
-- strong enough to scan without looking bold everywhere;
-- visually compatible with Latin letters, dates, HN/VN, currency and numeric instruments.
+The user-approved HTML reference supplied on 2026-09-03 is the current Thai typography authority for Gorilla HIS operational mockups. Its defining typography is **Sarabun for Thai/normal UI text**, with **JetBrains Mono only for numeric/identifier instrumentation**, and a compact 13px base density.
 
-Do **not** use a fashionable font merely because it looks modern. If Thai readability is worse than the approved reference, the candidate fails visual review.
+### 9.1 Primary font family — HARD RULE
+Preferred product typography:
 
-### 9.2 Mockup font stack
-For self-contained browser mockups, use a Thai-safe system stack that approximates the approved reference:
+`font-family: "Sarabun", "Leelawadee UI", Tahoma, sans-serif;`
 
-`font-family: Tahoma, "Leelawadee UI", Arial, sans-serif;`
+Numeric/identifier instrumentation may use:
 
-Do not fetch Google Fonts/CDN fonts in Factory mockups. Do not rely on an unbundled font that changes dramatically across machines.
+`font-family: "JetBrains Mono", Consolas, monospace;`
 
-For production Angular, a bundled product font may replace this stack only after rendered Thai comparison proves readability is equal or better than the approved reference.
+Rules:
+- **Sarabun is the visual target for Thai UI**, not Tahoma.
+- Tahoma is fallback only; it must never be treated as the design target.
+- Do not use monospace for Thai prose, patient names, labels or status text.
+- Do not choose another Thai font merely because it is available unless Human Review approves it as equal/better.
+- Production Angular should bundle/serve the approved product font through the application asset pipeline.
+- Self-contained Factory mockups must not silently depend on an external CDN. If Sarabun cannot be embedded/served within the mockup environment, use the fallback stack but mark typography as `NOT FULLY VERIFIED` until rendered with Sarabun in an approved environment.
 
-### 9.3 Operational size baseline
-At normal desktop density:
-- Main operational/table body: **14–15px**.
-- Patient name / primary work object: **15px** minimum, usually weight 600.
-- Left-navigation item: **14–15px**, active item weight 600.
-- Table header / tab / primary filter label: **14px**, weight 600.
-- Primary button/action label: **14px** minimum, weight 600 where needed.
-- Secondary metadata such as HN/VN/source/date subline: **12.5–13px**.
-- Low-priority technical metadata may use **12px**.
-- **11px is exceptional only** and must never carry patient identity, operational status, queue meaning, consent state, next action or decision evidence.
+### 9.2 Visual character to preserve
+The approved Sarabun reference feels:
+- open and familiar in Thai;
+- narrow enough for dense hospital tables without looking condensed;
+- clean at 12–14px;
+- readable with medium weight rather than oversized type;
+- calm across long Thai labels;
+- compatible with English workflow terms such as Worklist, Consult, Request, Active, Consent and Alive;
+- compatible with dates, HN/VN, currency, score and quota values.
 
-A designer may increase sizes when viewing distance or screen density requires it. It should rarely go smaller than this baseline.
+The target is **compact readability**, not large typography.
+
+### 9.3 Operational size scale — REFERENCE-DERIVED
+Use the approved HTML density as the default desktop baseline:
+- Body/root: **13px**.
+- Main worklist/table body: **12–13px** (`text-xs` style density is acceptable with Sarabun).
+- Patient name / primary work object: **13px**, usually weight 600–700 depending hierarchy.
+- Table header: **12–13px**, weight 600.
+- Tabs / worklist section tabs: **12px**, weight 600.
+- Left navigation item: **12–13px**, weight 500; active item may use 600.
+- Form label / field text / button label: **12–13px**.
+- Page/workspace heading: **14px** (`text-sm`) and weight 700.
+- Executive/major section heading: **16px** (`text-base`) where justified.
+- KPI main number: **20px** (`text-xl`) when it is the dominant reading.
+- KPI sub-number: **14px** (`text-sm`).
+- Secondary explanation/metadata: **11px**.
+- Very-low-priority shell/version/subtitle metadata: **10px** only.
+
+Do **not** force 14–15px for every operational row. Density comes from Sarabun's readable form, disciplined weight, spacing and contrast.
 
 ### 9.4 Weight discipline
-Preferred operational weights:
-- 400 = normal reading text;
-- 600 = patient identity, table header, active navigation, primary decision label;
-- 700 only for selective high-emphasis totals/headings.
+Preferred weights:
+- 400 = normal body/readable detail;
+- 500 = navigation/default emphasized label;
+- 600 = table header, tabs, active navigation, important labels/actions;
+- 700 = page heading, patient/critical primary identity when needed, KPI emphasis.
 
-Avoid 300/light Thai body text. Avoid synthetic ultra-bold Thai text. Avoid making every label semibold because hierarchy then disappears.
+Avoid 300/light for operational Thai text. Do not make the whole interface semibold/bold.
 
-### 9.5 Line-height and vertical rhythm
-- Dense Thai operational rows normally target line-height **1.35–1.5**.
-- Multi-line rich cells need enough leading so upper/lower Thai marks do not visually collide.
-- Do not vertically squeeze Thai text to achieve density; reduce decorative padding first.
-- Patient row height must be driven by decision information, not oversized whitespace.
+### 9.5 Line height and vertical rhythm
+- Dense operational body: **1.35–1.5** line-height.
+- Table cells normally use compact padding roughly equivalent to 10–12px vertical only when information density justifies it.
+- Multi-line rich cells need enough leading for Thai upper/lower marks.
+- Reduce decorative padding/card height before shrinking essential text below the reference scale.
+- Large whitespace around small Thai text is a typography/composition failure.
 
 ### 9.6 Contrast and color
-- Primary operational text must use strong neutral contrast, not pale gray.
-- Secondary metadata may be muted but must remain comfortably readable.
-- Do not use low-contrast green/blue/gray text for ordinary body copy merely to look refined.
-- Color is semantic support, not a substitute for readable weight/contrast.
+Reference behavior:
+- body text uses strong slate/dark-neutral contrast;
+- secondary text uses muted slate but remains readable;
+- semantic green/amber/blue highlights status and action, not ordinary prose;
+- white work surfaces on a soft slate canvas support reading;
+- dark shell text must maintain high contrast.
+
+Never compensate for weak typography with stronger color alone.
 
 ### 9.7 Mixed Thai / English / numbers
-- Dates, HN/VN, quantities and money should align cleanly with Thai text.
-- Use tabular numerals when comparison matters.
-- Monospace may be used selectively for identifiers/dates, never as the dominant Thai UI font.
-- English uppercase should not visually overpower Thai labels.
+- Thai remains Sarabun.
+- Dates, HN/VN, amounts, quota counts and scores may use JetBrains Mono/Consolas selectively.
+- `font-mono` is an instrument treatment, not a body style.
+- Mixed Thai/English labels should remain visually balanced; English uppercase is secondary unless it is an established operational label.
+- Use tabular numerals when side-by-side comparison matters.
 
-### 9.8 Rendered Typography Gate — MANDATORY
-Before Human Visual Review, inspect the rendered primary worklist at representative desktop scale and compare against the approved reference.
+### 9.8 Component-specific typography grammar
+Use the approved reference grammar unless workflow needs otherwise:
+- Top product title: 14px bold; subtitle 10px muted.
+- Role selector/profile: 10–12px.
+- Sidebar section caption: 11px uppercase/letter-spaced; menu 12px medium.
+- Worklist KPI captions: 11–12px; main KPI 20px; active-card sublabels 10px and values 14px.
+- Worklist toolbar/search/filter: 12px.
+- Worklist table: 12px body/header; patient identity may rise to 13px/600–700.
+- Modal/form container: 12px body; modal heading 14px bold; supporting note 10–11px.
+- Status chip/type label: 10px when short and secondary; do not use 10px for patient identity, next action or substantive clinical/social-work evidence.
+
+### 9.9 Density rule — IMPORTANT
+Do not confuse readability with making everything larger.
+
+The approved reference demonstrates that **Sarabun 13px base + strong hierarchy + compact spacing** can be more readable than a larger but poorly chosen font.
+
+When information feels hard to read, check in this order:
+1. font family;
+2. font weight;
+3. contrast;
+4. line-height;
+5. alignment/grouping;
+6. padding/whitespace;
+7. only then increase font size.
+
+### 9.10 Rendered Typography Gate — MANDATORY
+Before Human Visual Review, render the primary worklist at representative desktop scale and compare it with the approved Sarabun HTML reference.
 
 Reviewer must answer:
-1. Can Thai labels be read instantly without zooming?
-2. Are patient name and primary status more prominent than metadata?
-3. Are table headers clear without appearing heavy?
-4. Does dense information remain calm rather than cramped?
-5. Are Thai marks/loops/counters clean at actual rendered size?
-6. Is the candidate at least as readable as the approved reference?
+1. Does the candidate visibly use Sarabun or an approved visually equivalent Thai font?
+2. Is Thai text at least as crisp/readable as the reference without being larger everywhere?
+3. Does the candidate preserve the reference's compact density?
+4. Are patient identity and primary actions more prominent than metadata?
+5. Are table header, navigation and forms clearly differentiated by weight/contrast rather than excessive size?
+6. Are numbers/identifiers treated as instruments without making Thai text monospaced?
+7. Does the rendered page remain calm at real desktop scale?
 
-Any `No` = **FAIL — TYPOGRAPHY / READABILITY** and must be fixed before Premium Candidate.
+Any `No` = **FAIL — TYPOGRAPHY / READABILITY**.
+
+If Sarabun cannot actually render in the test environment, result is `BLOCKED/NOT FULLY VERIFIED — APPROVED FONT NOT RENDERED`; do not call Typography PASS based only on CSS declaration.
 
 ## 10. Shape Language
 Structural regions: low radius/square.
@@ -193,7 +244,7 @@ Ask:
 5 Is authored focal path unclear? yes=FAIL.
 6 Does it feel AI/template generated? yes=FAIL.
 7 Is it tidy but lifeless? yes=FAIL Premium Craft.
-8 Is Thai harder to read than the human-approved worklist reference? yes=FAIL Typography.
+8 Is Thai harder to read than the human-approved Sarabun reference? yes=FAIL Typography.
 
 ## 18. Desirability Test
 Premium Candidate reaction: “precise, expensive, calm, intentionally designed — I want to use it.”
@@ -203,7 +254,7 @@ Clean/neat/usable/professional alone is not Premium.
 ## 19. Responsive / Adaptive Density
 Inspect representative desktop and narrower workspace. Left navigation may compact/collapse, context remains visible, primary action remains discoverable and high-value content uses width intelligently.
 
-Typography must remain readable after density adapts; responsive behavior may not solve narrow space by shrinking operational Thai text below the readability floor.
+Typography may adapt slightly but must preserve the Sarabun reference character, hierarchy and minimum readability.
 
 ## 20. Independent Premium Design Review
 `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md` is mandatory after build.

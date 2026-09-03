@@ -1,138 +1,155 @@
-# Gorilla HIS — Premium Product Design Gate v1.0
+# Gorilla HIS — Premium Product Design Gate v1.1
 
 Status: `MANDATORY UI FACTORY MASTER`
 
-Purpose: prevent a functionally correct mockup from being released when it still looks/feels like a generic admin template. Quality benchmark: **BMW cockpit discipline × Apple interaction discipline × hospital-grade information density × Gorilla HIS continuity**. BMW/Apple are quality metaphors, not visual styles to copy.
+Purpose: prevent a functionally correct mockup from being released when it is operationally weak, generic, cognitively expensive or visually unrefined.
+
+Quality benchmark: **precision cockpit discipline × excellent interaction discipline × hospital-grade information density × Gorilla HIS continuity**. Quality metaphors/references are not layouts to copy.
 
 ## 1. Release Equation
-`Functional PASS + Design FAIL = FACTORY FAIL`
+`Workflow Fidelity PASS + Operational UX PASS + Functional PASS + Independent Design PASS` are all required.
 
-`Premium` cannot be self-declared by Builder. It requires Independent Design Review and Human Visual Review for Gold/Signature promotion.
+**Beautiful + wrong work = FAIL. Functional + unusable work surface = FAIL. Modern-looking + generic template = FAIL.**
 
 ## 2. Independent Design Critic
-After Builder and Agent Function Test, run a separate Design Critic pass acting as:
-- Senior Product Design Director;
-- Enterprise/Clinical UX specialist;
-- Interaction Design specialist;
-- Thai typography/readability reviewer;
-- Gorilla HIS continuity reviewer.
+Reviewer is separate from Builder and acts as Senior Product Design Director + Enterprise/Clinical UX specialist + Interaction Designer + Thai typography/readability reviewer + Gorilla continuity reviewer.
 
-The critic reviews rendered screens, not source code alone, and must not accept Builder explanation as evidence of visual quality.
+Review rendered screens, not source code or Builder explanation.
 
-Allowed results:
-- `PASS — READY FOR HUMAN VISUAL REVIEW`
-- `FAIL — GENERIC ADMIN / SAAS`
-- `FAIL — TYPOGRAPHY`
-- `FAIL — INFORMATION HIERARCHY`
-- `FAIL — NAVIGATION FOOTPRINT`
-- `FAIL — DENSITY / SPACE UTILIZATION`
-- `FAIL — INTERACTION CRAFT`
-- `FAIL — GORILLA CONTINUITY`
-- `FAIL — VISUAL POLISH`
-- `FAIL — RESPONSIVE / COLLAPSE BEHAVIOR`
+Allowed failures include:
+`GENERIC ADMIN/SAAS | TYPOGRAPHY | INFORMATION HIERARCHY | NAVIGATION FOOTPRINT | DENSITY/SPACE | INTERACTION CRAFT | WORKLIST UX | WRONG UI PATTERN | COGNITIVE LOAD | NEXT ACTION UNCLEAR | PROFESSIONAL WORKSPACE INADEQUATE | GORILLA CONTINUITY | VISUAL POLISH | RESPONSIVE`.
 
-Any FAIL → `REDESIGN → RENDER → INDEPENDENT REVIEW`.
+Any FAIL → redesign → render → independent retest.
 
-## 3. Navigation Footprint Gate
-Navigation is subordinate to clinical work.
+## 3. Operational UX Authority
+`design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md` is mandatory.
 
-Mandatory checks:
-- primary navigation width must be justified by content, not template convention;
-- persistent sidebar must not consume disproportionate first-viewport width;
-- when work requires width, support compact/collapsed/rail/contextual navigation where appropriate;
-- collapsing navigation must preserve orientation and easy reopen;
-- avoid simultaneously dominant sidebar + topbar + tabs + secondary rail;
-- selected state must remain unmistakable in compact mode.
+The critic must verify that UI was derived through:
+`Workflow → User Work → Operational Capability → Workspace → Decision Architecture → Interaction Pattern → Composition`.
 
-If reviewer says “the bar is too big and the work area feels squeezed/empty” → FAIL.
+A screen set that merely covers requirements/functions but does not provide the work surfaces implied by workflow = FAIL.
 
-## 4. Space Utilization & Composition Gate
-First viewport must allocate the largest useful area to the real task/evidence.
+## 4. Worklist / Queue Gate
+When workflow creates queued work, `design-system/ENTERPRISE_WORKLIST_STANDARD.md` is mandatory.
 
-FAIL when:
-- large unused blank regions exist while important content is compressed elsewhere;
-- content occupies only a narrow strip because of fixed template widths;
-- equal cards/grids determine composition instead of workflow;
-- actions float far away from the object they affect;
-- every section is boxed into a card;
-- page has no visual spine or authored focal path.
+Within 5 seconds first viewport should answer:
+1. What workload exists?
+2. What needs attention first?
+3. What transaction/patient/task is this?
+4. What is its state and owner?
+5. What should I do next?
 
-Required authored path:
-`Context → Situation → Evidence/Work → Exception → Next Action → Detail`.
+Worklist FAIL when:
+- dashboard/KPI cards push work below fold;
+- rows are passive information with no lifecycle action;
+- user infers next action from status code;
+- card-per-row wastes density;
+- oversized sidebar/navigation steals operational width;
+- row opens generic Overview instead of relevant lifecycle stage;
+- owner/progress/aging/priority is missing when workflow needs it.
 
-## 5. Thai Typography Craft Gate
-Thai typography is a first-class product surface.
+Optional Attention/My Work zone must remain compact and support—not replace—the full operational list.
 
-Mandatory:
-- use a locally available, highly readable Thai-capable font stack; do not rely on poor browser fallback as the intended design;
-- document the production font recommendation without distributing font files;
-- tune Thai line-height, weight and optical spacing independently from Latin assumptions;
-- main body/form/table/action normally 13–14px or larger;
-- critical instructions/patient identity/status cannot use micro text;
-- English/Thai mixed labels must share coherent baseline/weight;
-- headings must be compact, confident and not oversized;
-- avoid excessive bold Thai text that creates visual noise;
-- tabular numerals for aligned IDs/times/numbers where supported.
+## 5. Navigation Footprint
+Navigation is subordinate to work. Persistent width must be justified. Prefer compact/collapsible/contextual navigation when work needs width. Avoid simultaneously dominant sidebar + topbar + tabs + secondary rail.
 
-If Thai text feels cheap, cramped, blurry, weakly weighted or like an OS fallback → `FAIL — TYPOGRAPHY`.
+If reviewer notices navigation before the task → likely FAIL.
 
-## 6. Hierarchy & Task Focus Gate
-Within 5 seconds the reviewer must identify:
-1. where am I / which patient/case/task?
-2. what is the current state?
-3. what needs attention?
-4. what is the next action?
-5. what information supports that action?
+## 6. Space Utilization & Composition
+First viewport gives largest useful area to actual work/evidence.
 
-Do not give Role selector, decoration, KPI or secondary metadata more visual weight than the primary task.
+FAIL for large unused blank regions, narrow template content strips, equal-card grids despite unequal importance, detached actions, card-sprawl or no authored focal path.
 
-## 7. Progressive Disclosure Gate
-Do not show everything at once merely because the system has many functions.
-- intake shows what is needed to classify/accept the request;
-- case workspace reveals deeper tools after case creation;
-- advanced/rare details may use drawer/accordion/contextual inspector;
-- persistent context remains compact;
-- selection/navigation gives space back after selection when appropriate.
+Required path:
+`Context → Situation/Attention → Evidence/Work → Exception → Next Action → Detail`.
 
-## 8. Component Jewelry Gate
-Review buttons, tabs, fields, selectors, badges, table headers, focus, hover, pressed, selected, disabled, validation, loading, empty and error states.
+## 7. Decision Architecture
+Every primary workspace must make visible:
+`User Goal → Decision Question → Primary Evidence → Exception/Attention → Primary Action → Secondary Action → Detail on Demand`.
 
-FAIL when controls look browser-default, Bootstrap-default, generic Material-default or inconsistently padded/aligned.
+Do not give role selectors, decoration, KPI or secondary metadata more weight than the task.
 
-## 9. Anti-Generic Gate
-Ask with labels/logo hidden:
-- Could this be CRM/finance/logistics admin with text replaced?
-- Is the page mainly a dark sidebar + white cards + generic KPI grid?
-- Are repeated rounded rectangles the main grammar?
-- Does the page feel AI-generated/template-generated?
+## 8. Cognitive UX Gate
+Apply interaction principles operationally:
+- Familiarity/Jakob: respect established HIS/domain mental models;
+- Hick: reduce simultaneous choices; stage by lifecycle;
+- Fitts: frequent/important actions are easy to acquire and near affected object;
+- Cognitive load/Miller: chunk and progressively disclose; do not make user remember prior state;
+- Proximity: related evidence/actions stay together;
+- Similarity: same semantics look/behave consistently; different semantics remain distinguishable;
+- Aesthetic-usability: visual polish improves trust/readability, never masks weak workflow;
+- Peak-End: critical handoff/closure provides clear confidence and end-state feedback;
+- Recognition over Recall: prior values/status/owner/progress/last assessment are surfaced when needed.
 
-Any yes → `FAIL — GENERIC ADMIN / SAAS`.
+## 9. Professional Workspace Adequacy
+Core professional tasks deserve adequate work surfaces.
 
-## 10. Gorilla HIS Continuity Gate
-Compare relevant actual Gorilla HIS screenshots/approved Gold Standards.
-Document:
-`PRESERVE / IMPROVE / REPLACE` for shell, context anchor, tables/worklists, forms, tabs, actions, statuses and density.
+FAIL examples:
+- assessment reduced to a small textarea in generic detail page;
+- verify/approval has no decision evidence summary;
+- repeated follow-up has no prior/current comparison;
+- clinical/operational review requires bouncing across unrelated screens to reconstruct context;
+- important task is squeezed into modal/card because component was convenient.
 
-Premium evolution must still be recognizably Gorilla HIS.
+## 10. Density Gate
+Premium density = more decision value per viewport without clutter.
 
-## 11. Responsive / Collapse Gate
-At minimum inspect desktop first viewport and narrower desktop/tablet behavior when relevant.
-- sidebar/rail behavior;
-- table/workspace compression;
-- action wrapping;
-- patient/case context persistence;
-- no hidden primary action;
-- no horizontal layout break caused by decorative fixed widths.
+- Thai main operational text normally ≥13–14px;
+- secondary metadata may be smaller but readable;
+- compact rows/forms where volume demands it;
+- use alignment/typography/dividers before boxes/shadows;
+- do not achieve density by micro-text;
+- do not achieve premium by excessive whitespace.
 
-## 12. Rendered Review Requirement
-Source/CSS inspection cannot PASS this gate. Review rendered screenshots at representative viewport(s). If rendering is blocked, status = `NOT VERIFIED — HUMAN/RENDER REVIEW REQUIRED`.
+**Dense ≠ cramped. Premium ≠ empty.**
 
-## 13. Premium Scoring — Diagnostic, not substitute for hard gate
-Score 0–5 each:
+## 11. Thai Typography Craft
+Thai is first-class. Use readable Thai-capable stack available in target environment; document production font recommendation without distributing font files. Tune line-height/weight; keep headings compact; avoid excessive bold; align mixed Thai/English and tabular numbers carefully.
+
+Poor Thai fallback/cramped text = TYPOGRAPHY FAIL.
+
+## 12. Progressive Disclosure
+Show what is needed for current lifecycle decision. Deeper/rare detail goes to drawer/accordion/inspector where appropriate. Persistent patient/case/task context stays compact and visible.
+
+## 13. Component Craft
+Buttons, tabs, fields, selectors, chips, tables, row hover/selection, focus, pressed, disabled, validation, loading, empty and error states must feel one product. Browser/Bootstrap/default-Material appearance = FAIL.
+
+## 14. Anti-Generic Gate
+Hide logo/labels and ask:
+- Could this be CRM/finance/logistics with text replaced?
+- Is it mainly dark sidebar + white rounded cards + KPI grid?
+- Are repeated rounded rectangles the visual grammar?
+- Was pattern selected because it was easy to generate?
+- Does it feel AI/template assembled?
+
+Any yes = FAIL.
+
+## 15. Reference Use Rule
+User-supplied references and approved products are used to extract **quality/pattern lessons** such as density, scan hierarchy, attention zone, command bar, row craft, master-detail behavior and control refinement.
+
+Do not copy layouts blindly. Derive the pattern from Gorilla workflow and domain needs.
+
+## 16. Gorilla HIS Continuity
+Compare actual Gorilla/Gold references and document `PRESERVE / IMPROVE / REPLACE` for shell, context, worklists, forms, actions, status language, density and interaction.
+
+Premium evolution must remain recognizably Gorilla HIS.
+
+## 17. Responsive / Adaptive
+Inspect representative desktop and narrower workspace. Preserve identity/status/next action first; collapse low-value detail; do not hide primary action; navigation compacts when needed; worklists retain scanability.
+
+## 18. Rendered Review Requirement
+Source/CSS inspection cannot PASS. Review rendered screenshots at representative viewports. Rendering blocked = `NOT VERIFIED — HUMAN/RENDER REVIEW REQUIRED`.
+
+## 19. Premium Scoring
+Score 0–5:
 - Workflow-authored composition
+- Operational capability fit
+- Worklist/queue quality when applicable
+- Decision architecture
 - Navigation proportion
 - Space utilization
 - Information hierarchy
+- Cognitive efficiency
 - Thai typography
 - Density/readability
 - Control craftsmanship
@@ -140,23 +157,18 @@ Score 0–5 each:
 - Gorilla continuity
 - Visual desirability
 
-Target for `READY FOR HUMAN VISUAL REVIEW`: no hard FAIL and average ≥4.0, no category <3.5.
-Gold/Signature still requires Human Design Approval.
+Target: no hard FAIL, average ≥4.0, no category <3.5. Human approval still required for Gold/Signature.
 
-## 14. Required Artifact
-Create `INDEPENDENT_DESIGN_REVIEW.md` containing:
-- screenshots/viewports reviewed;
-- scores;
-- hard-gate results;
-- top 5 visual defects;
-- required redesign actions;
-- final status.
+## 20. Required Artifact
+`INDEPENDENT_DESIGN_REVIEW.md` must include screenshots/viewports, scores, hard-gate results, 5-second test, top defects, redesign actions and final status.
 
-## 15. Final Rule
+## 21. Final Rules
+`Requirement coverage ≠ UX`
+`Dashboard ≠ Worklist`
+`Modern ≠ cards`
 `Clean ≠ Premium`
-`Modern ≠ Premium`
-`More cards ≠ Better design`
+`Dense ≠ cramped`
+`Premium ≠ empty`
 `Angular Material ≠ Design`
-`Functionally complete ≠ Release-ready`
 
-A Gorilla HIS Premium Candidate must feel precise, calm, dense where useful, effortless to navigate and intentionally designed at both page and control level.
+A Gorilla HIS Premium Candidate must feel like a precise professional instrument: real work is immediately visible, the next action is obvious, evidence is close to the decision, interaction reduces cognitive effort, and visual craft reinforces trust.

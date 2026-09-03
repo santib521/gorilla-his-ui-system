@@ -1,158 +1,152 @@
-# Gorilla HIS — Enterprise Worklist & Queue UX Standard v1.0
+# Gorilla HIS — Premium Operational Worklist Standard v1.1
 
 Status: `MANDATORY WHEN WORKLIST/QUEUE IS DERIVED`
 
-Purpose: make operational lists behave like modern professional hospital work surfaces, not dashboards, card galleries or passive tables.
+## 1. Purpose
+Create a worklist that feels like a premium professional instrument, not a compliance table and not a generic admin dashboard.
 
-## 1. Core Principle
-**Operational system ≠ Dashboard. Dashboard summarizes. Worklist gets work done.**
+**The worklist should make the user want to work from it.**
 
-When a module has incoming/assigned/pending work, first viewport must prioritize scanning, triage, ownership and next action.
+## 2. Core Outcome
+On opening the page, the user should quickly understand:
+`What work exists → What deserves attention → What state it is in → What to do next`.
 
-## 2. Worklist Architecture
-Preferred architecture when appropriate:
+How the designer achieves this is flexible.
 
-`Compact Module Header → Attention / My Work strip (optional) → Search/Filter/Sort command bar → Dense Operational Worklist → Contextual detail/workspace`
+## 3. Preferred Design Thinking
+Start with the work, not components:
+- What are the real work objects?
+- What does the user scan repeatedly?
+- What differences matter for prioritization?
+- What action is most common at each state?
+- What information can be hidden until selection?
+- What deserves visual emphasis?
 
-The Attention strip is optional and small. It must not push the real worklist below the first viewport.
+Then choose the composition.
 
-## 3. Hybrid Worklist Pattern
-For modules where recent/urgent/personal work deserves emphasis, use:
-- **Attention Zone / My Work:** only a few high-value items, due/urgent/recent/blocked;
-- **All Work:** dense list/table for complete operational workload.
+## 4. Worklist Composition — OPTIONS, NOT TEMPLATE
+A strong pattern may be:
+`Compact Header → optional small Attention/My Work zone → Search/Filter command bar → Operational List → contextual workspace`.
 
-Do not duplicate every row as a card. Cards are for attention, not the primary high-volume work inventory.
+But this is not mandatory. A split-view queue, grouped list, timeline list, schedule-worklist hybrid, or another composition is valid if it serves the work better.
 
-## 4. First-Viewport 5-Second Test
-Without explanation, user must identify:
-- total/current workload;
-- which items need attention first;
-- transaction type;
-- patient/case/task identity;
-- current status;
-- owner/unassigned state;
-- age/due/priority when relevant;
-- progression/remaining when relevant;
-- **Next Action**.
+**Do not make every Gorilla module look identical.**
 
-If user opens the page and cannot answer “what should I work on now?” → `FAIL — WORKLIST UX`.
+## 5. Attention / Summary
+Summary information is useful only when it changes what the user does.
 
-## 5. Row as Work Object
-A row/list item represents an actionable work object, not a decorative summary.
+A small set of counts, urgent items, recent work, approval waiting, due follow-up, or active entitlement may be shown elegantly. Do not create KPI cards simply because dashboards usually have cards.
 
-Typical information hierarchy:
-`Type → Identity → Reason/Service → Source → Priority → Status → Owner → Time/Aging → Progress → Next Action`
+Summary must support the worklist, not compete with it.
 
-Exact columns derive from workflow. Do not show fields just because database contains them.
+## 6. Row / Item Hierarchy
+Each item represents a real actionable work object. Choose fields for decision value, not completeness.
 
-The row must support either direct primary action or opening directly into the correct lifecycle workspace.
+Typical hierarchy may include:
+`Type → Patient/Case → Reason/Service → Context/Source → Assessment/Progress → State → Next Action`.
 
-## 6. Next Action is First-Class
-Do not force users to infer next action from status codes.
+Owner, aging, priority, quantity, amount, appointment or requester should appear when they materially affect the user's decision.
 
-Examples of lifecycle-driven labels:
-`รับงาน / ประเมิน / Verify / ส่งอนุมัติ / พิจารณา / ติดต่อผู้ป่วย / ประเมินครั้งถัดไป / บันทึกผล / แก้ไข / ปิดงาน`.
+The designer may combine fields into a richer cell rather than creating excessive columns.
 
-Action vocabulary must use hospital/domain terminology.
+## 7. Next Action
+The next valid action should be obvious from the item's lifecycle. It may be a button, contextual action, row affordance or open-to-stage behavior.
 
-## 7. Density
-Hospital worklists often have high volume. Optimize for scan speed:
-- compact but readable row height;
-- Thai main text normally ≥13px;
-- secondary metadata may be smaller but readable;
-- align IDs/times/numbers consistently;
-- avoid excessive vertical padding;
-- avoid card-per-row with large radius/shadow;
-- use whitespace as grouping, not as empty luxury;
-- allow useful columns to consume desktop width.
+Examples: `รับงาน / ประเมิน / ลง SMDA / Verify / ส่งอนุมัติ / พิจารณา / ติดต่อผู้ป่วย / ประเมินครั้งถัดไป / บันทึกเยี่ยมบ้าน / ปิด Case`.
 
-Premium density means more decision value per viewport without cognitive clutter.
+Do not make users decode a status and then hunt through menus to discover the action.
 
-## 8. Navigation Footprint
-Worklist owns the width. Persistent navigation should normally be compact/collapsible when the module benefits from wide rows. Large sidebar + large topbar + tabs + cards that squeeze the worklist = FAIL.
+## 8. Premium Density
+Premium worklists balance density and calmness.
+
+Aim for:
+- useful information per viewport;
+- comfortable Thai reading;
+- stable alignment;
+- clear primary/secondary text;
+- restrained status treatment;
+- enough whitespace to separate meaning;
+- subtle hover/selection/focus states;
+- numbers/progress that are easy to compare.
+
+Avoid both extremes: cramped spreadsheet and oversized card gallery.
 
 ## 9. Search / Filter / Sort
-Controls must reflect actual operational retrieval:
-- search by high-value identifiers/names;
-- My Work / All / Unassigned where relevant;
-- transaction type;
-- status/stage;
-- priority/urgency;
-- unit/source;
-- date/age/due;
-- exception/blocked;
-- service/category when material.
+Expose only high-value frequent controls first. Advanced filters may stay behind disclosure.
 
-High-frequency filters stay visible; advanced filters may be disclosed. Filter state and result count must be clear.
+Possible dimensions: identity, My Work/All/Unassigned, transaction type, stage, urgency, unit/source, date/age, blocked/returned, service/category.
 
-## 10. Attention Encoding
-Use semantic emphasis sparingly:
-- urgent/overdue/critical exception;
-- unassigned/new;
-- waiting approval/handoff;
-- blocked/returned;
-- due follow-up.
+Do not fill the toolbar with every possible filter.
 
-Do not color every row. Status chips must not become confetti. Meaning should survive grayscale through text/position/shape.
+## 10. Status & Attention Encoding
+Use color as a supporting signal, not the entire language. Meaning should remain understandable in grayscale through wording, position, weight, icon/shape or progress.
 
-## 11. Modern Worklist Craft
-A modern worklist is not defined by rounded cards. It is defined by:
-- excellent scan hierarchy;
-- low-friction filters;
-- contextual primary action;
-- clear state/owner;
-- compact attention summary;
-- responsive density;
-- row hover/selection/focus states;
-- keyboard-friendly interaction where appropriate;
-- stable column alignment;
-- persistent context during detail work;
-- fast return to same list position/filter.
+Reserve stronger emphasis for genuinely actionable states such as urgent, new/unassigned, returned, blocked, waiting approval or due follow-up.
 
-## 12. Master-Detail Behavior
-Choose based on task:
-- full-page workspace when task is deep/complex;
-- side inspector/drawer when user needs rapid list comparison;
-- split view when list context must remain visible during repeated review.
+## 11. Contextual Work
+Opening an item should take the user to the work that needs doing, not always to a generic Overview.
 
-After completing/handing off a task, return user to a meaningful next-work state, not a dead success page.
+Choose full page, side inspector, drawer or split view based on task depth and need to preserve list context.
 
-## 13. Empty / Loading / Error / Stale
-Worklist must define:
-- initial loading/skeleton appropriate to density;
-- no results vs no work distinction;
-- filter-empty state;
-- interface/data-load failure;
-- stale data/retry when material;
-- permission-limited list;
-- optimistic action failure/recovery when used.
+After completing/handoff, return to a useful work state with the list/filter/context preserved.
 
-## 14. Responsive / Adaptive
-On narrower desktop/tablet:
-- preserve identity, status and next action first;
-- collapse low-value columns into secondary detail;
-- do not hide primary action;
-- maintain scan alignment;
-- avoid turning every row into an oversized mobile card unless viewport truly requires it.
+## 12. 8 UX/UI Principles in Worklist Design
+Use as design instincts:
+- familiar work vocabulary and grouping;
+- fewer simultaneous choices;
+- easy-to-hit frequent actions;
+- chunked information;
+- polished visual quality;
+- proximity of evidence/action;
+- consistent semantic styling;
+- clear, satisfying handoff/completion feedback.
 
-## 15. Anti-Patterns — Hard FAIL
-- KPI dashboard occupies most first viewport while work is below fold;
-- large equal cards for every work item;
-- passive table with no lifecycle action;
-- status-only rows requiring user to guess next step;
-- oversized navigation squeezes worklist;
-- excessive badges/colors/shadows/radius;
-- tiny Thai text to achieve density;
-- action detached from row/object;
-- no owner/assignment when ownership is part of workflow;
-- no progression/remaining for repeated or quantity-based work;
-- opening a record always lands on generic Overview instead of the work stage that needs action.
+Do not add eight visible UI elements to prove the eight principles were used.
 
-## 16. Worklist Review Artifact
-For every derived worklist record:
-`Primary User | Work Object | Expected Volume | Scan Fields | Attention Rules | Filters | Sort Default | Primary Row Action | Open Behavior | Ownership | Aging/SLA | Progress | Responsive Priority`.
+## 13. Premium Visual Direction
+The desired feeling is **quiet confidence**:
+- restrained, sophisticated color;
+- high-quality Thai typography;
+- precise spacing;
+- controlled corner radius and shadow;
+- purposeful iconography;
+- strong scan rhythm;
+- no decorative clutter;
+- no generic SaaS-dashboard feel.
 
-## 17. Final Gate
-**Modern ≠ cards. Dense ≠ cramped. Premium ≠ empty.**
+A premium screen may be simple. Simplicity is successful when important work becomes easier to see and act on.
 
-A Gorilla HIS worklist should feel like a precise professional instrument: users can scan workload quickly, understand priority/state/ownership, and act on the next task with minimal cognitive effort.
+## 14. Reference Benchmark
+When a user/reference candidate demonstrates stronger hierarchy, scanability or premium craft, analyze it as design evidence. Preserve its useful principles while adapting to Gorilla HIS and actual workflow.
+
+Do not reject a better visual idea merely because it differs from a preferred Factory pattern.
+
+## 15. Hard Failures
+- user cannot tell what to work on;
+- passive list with no natural action path;
+- important workflow information buried;
+- next action unclear;
+- worklist displaced by decorative dashboard content;
+- excessive card/badge/color/shadow noise;
+- cramped or tiny typography;
+- generic admin template with weak domain identity;
+- repeated/quantity work hides progress;
+- item opens to the wrong lifecycle stage;
+- design is visibly inferior to a credible reference in hierarchy/scanability without operational justification.
+
+## 16. Review — SHORT AND OUTCOME-BASED
+Reviewer answers:
+1. Can I understand the workload quickly?
+2. Can I see what deserves attention?
+3. Can I distinguish transaction/state/progress?
+4. Is the next action obvious?
+5. Does the screen feel calm, premium and professional?
+6. Does it fit this specific hospital job rather than a generic dashboard?
+7. Can I continue the actual workflow naturally?
+
+If yes and runtime/workflow tests pass, the worklist is a valid candidate.
+
+## 17. Final Rule
+**Modern ≠ cards. Dense ≠ cramped. Premium ≠ empty. Master ≠ template.**
+
+Design for the job first; use the rules to protect quality, not to replace design judgment.

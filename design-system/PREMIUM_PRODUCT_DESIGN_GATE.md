@@ -1,4 +1,4 @@
-# Gorilla HIS — Premium Product Design Gate v1.1
+# Gorilla HIS — Premium Product Design Gate v1.2
 
 Status: `MANDATORY UI FACTORY MASTER`
 
@@ -17,7 +17,7 @@ Reviewer is separate from Builder and acts as Senior Product Design Director + E
 Review rendered screens, not source code or Builder explanation.
 
 Allowed failures include:
-`GENERIC ADMIN/SAAS | TYPOGRAPHY | INFORMATION HIERARCHY | NAVIGATION FOOTPRINT | DENSITY/SPACE | INTERACTION CRAFT | WORKLIST UX | WRONG UI PATTERN | COGNITIVE LOAD | NEXT ACTION UNCLEAR | PROFESSIONAL WORKSPACE INADEQUATE | GORILLA CONTINUITY | VISUAL POLISH | RESPONSIVE`.
+`GENERIC ADMIN/SAAS | TYPOGRAPHY | INFORMATION HIERARCHY | NAVIGATION FOOTPRINT | DENSITY/SPACE | INTERACTION CRAFT | WORKLIST UX | WRONG UI PATTERN | COGNITIVE LOAD | NEXT ACTION UNCLEAR | PROFESSIONAL WORKSPACE INADEQUATE | GORILLA CONTINUITY | VISUAL POLISH | RESPONSIVE | BENCHMARK REGRESSION`.
 
 Any FAIL → redesign → render → independent retest.
 
@@ -51,7 +51,9 @@ Worklist FAIL when:
 Optional Attention/My Work zone must remain compact and support—not replace—the full operational list.
 
 ## 5. Navigation Footprint
-Navigation is subordinate to work. Persistent width must be justified. Prefer compact/collapsible/contextual navigation when work needs width. Avoid simultaneously dominant sidebar + topbar + tabs + secondary rail.
+Navigation is subordinate to work. Persistent width must be justified. For Gorilla HIS, preserve the established **left-side application menu** unless the Hospital/Product owner explicitly approves another shell. The left menu must remain visually compact and subordinate to the active workspace.
+
+Avoid simultaneously dominant sidebar + topbar + tabs + secondary rail.
 
 If reviewer notices navigation before the task → likely FAIL.
 
@@ -129,16 +131,50 @@ User-supplied references and approved products are used to extract **quality/pat
 
 Do not copy layouts blindly. Derive the pattern from Gorilla workflow and domain needs.
 
+### 15A. Benchmark No-Regression Hard Gate
+When the user supplies a visual/product benchmark, that benchmark becomes the **minimum visible product-quality floor** for the candidate unless a documented workflow/safety reason requires a deliberate deviation.
+
+The reviewer MUST compare rendered candidate and benchmark side-by-side before granting Design PASS.
+
+Compare at minimum:
+`first impression | information hierarchy | density | scan speed | navigation proportion | whitespace efficiency | row/control craft | status clarity | next-action clarity | visual polish | product coherence | domain specificity`.
+
+Required result per dimension:
+`BETTER / EQUAL / WORSE / NOT COMPARABLE`.
+
+Rules:
+- Any material `WORSE` without a documented workflow/safety justification = `FAIL — BENCHMARK REGRESSION`.
+- A candidate cannot PASS because it satisfies internal Master rules while visibly underperforming the supplied benchmark.
+- If a credible non-expert viewer can immediately see that the benchmark looks more finished, clearer, more balanced or more intentional, the candidate is not Premium Candidate.
+- “Different style” is not a justification for lower clarity, poorer proportion, weaker typography, excess empty space, clumsy controls or generic composition.
+
+Target principle:
+**Preserve proven benchmark strengths → correct benchmark workflow/business defects → exceed it as a product.**
+
 ## 16. Gorilla HIS Continuity
 Compare actual Gorilla/Gold references and document `PRESERVE / IMPROVE / REPLACE` for shell, context, worklists, forms, actions, status language, density and interaction.
 
-Premium evolution must remain recognizably Gorilla HIS.
+Premium evolution must remain recognizably Gorilla HIS. Preserve the established Gorilla left application menu unless explicitly approved otherwise.
 
 ## 17. Responsive / Adaptive
 Inspect representative desktop and narrower workspace. Preserve identity/status/next action first; collapse low-value detail; do not hide primary action; navigation compacts when needed; worklists retain scanability.
 
 ## 18. Rendered Review Requirement
 Source/CSS inspection cannot PASS. Review rendered screenshots at representative viewports. Rendering blocked = `NOT VERIFIED — HUMAN/RENDER REVIEW REQUIRED`.
+
+### 18A. Screenshot Veto Rule
+The rendered screenshot is the primary evidence for visual quality. A numeric score, code review, checklist completion or Builder statement can never overrule an obviously weak screenshot.
+
+Before Design PASS, reviewer must answer:
+1. Would I choose this candidate over the supplied benchmark at first glance?
+2. Does the primary work surface look intentionally designed rather than merely arranged?
+3. Is useful information density appropriate to the task?
+4. Are whitespace, row height, typography and control scale visually balanced?
+5. Does the screen look finished at normal desktop zoom without explanation?
+
+Any clear `No` = redesign required. Do not average the defect away with other high scores.
+
+If the Product Owner/Human Reviewer says the candidate is visibly inferior, previous Design PASS is invalid and must be reopened as `FAIL — HUMAN VISUAL VETO` until redesigned and re-reviewed.
 
 ## 19. Premium Scoring
 Score 0–5:
@@ -156,11 +192,16 @@ Score 0–5:
 - Interaction states
 - Gorilla continuity
 - Visual desirability
+- Benchmark parity/exceedance when a benchmark exists
 
 Target: no hard FAIL, average ≥4.0, no category <3.5. Human approval still required for Gold/Signature.
 
+**Scoring cannot cancel a hard failure.**
+
 ## 20. Required Artifact
 `INDEPENDENT_DESIGN_REVIEW.md` must include screenshots/viewports, scores, hard-gate results, 5-second test, top defects, redesign actions and final status.
+
+When a benchmark exists it must also include a `BENCHMARK_COMPARISON` section with side-by-side observations and `BETTER/EQUAL/WORSE` judgments.
 
 ## 21. Final Rules
 `Requirement coverage ≠ UX`
@@ -170,5 +211,8 @@ Target: no hard FAIL, average ≥4.0, no category <3.5. Human approval still req
 `Dense ≠ cramped`
 `Premium ≠ empty`
 `Angular Material ≠ Design`
+`Internal PASS ≠ Human-visible quality`
 
 A Gorilla HIS Premium Candidate must feel like a precise professional instrument: real work is immediately visible, the next action is obvious, evidence is close to the decision, interaction reduces cognitive effort, and visual craft reinforces trust.
+
+**If the screenshot visibly loses to the supplied benchmark, Design PASS is impossible.**

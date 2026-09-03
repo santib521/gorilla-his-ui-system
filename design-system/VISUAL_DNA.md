@@ -1,4 +1,4 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v2.3
+# Gorilla HIS Visual DNA — Product Craft Standard v2.4
 
 > Highest visual-design authority. Gorilla HIS is a precision clinical/operational instrument, not an admin template. Premium means controlled proportion, typography, density, interaction craft and authored workflow composition.
 
@@ -48,7 +48,7 @@ Navigation must never visually dominate the task. Avoid giant dark sidebars. Pre
 Do not allow sidebar + topbar + tabs + secondary navigation to all compete visually.
 
 ## 6. Benchmark No-Regression — HARD GATE
-When a user supplies a credible reference/mockup, first identify the visual/product qualities it demonstrates well: hierarchy, scanability, density, rhythm, action clarity, status encoding, navigation efficiency and polish.
+When a user supplies a credible reference/mockup, first identify the visual/product qualities it demonstrates well: hierarchy, scanability, density, rhythm, action clarity, status encoding, navigation efficiency, **typographic readability** and polish.
 
 A new Gorilla candidate must not be materially worse in those demonstrated qualities without a documented workflow/safety reason.
 
@@ -75,15 +75,80 @@ S4 Semantic Surface: critical/warning/normal/info.
 
 Depth communicates hierarchy/interactivity, not decoration.
 
-## 9. Thai Typography Craft
-Typography is primary hierarchy.
-- Thai main operational text normally 13–14px or larger.
-- 12px only secondary metadata/compact labels.
-- 11px only low-priority technical metadata.
-- Never use micro-text for patient identity, main status or primary action.
-- Mixed Thai/English must align optically.
-- Headings compact/confident, not marketing-sized.
-- Use weight/alignment/spacing before size inflation.
+## 9. Thai Typography Craft — HUMAN-APPROVED REFERENCE BASELINE
+Typography is primary hierarchy and a **hard usability gate**. The human-approved worklist reference supplied on 2026-09-03 is the current readability floor for Thai operational UI.
+
+### 9.1 Visual character to preserve
+Thai UI text should feel:
+- open, familiar and immediately readable;
+- neither condensed nor overly geometric;
+- medium stroke contrast with clear Thai loops/counters;
+- calm at dense worklist scale;
+- strong enough to scan without looking bold everywhere;
+- visually compatible with Latin letters, dates, HN/VN, currency and numeric instruments.
+
+Do **not** use a fashionable font merely because it looks modern. If Thai readability is worse than the approved reference, the candidate fails visual review.
+
+### 9.2 Mockup font stack
+For self-contained browser mockups, use a Thai-safe system stack that approximates the approved reference:
+
+`font-family: Tahoma, "Leelawadee UI", Arial, sans-serif;`
+
+Do not fetch Google Fonts/CDN fonts in Factory mockups. Do not rely on an unbundled font that changes dramatically across machines.
+
+For production Angular, a bundled product font may replace this stack only after rendered Thai comparison proves readability is equal or better than the approved reference.
+
+### 9.3 Operational size baseline
+At normal desktop density:
+- Main operational/table body: **14–15px**.
+- Patient name / primary work object: **15px** minimum, usually weight 600.
+- Left-navigation item: **14–15px**, active item weight 600.
+- Table header / tab / primary filter label: **14px**, weight 600.
+- Primary button/action label: **14px** minimum, weight 600 where needed.
+- Secondary metadata such as HN/VN/source/date subline: **12.5–13px**.
+- Low-priority technical metadata may use **12px**.
+- **11px is exceptional only** and must never carry patient identity, operational status, queue meaning, consent state, next action or decision evidence.
+
+A designer may increase sizes when viewing distance or screen density requires it. It should rarely go smaller than this baseline.
+
+### 9.4 Weight discipline
+Preferred operational weights:
+- 400 = normal reading text;
+- 600 = patient identity, table header, active navigation, primary decision label;
+- 700 only for selective high-emphasis totals/headings.
+
+Avoid 300/light Thai body text. Avoid synthetic ultra-bold Thai text. Avoid making every label semibold because hierarchy then disappears.
+
+### 9.5 Line-height and vertical rhythm
+- Dense Thai operational rows normally target line-height **1.35–1.5**.
+- Multi-line rich cells need enough leading so upper/lower Thai marks do not visually collide.
+- Do not vertically squeeze Thai text to achieve density; reduce decorative padding first.
+- Patient row height must be driven by decision information, not oversized whitespace.
+
+### 9.6 Contrast and color
+- Primary operational text must use strong neutral contrast, not pale gray.
+- Secondary metadata may be muted but must remain comfortably readable.
+- Do not use low-contrast green/blue/gray text for ordinary body copy merely to look refined.
+- Color is semantic support, not a substitute for readable weight/contrast.
+
+### 9.7 Mixed Thai / English / numbers
+- Dates, HN/VN, quantities and money should align cleanly with Thai text.
+- Use tabular numerals when comparison matters.
+- Monospace may be used selectively for identifiers/dates, never as the dominant Thai UI font.
+- English uppercase should not visually overpower Thai labels.
+
+### 9.8 Rendered Typography Gate — MANDATORY
+Before Human Visual Review, inspect the rendered primary worklist at representative desktop scale and compare against the approved reference.
+
+Reviewer must answer:
+1. Can Thai labels be read instantly without zooming?
+2. Are patient name and primary status more prominent than metadata?
+3. Are table headers clear without appearing heavy?
+4. Does dense information remain calm rather than cramped?
+5. Are Thai marks/loops/counters clean at actual rendered size?
+6. Is the candidate at least as readable as the approved reference?
+
+Any `No` = **FAIL — TYPOGRAPHY / READABILITY** and must be fixed before Premium Candidate.
 
 ## 10. Shape Language
 Structural regions: low radius/square.
@@ -128,6 +193,7 @@ Ask:
 5 Is authored focal path unclear? yes=FAIL.
 6 Does it feel AI/template generated? yes=FAIL.
 7 Is it tidy but lifeless? yes=FAIL Premium Craft.
+8 Is Thai harder to read than the human-approved worklist reference? yes=FAIL Typography.
 
 ## 18. Desirability Test
 Premium Candidate reaction: “precise, expensive, calm, intentionally designed — I want to use it.”
@@ -137,13 +203,16 @@ Clean/neat/usable/professional alone is not Premium.
 ## 19. Responsive / Adaptive Density
 Inspect representative desktop and narrower workspace. Left navigation may compact/collapse, context remains visible, primary action remains discoverable and high-value content uses width intelligently.
 
+Typography must remain readable after density adapts; responsive behavior may not solve narrow space by shrinking operational Thai text below the readability floor.
+
 ## 20. Independent Premium Design Review
 `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md` is mandatory after build.
 
 `Functional PASS + Design FAIL = Factory FAIL`.
+`Functional PASS + Typography FAIL = Factory FAIL`.
 
 ## 21. Gold Standard Rule
-No artifact may call itself Premium/Gold/Signature solely because Factory Gate passes. Promotion requires rendered visual review, Human Design Approval, Anti-Template PASS, Desirability PASS, Gorilla continuity evidence and workflow-authored composition.
+No artifact may call itself Premium/Gold/Signature solely because Factory Gate passes. Promotion requires rendered visual review, Human Design Approval, Anti-Template PASS, Typography/Readability PASS, Desirability PASS, Gorilla continuity evidence and workflow-authored composition.
 
 ## 22. Extraction Rule
 `Human-approved reference → extract Visual Grammar → components/patterns → Factory enforcement`.

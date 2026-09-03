@@ -1,198 +1,172 @@
-# Gorilla HIS — Expert Requirement Discovery Workshop Standard v1.0
+# Gorilla HIS — Expert Requirement Discovery Workshop Standard v1.1
 
 Status: `UNIVERSAL FACTORY MASTER`
 
-Purpose: force the Blueprint Factory to behave like an experienced Domain Expert + Senior HIS BA sitting in a real hospital requirement workshop, not merely reviewing a written requirement.
+Purpose: force the Factory to behave like an experienced Domain Expert + Senior HIS BA sitting with actual hospital users, discovering **how work really operates**, not merely completing a generic HIS framework.
 
-Core rule:
-`Know the domain → reconstruct the real workflow → decompose every decision/exception/authority/data transition → compare Hospital Requirement → generate high-value workshop questions → prioritize → then finalize Blueprint.`
+Binding companion: `ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`.
+
+## Core Rule
+`Hospital Evidence → Actual Workflow Reconstruction → Core Transaction Discovery → Lifecycle/State → Role/Handoff/Data → Domain Standard Challenge → Missing Decision Discovery → Question Bank → Blueprint`.
+
+**Standard Workflow is for Challenge — not for replacing Hospital Reality.**
 
 ## 1. Workshop Mindset
-The Expert must actively discover what the hospital has not yet stated.
+Start from the user's real day, not from screens or a generic module taxonomy.
 
-For every workflow ask:
-- What happens before this step?
-- What event causes this step to exist?
-- Who is allowed to initiate it?
-- Who owns it now and who owns it next?
-- What must be true before the next step is allowed?
-- What can go wrong?
-- Who decides when there is disagreement or ambiguity?
-- What data/identifier/source-of-truth changes?
-- What transaction goes to another system?
-- What happens when the user needs to correct/reverse/cancel/reopen?
-- What creates legal/clinical/financial/privacy risk?
-- What proves the work is complete?
+For every material flow ask:
+- What event actually starts this work?
+- Who initiates it and why?
+- What does the user receive/see first?
+- What is the real business transaction/object being handled?
+- Is this the same transaction as the other similar-looking flow, or a different one?
+- What data is entered, read, copied forward or generated?
+- What decision changes the next path?
+- Who owns the work now and next?
+- Where does the user wait, call, message, print, use paper/Excel/LINE/phone or walk to another department?
+- Does the work repeat across visit/session/cycle/episode?
+- Is there approved quantity/value, partial use or remaining balance?
+- Is assessment repeated/versioned?
+- What can be returned/rejected/cancelled/expired/corrected/reversed/reopened?
+- What proves completion?
 
 Mandatory challenge:
-**If a real hospital user had to operate this application tomorrow, where would they stop, call another department, write on paper, use LINE/phone, or make an unsafe guess because the system requirement is incomplete?**
+**If a real hospital user had to operate this tomorrow, where would they stop or leave the system because our understanding of the real workflow is incomplete?**
 
-## 2. Discovery Dimensions — Mandatory
-For every material scenario, review all applicable dimensions:
-1. Scope / case eligibility / classification
-2. Entry / request / referral / trigger
-3. Actor / requester authority
-4. Intake / validate / accept / reject / return / redirect
-5. Identity / patient / case / encounter / episode
-6. Ownership / assignment / roster / workload
-7. Core professional workflow
-8. Decision points / approval / dual review
-9. Documents / forms / media / signatures
-10. Orders / results / external services
-11. Evidence / specimen / asset / physical-object custody where relevant
-12. State model / lifecycle / reopen / correction / cancellation
-13. Exception / fallback / missing data / duplicate / wrong identity
-14. Integration / source of truth / transaction timing
-15. Downtime / manual continuity / reconciliation when material
-16. Finance / payer / charge / waive / refund / reversal
-17. Privacy / sensitivity / masking / reveal / print / export / download
-18. Audit / accountability / who-did-what-when
-19. Reporting / statistics / definitions / denominator / source
-20. Closure / handover / discharge / release / disposition / archive
-21. SLA / priority / escalation where material
-22. Configuration / master data / numbering / template / effective date
-23. Search / historical correction / amendment / versioning
-24. Operational usability / worklist / next action / bottleneck
+## 2. Evidence Capture — Mandatory
+For each material workflow statement classify:
+`HOSPITAL OBSERVED / HOSPITAL STATED / HOSPITAL DOCUMENTED / HOSPITAL CONFIRMED / EXPERT INFERENCE / REFERENCE BASELINE / TBD`.
 
-Every dimension must be marked `COVERED / PARTIAL / NOT STATED / N/A / NEED HOSPITAL CONFIRMATION` with reason.
+Hospital Primary Evidence may include workshop/interview, recording/transcript/minutes, SOP/form/report, current-system walkthrough/screenshots, observed off-system work and confirmed TOR/requirement.
 
-## 3. Question Generation Rule
-Do not produce generic questions such as “ต้องการอะไรเพิ่มไหม?” or “ต้องการให้ระบบทำอย่างไร?”.
+No Expert Inference becomes Hospital Confirmed.
 
-A workshop question must show expert understanding and narrow the decision.
+## 3. Actual Workflow Reconstruction — Mandatory
+For every materially different workflow create:
+`Trigger → Entry → Actor → Input → Validation → Decision → Action → Record/Transaction → Handoff → Repeat/Re-assess → Exception → Closure`.
 
-Good pattern:
-`Current Requirement → Missing Decision → Recommended Options → Risk/Impact → Question → Owner → Timing`
+Do not begin with “system should have screen X”. Reconstruct work first.
 
-Example:
-“Requirement ระบุว่าสามารถเชื่อม AF กับ HN ได้ แต่ยังไม่ระบุกรณีพบ HN หลาย Candidate หรือ Link ผิดคน. Expert แนะนำให้แยก Match Candidate → Verify → Confirm Link และมี correction audit. โรงพยาบาลต้องการให้ใครเป็นผู้ Confirm Link และต้องการ dual review หรือไม่?”
+## 4. Core Transaction Discovery — Mandatory
+For each major object/transaction determine:
+`Name | Trigger | Creator | Identifier | Parent/Related Object | Source of Truth | Authority | Lifecycle | Quantity/Value | Versioning | Correction/Reversal | Closure`.
 
-## 4. Mandatory Workshop Question Bank
-Every Factory run must create `Workshop_Question_Bank_TH` as a distinct deliverable or a clearly separated full section in Expert Suggestion.
+Run Transaction Boundary Test. Similar flows are separate if materially different in purpose, requester, authority, data, approval, finance, quantity/value, repeated use, lifecycle, response or closure.
 
-Minimum fields:
-| Question ID | Domain/Scenario | Workflow Stage | Question | Why This Must Be Asked | Current Requirement Evidence | Expert Recommendation / Options | Decision Affected | Risk if Unconfirmed | Confirmation Owner | Priority | Confirm When | Status |
+HARD FAIL: different transactions collapsed into generic Case/Referral/Order without evidence.
 
-Priority:
-- `CRITICAL` — identity, legal authority, patient/deceased safety, irreversible record/order/custody/release effect
-- `HIGH` — workflow cannot operate reliably, ownership/integration/finance/privacy/report governance materially unclear
-- `MEDIUM` — operational completeness, exception, reporting/configuration definition needed
-- `LOW / REFINEMENT` — optimization that does not block safe prototype/dev
+## 5. Lifecycle / State Workshop
+For every material transaction challenge:
+`Create → Receive/Accept → In Progress → Review/Approve when applicable → Active/Available → Partial/Repeated Use when applicable → Complete/Close`
+plus relevant `Return / Reject / Cancel / Expire / Suspend / Correct / Reverse / Reopen`.
 
-Status:
-`OPEN / ANSWERED BY RAW REQUIREMENT / RECOMMENDATION AVAILABLE / HOSPITAL DECISION REQUIRED / DEFERRED / N/A`.
+For each transition ask Actor, precondition, data mutation, downstream effect, audit and failure/recovery.
 
-## 5. Quantity Is Not the Goal — Coverage Is
-Do not impose an arbitrary question count. However, a complex hospital module producing only a handful of questions is suspicious and requires Independent Challenge.
+## 6. Repeated / Longitudinal Workshop — Mandatory Check
+For every scenario determine whether it is one-time, repeated sessions/visits/cycles, longitudinal across encounters, quantity/value-limited, periodically reassessed, partially fulfilled or renewed/extended.
 
-The Expert must demonstrate that every material scenario and every applicable discovery dimension was challenged.
+When applicable discover:
+- initial vs subsequent event;
+- previous history visible;
+- used/completed and remaining;
+- reassessment/carry-forward;
+- changed/unchanged score/data;
+- completion/closure rule.
 
-Quality is measured by:
-- decision coverage;
-- scenario coverage;
-- exception coverage;
-- absence of generic/duplicate questions;
-- clear expert recommendation where a safe recommendation is possible;
-- clear hospital-policy question where recommendation cannot substitute local authority.
+## 7. Discovery Dimensions — Mandatory
+Disposition `COVERED / PARTIAL / NOT STATED / N/A / NEED HOSPITAL CONFIRMATION` for applicable:
+1 Scope/case eligibility/classification
+2 Trigger/Entry/request/referral
+3 Core transaction/object boundary
+4 Actor/requester authority
+5 Intake/accept/reject/return/redirect
+6 Identity/patient/case/encounter/episode
+7 Ownership/assignment/worklist/waiting state
+8 Core professional workflow
+9 Decision/approval/dual review
+10 Lifecycle/state transition
+11 Repeated/longitudinal/partial-use
+12 Assessment/version/carry-forward
+13 Documents/forms/media/signatures
+14 Orders/results/external services
+15 Evidence/specimen/asset custody
+16 Exception/recovery/correction/reversal
+17 Integration/source of truth/timing
+18 Downtime/manual continuity/reconciliation
+19 Finance/payer/charge/waive/refund/reversal
+20 Privacy/sensitivity/masking/reveal/export
+21 Audit/accountability
+22 Reporting/statistics/definitions
+23 Closure/handover/discharge/release/archive
+24 SLA/priority/escalation
+25 Configuration/master/numbering/template/version
+26 Search/history/amendment
+27 Operational usability/next action/bottleneck
+28 Off-system work and workaround
 
-## 6. Three-Way Classification of Missing Information
-Every missing item must be classified as one of:
-1. `ALREADY ANSWERED` — Hospital Requirement already determines it; do not ask again.
-2. `EXPERT RECOMMENDATION AVAILABLE` — common/domain/HIS practice can propose a concrete design for hospital confirmation.
-3. `HOSPITAL DECISION REQUIRED` — local policy/legal authority/integration/finance/privacy/role authority cannot be guessed.
+## 8. Question Generation
+No generic “ต้องการอะไรเพิ่มไหม?”. Use:
+`Current Evidence → Missing Decision → Recommended Options → Impact/Risk → Specific Question → Owner → Timing`.
 
-Do not burden users with questions the Expert can responsibly narrow into a recommended option.
+Classify missing information:
+1 `ALREADY ANSWERED`
+2 `EXPERT RECOMMENDATION AVAILABLE`
+3 `HOSPITAL DECISION REQUIRED`.
 
-## 7. Decision Tree Expansion
-For every important workflow action, explicitly challenge:
-- Preconditions
-- Valid action
-- Invalid action
-- Alternate route
-- Exception route
-- Cancellation/reversal
-- Correction/amendment
-- Re-entry/reopen
-- Handoff
-- Closure
+Do not burden users with questions an expert can narrow responsibly.
 
-If a main action exists without its material invalid/exception/reversal path, mark `PARTIAL`.
+## 9. Workshop Question Bank — Mandatory
+Fields:
+`Question ID | Domain/Scenario | Transaction | Lifecycle Stage | Question | Why Asked | Current Evidence | Recommendation/Options | Decision Affected | Risk | Owner | Priority | Confirm When | Status`.
 
-## 8. Role Interview Lens
-For each relevant role, ask what that role needs to know/do at the moment of work:
-- What appears in their worklist?
-- How do they know a new task arrived?
-- What information is needed before acting?
-- Which actions are permitted?
-- What is blocked and why?
-- What happens after action?
-- What must they hand over?
-- What do they need to search/recover later?
+Priority: CRITICAL / HIGH / MEDIUM / LOW-REFINEMENT.
 
-Do not infer authority solely from job title.
+Status: OPEN / ANSWERED BY EVIDENCE / RECOMMENDATION AVAILABLE / HOSPITAL DECISION REQUIRED / DEFERRED / N/A.
 
-## 9. Data Interview Lens
-For each major object/record:
-- Who creates it?
-- What identifier is primary?
-- What can be edited?
-- What becomes immutable?
-- Who may correct it?
-- Is version history required?
-- Which system is source of truth?
-- What happens when systems disagree?
-- What downstream records must be reconciled after correction?
+Coverage matters more than question count.
 
-## 10. Exception Workshop — Mandatory
-At minimum challenge relevant categories:
-- missing required information;
-- wrong person/case/identifier;
-- duplicate;
-- late-arriving information;
-- resource/person unavailable;
-- role has insufficient permission;
-- external interface unavailable;
-- transaction failed/partial success;
-- user cancels/reverses;
-- case needs correction after finalization;
-- handover recipient invalid/unavailable;
-- unusual/special population or route;
-- downtime/manual work and later reconciliation.
+## 10. Role Interview Lens
+For each role discover worklist arrival, required information, permitted/blocked actions, ownership, waiting state, handoff, return path, search/recovery and closure. Do not infer authority from title alone.
 
-## 11. Workshop Deliverable Structure
-The Expert output must include:
-1. Domain/Scenario Coverage Summary
-2. Discovery Dimension Coverage Matrix
-3. Workshop Question Bank
-4. Critical Decisions Before Dev
-5. Questions Suitable for Prototype Review
-6. Questions Safe to Defer
-7. Expert Recommendations Ready for Hospital Confirmation
-8. Unresolved Hospital Policy/Legal/Integration Decisions
-9. Independent Challenge Findings
+## 11. Data Interview Lens
+For each object discover creator, identifier, editable/immutable data, versioning, source of truth, disagreement/reconciliation and downstream correction impact.
 
-## 12. Blueprint Promotion Rule
-Only confirmed answers may become Hospital Requirement / Business Rule.
+## 12. Exception Workshop
+Challenge relevant missing/invalid input, wrong patient/case, duplicate, late information, unavailable role/resource, insufficient permission, external interface unavailable, partial success, return/reject, cancel/expire, correction after approval/use, reversal, invalid handover, special route, downtime/manual work and reconciliation, close with outstanding work, reopen.
 
-An unanswered question may enter Blueprint only as:
-- HSR / CR recommendation;
-- WA if reversible and safe for prototype;
-- TBD if not safe to assume.
+## 13. Standard Challenge Comes After Reality
+Where Hospital Primary Evidence exists, reconstruct Actual Workflow first. Then compare Domain Standard Flow using Actual-vs-Standard Delta. Standard may expose a missing decision but cannot be promoted to local truth.
 
-## 13. Readiness Gate
-`PROTOTYPE READY` requires:
-- Workshop Question Bank exists;
-- all material scenarios challenged;
-- all applicable discovery dimensions dispositioned;
-- Critical/High unresolved decisions visible;
-- safe prototype treatment defined.
+If actual evidence is inadequate, mark `ACTUAL WORKFLOW NOT VERIFIED`; do not fabricate a complete flow.
 
-`READY FOR DEV HANDOFF` requires every Critical and implementation-blocking High question to be answered, explicitly excluded, or converted into a verified implementation rule.
+## 14. Mandatory Workshop Deliverables
+1 Hospital Actual Workflow Evidence Register
+2 Actual Workflow Map(s)
+3 Core Transaction/Object Model
+4 Lifecycle/State Transition Matrix
+5 Repeated/Longitudinal Analysis
+6 Role/Handoff/Waiting-State model
+7 Data/Source-of-Truth model
+8 Discovery Dimension Coverage
+9 Workshop Question Bank
+10 Critical Decisions Before Dev
+11 Expert Recommendations for confirmation
+12 Unresolved Hospital decisions
+13 Independent Domain + Reality Challenge
 
-HARD FAIL if:
-- Expert asks only generic questions;
-- important decisions are hidden inside prose without Question IDs;
-- only happy path is explored;
-- exception/correction/reversal is ignored;
-- complex module has no evidence of role/data/integration/finance/privacy discovery;
-- Blueprint is declared ready while Critical workshop decisions are undiscovered or hidden.
+## 15. Blueprint Promotion
+Only Hospital evidence/confirmation becomes local Requirement/Business Rule. Unanswered items remain HSR/CR/WA/TBD as appropriate.
+
+`PROTOTYPE READY` requires enough actual workflow evidence for safe bounded discovery, material transactions/lifecycles identified, applicable dimensions dispositioned and Critical/High unresolved visible.
+
+`READY FOR DEV HANDOFF` requires implementation-blocking workflow/transaction/state/authority/data decisions answered, explicitly excluded or converted to verified rules.
+
+## 16. Independent Reality Challenge — Mandatory
+Reviewer asks:
+1. Would an experienced user from this exact department recognize their real work?
+2. What real work still happens outside the modeled flow?
+3. Did we invent a reasonable workflow where evidence was absent?
+4. Did we merge different transactions because they looked similar?
+5. Can one realistic case execute from trigger to closure?
+
+Any material failure blocks promotion.

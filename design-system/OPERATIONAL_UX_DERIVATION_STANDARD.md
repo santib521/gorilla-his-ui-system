@@ -1,4 +1,4 @@
-# Gorilla HIS — Operational UX Derivation Standard v1.2
+# Gorilla HIS — Operational UX Derivation Standard v1.3
 
 Status: `UNIVERSAL UX FACTORY MASTER`
 
@@ -8,154 +8,165 @@ Applies to **EVERY Gorilla HIS module**.
 The Factory must behave like a strong Senior HIS BA + Product Designer, not like an auditor assembling UI from checklists.
 
 Mandatory execution loop:
-
-`DISCOVER → MODEL → DESIGN → BUILD → PLAY → CHALLENGE → FIX`
+`DISCOVER → MODEL → DESIGN → BUILD → PLAY → CHALLENGE → FIX`.
 
 Expanded:
-`Hospital Actual Workflow → Work Objects/State Machine → User Job/Decisions → Product Concept → Premium UI → Running Workflow → Independent Challenge → Fix/Retest`.
+`Hospital Actual Workflow → Work Objects/State Machine/Queue Topology → User Job/Decisions → Product Concept → Premium UI → Running Workflow → Independent Challenge → Fix/Retest`.
 
-The Master is a **quality floor, not a layout generator**. It prevents unsafe invention and workflow omission; it must not slow early product synthesis with ceremonial matrices.
+The Master is a quality floor, not a layout generator.
 
-## 2. RAPID PRODUCT SYNTHESIS — MANDATORY
-Before first build, create only the minimum internal model needed to design correctly:
+## 2. Rapid Product Synthesis
+Before first build create only the minimum internal model needed:
 1. Actual Main Flow(s)
 2. Core Work Objects / Transactions
 3. State Machine / Lifecycle
 4. Key Actors / Handoffs
-5. Repeated / quantity / longitudinal behavior when material
-6. 2–5 user decisions/actions that dominate the module
-7. Design Intent
+5. Operational Queue Topology
+6. Repeated / quantity / amount / longitudinal behavior
+7. 2–5 dominant user decisions/actions
+8. Design Intent
 
-If those seven items are sufficiently understood, **BUILD THE FIRST PRODUCT CANDIDATE EARLY**. Detailed traceability matrices, documentation and audit artifacts may be completed/refined after a coherent candidate exists, provided no Critical Hospital Truth is silently invented.
+Then build early. Do not use speed as a reason to collapse distinct queues, ownership boundaries or repeated-utilization logic.
 
 ## 3. Designer / Reviewer Separation
-During composition, the Product Designer optimizes the work experience and is not required to mentally execute every Factory checklist.
-
-After the candidate exists, an Independent Reviewer challenges:
-- workflow fidelity;
-- missing states/capabilities;
-- invented Hospital Policy;
-- broken handoff/ownership;
-- repeated-flow continuity;
-- function/runtime execution;
-- benchmark regression;
-- visual/product quality.
-
-**Designer freedom high during creation; Factory rigor high during review.**
+Designer optimizes the work experience. Independent reviewer challenges workflow fidelity, queue completeness, missing capabilities/states, invented policy, broken handoff, repeated-flow continuity, function/runtime, benchmark regression and visual quality.
 
 ## 4. BA/SA Derivation Boundary
-A competent Factory derives obvious application capability without asking users to design screens.
-
-May derive as `EXPERT APPLICATION DERIVATION`:
-- incoming work → Worklist/Queue;
-- new transaction → Entry surface;
-- receive/accept/assign → Ownership action;
+May derive as `EXPERT APPLICATION DERIVATION` when supported by workflow:
+- incoming request/consult → Intake Worklist;
+- scheduled/return patient work → Today's Follow-up/Arrival Worklist;
+- create/new transaction → Entry surface;
+- receive/accept/assign → Receiving-team ownership action;
+- estimate/service request → Estimate Workspace;
 - assessment/scoring → Professional Assessment Workspace;
 - material handoff → Review/Verify;
-- approval → Approval Inbox/Decision Workspace;
-- repeated work → Longitudinal/Follow-up Workspace;
-- prior evidence affects current work → History/Version context;
-- closure → Closure/Outstanding-work check;
-- operational volume → Search/Filter/Sort;
-- lifecycle-driven work → Status/Owner/Next Action.
+- approval → Approval Inbox;
+- approved quantity/value → Entitlement Ledger;
+- repeated work → Visit/Utilization Workspace;
+- appointment drives work → Appointment/Today Queue;
+- prior evidence matters → History/Version context;
+- closure → Remaining/Outstanding-work check;
+- operational volume → Search/Filter/Sort.
 
-Must not invent as Hospital Truth:
-- authority/approval thresholds;
-- SLA/escalation;
-- formula/score cut-off;
-- local/legal policy;
-- exact permissions;
-- unverified source-of-truth;
-- financial posting/reversal;
-- clinical decision rules.
+Must not invent authority thresholds, SLA, scoring cut-offs, local policy, permissions, source-of-truth, financial posting/reversal or clinical decision rules.
 
-Ask the hospital about **policy/authority/decision rules**, not obvious UI capability.
-
-## 5. STATE MACHINE BEFORE SCREEN LIST
-Do not translate `Requirement → Screen`.
+## 5. State Machine + Queue Topology Before Screen List
+Do not translate Requirement → Screen.
 
 Use:
-`Workflow → Work Object → State → User Job → Capability → Workspace → Interaction`.
+`Workflow → Work Object → State → Queue/Owner → User Job → Capability → Workspace → Interaction`.
 
-Every material state-changing action must define what changes, who owns the next state, and what the user sees next. Similar-looking flows with materially different lifecycle/authority/quantity must remain separate transactions.
+### Queue Topology Challenge
+Every module must ask whether user work naturally separates into:
+- incoming/new work;
+- scheduled/return work due now/today;
+- waiting for external/other-role decision;
+- active longitudinal work;
+- exception/overdue work;
+- completed/history.
 
-## 6. Workspace Pattern Selection
-Choose the pattern that makes the job easiest: Worklist/Queue, split view, inspector, full-page professional workspace, schedule, resource board, approval inbox, timeline, ledger, task workspace or hybrid.
+Materially different work obligations should not be hidden inside one generic list. Use tabs, sections, saved views or separate workspaces as appropriate.
 
-Do not start from `Dashboard + Cards + Sidebar`.
-Do not force every module into one content pattern.
+## 6. Creation vs Assignment
+When requester submits work to another department, creation and receiving-team assignment are distinct unless hospital evidence explicitly combines them.
 
-The designer should be able to explain in one sentence why the chosen pattern fits the work.
+The create form gathers request evidence. It does not pre-select the receiving department's internal assignee by default.
 
-## 7. Worklist / Queue
-When work arrives and must be triaged, received, assigned, progressed or handed off, derive a work-management surface automatically.
+After submit:
+`New/Unassigned → Receive/Accept → Assign/Take ownership → In Progress`.
 
-Select only fields that improve scanning/action. Typical candidates:
-`Type | Identity | Reason/Service | Source | Priority | Status | Owner | Aging/Due | Progress | Next Action`.
+Assignment action must be possible from receiving Worklist/case context and must visibly change owner/history.
 
-Exact columns are design decisions, not a mandatory database dump.
+## 7. Entitlement / Utilization Model
+When approval authorizes a service/item with quantity or amount, derive an explicit authorization/entitlement ledger.
 
-## 8. Professional Work Surfaces
-Core work receives a proportionate workspace.
-- Assessment/scoring: prior evidence + current inputs + resulting classification + validation.
-- Review/verify: decision summary + exceptions + handoff.
-- Follow-up: entitlement/planned work + prior event + current reassessment + used/remaining + next event.
-- Approval: request + evidence + financial/quantity context + decision.
+Minimum decision information when relevant:
+`Approved service | Approved qty | Approved amount | Used qty | Used amount | Remaining qty | Remaining amount | validity | linked appointments | linked utilizations | status`.
 
-Do not bury a core task in a tiny generic modal merely to claim coverage.
+Repeated visit cycle:
+`Appointment/Arrival → Required Reassessment → Use Confirmation → Ledger Mutation → Remaining/Next Appointment`.
 
-## 9. Benchmark-Driven Product Rule — HARD GATE
-When a user supplies a reference/mockup/product candidate, treat it as a **Minimum Product Quality Floor** for the qualities it demonstrates well.
+If reassessment is mandatory before each use, UI must prevent utilization until the current visit assessment is saved.
 
-Mandatory sequence:
-`UNDERSTAND → EXTRACT STRENGTHS → IDENTIFY BUSINESS/UX DEFECTS → PRESERVE PROVEN STRENGTHS → CORRECT DEFECTS → EXCEED`.
+## 8. Appointment-Centered Operational Work
+If longitudinal work depends on patient appointments/returns, the module needs a usable appointment-oriented surface. It should make clear:
+- who is expected today/upcoming;
+- linked case/authorization;
+- appointment time/service;
+- whether patient has contacted/checked with the department;
+- whether reassessment is done;
+- whether utilization is recorded;
+- next action.
 
-Compare at least:
-1. UX/UI — hierarchy, scanability, density, navigation, action clarity, polish;
-2. Function — what can actually be done/interacted with;
-3. Workflow — transaction/state/handoff/repeated-flow fidelity.
+This is different from Intake Worklist and should not be treated as the same job.
 
-A new Gorilla candidate must **not regress below the supplied benchmark** in UX/UI or Function without a documented workflow/safety reason. It should exceed the benchmark in Workflow Fidelity whenever Gorilla has stronger Hospital Evidence.
+## 9. Patient / Case History
+When prior social/financial/clinical-support work affects current decisions, expose patient history without forcing recall. Show prior Consult/Request cases, prior assessment versions, approvals, appointments, utilizations, home visits, closures and relevant outcomes.
 
-A user-supplied candidate that communicates the job better than Factory output is evidence the Factory must improve; never defend the weaker output with Master rules.
+## 10. Workspace Pattern Selection
+Choose pattern by job: intake queue, today queue, split view, inspector, full-page workspace, schedule, approval inbox, timeline, ledger, task workspace or hybrid.
 
-## 10. UX Decision Architecture
-For each primary workspace reason from:
+Do not start from Dashboard + Cards + Sidebar.
+
+## 11. Interactive Summary Rule
+Cards, chips, counters and summary blocks that imply an actionable subset must behave as controls: filter, navigate or open the corresponding work. Decorative operational KPI = FAIL.
+
+## 12. Professional Work Surfaces
+Core work receives a proportionate workspace:
+- Estimate: requested items/services + qty + unit/full price + reimbursable + non-reimbursable + totals;
+- Assessment: prior/current evidence + detailed economic inputs + scoring components + classification result + version;
+- Approval: request + estimate + assessment + quantity/value + decision;
+- Follow-up: today's appointment + prior assessment + current reassessment + entitlement ledger + next appointment;
+- History: prior cases and utilization timeline.
+
+Do not bury core work in tiny generic modals merely to claim coverage.
+
+## 13. Benchmark-Driven Product Rule — HARD GATE
+When user supplies a reference/mockup, treat demonstrated strengths as minimum quality floor.
+
+`UNDERSTAND → EXTRACT STRENGTHS → IDENTIFY DEFECTS → PRESERVE STRENGTHS → CORRECT DEFECTS → EXCEED`.
+
+Compare UX/UI, Function, and Workflow. A new candidate must not regress without documented workflow/safety reason.
+
+## 14. Navigation Semantics
+For a module-level mockup, left navigation should normally represent the module's own workspaces when there are multiple recurring operational jobs. Do not fill the rail with unrelated HIS modules unless an approved product shell explicitly requires it.
+
+Exact module menu items derive from real jobs, not from a universal template.
+
+## 15. UX Decision Architecture
+For each primary workspace:
 `User Goal → Decision Question → Evidence Needed → Attention/Exception → Primary Action → Detail on Demand`.
 
-Within ~5 seconds an experienced user should understand where they are, what needs attention, current state, and next action.
+Within ~5 seconds an experienced user should understand where they are, what needs attention, current state and next action.
 
-## 11. Premium Composition Direction
-Target: **Premium, simple, calm, precise, professional, expensive without decorative luxury.**
+## 16. Function Completeness
+Every enabled visible primary control must work. Add/Create must create a real transaction. Accept must change acceptance state. Assign must change owner. Assessment must calculate/store the represented values. Appointment actions must mutate appointment state. Utilization must update quantity/amount ledger. History must show recorded events.
 
-Use hierarchy, Thai readability, deliberate density, restrained semantics, state-driven actions, progressive disclosure and crafted interaction states.
+Dead enabled controls = FAIL.
 
-Avoid card sprawl, oversized KPI blocks, badge overload, tiny text, giant empty whitespace, generic SaaS/admin language and Master/checklist labels in the product.
+## 17. Premium Composition Direction
+Target premium, simple, calm, precise, professional, expensive without decorative luxury. Use hierarchy, Thai readability, deliberate density, restrained semantics and state-driven actions.
 
-## 12. Design Freedom Rule
-The Master specifies outcomes/failure conditions, not pixel layout.
+Avoid card sprawl, oversized KPI blocks, badge overload, tiny text, giant empty whitespace and generic SaaS/admin language.
 
-A designer may simplify, combine, hide, reorder or reinterpret UI elements when:
-- workflow fidelity remains intact;
-- decisions/actions remain discoverable;
-- state/data/owner continuity remains clear;
-- runtime scenario remains executable;
-- no Hospital Truth is invented;
-- benchmark strengths are not needlessly lost.
+## 18. Design Freedom Rule
+Master specifies outcomes/failures, not pixel layout. Designer may simplify/combine/hide/reorder when workflow fidelity, queue topology, function completeness, state/data continuity and benchmark quality remain intact.
 
-## 13. Operational UX Hard Failures
+## 19. Operational UX Hard Failures
 FAIL when:
-- material work cannot be performed naturally;
-- next action is unclear;
-- queued work has no usable work-management surface;
-- core assessment/review/follow-up is reduced to inadequate UI;
-- repeated work loses history/progression;
-- handoff/approval has no receiver state;
-- generic template dominates domain context;
-- candidate is materially worse than a credible supplied benchmark without workflow justification.
+- materially different queues are collapsed and user cannot distinguish jobs;
+- create form wrongly assigns receiving owner;
+- assignment cannot be performed after intake;
+- estimate lacks itemized/financial calculation when required;
+- required scoring/reassessment is not operable;
+- appointment-driven follow-up has no today/upcoming work surface;
+- approved quantity/value has no used/remaining ledger;
+- prior case/utilization history is inaccessible;
+- enabled visible control is dead;
+- candidate is materially worse than benchmark without justification.
 
-## 14. Final Rule
+## 20. Final Rule
 `Requirement is not a screen specification.`
 `Master is not a screen specification.`
 
-The Factory must **understand fast, model correctly, design freely, build early, execute real work, then challenge hard**.
+The Factory must understand fast, model correctly, distinguish queues, derive the real application, build early, execute actual work, then challenge hard.

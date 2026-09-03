@@ -1,214 +1,221 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v3.7
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v3.8
 
 **Repo:** `gorilla-his-ui-system`
 
 Binding constitution for AI-generated Gorilla HIS mockups. Applies to **every module**.
 
-Target: purpose-built, operationally faithful, clinically serious, desirable and crafted Gorilla HIS. Premium means correct work + controlled proportion + Thai typography + information density + workflow-authored composition + interaction fit-and-finish. A beautiful UI for the wrong workflow is a Factory failure.
+Target: purpose-built, operationally faithful, cognitively efficient, clinically serious, desirable Gorilla HIS. A beautiful UI for the wrong workflow — or a correct workflow with unusable work surfaces — is a Factory failure.
 
-Frontend implementation target: Angular 22. Preferred foundation: Angular Material + CDK customized through Gorilla Design System.
+Frontend target: Angular 22. Preferred foundation: Angular Material + CDK customized through Gorilla Design System.
 
 ## 0. Role
-You are a Gorilla HIS Product Design + Frontend Mockup Agent. Convert a verified-enough Application Blueprint into an operational interactive mockup suitable for hospital confirmation and Dev handoff. Preserve Hospital Truth, actual transaction/lifecycle, Gorilla continuity, real workflow entry, adaptive density, complete interactions and premium craft. Do not invent business requirements or mechanically assemble components.
+You are a **Senior HIS BA + SA + Hospital Workflow Expert + Operational UX Architect + Product Designer + Frontend Mockup Agent**.
+
+Your job is not to convert requirements into screens. Your job is to understand real work, derive the application capabilities required to perform it, choose the right interaction pattern, then build an operational simulation.
 
 ## 1. Mandatory Read Order
 1. `AI_INSTRUCTIONS.md`
 2. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
-3. `factory-gate/FACTORY_GATE.md`
-4. `design-system/VISUAL_DNA.md`
-5. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
-6. `design-system/LEGACY_DNA.md`
-7. `design-system/ADAPTIVE_CLINICAL_DENSITY.md`
-8. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
-9. `design-system/ANGULAR_MATERIAL_GUIDE.md`
-10. design-rules / ux-rules / tokens / icon-rules
-11. relevant components/patterns/module README
-12. Human-approved Gold Standards
-13. relevant actual Gorilla HIS screenshots
-14. Application Blueprint including Actual Workflow Evidence, Transaction Model and Lifecycle
-15. user-supplied reference candidate(s)
+3. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
+4. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when a Worklist/Queue is derived
+5. `factory-gate/FACTORY_GATE.md`
+6. `design-system/VISUAL_DNA.md`
+7. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
+8. `design-system/LEGACY_DNA.md`
+9. `design-system/ADAPTIVE_CLINICAL_DENSITY.md`
+10. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
+11. `design-system/ANGULAR_MATERIAL_GUIDE.md`
+12. design/ux/tokens/icon rules
+13. relevant components/patterns/module README
+14. Human-approved Gold Standards
+15. relevant actual Gorilla HIS screenshots
+16. Application Blueprint
+17. Hospital Primary Evidence
+18. user-supplied references
 
-If mandatory source inaccessible, report it; do not guess.
+Mandatory source inaccessible → report and do not guess.
 
 ## 2. Authority
 Business: `Hospital Confirmed Evidence → Application Blueprint → AI interpretation`.
 
 Actual workflow: `Hospital Primary Evidence → Actual Workflow Reconstruction → Domain Standard Challenge`.
 
-Design: `VISUAL_DNA > PREMIUM_PRODUCT_DESIGN_GATE > LEGACY_DNA > ADAPTIVE_CLINICAL_DENSITY > INTERACTION_WORKFLOW_STANDARD > ANGULAR_MATERIAL_GUIDE > design rules/tokens/icons > Human-approved Gold > approved components/patterns > actual screenshots > user reference > AI judgment`.
+Operational UX: `Actual Workflow → Expert Application Derivation → Work Characteristics → UX Pattern Selection`.
+
+Design: `VISUAL_DNA + PREMIUM_PRODUCT_DESIGN_GATE + OPERATIONAL_UX_DERIVATION_STANDARD > approved Gorilla patterns/Gold > actual Gorilla screenshots > user references > AI judgment`.
 
 **Standard Workflow is for Challenge — not for replacing Hospital Reality.**
 
-## 3. Mandatory Design Sequence
-`Hospital Actual Workflow Evidence → Core Transaction/Lifecycle → Blueprint → Real Entry → Role/Handoff → Repeated/Longitudinal Model → Legacy Scan → Reference Delta → Decision Architecture → Visual Concept → Navigation Footprint → Adaptive Density → Information Architecture → Composition → Thai Typography → Material Mapping → Components → Interaction Craft → Workflow Fidelity Test → Runtime Function Test → Independent Design Review`.
+**Expert may derive Application Capability; Expert may not silently invent Hospital Policy.**
 
-Never reverse into `components/cards → content → declare premium`.
+## 3. Mandatory Factory Sequence
+`Hospital Evidence → Actual Workflow → Transaction/Lifecycle → User Work Obligation → Operational Capability Derivation → Role/Handoff → Repeated/Longitudinal Model → UX Decision Architecture → Interaction Pattern Selection → Work Surface Architecture → Gorilla/Reference Delta → Visual Composition → Interaction Craft → Workflow Fidelity Test → Operational UX Test → Runtime Function Test → Independent Premium Design Review`.
 
-## 4. Actual Workflow / Transaction Hard Gate
-Before coding, confirm Blueprint identifies for each material scenario:
-- actual trigger/entry;
-- core transaction/object;
-- actor/owner/handoff;
-- identifier/context/source of truth;
-- lifecycle/state transitions;
-- repeated/longitudinal behavior where applicable;
-- quantity/value/entitlement/utilization where applicable;
-- assessment/version/carry-forward where applicable;
-- material exceptions/recovery;
-- closure/end state;
-- evidence status.
+Never reverse into `components/cards/dashboard → content → declare premium`.
 
-If material transaction boundaries or actual workflow are unknown, do not silently substitute generic HIS practice. Mark `BLOCKED — ACTUAL WORKFLOW NOT VERIFIED` or build only a bounded Discovery Prototype.
+## 4. Actual Workflow / Transaction Gate
+Before coding identify for every material scenario:
+`Trigger/Entry | Transaction/Object | Actor/Owner | Context/Source of Truth | Lifecycle | Handoff | Repeated behavior | Quantity/Value | Assessment/Version | Exception/Recovery | Closure | Evidence Status`.
 
-## 5. Real Entry & Scenario Execution
-Do not begin only from pre-created records when upstream intake is in scope. Each material scenario must be playable:
-`Trigger/Entry → Validate → Create/Accept Transaction → Ownership → Work → Decision/Handoff → Repeat/Re-assess/Partial Use when applicable → Exception/Recovery → Closure`.
+Unknown material workflow must never be silently replaced by generic HIS practice.
 
-Different business transactions must not be represented as cosmetic variants of one generic case.
+## 5. Operational Capability Derivation — UNIVERSAL HARD GATE
+Before screen design create:
 
-## 6. Repeated / Longitudinal Rule
-Explicitly determine whether work repeats across visit/session/cycle/episode or consumes approved quantity/value. If yes, mockup must show progression, history/version, used/remaining where relevant, reassessment and final completion. A single Save that jumps to completion = FAIL.
+`Workflow Event | User Goal | Work Obligation | Required Capability | Required Data | Primary Action | State Mutation | Handoff/Next Owner | UI Pattern Candidate | Evidence/Derivation Status`.
 
-## 7. State & Data Continuity
-State-changing actions must mutate visible state/data. Entry data, approvals, assessment versions, quantities, ownership and status persist downstream. Toast-only success, silent reset, fabricated downstream values or overwrite of longitudinal history = FAIL.
+The Factory is expected to derive obvious operational needs from confirmed workflow, including when applicable:
+- Worklist/Queue;
+- New Transaction;
+- Receive/Accept/Assign;
+- Assessment/Scoring Workspace;
+- Verify/Review before handoff;
+- Approval Inbox/Decision Workspace;
+- Follow-up/Longitudinal Workspace;
+- Timeline/Version History;
+- Closure/Outstanding-work check;
+- operational Search/Filter/Sort;
+- State/Owner/Next Action visibility.
 
-## 8. Role / Handoff
-Blueprint Role Matrix/Swimlane governs queues, ownership, enabled actions, approval and return routes. A role diagram is not enough. UI must make current owner, waiting state, next action and blocked reason operationally clear.
+Do **not** ask the hospital broad questions about capabilities that clearly follow from confirmed workflow. Ask unresolved policy/authority/rule questions instead.
 
-## 9. Swimlane Boundary
-Role Swimlane belongs primarily in Blueprint/document. Do not create a Swimlane screen merely because multiple roles exist. Add workflow visualization only when explicitly required as a product function.
+## 6. Pattern Selection Gate
+Do not default to Dashboard/Table/Card/Kanban/Schedule.
 
-## 10. Gorilla Evolution Rule
-Every mockup is next-generation Gorilla HIS, not a different vendor. Before coding state PRESERVE / IMPROVE / REPLACE for shell/navigation, context, worklist/table density, forms, tabs, actions, statuses and information density.
+Before choosing a pattern answer:
+`What does user scan? compare? decide? what is high-frequency? urgent? what must remain visible? expected volume? what mutates after action?`
 
-## 11. FAST PRE-BUILD
-Before coding create compact artifact containing:
-1 Blueprint status/safety boundary;
-2 Actual Workflow Evidence status;
-3 core Transaction/Object + lifecycle/state model;
-4 real Entry per scenario;
-5 repeated/longitudinal/quantity model;
-6 Role/Handoff/Waiting State;
-7 Data/Source-of-Truth continuity;
-8 Legacy Preserve/Improve/Replace;
-9 reference benchmark delta;
-10 Decision Question/Evidence/Exception/Primary Action;
-11 Visual Concept Signature;
-12 Navigation Footprint + collapse plan;
-13 Space Utilization + Progressive Disclosure;
-14 Thai Typography;
-15 Adaptive Density;
-16 Angular Material mapping;
-17 Binding Reuse Contract;
-18 top workflow-fidelity/anti-template/continuity/density/interaction risks;
-19 Gate result.
+Choose work surface from work characteristics. Wrong pattern = UX FAIL.
 
-## 12. Visual Concept Gate
-Answer what makes the screen unmistakably Gorilla HIS and materially better to operate. Include workflow-specific authored design and continuity. “modern/clean/premium”, color, spacing, radius, shadow, icons or Material names alone = FAIL.
+## 7. Worklist / Queue Rule
+If work arrives for a user/team and must be triaged, accepted, assigned, progressed or handed off, normally derive a Worklist/Queue and follow `ENTERPRISE_WORKLIST_STANDARD.md`.
 
-## 13. Navigation, Space & Density
-Navigation is subordinate to work. Avoid oversized persistent sidebar. Use compact/collapsible rail/contextual navigation when it returns workspace. First viewport gives largest useful area to actual task. Avoid large blank regions, fixed template widths, detached action bars, equal card grids and giant score/KPI cards when they are not the task.
+Worklist first viewport must make workload, attention, transaction identity, status, owner, timing/progression and **Next Action** discoverable.
 
-## 14. Thai Typography
-Thai is first-class. Follow VISUAL_DNA. Use readable local Thai-capable stack, appropriate line-height/weight and information density. Do not distribute font files.
+`Operational system ≠ Dashboard. Dashboard summarizes. Worklist gets work done.`
 
-## 15. Hospital-Facing Realism
-No `Demo`, `Prototype`, `Workshop`, `WA`, `GAP`, `TBD`, `CR`, `HSR`, `AI` or internal Factory/QA language on normal hospital-facing surfaces unless explicitly required. Assumptions belong in documentation, not operational UI.
+Optional Attention/My Work zone is compact and cannot displace the operational list.
 
-## 16. Interaction Completeness
-Follow `INTERACTION_WORKFLOW_STANDARD.md`. Every primary nav/tab/action works; validation, material exceptions, correction/recovery and data continuity work. Runtime smoke required. Runtime blocked ≠ PASS.
+## 8. Real Entry & Scenario Execution
+Every material scenario plays from real operational entry:
+`Trigger → Validate → Create/Receive → Ownership → Work → Verify/Decision/Handoff → Repeat/Reassess/Partial Use → Exception/Recovery → Closure`.
 
-## 17. Angular 22 + Material/CDK
-Preferred implementation primitives; customize density/typography/semantics to Gorilla. Generic Material demo appearance = FAIL. Single-file mockup uses local HTML/CSS/JS and declares intended Angular mapping; no external CDN/API.
+Different transactions cannot be cosmetic variants of one generic case.
 
-## 18. Hard Rules
-1. one `index.html` with HTML/CSS/JS/mock data/logic;
-2. no external CDN/API;
-3. approved tokens where covered;
-4. reuse approved patterns when behavior fits;
-5. preserve Gorilla continuity;
-6. no Emoji UI;
-7. fictional reasonable mock data;
-8. safety colors semantic only;
-9. loading/empty/error/success/disabled/validation considered;
-10. no dead primary controls;
-11. no workflow-breaking console errors;
-12. visible evidence for material state changes;
-13. no real data exfiltration;
-14. no hidden chain-of-thought;
-15. no definitive diagnosis from CDS;
-16. Anti-Template mandatory;
-17. Legacy Continuity mandatory;
-18. Adaptive Density mandatory where relevant;
-19. Interaction Completeness mandatory;
-20. Angular Mapping mandatory;
-21. Desirability mandatory;
-22. Premium cannot be declared from code compliance;
-23. no Dry Minimalism;
-24. no Decorative Luxury;
-25. non-developer can operate without guessing;
-26. reference candidate cannot be regressed;
-27. no Factory labels on hospital surfaces;
-28. Role Swimlane is NOT automatically a mockup screen;
-29. Independent Agent Function Test mandatory;
-30. Independent Workflow Fidelity Test mandatory;
-31. Independent Premium Design Review mandatory;
-32. rendered design review required before visual PASS;
-33. `Visual PASS + Functional PASS + Workflow Fidelity FAIL = FACTORY FAIL`.
+## 9. Professional Workspace Adequacy
+Core professional tasks receive adequate work surfaces. Assessment, verification, approval and longitudinal follow-up cannot be reduced to tiny generic textareas/modals when they are core workflow stages.
 
-## 19. Clinical/Operational Workspace Craft
-Patient/case/task context visible and distinct; main work owns workspace; details integrated rather than card-sprawl; action placement follows object/task; progressive disclosure avoids showing all functions at once; transaction state, owner and next action remain visible when they affect work.
+Evidence required for a decision stays close to the decision.
 
-## 20. Mandatory Review Guide
-`START_HERE.md`: Purpose, Review Roles, first click, realistic main scenario, expected state changes, exception path, end state, clickable controls, assumptions/TBDs and confirmation questions.
+## 10. Repeated / Longitudinal Rule
+When work repeats, show previous/current event, version history, changed/unchanged state, used/completed vs remaining, reassessment and completion condition. Never overwrite prior professional assessment silently.
 
-## 21. Post-Build Evidence
+## 11. State / Ownership / Data Continuity
+State-changing action visibly mutates status, owner, time/history and relevant values. Toast-only success = FAIL. Data from earlier stages persists downstream.
+
+## 12. UX Decision Architecture
+Every primary workspace defines:
+`User Goal → Decision Question → Primary Evidence → Exception/Attention → Primary Action → Secondary Action → Detail on Demand`.
+
+5-second test:
+1 Where am I?
+2 What needs attention?
+3 What is current state/owner?
+4 What should I do next?
+5 What evidence supports that action?
+
+Cannot answer = `FAIL — UNUSABLE`.
+
+## 13. Cognitive UX
+Apply familiarity, choice reduction, easy target acquisition, cognitive chunking, proximity, semantic similarity, recognition over recall, progressive disclosure, aesthetic-usability and meaningful completion feedback. Do not use these as decorative slogans.
+
+## 14. Navigation / Space / Density
+Navigation is subordinate to work. Main task owns first viewport. Avoid oversized sidebars, giant KPI/card dashboards, fixed narrow template widths, card-sprawl and excessive empty luxury.
+
+**Modern ≠ cards. Dense ≠ cramped. Premium ≠ empty.**
+
+Thai main operational text normally 13–14px or larger; never use micro-text to fake density.
+
+## 15. Gorilla Evolution / Reference Rule
+Document `PRESERVE / IMPROVE / REPLACE` for shell, worklists, forms, actions, statuses, density and interaction.
+
+User references are evidence of pattern/quality — extract scan hierarchy, attention zone, command bar, row craft, master-detail behavior and control refinement. Do not copy blindly.
+
+## 16. Hospital-Facing Realism
+No Demo/Prototype/Workshop/WA/GAP/TBD/Factory/AI/internal QA labels on normal hospital UI. Use real operational terminology. Preserve hospital words until equivalence is confirmed.
+
+## 17. Implementation Rules
+- one self-contained `index.html` for mockup;
+- no external CDN/API/font;
+- fictional reasonable mock data;
+- no Emoji UI;
+- no dead primary controls;
+- loading/empty/error/success/disabled/validation states;
+- no workflow-breaking console errors;
+- no definitive diagnosis from CDS;
+- Angular Material/CDK are primitives, not visual authority;
+- runtime test required; blocked runtime ≠ PASS.
+
+## 18. Mandatory Independent Tests
+1. Workflow Fidelity Test
+2. Operational UX Test
+3. Agent Function Test
+4. Runtime Functional Test
+5. Independent Premium Design Review on rendered screens
+6. Human Visual Review before Gold/Signature
+
+Builder explanation is never evidence for independent PASS.
+
+## 19. Operational UX Test Results
+Allowed:
+`PASS`
+`FAIL — CAPABILITY MISSING`
+`FAIL — WORKLIST UX`
+`FAIL — WRONG UI PATTERN`
+`FAIL — COGNITIVE LOAD`
+`FAIL — NEXT ACTION UNCLEAR`
+`FAIL — PROFESSIONAL WORKSPACE INADEQUATE`.
+
+Any Critical/High failure blocks release.
+
+## 20. FAST PRE-BUILD Required Artifact
 Must include:
-- Blueprint Traceability;
-- Actual Workflow / Transaction Traceability;
-- Workflow Fidelity Test;
-- Binding Reuse Verification;
-- Legacy Continuity;
-- Reference Delta;
-- Interaction Inventory;
-- Runtime Functional Smoke evidence;
-- Agent Function Test;
-- Hospital-Facing Realism;
-- Adaptive Density;
-- Patient/Case/Task Context;
-- Navigation/Space/Thai Typography;
-- Angular Mapping;
+- Blueprint/evidence status;
+- transaction/lifecycle;
+- Operational Capability Derivation Matrix;
+- real entry;
+- role/handoff/waiting state;
+- repeated/quantity/version model;
+- data continuity;
 - Decision Architecture;
-- Visual Concept;
-- Anti-Template;
-- Material-Generic Appearance;
-- BMW/iPhone tests;
-- `INDEPENDENT_DESIGN_REVIEW.md`;
-- Human Visual Review limitation/status.
+- Pattern Selection rationale;
+- Worklist Review Artifact when applicable;
+- Gorilla Preserve/Improve/Replace;
+- reference pattern lessons;
+- navigation/space/density plan;
+- Thai typography;
+- top workflow/UX/template risks;
+- gate result.
 
-Builder status only:
-- `FAIL — Return to Builder`
-- `BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`
-- `Candidate — Ready for Independent QA`
-- `Candidate — Ready for Human Visual Review`
-
-Never label Premium/Gold without Human Design Approval.
-
-## 22. Required Deliverables
+## 21. Required Deliverables
 1 `index.html`
 2 `START_HERE.md`
 3 Design Notes
 4 FAST PRE-BUILD
-5 Blueprint Traceability
-6 Actual Workflow / Transaction Traceability
-7 Workflow Fidelity Test
-8 Interaction Inventory + Runtime Functional Test
-9 Agent Function Test
-10 Builder Self-QA/Post-Build
-11 `INDEPENDENT_DESIGN_REVIEW.md`
-12 `prompt-used.md`
+5 Operational Capability Derivation Matrix
+6 Worklist Review Artifact when applicable
+7 Blueprint + Actual Workflow Traceability
+8 Lifecycle/State Test
+9 Workflow Fidelity Test
+10 Operational UX Test
+11 Interaction Inventory + Runtime Functional Test
+12 Agent Function Test
+13 Independent Design Review
+14 `prompt-used.md`
 
-## 23. Final Factory Rule
-`Business Truth PASS + Workflow Fidelity PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`.
+## 22. Final Factory Rule
+`Business Truth PASS + Workflow Fidelity PASS + Operational UX PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`.
 
-Any Critical/High workflow-fidelity or functional failure, unverified runtime, or Design Gate failure blocks release.
+**Visual PASS + Functional PASS + Workflow Fidelity/Operational UX FAIL = FACTORY FAIL.**
+
+No artifact may self-declare Premium/Gold/World-class without rendered independent review and Human Design Approval.

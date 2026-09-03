@@ -1,4 +1,4 @@
-# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.3
+# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.4
 
 > Blueprint/Hospital Evidence = Business Truth. Repository = Factory/Product Authority. User-supplied reference = benchmark quality floor for demonstrated strengths.
 
@@ -8,59 +8,55 @@
 
 ## 0. READ AUTHORITY
 Read current `AI_INSTRUCTIONS.md`, `ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`, `OPERATIONAL_UX_DERIVATION_STANDARD.md`, `EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`, relevant Gorilla design standards, Application Blueprint/Hospital Evidence, and any user-supplied benchmark.
-
 Mandatory source inaccessible → report; never replace it with AI memory.
 
 ## 1. DISCOVER — FAST
-Extract only what is needed to avoid building the wrong product:
-- Actual Main Flow(s)
-- Core Transaction/Work Object(s)
-- actors/owners/handoffs
-- repeated/quantity/longitudinal behavior
-- unresolved Critical Hospital Policy
-
-Do not create screens yet.
+Extract only: Actual Main Flow(s), Core Transaction/Work Object(s), actors/owners/handoffs, repeated/quantity behavior, unresolved Critical Hospital Policy.
+Do not create documentation ceremony before product understanding.
 
 ## 2. MODEL — STATE MACHINE FIRST
-For every material transaction define:
-`Entry → State → Actor → Action → Data/State Mutation → Next Owner/State → End State`
+For every material transaction:
+`Entry → State → Actor → Action → Data/State Mutation → Next Owner/State → End State`.
+Repeated work:
+`Previous Version → Reassessment → Used/Completed → Remaining → Completion Condition`.
+Never collapse materially different transactions into a generic case.
 
-When repeated:
-`Previous Assessment/Version → Current Reassessment → Used/Completed → Remaining → Completion Condition`.
-
-Different real transactions must not be collapsed into one generic case.
-
-## 3. BENCHMARK — WHEN PROVIDED
-Study the supplied reference before composition.
-
-Extract:
-- what makes it fast to understand;
-- scan hierarchy/density;
-- navigation/worklist strengths;
-- interaction/function strengths;
-- business/workflow defects.
+## 3. BENCHMARK DECOMPOSITION — MANDATORY WHEN PROVIDED
+Before designing, inspect the benchmark as a Product Director, not as inspiration.
+Record:
+`visual spine | navigation proportion | first viewport | density | typography | row/control craft | status semantics | next action | workspace composition | interactions/functions | strengths | defects`.
 
 Target:
-`Preserve proven strengths → Correct defects → Exceed benchmark`.
+**Preserve proven strengths → correct business/workflow defects → visibly exceed benchmark.**
 
-Do not regress below benchmark UX/UI or Function without documented workflow/safety reason.
+Benchmark is a floor, not a style suggestion.
 
 ## 4. DESIGN — PRODUCT JUDGMENT
-Derive obvious capabilities from work:
-`incoming work → Worklist`, `receive → ownership action`, `assessment → assessment workspace`, `approval → approval workspace`, `repeated use → longitudinal workspace`, `history matters → version/timeline`, `closure → closure check`.
+Derive obvious capabilities from actual work. Choose composition freely; Master is not a layout template.
 
-Choose the best composition freely. Master is not a layout template.
+Gorilla continuity:
+- preserve the established **left-side Gorilla HIS menu/navigation bar**;
+- menu must be compact, refined and subordinate to work;
+- module workspace owns the viewport;
+- do not copy benchmark shell when it conflicts with Gorilla continuity.
 
-Gorilla product continuity:
-- preserve **left-side Gorilla HIS menu/navigation bar**;
-- keep it compact/subordinate;
-- module workspace owns the useful viewport;
-- do not replace it with benchmark top navigation simply because the reference does.
+### 4A. VISUAL CANDIDATE LOOP — BEFORE DEEP FUNCTION BUILD
+Create the primary rendered work surface early (normally Worklist/Queue when workflow has incoming work).
+Render at realistic desktop viewport and compare side-by-side with benchmark.
 
-## 5. BUILD EARLY
-Create self-contained `index.html` once the main state model and key decisions are understood.
+Mandatory visual questions:
+1. At first glance, would a reasonable Product Owner choose Gorilla over the benchmark?
+2. Is useful decision density equal or better without clutter?
+3. Are typography, spacing, row height and controls more intentional?
+4. Is the work object + state + next action faster to scan?
+5. Does the screen feel like a finished HIS product rather than generated admin UI?
 
-Requirements:
+Any clear No → redesign immediately. **Do not continue deep function implementation on a visibly weak shell.**
+
+No numeric score can override this veto.
+
+## 5. BUILD FUNCTION ON THE APPROVED-QUALITY SHELL
+Create self-contained `index.html`.
 - no external CDN/font/API;
 - fictional mock data only;
 - no dead primary actions;
@@ -69,48 +65,32 @@ Requirements:
 - professional work surfaces for core tasks;
 - hospital-facing terminology only.
 
-Do not wait for every QA matrix before first candidate.
-
 ## 6. PLAY — EXECUTE REAL WORK
-Run Critical/High scenarios from real Entry to End State.
-
-For each step record:
+Run Critical/High scenarios Entry → End State.
+Record:
 `Actor | Action | Expected State/Data/Owner | Actual State/Data/Owner | Evidence | PASS/FAIL`.
 
-Must prove as applicable:
-- receive/accept;
-- sender → receiver queue/worklist handoff;
-- assessment/version continuity;
-- approval/return/reject;
-- repeated first/intermediate/final usage;
-- used/remaining;
-- navigate away → return → state persists;
-- material exception/recovery;
-- meaningful closure.
-
+Prove as applicable: receive/accept; handoff; assessment/version; approval/return/reject; repeated first/intermediate/final usage; used/remaining; navigate away/return; exception/recovery; closure.
 Clickability/source inspection ≠ Runtime PASS.
 
-## 7. CHALLENGE — INDEPENDENT
-Reviewer separate from Builder compares:
-1. Hospital Workflow Fidelity
-2. Missing capability/state/handoff
-3. Invented Hospital Policy
-4. Runtime/Function completeness
-5. UX/UI versus supplied benchmark
-6. Premium Gorilla product quality
+## 7. CHALLENGE — TWO INDEPENDENT VETOES
+### A. Workflow/Function Critic
+Reject wrong state model, missing handoff, invented policy, dead action, broken repeated flow or incomplete end state.
 
-A candidate worse than benchmark without workflow/safety reason = FAIL.
+### B. Product Design Critic
+Review rendered screens, not CSS/source. Compare candidate side-by-side with benchmark.
+Any material visual regression = `FAIL — BENCHMARK REGRESSION`.
+If Human/Product Owner says candidate is visibly inferior = `FAIL — HUMAN VISUAL VETO` and reopen design.
 
 ## 8. FIX / RETEST
-`FAIL → FIX → RESTART RELEVANT SCENARIO → RETEST`.
-
+`FAIL → FIX → RENDER/EXECUTE AGAIN → RETEST`.
 Do not explain away a weaker candidate. Improve it.
 
 ## REQUIRED MOCKUP QA OUTPUT
 - `index.html`
 - `START_HERE.md`
 - Actual Workflow + State Model
-- Benchmark Delta (when benchmark supplied)
+- Benchmark Delta + rendered comparison when benchmark supplied
 - `EXECUTABLE_SCENARIO_TEST.md`
 - Workflow Fidelity Test
 - Operational UX Test
@@ -119,6 +99,8 @@ Do not explain away a weaker candidate. Improve it.
 - prompt/source trace
 
 ## FINAL HARD GATE
-`Business Truth PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function PASS + Runtime PASS + Independent Design PASS + Benchmark No-Regression PASS → Candidate — Ready for Human Visual Review`
+`Business Truth PASS + Visual Candidate Veto PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function PASS + Runtime PASS + Independent Design PASS + Benchmark No-Regression PASS → Candidate — Ready for Human Visual Review`
+
+**A candidate that visibly loses to the benchmark must never be delivered as PASS.**
 
 === PROMPT END ===

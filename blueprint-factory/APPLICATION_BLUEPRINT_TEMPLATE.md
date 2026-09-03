@@ -1,184 +1,209 @@
-# Gorilla HIS — Application Blueprint Template v2.4
+# Gorilla HIS — Application Blueprint Template v2.5
 
 **Blueprint Version:** v0.x / v1.x  
 **Status:** DRAFT / PROTOTYPE READY / HOSPITAL CONFIRMED / READY FOR DEV HANDOFF  
-**Related Expert Suggestion:** `Gorilla_HIS_<Module>_Expert_Suggestion_TH_v0.x`  
-**Related Workshop Question Bank:** `Gorilla_HIS_<Module>_Workshop_Question_Bank_TH_v0.x`
+**Actual Workflow Status:** VERIFIED / PARTIAL / ACTUAL WORKFLOW NOT VERIFIED  
+**Related Expert Suggestion:**  
+**Related Workshop Question Bank:**
 
-> This file is the Business Source of Truth for UI Factory. Expert analysis and Workshop Questions are advisory until explicitly confirmed by the hospital.
+> Business Source of Truth for UI Factory. Follow `ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`. Standard/domain knowledge challenges Hospital Reality; it does not replace it.
 
 ## Evidence Classification
-- `HOSPITAL CONFIRMED`
-- `HOSPITAL STANDARD RECOMMENDATION`
-- `COMPLIANCE RECOMMENDATION`
-- `WORKING ASSUMPTION`
-- `TBD`
-- `REFERENCE BASELINE`
+`HOSPITAL OBSERVED / HOSPITAL STATED / HOSPITAL DOCUMENTED / HOSPITAL CONFIRMED / HOSPITAL STANDARD RECOMMENDATION / COMPLIANCE RECOMMENDATION / EXPERT INFERENCE / WORKING ASSUMPTION / TBD / REFERENCE BASELINE`.
 
 ## 1. Product
-**Application Name:**  
-**Product:** Gorilla HIS  
-**Objective:**
+Application Name / Product / Objective / In Scope / Out of Scope.
 
 ## 2. Users & Roles
-| Role | Responsibility | Permission / Constraint | Evidence | Related Question IDs |
+| Role | Responsibility | Permission / Constraint | Evidence | Related Q IDs |
 |---|---|---|---|---|
-| | | | | |
 
-## 3. Main Workflow — Hospital Requested / Confirmed
-`Start → ... → End`
-Clearly mark any step that is not Hospital Confirmed.
-
-### 3A. Legal / Operational Case Classification
-| Classification ID | Type / Trigger | Actor / Authority | Required Data / Evidence | Workflow Branch | End State | Evidence | Question IDs |
+## 3. Hospital Actual Workflow Evidence Register — MANDATORY
+| Evidence ID | Source Type | Role/Source | Workflow/Transaction Supported | What It Proves | Evidence Class | Confidence | Verification Needed |
 |---|---|---|---|---|---|---|---|
-| CLS-01 | | | | | | | |
 
-### 3B. Domain Standard Flow Baseline
-Label: `REFERENCE BASELINE — NOT HOSPITAL CONFIRMED`
+If evidence is inadequate, state `ACTUAL WORKFLOW NOT VERIFIED`.
 
-| Baseline ID | Scenario | Reference Step / Handoff | Source / Evidence | Applicability |
-|---|---|---|---|---|
-| SDF-01 | | | | RELEVANT / CONDITIONAL / N/A |
+## 4. Actual Workflow Map — MANDATORY
+For every material workflow:
+`Trigger → Entry → Actor → Input → Validation → Decision → Action → Record/Transaction → Handoff → Repeat/Re-assess → Exception → Closure`.
 
-### 3C. Hospital Requirement Overlay / Delta
-| Baseline ID / Scenario | Hospital REQ / Workflow Trace | Coverage | Hospital-Specific Difference / Missing Detail | Treatment | Question IDs |
-|---|---|---|---|---|---|
-| | | MATCHED / PARTIAL / NOT STATED / CONFLICT / N/A | | REQ/BR/HSR/CR/TBD/N/A | |
+| AWF ID | Scenario | Trigger/Entry | Actor | Real Work | Handoff | Off-System Work | Repeat/Reassess | Exception | Closure | Evidence IDs |
+|---|---|---|---|---|---|---|---|---|---|---|
 
-### 3D. Scenario Branches
-| Scenario ID | Classification / Entry Trigger | Identifier / Context | Starting Actor | Core Handoffs | Source of Truth | Material Exceptions | End State | Hospital Coverage | Question IDs |
+## 5. Core Transaction / Object Model — MANDATORY
+Do not collapse different transactions because the same department owns them.
+
+| OBJ ID | Transaction/Object | Trigger | Created By | Identifier | Parent/Related | Source of Truth | Authority | Quantity/Value | Versioning | Closure | Evidence/Q IDs |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+
+### 5A. Transaction Boundary Decision
+Document why similar-looking flows are SAME or DIFFERENT transaction based on purpose, requester, authority, data, approval, financial effect, quantity/value, repeated use, lifecycle and closure.
+
+## 6. Lifecycle / State Transition Matrix — MANDATORY
+| Object | From State | Event/Action | Actor | Preconditions | Data Mutation | Downstream Effect | To State | Audit | Failure/Recovery | Evidence/Q IDs |
+|---|---|---|---|---|---|---|---|---|---|---|
+
+Challenge Return / Reject / Cancel / Expire / Suspend / Correct / Reverse / Reopen when relevant.
+
+## 7. Repeated / Longitudinal Workflow Analysis — MANDATORY
+| Object/Scenario | One-time / Repeated / Longitudinal | Session/Visit/Cycle/Episode | Approved Qty/Value | Used/Completed | Remaining | Reassessment | Renewal/Extension | Completion Rule | Evidence/Q IDs |
 |---|---|---|---|---|---|---|---|---|---|
-| SCN-01 | | | | | | | | IN SCOPE / PARTIAL / OUT OF SCOPE / TBD | |
 
-### 3E. Role-Based Swimlane — DOCUMENT ONLY
-For every material multi-role scenario, show Starting Event, Classification/Decision, Role, Activity, Handoff, System Action, Record/Source of Truth, Exception and End State.
+If not applicable, record N/A with reason.
 
-### 3F. Prototype Scenario Coverage
-| Scenario ID | Required in UI Factory? | Real Entry | End-to-End Path | Material Exception to Demonstrate | Safety / Assumption Boundary | Related Open Q IDs | Smoke Test Required |
-|---|---|---|---|---|---|---|---|
-| SCN-01 | Yes/No | | | | | | Yes/No |
-
-## 4. Expert Requirement Discovery Coverage
-Reference the full Discovery Coverage Matrix from Expert Suggestion.
-
-| Discovery Dimension | Status | Key Missing Decision | Related Q IDs | Blueprint Treatment |
-|---|---|---|---|---|
-| | COVERED / PARTIAL / NOT STATED / N/A / NEED HOSPITAL CONFIRMATION | | | REQ/BR/HSR/CR/WA/TBD/N/A |
-
-## 5. Workshop Question Summary
-Do not duplicate the full Question Bank here. Carry only questions that affect Blueprint/readiness.
-
-| Question ID | Priority | Decision Affected | Owner | Confirm When | Status | Blueprint Impact |
-|---|---|---|---|---|---|---|
-| Q-001 | CRITICAL/HIGH/MEDIUM | | | | OPEN / ANSWERED / DEFERRED | |
-
-## 6. Core Functions
-| ID | Function | Description | Evidence | Related REQ / Q IDs |
-|---|---|---|---|---|
-| FN-01 | | | | |
-
-## 7. Hospital Requirements
-| ID | Requirement | Evidence | Related Questions Resolved |
-|---|---|---|---|
-| REQ-01 | | HOSPITAL CONFIRMED | |
-
-## 8. Confirmed Business Rules
-| ID | Business Rule | Evidence | Source Confirmation / Q ID |
-|---|---|---|---|
-| BR-01 | | HOSPITAL CONFIRMED | |
-
-Do not place AI/expert/domain-baseline recommendations in this section.
-
-## 9. Hospital Standard Recommendations
-| ID | Recommendation | Rationale | Gap Ref | Question ID | Confirmation Needed |
-|---|---|---|---|---|---|
-| HSR-01 | | | GAP-xx | Q-xxx | Yes/No |
-
-## 10. Standards & Compliance Review
-| ID | Standard / Source | Applicability | Topic / Principle | Workflow / Scenario Trace | Recommendation | Verification | Gap Ref | Question ID |
+### 7A. Assessment / Version / Carry-Forward
+| Assessment | Initial/Reassessment | Version Rule | Carry Forward | Changed/Unchanged | Author/Context | Amendment | Downstream Effect | Evidence/Q IDs |
 |---|---|---|---|---|---|---|---|---|
-| CR-01 | | | | | | VERIFIED / NEED STANDARD VERIFICATION | GAP-xx | |
 
-## 11. Data / Integration
-| Data/System | Expected Relationship | Source of Truth | Scenario(s) | Failure / Correction | Evidence | Question IDs |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-
-## 12. Workflow / Record States
-`State A → State B → ...`
-Include correction/reopen/cancel/reversal states when material. Mark unconfirmed states as HSR/WA/TBD and link to Question IDs.
-
-## 13. Permission / Accountability
-| Action | Role | Create/Edit/Review/Approve/Reverse | Audit | Evidence | Question IDs |
-|---|---|---|---|---|---|
-| | | | | | |
-
-## 14. Key Information Required
--
-
-## 15. Reports / Outputs / Statistics
-| Output | Definition / Trigger | Source | Version / Amendment | Recipient | Question IDs |
-|---|---|---|---|---|---|
-| | | | | | |
-
-## 16. Working Assumption Register
-| ID | Working Assumption | Scenario | Why Needed for Prototype | Risk if Wrong | Gap Ref | Q ID | Confirm When |
+## 8. Legal / Operational Classification
+| CLS ID | Type/Trigger | Actor/Authority | Required Evidence/Data | Workflow Branch | End State | Evidence | Q IDs |
 |---|---|---|---|---|---|---|---|
-| WA-01 | | | | | GAP-xx | Q-xxx | Prototype Review |
 
-## 17. TBD / Conflict Register
-| ID | Missing / Conflict | Scenario | Why It Matters | Safe Prototype Treatment | Gap Ref | Q ID |
+## 9. Role / Handoff / Waiting State
+| Stage/Transition | Current Owner | Action | Next Owner | Queue/Worklist | Waiting State | Notification/SLA | Return Route | Proof of Handoff | Evidence/Q IDs |
+|---|---|---|---|---|---|---|---|---|---|
+
+## 10. Data / Source-of-Truth Continuity
+| Data/Object | Created By/System | Source of Truth | Consumer | Editable By | Version/Timing | Downstream Dependency | Correction/Reconciliation | Evidence/Q IDs |
+|---|---|---|---|---|---|---|---|---|
+
+## 11. Domain Standard Flow Baseline
+Label: `REFERENCE BASELINE — NOT HOSPITAL CONFIRMED`.
+
+| Baseline ID | Scenario | Reference Step/Handoff | Source/Evidence | Applicability |
+|---|---|---|---|---|
+
+## 12. Actual-vs-Standard Delta
+Run only after Actual Workflow Reconstruction where evidence exists.
+
+| Baseline/Scenario | Actual Hospital Evidence | Coverage | Difference/Missing Decision | Impact | Recommendation | Confirmation | Q IDs |
+|---|---|---|---|---|---|---|---|
+
+Coverage: `ACTUAL MATCH / ACTUAL PARTIAL / ACTUAL CONFLICT / ACTUAL NOT EVIDENCED / STANDARD N/A`.
+
+## 13. Scenario / Exception Catalog
+| SCN ID | Transaction | Trigger/Entry | Actor | Core Path | Repeated Behavior | Material Exception/Recovery | End State | Hospital Coverage | Q IDs |
+|---|---|---|---|---|---|---|---|---|---|
+
+## 14. Role-Based Swimlane — DOCUMENT ONLY
+For every material multi-role scenario show Starting Event, Transaction, Decision, Role, Activity, Handoff, System Action, Record/Source of Truth, Waiting State, Exception and End State.
+
+Do not automatically turn this into a mockup screen.
+
+## 15. Expert Requirement Discovery Coverage
+| Discovery Dimension | Status | Missing Decision | Q IDs | Blueprint Treatment |
+|---|---|---|---|---|
+
+Status: COVERED / PARTIAL / NOT STATED / N/A / NEED HOSPITAL CONFIRMATION.
+
+## 16. Workshop Question Summary
+| Q ID | Priority | Decision Affected | Owner | Confirm When | Status | Blueprint Impact |
 |---|---|---|---|---|---|---|
-| TBD-01 | | | | | GAP-xx | Q-xxx |
 
-## 18. Confirmation Plan
-### MUST CONFIRM BEFORE DEV
-| Q ID | Question / Decision | Owner | Why Blocking |
+## 17. Core Functions
+| FN ID | Function | Description | Transaction/Scenario | Evidence | Related REQ/Q IDs |
+|---|---|---|---|---|---|
+
+## 18. Hospital Requirements
+| REQ ID | Requirement | Evidence | Related Questions Resolved |
 |---|---|---|---|
-| | | | |
+
+Only Hospital-confirmed/stated evidence belongs as Hospital Requirement; preserve evidence status.
+
+## 19. Confirmed Business Rules
+| BR ID | Business Rule | Evidence | Source Confirmation/Q ID |
+|---|---|---|---|
+
+Do not place expert/domain recommendations here.
+
+## 20. Recommendations / Compliance
+### Hospital Standard Recommendations
+| HSR ID | Recommendation | Rationale | Gap | Q ID | Confirmation Needed |
+|---|---|---|---|---|---|
+
+### Standards & Compliance Review
+| CR ID | Standard/Source | Applicability | Principle | Workflow Trace | Recommendation | Verification | Gap/Q ID |
+|---|---|---|---|---|---|---|---|
+
+## 21. Permission / Accountability
+| Action | Object/State | Role | Create/Edit/Review/Approve/Reverse | Audit | Evidence/Q IDs |
+|---|---|---|---|---|---|
+
+## 22. Reports / Outputs / Statistics
+| Output | Definition/Trigger | Source | Version/Amendment | Recipient | Q IDs |
+|---|---|---|---|---|---|
+
+## 23. Working Assumption Register
+| WA ID | Assumption | Scenario | Why Needed | Risk if Wrong | Safe Boundary | Q ID | Confirm When |
+|---|---|---|---|---|---|---|---|
+
+## 24. TBD / Conflict Register
+| TBD ID | Missing/Conflict | Scenario | Why It Matters | Safe Prototype Treatment | Q ID |
+|---|---|---|---|---|---|
+
+## 25. Prototype Scenario Coverage / UI Contract
+| SCN ID | Required? | Real Entry | Core Transaction | Lifecycle to Execute | Repeat/Reassess/Partial Use | Material Exception | Observable End State | Open Q IDs | Smoke Test |
+|---|---|---|---|---|---|---|---|---|---|
+
+UI Factory must not skip a material upstream stage or replace a real transaction with a generic case.
+
+## 26. Workflow Fidelity Acceptance Criteria
+| WF-AC ID | Scenario | Evidence to Match | Expected Transaction/State Behavior | Expected Handoff/Data Mutation | Expected Exception/Recovery | Pass Evidence |
+|---|---|---|---|---|---|---|
+
+## 27. General Acceptance Criteria
+| AC ID | Acceptance Criterion | Scenario(s) | Related IDs | Evidence |
+|---|---|---|---|---|
+
+## 28. Confirmation Plan
+### MUST CONFIRM BEFORE DEV
+| Q ID | Decision | Owner | Why Blocking |
+|---|---|---|---|
 
 ### CONFIRM DURING PROTOTYPE REVIEW
-| Q ID | Question / Decision | Owner | What Prototype Demonstrates |
+| Q ID | Decision | Owner | What Prototype Demonstrates |
 |---|---|---|---|
-| | | | |
 
 ### SAFE TO DEFER
-| Q ID | Reason Safe to Defer | Trigger |
+| Q ID | Reason | Trigger |
 |---|---|---|
-| | | |
 
-## 19. Acceptance Criteria
-| ID | Acceptance Criterion | Scenario(s) | Related IDs | Evidence |
-|---|---|---|---|---|
-| AC-01 | | | REQ/BR/HSR/Q | |
+## 29. Expert / Reality Review Summary
+Record:
+- Actual Workflow evidence status;
+- transaction boundaries;
+- repeated/longitudinal findings;
+- off-system work discovered;
+- Critical/High open questions;
+- Domain Baseline used;
+- Independent Reality Challenge findings;
+- advisory items intentionally excluded from Hospital Truth.
 
-## 20. Expert Review Summary
-**Expert Suggestion file:**  
-**Workshop Question Bank:**  
-**Critical questions still open:**  
-**High implementation-blocking questions still open:**  
-**Discovery dimensions incomplete:**  
-**Domain Baseline used:**  
-**Scenario branches:**  
-**Important recommendations carried as HSR/CR/WA/TBD:**  
-**Advisory items intentionally not carried into Blueprint:**
+Mandatory reviewer questions:
+1. Would an experienced user from this exact department recognize their real work?
+2. What work still happens outside the modeled flow?
+3. Did we invent a plausible workflow where evidence was absent?
+4. Did we merge different transactions because they looked similar?
+5. Can one realistic case execute from trigger to closure?
 
-## 21. Blueprint Readiness
+## 30. Blueprint Readiness
 **Status:** DRAFT / PROTOTYPE READY / HOSPITAL CONFIRMED / READY FOR DEV HANDOFF  
+**Actual Workflow Status:**  
 **Critical unresolved items:**  
-**Open Question IDs:**  
+**Open Q IDs:**  
 **Prototype-safe assumptions:**  
-**Scenario coverage required before UI Factory PASS:**  
+**Scenario coverage required:**  
 **Compliance verification pending:**
 
 ### Readiness Rule
-`PROTOTYPE READY` requires a complete Workshop Question Bank, disposition of material discovery dimensions/scenarios, all Critical/High unresolved decisions visible, and safe prototype treatment.
+`PROTOTYPE READY` requires enough Hospital Truth for bounded discovery, explicit actual-workflow evidence status, material transaction/lifecycle/scenario definition, visible Critical/High decisions and safe prototype treatment.
 
-`READY FOR DEV HANDOFF` requires all Critical and implementation-blocking High questions answered, explicitly excluded, or converted into verified implementation rules; critical workflow, permission, record/order/legal effects, integration/source-of-truth and acceptance criteria must be confirmed.
+`READY FOR DEV HANDOFF` requires implementation-blocking workflow/transaction/state/authority/data/integration decisions resolved or explicitly excluded.
 
 ### Separation Rule
-`Domain Standard Flow ≠ Hospital Truth.`  
+`Hospital Actual Workflow ≠ Domain Standard Flow.`  
+`Domain Standard Flow = Challenge Baseline.`  
 `Expert Suggestion ≠ Hospital Truth.`  
 `Workshop Question ≠ Hospital Requirement.`  
-Only explicit hospital confirmation promotes REQ/BR.
+Only explicit Hospital evidence/confirmation promotes local truth.

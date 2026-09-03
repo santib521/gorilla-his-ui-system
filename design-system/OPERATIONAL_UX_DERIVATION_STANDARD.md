@@ -1,183 +1,187 @@
-# Gorilla HIS — Operational UX Derivation Standard v1.0
+# Gorilla HIS — Operational UX Derivation Standard v1.1
 
 Status: `UNIVERSAL UX FACTORY MASTER`
 
 Applies to **EVERY Gorilla HIS module**.
 
-## 1. Core Principle
-The Factory must never translate Requirement directly into Screens.
+## 1. Core Principle — UNDERSTAND THE JOB, THEN DESIGN
+The Factory must behave like a strong Senior HIS BA + Product Designer, not like a compliance engine assembling UI from checklists.
 
-Mandatory derivation:
+Mandatory thinking path:
 
-`Hospital Actual Workflow → User Work Obligation → Operational Capability → Workspace/Work Surface → Transaction/State → Primary Action → Information Needed for Decision → Interaction Pattern → Screen Composition`
+`Hospital Actual Workflow → Understand the Job → Identify Work Objects & Decisions → Derive Essential Capabilities → Choose the Best Workspace Pattern → Compose Premium UI → Execute the Real Flow`
 
-A BA/SA is expected to derive obvious operational capabilities from a confirmed workflow without asking the hospital to specify every screen.
+The Master is a **quality floor, not a layout generator**. Rules must prevent omissions and unsafe invention; they must not force visible UI chrome, equal sections, excessive documentation, or a generic Factory look.
 
-Example principle: if confirmed flow says work arrives, is received, assessed, verified, handed off and followed up, the Factory should derive queue/worklist, accept/assign, assessment workspace, verification, handoff state and follow-up workspace. The hospital should be asked about policy/authority/business rules — not whether an obvious operational surface is needed.
+**Design quality comes from synthesis, judgment, hierarchy and restraint — not from displaying every rule.**
 
-## 2. BA/SA Derivation Boundary
-The Factory MAY derive as `EXPERT APPLICATION DERIVATION`:
-- worklist/queue when work arrives asynchronously;
-- create/new transaction surface when users initiate work;
-- accept/assign/claim ownership when work must be received;
-- assessment workspace when professional assessment is required;
-- review/verify surface before material handoff/approval;
-- approval inbox/work queue when another authority decides;
-- follow-up/longitudinal workspace when work repeats;
-- history/timeline/version view when prior events affect current work;
-- closure/outstanding-work check when a case must end;
-- search/filter/sort when operational volume makes retrieval material;
-- next-action/status/owner visibility when lifecycle drives work.
+## 2. Design Intent Brief — MANDATORY, SHORT
+Before UI, create a concise internal brief (normally ≤1 page):
+- Who is the primary user?
+- What job are they trying to finish?
+- What are the 2–5 most important decisions/actions?
+- What information must be visible to make those decisions?
+- What deserves attention now?
+- What can stay hidden until needed?
+- What should the product feel like? (e.g. calm, premium, precise, clinical, humane)
+- What existing Gorilla/reference qualities should be preserved or improved?
 
-The Factory MUST NOT silently derive as Hospital Truth:
-- who has authority;
-- approval threshold;
-- SLA/escalation time;
+If the answer is not clear, do not start visual composition.
+
+## 3. BA/SA Derivation Boundary
+A competent Factory should derive obvious application capability without interrogating the user about screens.
+
+MAY derive as `EXPERT APPLICATION DERIVATION`:
+- incoming work → worklist/queue;
+- create/new transaction → entry surface;
+- receive/assign → ownership action;
+- assessment/scoring → professional assessment workspace;
+- material handoff → review/verify;
+- approval → approval inbox/decision workspace;
+- repeated work → longitudinal/follow-up workspace;
+- prior evidence affects current work → history/timeline/version context;
+- closure → closure/outstanding-work check;
+- operational volume → search/filter/sort;
+- lifecycle-driven work → status/owner/next action.
+
+MUST NOT invent as Hospital Truth:
+- authority/approval thresholds;
+- SLA/escalation;
 - formula/score cut-off;
-- legal/local policy;
-- exact permission;
-- source-of-truth ownership when not evidenced;
-- financial posting/reversal rule;
-- clinical decision rule.
+- local/legal policy;
+- exact permissions;
+- unverified source-of-truth;
+- financial posting/reversal;
+- clinical decision rules.
 
-Those remain Recommendation / Hospital Decision Required / TBD as appropriate.
+Ask the hospital about **decisions/policy**, not obvious UI capability.
 
-## 3. Operational Capability Derivation Matrix — Mandatory
-Before UI composition create:
+## 4. Capability Coverage — THINK FIRST, TABLE ONLY WHEN USEFUL
+The Factory must ensure every material workflow event has an operable capability, but it does **not** need to generate a giant derivation table unless it improves traceability or the deliverable requires it.
 
-`Workflow Event | User Goal | Work Obligation | Required Capability | Required Data | Primary Action | State Mutation | Handoff/Next Owner | UI Pattern Candidate | Evidence/Derivation Status`
+Minimum internal reasoning:
+`Workflow Event → User Need → Capability → State/Data Change → Next Owner/Next Step`.
 
-Every material workflow event must map to an operable capability or be explicitly N/A/out-of-scope.
+Missing material capability = FAIL. Lack of a ceremonial matrix = not a failure by itself.
 
-## 4. Workspace Derivation Rules
-Derive the work surface from the nature of work, not from component availability.
+## 5. Workspace Pattern Selection
+Choose the pattern that makes the work easiest. Candidates include Worklist/Queue, split view, inspector, full-page workspace, schedule, resource board, acuity board, timeline, ledger, approval inbox, task workspace, or a hybrid.
 
-Common patterns are candidates, never prescriptions:
-- incoming asynchronous work → Worklist/Queue;
-- time/resource allocation → Schedule/Planner/Resource Board;
-- high-acuity monitoring → Acuity/Status Board;
-- repeated task execution → Work Queue + Task Workspace;
-- inventory movement → Stock/Transaction Ledger + Action Workspace;
-- longitudinal patient/case management → Case Workspace + Timeline;
-- approval → Approval Inbox + Decision Workspace;
-- high-volume result review → Dense Result Worklist + Detail Inspector.
+Do not start from `Dashboard + Sidebar + KPI Cards`.
+Do not force every module into the same shell.
+Do not make the UI look like the Master structure.
 
-Do not force every module into Dashboard, Cards, Table, Kanban or Sidebar templates.
+The designer should be able to explain in one sentence why the chosen pattern fits the job.
 
-## 5. Worklist / Queue Derivation Gate
-If work arrives for a team/user and must be triaged, accepted, assigned, prioritized, progressed or handed off, a work-management surface is normally required.
+## 6. Worklist / Queue
+When work arrives and must be triaged, received, assigned, progressed or handed off, derive a work-management surface automatically.
 
-The Factory must derive and challenge:
-- All Work / My Work / Unassigned where relevant;
-- transaction type;
-- patient/case/task identity;
-- reason/request/service summary;
-- source/requester;
-- priority/urgency when applicable;
-- current state;
-- owner;
-- received/age/due information when material;
-- quantity/progression when relevant;
-- **Next Action**;
-- search/filter/sort appropriate to expected volume.
+Select only fields that improve scanning or action. Typical candidates:
+`Type | Identity | Reason/Service | Source | Priority | Status | Owner | Aging/Due | Progress | Next Action`.
 
-Do not ask a broad question such as “Do you need a Worklist?” when the confirmed workflow clearly creates queued work. Ask only unresolved policy/details.
+Exact columns are design decisions based on the workflow and volume, not a mandatory database dump.
 
-## 6. New Transaction Derivation
-If workflow starts with a user creating Consult/Request/Order/Referral/etc., provide a real entry surface with the minimum baseline needed to create the transaction.
+## 7. Professional Work Surfaces
+Core professional work deserves a workspace proportionate to its importance.
 
-Baseline must be derived from evidence and downstream needs. If downstream decisions depend on service/procedure, quantity, price estimate, patient context or requester, those belong in entry or must have an explicit later capture point.
+Examples:
+- Assessment/scoring: prior evidence + current inputs + calculated/resulting classification + validation.
+- Review/verify: concise decision summary + exceptions + clear handoff.
+- Follow-up: authorized/planned work + previous event + current reassessment + used/remaining + next event.
+- Approval: what is requested + evidence + financial/quantity context + decision.
 
-## 7. Receive / Assign / Ownership
-If flow says receive/accept/assign, UI must support that action and visibly mutate owner, received time, state and next action. A row opening without ownership mutation is not Receive.
+Do not bury a core task inside a tiny generic modal merely to say the function exists. A modal is acceptable when the task is genuinely short and focused.
 
-## 8. Assessment / Scoring Workspace
-When flow requires assessment/scoring/classification:
-- give it a dedicated work surface proportionate to the task;
-- show prior relevant evidence without forcing recall;
-- calculate/preview derived score transparently;
-- show resulting group/classification;
-- preserve assessment version/history;
-- separate professional narrative from score controls when useful;
-- expose validation before completion.
+## 8. UX Decision Architecture
+For each primary workspace reason from:
 
-A tiny textarea inside a generic detail page is not an adequate professional assessment workspace when assessment is a core transaction stage.
+`User Goal → Decision Question → Evidence Needed → Attention/Exception → Primary Action → Detail on Demand`.
 
-## 9. Verify Before Handoff
-When a material decision is sent to another role, derive a Verify/Review step when completeness/accuracy materially matters.
+Within roughly 5 seconds an experienced user should understand where they are, what needs attention, current state, and what to do next.
 
-Review surface should summarize what the receiver will decide from: request, key evidence, assessment, score, financial/quantity context and unresolved warnings. The primary action must clearly state the handoff.
+## 9. 8 UX/UI Principles — USE AS DESIGN INSTINCT, NOT CHECKBOXES
+Apply the principles to improve the composition; do not print or mechanically score all eight on every screen.
 
-Do not invent an approval policy; derive the review capability and ask only who/what rule governs approval.
+- **Jakob / Familiarity:** use domain conventions users can recognize.
+- **Hick:** reduce and stage choices; one clear primary action per context where practical.
+- **Fitts:** high-frequency/important actions are easy to reach and visually target.
+- **Miller / Cognitive Load:** chunk information and reveal detail progressively.
+- **Aesthetic-Usability:** polish, spacing, typography and proportion create trust and perceived quality.
+- **Proximity:** related evidence and actions belong together.
+- **Similarity:** same semantics share a visual grammar; different meanings are distinguishable.
+- **Peak-End:** handoff, completion and closure should end with confidence and clear next state.
 
-## 10. Follow-up / Longitudinal Work
-If the patient/case returns repeatedly, derive a longitudinal work surface. It must answer:
-- what was authorized/planned;
-- what happened previously;
-- what is due now;
-- what changed since last time;
-- what must be reassessed;
-- used/completed vs remaining;
-- what event can happen between visits;
-- when work is complete/off/closed.
+Also favor **Recognition over Recall**: show prior values/status/owner/remaining when they matter.
 
-Repeated workflow cannot be represented as reopening the same form and overwriting old values.
+## 10. Premium Composition Direction
+Target: **Premium, simple, calm, expensive, precise, professional — never decorative luxury.**
 
-## 11. UX Decision Architecture
-For every primary workspace define:
+Use:
+- strong but quiet information hierarchy;
+- restrained palette;
+- excellent Thai typography;
+- deliberate whitespace;
+- dense information only where it improves scanning;
+- subtle depth/borders/radius;
+- a small number of meaningful visual accents;
+- state-driven primary actions;
+- consistent alignment and rhythm;
+- progressive disclosure.
 
-`User Goal → Decision Question → Primary Evidence → Exception/Attention → Primary Action → Secondary Action → Detail on Demand`
+Avoid:
+- card sprawl;
+- oversized KPI blocks;
+- badge/confetti overload;
+- excessive gradients/shadows;
+- tiny text disguised as density;
+- giant empty whitespace called premium;
+- generic admin/SaaS visual language;
+- explanatory labels that belong in design notes rather than the product.
 
-Within 5 seconds an experienced user should know:
-1. where they are;
-2. what work needs attention;
-3. what state/owner it is in;
-4. what they should do next;
-5. what evidence supports that action.
+## 11. Reference-Led Learning
+When the user supplies a reference or a stronger candidate, study **why it works** before designing:
+- hierarchy;
+- density;
+- composition;
+- visual rhythm;
+- scan path;
+- action placement;
+- typography;
+- status encoding;
+- use of whitespace;
+- premium cues.
 
-## 12. Cognitive UX Laws — Applied, Not Decorative
-Use established interaction principles as operational rules:
-- **Jakob / familiarity:** preserve familiar HIS/work-domain mental models unless there is a measurable reason to change;
-- **Hick:** reduce simultaneous choices; stage actions by lifecycle and priority;
-- **Fitts:** primary/high-frequency actions must be easy to acquire and near the object they affect;
-- **Miller / cognitive load:** chunk complex information; use progressive disclosure; do not make users memorize prior-state data;
-- **Proximity:** related evidence/action stays together;
-- **Similarity:** consistent visual grammar for same semantic role; do not make different actions look identical;
-- **Aesthetic-usability:** visual polish supports trust/readability but never hides workflow weakness;
-- **Peak-End:** critical completion/handoff/closure must provide clear confidence and meaningful end-state feedback.
+Do not copy blindly. Extract the useful design grammar and adapt it to the actual Gorilla HIS workflow.
 
-These principles do not justify copying a reference UI.
+A user-supplied candidate that clearly communicates the job better than the Factory output is evidence that the Factory must improve; do not defend the weaker output by citing Master rules.
 
-## 13. Recognition over Recall
-Operational UI should surface prior values, last assessment, status, owner, pending action, quantity remaining and relevant context when the user needs them. Do not require memory or navigation across unrelated screens to reconstruct the case.
+## 12. Design Freedom Rule
+The Master specifies **outcomes and failure conditions**, not pixel layouts.
 
-## 14. Pattern Selection Test
-Before choosing Table/Card/Kanban/Schedule/Board/Timeline/Inspector answer:
-- What does the user scan?
-- What do they compare?
-- What do they decide?
-- What is high-frequency?
-- What is urgent?
-- What must remain visible while acting?
-- What volume is expected?
-- What changes after the action?
+A designer may simplify, combine, hide, reorder or visually reinterpret UI elements when:
+- workflow fidelity remains intact;
+- required decisions/actions remain discoverable;
+- state/data/owner continuity remains clear;
+- runtime scenario remains executable;
+- no Hospital Truth is invented.
 
-Pattern chosen without these answers = Pre-Build FAIL.
+This freedom is intentional and required for high-quality design.
 
-## 15. Hard Gate
-A mockup FAILS Operational UX when any material workflow stage has no usable work surface/action, including:
-- queued work but no operable queue/worklist;
-- create flow but no real entry;
-- receive/assign flow but no ownership action;
-- assessment but no adequate assessment workspace;
-- handoff/approval but no review/verify and receiver state;
-- repeated work but no longitudinal follow-up;
-- closure but no meaningful closure path;
-- user must guess the next action.
+## 13. Operational UX Hard Failures
+FAIL when:
+- material work cannot be performed naturally;
+- user cannot identify what to do next;
+- queued work has no usable work-management surface;
+- core assessment/review/follow-up is reduced to inadequate UI;
+- repeated work loses history/progression;
+- handoff/approval has no receiver state;
+- visual hierarchy obscures the job;
+- generic template dominates domain context;
+- the screen is technically complete but visibly harder to use than a credible reference without workflow justification.
 
-**Workflow exists in document + cannot be performed naturally in UI = FACTORY FAIL.**
-
-## 16. Final Rule
+## 14. Final Rule
 `Requirement is not a screen specification.`
 
-The Factory's job is to understand real work deeply enough to derive the application needed to perform it — while keeping Expert Application Derivation clearly separate from Hospital Policy/Business Truth.
+`Master is not a screen specification either.`
+
+The Factory's job is to understand the real work, derive the application intelligently, and then use product-design judgment to create a **beautiful, calm, premium operational tool that users can actually work in**.

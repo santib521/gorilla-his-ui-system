@@ -1,11 +1,13 @@
-# Gorilla HIS — Interaction Completeness, Hospital Realism & Scenario Execution Standard v1.5
+# Gorilla HIS — Interaction Completeness, Hospital Realism & Scenario Execution Standard v1.6
 
 Binding for every interactive Gorilla HIS mockup and every module.
 
 ## 1. Core Rule
-`Hospital Actual Workflow Evidence → Blueprint Business Truth → Core Transaction/Lifecycle → Real Entry → Working Interaction → Observable State → Repeat/Re-assess → Exception/Recovery → End State → Workflow Fidelity Test → Runtime Function Test → Independent Design Review`
+`Hospital Actual Workflow Evidence → Blueprint Business Truth → Core Transaction/Lifecycle → Real Entry → Working Interaction → Observable State → Repeat/Re-assess → Exception/Recovery → End State → Executable Scenario Acceptance → Workflow Fidelity Test → Runtime Function Test → Independent Design Review`
 
 A mockup is an **operational simulation**, not a slide deck, workshop map or collection of forms.
+
+**Binding dependency:** `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`.
 
 ## 2. Actual Workflow Authority
 Follow `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`.
@@ -56,6 +58,8 @@ Data entered/approved at earlier stages persists downstream. Identifier/context/
 ## 10. Role / Permission / Handoff Execution
 Blueprint Role Matrix/Swimlane governs queues, ownership, enabled actions, restricted data and handoffs. UI must make current owner, waiting state, next action and blocked reason clear. Send/Approve without receiver state or return path is PARTIAL.
 
+Handoff must be proven from sender action into receiver queue/worklist with the same transaction and correct state/data/owner. Merely switching a role label or navigating to another cosmetic view is not proof.
+
 ## 11. Exception & Recovery Execution
 Material exceptions must be executable when relevant: missing data, wrong identifier, duplicate, Reject, Return, Redirect, unavailable approver/resource, partial completion, expired authorization, Cancel, Correction, interface failure, Reversal, restricted access, downtime/reconciliation, close with outstanding work, Reopen.
 
@@ -75,8 +79,27 @@ Navigation must not dominate the task. Support compact/collapsed state where use
 
 Every primary workflow control appears.
 
-## 16. Workflow Fidelity Test — Independent and Mandatory
-Independent reviewer acts as actual hospital user + Senior BA + Domain Expert and compares Hospital Evidence + Blueprint + running mockup.
+## 16. Executable Scenario Acceptance — Independent Hard Gate
+Before Workflow Fidelity or Function can PASS, execute every Critical/High Material Main Scenario in a running browser according to `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`.
+
+Required contract:
+`Scenario ID → Start State/Entry → Actor → Action → Preconditions → Expected Data Mutation → Expected State Mutation → Expected Owner/Handoff → Observable Result → Next Action → End State`.
+
+Required runtime evidence per step:
+`Step ID | Action Executed | Expected State/Data/Owner | Actual State/Data/Owner | Observable Evidence | PASS/FAIL`.
+
+Mandatory rules:
+- Clickability ≠ Functional PASS.
+- Screen coverage ≠ Scenario PASS.
+- Source-code inspection ≠ Runtime Test.
+- No executed scenario evidence = No Function PASS.
+- A broken Material Step = Scenario FAIL.
+- Runtime blocked = NOT VERIFIED.
+
+Required artifact: `EXECUTABLE_SCENARIO_TEST.md`.
+
+## 17. Workflow Fidelity Test — Independent and Mandatory
+Independent reviewer acts as actual hospital user + Senior BA + Domain Expert and compares Hospital Evidence + Blueprint + **executed runtime trace**.
 
 Test:
 1 transaction identity/boundary;
@@ -90,7 +113,8 @@ Test:
 9 assessment/version/carry-forward when applicable;
 10 exception/recovery;
 11 closure/end state;
-12 absence of invented local workflow.
+12 absence of invented local workflow;
+13 executed scenario evidence matches documented flow.
 
 Results:
 `PASS`
@@ -99,12 +123,13 @@ Results:
 `FAIL — LIFECYCLE INCOMPLETE`
 `FAIL — REPEATED FLOW MISSING`
 `FAIL — HANDOFF BROKEN`
+`FAIL — EXECUTION EVIDENCE MISSING`
 `BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`.
 
 Critical/High failure blocks release.
 
-## 17. Runtime Functional Smoke Test
-Run browser/runtime, not static source only. Minimum:
+## 18. Runtime Functional Test
+Run browser/runtime, not static source only. Runtime Test is execution, not code review. Minimum:
 1 every primary nav;
 2 main workflow screens/tabs;
 3 modal/drawer families;
@@ -112,41 +137,42 @@ Run browser/runtime, not static source only. Minimum:
 5 required-field validation;
 6 transaction creation/acceptance;
 7 valid state-changing action per major stage;
-8 role decision/handoff;
+8 role decision/handoff and receiver queue proof;
 9 repeated/reassessment/partial-use progression when applicable;
 10 material exception/recovery;
 11 data continuity/history;
-12 search/filter/context preservation;
-13 no workflow-breaking console/page error;
-14 meaningful closure.
+12 navigate away → return through normal worklist → continue from correct state;
+13 search/filter/context preservation;
+14 no workflow-breaking console/page error;
+15 meaningful closure/end-state assertion.
 
 If runtime blocked, cannot PASS.
 
-## 18. Independent Agent Function Test
-Separate pass must not rely on Builder explanation. Test Function Completeness, Permission, Scenario, Exception, Data Continuity, State Transition, Usability/discoverability, Dead Controls and Blueprint Traceability.
+## 19. Independent Agent Function Test
+Separate pass must not rely on Builder explanation. Test Function Completeness, Permission, Scenario, Exception, Data Continuity, State Transition, Usability/discoverability, Dead Controls, Blueprint Traceability and executed scenario proof.
 
-Results include `PASS / FAIL — FUNCTION MISSING / FAIL — WORKFLOW BROKEN / FAIL — SCENARIO INCOMPLETE / FAIL — UNUSABLE / FAIL — REQUIREMENT TRACEABILITY`.
+Results include `PASS / FAIL — FUNCTION MISSING / FAIL — WORKFLOW BROKEN / FAIL — SCENARIO INCOMPLETE / FAIL — EXECUTION EVIDENCE MISSING / FAIL — UNUSABLE / FAIL — REQUIREMENT TRACEABILITY`.
 
-Loop: `BUILD → TEST → FAIL → FIX → RETEST`.
+Loop: `BUILD → RUN → EXECUTE → FAIL → FIX → RESTART APPROPRIATE SCENARIO → RETEST`.
 
-## 19. Usability Hard Gate
+## 20. Usability Hard Gate
 Reviewer can identify where to start, what transaction they are handling, why it is here, required information, current state/owner, next action, why blocked, remaining work/quantity when relevant, recovery path and finish state. Guessing/source-code consultation = FAIL — UNUSABLE.
 
-## 20. Independent Premium Design Review
-After Workflow Fidelity + functional review, run `PREMIUM_PRODUCT_DESIGN_GATE.md` on rendered screens.
+## 21. Independent Premium Design Review
+After Executable Scenario + Workflow Fidelity + Operational UX + functional/runtime review, run `PREMIUM_PRODUCT_DESIGN_GATE.md` on rendered screens.
 
 `Function PASS + Design FAIL = Factory FAIL`.
 
 And:
-**`Visual PASS + Functional PASS + Workflow Fidelity FAIL = Factory FAIL`.**
+**`Visual PASS + Functional PASS + Workflow Fidelity/Executable Scenario FAIL = Factory FAIL`.**
 
-## 21. Reference Benchmark
+## 22. Reference Benchmark
 User-supplied candidate is minimum benchmark. New candidate cannot regress workflow depth, information density, usability, interaction or visual craft.
 
-## 22. Angular Mapping
+## 23. Angular Mapping
 Use Angular Material/CDK as implementation primitives where appropriate while preserving Gorilla design authority/density. Material default appearance is not design authority.
 
-## 23. QA Decision
+## 24. QA Decision
 Cannot become `Candidate — Ready for Human Visual Review` when:
 - actual workflow/transaction is materially unverified;
 - material scenario cannot start from real Entry;
@@ -154,11 +180,13 @@ Cannot become `Candidate — Ready for Human Visual Review` when:
 - repeated lifecycle missing;
 - primary controls dead;
 - data continuity breaks;
+- handoff cannot be proven in receiver worklist;
 - material exception/recovery missing;
+- no `PASS — EXECUTED END-TO-END` evidence for Critical/High Main Scenarios;
 - Workflow Fidelity Test has Critical/High failure;
 - Agent Function Test has Critical/High failure;
 - runtime unverified;
 - user cannot understand workflow;
 - Independent Design Review fails or is unverified.
 
-Target: **real-work fidelity + complete operational execution + independent functional proof + independent premium design proof**.
+Target: **real-work fidelity + executed end-to-end proof + complete operational execution + independent functional proof + independent premium design proof**.

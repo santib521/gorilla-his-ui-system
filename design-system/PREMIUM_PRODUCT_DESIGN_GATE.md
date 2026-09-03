@@ -1,218 +1,98 @@
-# Gorilla HIS — Premium Product Design Gate v1.2
+# Gorilla HIS — Premium Product Design Gate v1.3
 
 Status: `MANDATORY UI FACTORY MASTER`
 
-Purpose: prevent a functionally correct mockup from being released when it is operationally weak, generic, cognitively expensive or visually unrefined.
+Purpose: stop visually weak, generic or operationally poor candidates before they consume deep implementation effort.
 
-Quality benchmark: **precision cockpit discipline × excellent interaction discipline × hospital-grade information density × Gorilla HIS continuity**. Quality metaphors/references are not layouts to copy.
+## 1. Release Principle
+**Correct workflow is mandatory. Strong product design is mandatory. Neither compensates for the other.**
 
-## 1. Release Equation
-`Workflow Fidelity PASS + Operational UX PASS + Functional PASS + Independent Design PASS` are all required.
+`Workflow Fidelity PASS + Functional PASS + Operational UX PASS + Benchmark No-Regression PASS + Independent Design PASS`.
 
-**Beautiful + wrong work = FAIL. Functional + unusable work surface = FAIL. Modern-looking + generic template = FAIL.**
+## 2. Visual Preflight Veto — BEFORE DEEP FUNCTION BUILD
+When a user benchmark exists, Builder must render the primary workspace early and compare it side-by-side before implementing the full interaction set.
 
-## 2. Independent Design Critic
-Reviewer is separate from Builder and acts as Senior Product Design Director + Enterprise/Clinical UX specialist + Interaction Designer + Thai typography/readability reviewer + Gorilla continuity reviewer.
+If the primary screen visibly loses on first impression, hierarchy, density, typography, spacing, row/control craft, status clarity, next-action clarity, navigation proportion or product coherence → STOP and REDESIGN.
 
-Review rendered screens, not source code or Builder explanation.
+**Do not spend time making a visually rejected shell more functional.**
 
-Allowed failures include:
-`GENERIC ADMIN/SAAS | TYPOGRAPHY | INFORMATION HIERARCHY | NAVIGATION FOOTPRINT | DENSITY/SPACE | INTERACTION CRAFT | WORKLIST UX | WRONG UI PATTERN | COGNITIVE LOAD | NEXT ACTION UNCLEAR | PROFESSIONAL WORKSPACE INADEQUATE | GORILLA CONTINUITY | VISUAL POLISH | RESPONSIVE | BENCHMARK REGRESSION`.
+## 3. Screenshot Is Primary Visual Evidence
+Rendered screenshot outranks CSS inspection, design notes, checklists and numeric scores.
+Reviewer must be able to answer Yes to:
+1. Would I choose Gorilla over the supplied benchmark at first glance?
+2. Does the workspace look deliberately authored for this hospital job?
+3. Is information density appropriate and visually controlled?
+4. Is the main work faster to scan than the benchmark?
+5. Are Thai typography, spacing, row height and controls finished-product quality?
 
-Any FAIL → redesign → render → independent retest.
+Any clear No = FAIL.
 
-## 3. Operational UX Authority
-`design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md` is mandatory.
+## 4. Benchmark No-Regression
+Benchmark is the minimum visible quality floor for strengths it demonstrates.
+Required comparison dimensions:
+`first impression | visual spine | information hierarchy | density | scan speed | navigation proportion | whitespace efficiency | typography | row craft | control craft | status clarity | next action | interaction confidence | product coherence | domain specificity`.
 
-The critic must verify that UI was derived through:
-`Workflow → User Work → Operational Capability → Workspace → Decision Architecture → Interaction Pattern → Composition`.
+Each: `BETTER / EQUAL / WORSE / NOT COMPARABLE`.
+Any material WORSE without workflow/safety justification = `FAIL — BENCHMARK REGRESSION`.
 
-A screen set that merely covers requirements/functions but does not provide the work surfaces implied by workflow = FAIL.
+Target:
+**Preserve proven benchmark strengths → correct its workflow/business defects → exceed it.**
 
-## 4. Worklist / Queue Gate
-When workflow creates queued work, `design-system/ENTERPRISE_WORKLIST_STANDARD.md` is mandatory.
+## 5. Gorilla Shell Continuity
+Preserve established Gorilla HIS **left-side application menu** unless Product Owner explicitly changes it.
+The menu must be compact, refined and subordinate. It may not dominate the screen or reduce the module into a narrow admin content column.
 
-Within 5 seconds first viewport should answer:
-1. What workload exists?
-2. What needs attention first?
-3. What transaction/patient/task is this?
-4. What is its state and owner?
-5. What should I do next?
+## 6. Worklist Product Test
+When work arrives in a queue, first viewport must make these obvious within ~5 seconds:
+`what work exists | what needs attention | patient/transaction | state/owner | progress when material | next action`.
 
-Worklist FAIL when:
-- dashboard/KPI cards push work below fold;
-- rows are passive information with no lifecycle action;
-- user infers next action from status code;
-- card-per-row wastes density;
-- oversized sidebar/navigation steals operational width;
-- row opens generic Overview instead of relevant lifecycle stage;
-- owner/progress/aging/priority is missing when workflow needs it.
+Reject:
+- dashboard/KPI blocks displacing work;
+- excessive blank space;
+- tall rows with little decision value;
+- passive rows;
+- repetitive heavy buttons;
+- generic status pills with weak hierarchy;
+- card-per-row galleries;
+- generic admin table styling;
+- actions detached from work object.
 
-Optional Attention/My Work zone must remain compact and support—not replace—the full operational list.
+## 7. Professional Workspace Adequacy
+Core work gets a real workspace, not a tiny modal/textarea. Assessment, approval, repeated utilization and longitudinal review must surface the evidence needed for that decision and preserve context.
 
-## 5. Navigation Footprint
-Navigation is subordinate to work. Persistent width must be justified. For Gorilla HIS, preserve the established **left-side application menu** unless the Hospital/Product owner explicitly approves another shell. The left menu must remain visually compact and subordinate to the active workspace.
-
-Avoid simultaneously dominant sidebar + topbar + tabs + secondary rail.
-
-If reviewer notices navigation before the task → likely FAIL.
-
-## 6. Space Utilization & Composition
-First viewport gives largest useful area to actual work/evidence.
-
-FAIL for large unused blank regions, narrow template content strips, equal-card grids despite unequal importance, detached actions, card-sprawl or no authored focal path.
-
-Required path:
-`Context → Situation/Attention → Evidence/Work → Exception → Next Action → Detail`.
-
-## 7. Decision Architecture
-Every primary workspace must make visible:
-`User Goal → Decision Question → Primary Evidence → Exception/Attention → Primary Action → Secondary Action → Detail on Demand`.
-
-Do not give role selectors, decoration, KPI or secondary metadata more weight than the task.
-
-## 8. Cognitive UX Gate
-Apply interaction principles operationally:
-- Familiarity/Jakob: respect established HIS/domain mental models;
-- Hick: reduce simultaneous choices; stage by lifecycle;
-- Fitts: frequent/important actions are easy to acquire and near affected object;
-- Cognitive load/Miller: chunk and progressively disclose; do not make user remember prior state;
-- Proximity: related evidence/actions stay together;
-- Similarity: same semantics look/behave consistently; different semantics remain distinguishable;
-- Aesthetic-usability: visual polish improves trust/readability, never masks weak workflow;
-- Peak-End: critical handoff/closure provides clear confidence and end-state feedback;
-- Recognition over Recall: prior values/status/owner/progress/last assessment are surfaced when needed.
-
-## 9. Professional Workspace Adequacy
-Core professional tasks deserve adequate work surfaces.
-
-FAIL examples:
-- assessment reduced to a small textarea in generic detail page;
-- verify/approval has no decision evidence summary;
-- repeated follow-up has no prior/current comparison;
-- clinical/operational review requires bouncing across unrelated screens to reconstruct context;
-- important task is squeezed into modal/card because component was convenient.
-
-## 10. Density Gate
+## 8. Density & Typography
 Premium density = more decision value per viewport without clutter.
+Thai operational text is first-class. Use intentional weight/line-height; avoid weak fallback appearance, oversized whitespace and micro-text.
 
-- Thai main operational text normally ≥13–14px;
-- secondary metadata may be smaller but readable;
-- compact rows/forms where volume demands it;
-- use alignment/typography/dividers before boxes/shadows;
-- do not achieve density by micro-text;
-- do not achieve premium by excessive whitespace.
+`Dense ≠ cramped. Premium ≠ empty.`
 
-**Dense ≠ cramped. Premium ≠ empty.**
+## 9. Product Craft
+Hierarchy should primarily come from typography, alignment, spacing and tonal structure—not boxes everywhere.
+Controls require coherent hover/focus/pressed/disabled/validation states. Avoid browser-default/Bootstrap/default-Material feel.
 
-## 11. Thai Typography Craft
-Thai is first-class. Use readable Thai-capable stack available in target environment; document production font recommendation without distributing font files. Tune line-height/weight; keep headings compact; avoid excessive bold; align mixed Thai/English and tabular numbers carefully.
+## 10. Anti-Generic Veto
+Hide branding and ask whether this could be CRM/finance/logistics after changing labels. If yes, redesign.
+A dark sidebar + white rounded container + generic KPI/table composition is not sufficient product authorship.
 
-Poor Thai fallback/cramped text = TYPOGRAPHY FAIL.
+## 11. Independent Product Design Critic
+Critic is separate from Builder and reviews rendered screens at realistic viewport(s). Allowed hard failures:
+`BENCHMARK REGRESSION | HUMAN VISUAL VETO | GENERIC ADMIN/SAAS | INFORMATION HIERARCHY | DENSITY/SPACE | TYPOGRAPHY | WORKLIST UX | NAVIGATION FOOTPRINT | INTERACTION CRAFT | PROFESSIONAL WORKSPACE | GORILLA CONTINUITY | VISUAL POLISH`.
 
-## 12. Progressive Disclosure
-Show what is needed for current lifecycle decision. Deeper/rare detail goes to drawer/accordion/inspector where appropriate. Persistent patient/case/task context stays compact and visible.
+Any hard FAIL → redesign → render → retest.
 
-## 13. Component Craft
-Buttons, tabs, fields, selectors, chips, tables, row hover/selection, focus, pressed, disabled, validation, loading, empty and error states must feel one product. Browser/Bootstrap/default-Material appearance = FAIL.
+## 12. Human Visual Veto
+If Product Owner/Human Reviewer says candidate is visibly inferior, any previous Design PASS is invalid immediately. Reopen as `FAIL — HUMAN VISUAL VETO`.
+Internal scores cannot overrule the human-visible result.
 
-## 14. Anti-Generic Gate
-Hide logo/labels and ask:
-- Could this be CRM/finance/logistics with text replaced?
-- Is it mainly dark sidebar + white rounded cards + KPI grid?
-- Are repeated rounded rectangles the visual grammar?
-- Was pattern selected because it was easy to generate?
-- Does it feel AI/template assembled?
+## 13. Required Review Artifact
+`INDEPENDENT_DESIGN_REVIEW.md` must include:
+- rendered screenshots/viewports;
+- side-by-side benchmark comparison when supplied;
+- BETTER/EQUAL/WORSE table;
+- 5-second work test;
+- hard failures;
+- redesign actions;
+- final status.
 
-Any yes = FAIL.
-
-## 15. Reference Use Rule
-User-supplied references and approved products are used to extract **quality/pattern lessons** such as density, scan hierarchy, attention zone, command bar, row craft, master-detail behavior and control refinement.
-
-Do not copy layouts blindly. Derive the pattern from Gorilla workflow and domain needs.
-
-### 15A. Benchmark No-Regression Hard Gate
-When the user supplies a visual/product benchmark, that benchmark becomes the **minimum visible product-quality floor** for the candidate unless a documented workflow/safety reason requires a deliberate deviation.
-
-The reviewer MUST compare rendered candidate and benchmark side-by-side before granting Design PASS.
-
-Compare at minimum:
-`first impression | information hierarchy | density | scan speed | navigation proportion | whitespace efficiency | row/control craft | status clarity | next-action clarity | visual polish | product coherence | domain specificity`.
-
-Required result per dimension:
-`BETTER / EQUAL / WORSE / NOT COMPARABLE`.
-
-Rules:
-- Any material `WORSE` without a documented workflow/safety justification = `FAIL — BENCHMARK REGRESSION`.
-- A candidate cannot PASS because it satisfies internal Master rules while visibly underperforming the supplied benchmark.
-- If a credible non-expert viewer can immediately see that the benchmark looks more finished, clearer, more balanced or more intentional, the candidate is not Premium Candidate.
-- “Different style” is not a justification for lower clarity, poorer proportion, weaker typography, excess empty space, clumsy controls or generic composition.
-
-Target principle:
-**Preserve proven benchmark strengths → correct benchmark workflow/business defects → exceed it as a product.**
-
-## 16. Gorilla HIS Continuity
-Compare actual Gorilla/Gold references and document `PRESERVE / IMPROVE / REPLACE` for shell, context, worklists, forms, actions, status language, density and interaction.
-
-Premium evolution must remain recognizably Gorilla HIS. Preserve the established Gorilla left application menu unless explicitly approved otherwise.
-
-## 17. Responsive / Adaptive
-Inspect representative desktop and narrower workspace. Preserve identity/status/next action first; collapse low-value detail; do not hide primary action; navigation compacts when needed; worklists retain scanability.
-
-## 18. Rendered Review Requirement
-Source/CSS inspection cannot PASS. Review rendered screenshots at representative viewports. Rendering blocked = `NOT VERIFIED — HUMAN/RENDER REVIEW REQUIRED`.
-
-### 18A. Screenshot Veto Rule
-The rendered screenshot is the primary evidence for visual quality. A numeric score, code review, checklist completion or Builder statement can never overrule an obviously weak screenshot.
-
-Before Design PASS, reviewer must answer:
-1. Would I choose this candidate over the supplied benchmark at first glance?
-2. Does the primary work surface look intentionally designed rather than merely arranged?
-3. Is useful information density appropriate to the task?
-4. Are whitespace, row height, typography and control scale visually balanced?
-5. Does the screen look finished at normal desktop zoom without explanation?
-
-Any clear `No` = redesign required. Do not average the defect away with other high scores.
-
-If the Product Owner/Human Reviewer says the candidate is visibly inferior, previous Design PASS is invalid and must be reopened as `FAIL — HUMAN VISUAL VETO` until redesigned and re-reviewed.
-
-## 19. Premium Scoring
-Score 0–5:
-- Workflow-authored composition
-- Operational capability fit
-- Worklist/queue quality when applicable
-- Decision architecture
-- Navigation proportion
-- Space utilization
-- Information hierarchy
-- Cognitive efficiency
-- Thai typography
-- Density/readability
-- Control craftsmanship
-- Interaction states
-- Gorilla continuity
-- Visual desirability
-- Benchmark parity/exceedance when a benchmark exists
-
-Target: no hard FAIL, average ≥4.0, no category <3.5. Human approval still required for Gold/Signature.
-
-**Scoring cannot cancel a hard failure.**
-
-## 20. Required Artifact
-`INDEPENDENT_DESIGN_REVIEW.md` must include screenshots/viewports, scores, hard-gate results, 5-second test, top defects, redesign actions and final status.
-
-When a benchmark exists it must also include a `BENCHMARK_COMPARISON` section with side-by-side observations and `BETTER/EQUAL/WORSE` judgments.
-
-## 21. Final Rules
-`Requirement coverage ≠ UX`
-`Dashboard ≠ Worklist`
-`Modern ≠ cards`
-`Clean ≠ Premium`
-`Dense ≠ cramped`
-`Premium ≠ empty`
-`Angular Material ≠ Design`
-`Internal PASS ≠ Human-visible quality`
-
-A Gorilla HIS Premium Candidate must feel like a precise professional instrument: real work is immediately visible, the next action is obvious, evidence is close to the decision, interaction reduces cognitive effort, and visual craft reinforces trust.
-
-**If the screenshot visibly loses to the supplied benchmark, Design PASS is impossible.**
+## 14. Final Rule
+**If the screenshot visibly loses to the supplied benchmark, Design PASS is impossible and the candidate must not be delivered as Premium Candidate.**

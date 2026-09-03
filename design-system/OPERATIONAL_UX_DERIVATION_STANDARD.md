@@ -1,4 +1,4 @@
-# Gorilla HIS — Operational UX Derivation Standard v1.3
+# Gorilla HIS — Operational UX Derivation Standard v1.4
 
 Status: `UNIVERSAL UX FACTORY MASTER`
 
@@ -92,13 +92,58 @@ If reassessment is mandatory before each use, UI must prevent utilization until 
 If longitudinal work depends on patient appointments/returns, the module needs a usable appointment-oriented surface. It should make clear:
 - who is expected today/upcoming;
 - linked case/authorization;
-- appointment time/service;
-- whether patient has contacted/checked with the department;
-- whether reassessment is done;
+- appointment date and time;
+- whether patient has arrived/contacted the department and the actual arrival time;
+- VN/encounter identity when available after arrival;
+- whether reassessment is required, in progress or saved;
 - whether utilization is recorded;
 - next action.
 
 This is different from Intake Worklist and should not be treated as the same job.
+
+### 8.1 Appointment Mock-Data Coverage — MANDATORY FOR INTERACTIVE PROTOTYPES
+A prototype cannot prove an appointment workflow with only completed records or only one happy-path row.
+
+When appointment/return workflow is material, seed runnable mock records that demonstrate at least:
+- `SCHEDULED / NOT ARRIVED` → visible **Alive / Arrived** action;
+- `ARRIVED / REASSESSMENT DUE` → visible **Assess Score / SDMA** action;
+- `ASSESSED` → saved score visible with **Edit / Re-assess** action;
+- `COMPLETED` → prior visit evidence/history visible;
+- `CANCELLED` when cancellation is a material state.
+
+The user must be able to exercise the primary transition directly from the rendered appointment page without manufacturing test data manually.
+
+### 8.2 Arrival Is Its Own State-Changing Event
+Arrival/Alive must not silently complete assessment or utilization.
+
+`Scheduled → Alive/Arrived → Reassessment Due`
+
+Arrival should record actual arrival time and expose the next required work. VN/encounter may be shown when the mock/project workflow supports it, but do not invent the production source-of-truth.
+
+### 8.3 Reassessment Carry-Forward + Comparison — HARD GATE
+When a repeated visit requires reassessment:
+- open the current assessment with the **previous saved assessment prefilled** where fields are reusable;
+- clearly identify that the data was carried forward from the prior version;
+- allow the user to edit current values;
+- show a **previous vs current comparison** for material fields/score before or while saving;
+- show previous score, current calculated score and delta;
+- preserve `changed / unchanged` explicitly;
+- save the visit assessment as a new version/event linked to the current appointment/visit.
+
+A reassessment form that starts blank despite usable prior data, or that hides the previous assessment so the user cannot compare, is `FAIL — REASSESSMENT UX`.
+
+### 8.4 Saved Score Must Remain Correctable — VERSIONED EDIT RULE
+A saved professional score/assessment is not immutable merely because the prototype has moved to the next state.
+
+When correction is operationally allowed:
+- provide a visible **Edit Score / Edit Assessment** action from the appointment or assessment history context;
+- prefill the saved version being corrected;
+- require an amendment/correction reason when appropriate to the domain/project;
+- never silently overwrite the historical version;
+- saving the correction creates a new version/amendment linked to the same visit, with author/time and before/after evidence;
+- the latest effective score becomes the operational score while prior versions remain readable.
+
+If local policy on post-signoff correction authority is unknown, expose the capability as a safe prototype/edit pattern and raise the authority rule for Hospital Confirmation rather than making the score permanently uneditable.
 
 ## 9. Patient / Case History
 When prior social/financial/clinical-support work affects current decisions, expose patient history without forcing recall. Show prior Consult/Request cases, prior assessment versions, approvals, appointments, utilizations, home visits, closures and relevant outcomes.
@@ -116,7 +161,7 @@ Core work receives a proportionate workspace:
 - Estimate: requested items/services + qty + unit/full price + reimbursable + non-reimbursable + totals;
 - Assessment: prior/current evidence + detailed economic inputs + scoring components + classification result + version;
 - Approval: request + estimate + assessment + quantity/value + decision;
-- Follow-up: today's appointment + prior assessment + current reassessment + entitlement ledger + next appointment;
+- Follow-up: today's appointment + arrival time + prior assessment + current reassessment + before/after comparison + entitlement ledger + next appointment;
 - History: prior cases and utilization timeline.
 
 Do not bury core work in tiny generic modals merely to claim coverage.
@@ -140,7 +185,7 @@ For each primary workspace:
 Within ~5 seconds an experienced user should understand where they are, what needs attention, current state and next action.
 
 ## 16. Function Completeness
-Every enabled visible primary control must work. Add/Create must create a real transaction. Accept must change acceptance state. Assign must change owner. Assessment must calculate/store the represented values. Appointment actions must mutate appointment state. Utilization must update quantity/amount ledger. History must show recorded events.
+Every enabled visible primary control must work. Add/Create must create a real transaction. Accept must change acceptance state. Assign must change owner. Assessment must calculate/store the represented values. Appointment actions must mutate appointment state. Alive must record arrival state/time. Reassessment must carry forward prior data and save a new visit-linked version. Edit Score/Assessment must preserve prior versions rather than overwrite. Utilization must update quantity/amount ledger. History must show recorded events.
 
 Dead enabled controls = FAIL.
 
@@ -160,6 +205,10 @@ FAIL when:
 - estimate lacks itemized/financial calculation when required;
 - required scoring/reassessment is not operable;
 - appointment-driven follow-up has no today/upcoming work surface;
+- appointment prototype has no runnable rows for the key states/actions being claimed;
+- Alive/arrival is not a real state-changing event;
+- repeated reassessment does not carry forward prior data or cannot compare previous/current values;
+- saved score cannot be corrected when correction is operationally needed, or correction silently overwrites history;
 - approved quantity/value has no used/remaining ledger;
 - prior case/utilization history is inaccessible;
 - enabled visible control is dead;

@@ -1,4 +1,4 @@
-# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Operational Product Design Builder v2.1
+# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Operational Product Design Builder v2.2
 
 > Application Blueprint = Business Source of Truth. Hospital Actual Workflow Evidence = operational truth. Repository = Factory/Product/Design Authority.
 
@@ -13,22 +13,24 @@ Attach Application Blueprint and any Hospital Primary Evidence supplied for the 
 - ห้ามเริ่ม Coding ก่อน Pre-Build PASS
 - Mockup ต้องเป็น **Operational Simulation** ไม่ใช่ Demo/Slide/Workshop Diagram
 - **ห้ามแปลง Requirement → Screen โดยตรง**
+- **ห้ามถือว่า Mockup ใช้งานได้เพราะมี Screen/Button/JavaScript Function; ต้อง Execute Scenario จริงใน Runtime**
 
 ## STEP 0 — READ SOURCE OF TRUTH
 อ่านตาม mandatory read order ใน `AI_INSTRUCTIONS.md` และต้องอ่านเพิ่มก่อนออกแบบทุกครั้ง:
 1. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
 2. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
 3. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` เมื่อ derive ว่ามี Worklist/Queue
-4. `factory-gate/FACTORY_GATE.md`
-5. `design-system/VISUAL_DNA.md`
-6. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
-7. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
-8. design/ux/tokens/icon rules
-9. relevant components/patterns
-10. Human-approved Gold Standard if any
-11. actual Gorilla screenshots
-12. Application Blueprint
-13. Hospital Primary Evidence when supplied
+4. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
+5. `factory-gate/FACTORY_GATE.md`
+6. `design-system/VISUAL_DNA.md`
+7. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
+8. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
+9. design/ux/tokens/icon rules
+10. relevant components/patterns
+11. Human-approved Gold Standard if any
+12. actual Gorilla screenshots
+13. Application Blueprint
+14. Hospital Primary Evidence when supplied
 
 ถ้า mandatory source เข้าไม่ได้ → STOP; ห้ามเดา.
 
@@ -92,7 +94,17 @@ Worklist ต้องพิจารณาอย่างน้อย:
 **Operational system ≠ Dashboard. Dashboard summarizes. Worklist gets work done.**
 Attention/My Work cards ใช้ได้เฉพาะส่วนบนขนาดเล็กและต้องไม่ดัน Worklist หลักพ้น first viewport.
 
-### K. Cognitive UX Gate
+### K. Executable Scenario Contract — BEFORE BUILD
+ทุก Critical/High Material Scenario ต้องสร้าง acceptance contract ก่อน coding:
+
+`Scenario ID → Start State/Entry → Actor → Action → Preconditions → Expected Data Mutation → Expected State Mutation → Expected Owner/Handoff → Observable Result → Next Action → End State`.
+
+ถ้ามี repeated/longitudinal flow ให้เพิ่ม:
+`Iteration/Visit/Cycle → Previous Version → Current → Used/Completed → Remaining → Completion Condition`.
+
+Contract นี้คือสิ่งที่ Runtime Test ต้อง execute จริงภายหลัง ห้ามลดขั้นเพราะ mock ยาก.
+
+### L. Cognitive UX Gate
 Apply—not decorate:
 - Familiarity/Jakob: preserve familiar domain mental model;
 - Hick: stage choices, reduce simultaneous actions;
@@ -104,13 +116,13 @@ Apply—not decorate:
 - Peak-End: handoff/closure gives confident meaningful feedback;
 - Recognition over Recall: show prior values/status/owner/remaining/last assessment when needed.
 
-### L. Product Feeling + Gorilla Continuity
+### M. Product Feeling + Gorilla Continuity
 PRESERVE/IMPROVE/REPLACE จาก Gorilla HIS เดิม. User-supplied references are pattern/quality evidence, not layouts to copy.
 
-### M. Composition & Premium Craft
+### N. Composition & Premium Craft
 ออกแบบ visual path ตามงานจริง. Main task owns workspace; navigation subordinate; Thai typography first-class; hierarchy survives grayscale; no card-sprawl; no giant KPI dashboard unless KPI is the task.
 
-### N. Anti-Template / Workflow / UX Risks
+### O. Anti-Template / Workflow / UX Risks
 ระบุอย่างน้อย:
 - 2 generic SaaS/admin risks;
 - 2 workflow-fidelity risks;
@@ -176,11 +188,39 @@ State-changing action ต้องเปลี่ยนข้อมูลที�
 
 ตอบไม่ได้ = FAIL — UNUSABLE.
 
-## STEP 4 — INDEPENDENT WORKFLOW FIDELITY TEST
-Result:
-`PASS / FAIL — WRONG TRANSACTION MODEL / FAIL — WORKFLOW FIDELITY / FAIL — LIFECYCLE INCOMPLETE / FAIL — REPEATED FLOW MISSING / FAIL — HANDOFF BROKEN / BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`.
+Builder Self-QA ไม่มีสิทธิ grant Runtime/Function PASS.
 
-## STEP 5 — INDEPENDENT OPERATIONAL UX TEST
+## STEP 4 — EXECUTABLE SCENARIO ACCEPTANCE — HARD GATE
+อ่านและทำตาม `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`.
+
+ต้องเปิด running mockup และ execute Critical/High Material Main Scenario ตั้งแต่ Entry ถึง End State ทีละ step.
+
+ต่อ step บันทึก:
+`Step ID | Actor | Action Executed | Expected State/Data/Owner | Actual State/Data/Owner | Observable Runtime Evidence | PASS/FAIL`.
+
+ต้องพิสูจน์:
+- sender → receiver queue/worklist handoff;
+- navigate away → กลับผ่าน operational entry → state ยังถูกต้อง;
+- repeated flow: first + intermediate + final iteration;
+- used/remaining/version/history continuity;
+- material exception/recovery;
+- end-state assertion.
+
+**Clickability ≠ Functional PASS.**
+**Source-code inspection ≠ Runtime PASS.**
+**No executed scenario evidence = Factory FAIL.**
+
+Fail → FIX → restart appropriate scenario → RETEST. ห้ามส่งต่อเพียงเพราะ code ดูถูกต้อง.
+
+Required artifact: `EXECUTABLE_SCENARIO_TEST.md`.
+
+## STEP 5 — INDEPENDENT WORKFLOW FIDELITY TEST
+ใช้ Hospital Evidence + Blueprint + Executed Runtime Trace ไม่ใช่ source code อย่างเดียว.
+
+Result:
+`PASS / FAIL — WRONG TRANSACTION MODEL / FAIL — WORKFLOW FIDELITY / FAIL — LIFECYCLE INCOMPLETE / FAIL — REPEATED FLOW MISSING / FAIL — HANDOFF BROKEN / FAIL — EXECUTION EVIDENCE MISSING / BLOCKED — ACTUAL WORKFLOW NOT VERIFIED`.
+
+## STEP 6 — INDEPENDENT OPERATIONAL UX TEST
 Reviewer แยกจาก Builder ตรวจ:
 - every workflow event has usable capability/work surface;
 - pattern chosen from work characteristics;
@@ -196,11 +236,16 @@ Reviewer แยกจาก Builder ตรวจ:
 Results:
 `PASS / FAIL — CAPABILITY MISSING / FAIL — WORKLIST UX / FAIL — WRONG UI PATTERN / FAIL — COGNITIVE LOAD / FAIL — NEXT ACTION UNCLEAR / FAIL — PROFESSIONAL WORKSPACE INADEQUATE`.
 
-## STEP 6 — RUNTIME FUNCTION TEST
-Browser/runtime จริง. Test Entry, validation, ownership, state mutation, handoff, repeated progression, exceptions, data continuity, search/filter/list return behavior, closure and console/page errors. Runtime blocked = NOT VERIFIED.
+## STEP 7 — RUNTIME FUNCTION TEST
+Browser/runtime จริง. Execute—not inspect. Test Entry, validation, ownership, state mutation, sender→receiver handoff, repeated progression, exceptions, data continuity, navigate-away/return, search/filter/list return behavior, closure and console/page errors.
 
-## STEP 7 — INDEPENDENT PREMIUM DESIGN REVIEW
-หลัง Workflow Fidelity + Operational UX + Function ผ่าน จึงตรวจ Premium Design Gate บน rendered screens.
+Runtime blocked = `BLOCKED — RUNTIME NOT VERIFIED`; ห้าม PASS.
+
+## STEP 8 — INDEPENDENT AGENT FUNCTION TEST
+Separate agent/reviewer must use running mockup + scenario evidence. Builder explanation and source-code presence are insufficient.
+
+## STEP 9 — INDEPENDENT PREMIUM DESIGN REVIEW
+หลัง Executable Scenario + Workflow Fidelity + Operational UX + Function + Runtime ผ่าน จึงตรวจ Premium Design Gate บน rendered screens.
 
 ## REQUIRED OUTPUT
 1. `index.html`
@@ -211,16 +256,17 @@ Browser/runtime จริง. Test Entry, validation, ownership, state mutation,
 6. Worklist Review Artifact when applicable
 7. Blueprint + Actual Workflow Traceability
 8. Lifecycle / State Transition Test
-9. Workflow Fidelity Test
-10. Operational UX Test
-11. Interaction Inventory + Runtime Functional Test
-12. Agent Function Test
-13. Independent Design Review
-14. `prompt-used.md`
+9. **Executable Scenario Contract + `EXECUTABLE_SCENARIO_TEST.md`**
+10. Workflow Fidelity Test
+11. Operational UX Test
+12. Interaction Inventory + Runtime Functional Test
+13. Agent Function Test
+14. Independent Design Review
+15. `prompt-used.md`
 
 ## FINAL HARD GATE
-`Business Truth PASS + Workflow Fidelity PASS + Operational UX PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`
+`Business Truth PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`
 
-**Visual PASS + Functional PASS + Workflow Fidelity/Operational UX FAIL = FACTORY FAIL.**
+**Visual PASS + Functional PASS + no Executed End-to-End Scenario Evidence = FACTORY FAIL.**
 
 === PROMPT END ===

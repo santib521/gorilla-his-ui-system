@@ -1,12 +1,12 @@
-# Gorilla HIS — Prompt 1+2 Deliverable Contract v1.0
+# Gorilla HIS — Prompt 1+2 Deliverable Contract v1.1
 
 Status: `FACTORY MASTER`
 
 ## Purpose
-Make the document set and operational mockup one traceable product rather than independent outputs.
+Make requirement discovery, documents and operational mockup one traceable product rather than independent outputs.
 
 Core:
-`Hospital Evidence → Shared Application Model → Executable Blueprint TXT → Review DOCX → Expert DOCX → index.html → Automated Traceability + Runtime Proof`
+`Project Session → Expert Workshop/Challenge → Shared Application Model → Executable Blueprint TXT → Review DOCX → Expert DOCX → index.html → Traceability + Runtime Proof`.
 
 ## Canonical Deliverables
 1. `Application_Blueprint_<Module>.txt` — direct authority for UI build.
@@ -17,80 +17,126 @@ Core:
 Additional QA/support files may be generated, but they do not replace these four.
 
 ## Single Shared Model Rule
-All deliverables derive from the same workflow/transaction/state/role/function model. Do not separately reinterpret raw requirements for DOCX and HTML.
+All deliverables derive from the same workflow/transaction/state/work-obligation/role/function model. Do not separately reinterpret raw requirements for DOCX and HTML.
 
-## Blueprint TXT Definition
-Blueprint TXT is a machine/human-readable **Executable UI Contract**. It must define enough behavior for a different UI agent to implement without guessing.
+## 1. Application Blueprint TXT — EXECUTABLE UI CONTRACT
+Must be deterministic enough that another UI Factory Agent can build `index.html` without rereading raw requirement or guessing behavior.
 
-Minimum build contract:
-`Work Obligation → Worklist/Queue → Transaction → State → Screen → Visible Data → Action → Validation → Mutation → Handoff → Exception → End State`.
+Minimum contract:
+`Actual Workflow → Work Obligation → Worklist/Queue → Transaction → Lifecycle/State → Role/Owner → Screen → Visible Data → Action → Validation → Mutation → Handoff → Repeat/Reassess → Exception → End State`.
 
-Stable IDs required:
-- `AWF-*` Actual Workflow
-- `WL-*` Worklist/Queue
-- `OBJ-*` Transaction/Object
-- `ST-*` State/Transition where useful
-- `FN-*` Function
-- `REQ-*` Hospital Requirement
-- `CR-*` Change Request
-- `RPT-*` Report/Output
-- `SCN-*` Executable Scenario
-- `AC-*` / `WF-AC-*` Acceptance Criteria
-- `Q-*` Open Decision
+Stable IDs:
+`AWF-* / WL-* / OBJ-* / ST-* / FN-* / REQ-* / CR-* / RPT-* / SCN-* / AC-* / WF-AC-* / Q-*`.
 
-Mandatory final trace table:
-`UI Surface/Control | FN | REQ/CR | SCN | State From→To | Role | Observable Mutation | AC`.
+Mandatory Blueprint content:
+- evidence/status boundary;
+- scope/objective;
+- actual or Standard-baseline scenarios clearly classified;
+- work obligations and queue topology;
+- transaction/object model;
+- lifecycle/state transitions;
+- role/handoff/waiting;
+- repeated/longitudinal/quantity/value/reassessment;
+- data/source of truth;
+- screen/workspace inventory;
+- per-screen field/action/validation/mutation/navigation contract;
+- Function List;
+- Hospital Requirements and CR;
+- Standard Recommended Functions kept separate;
+- reports/outputs;
+- role/permission;
+- exception/recovery;
+- mock-data contract;
+- executable scenario scripts;
+- acceptance criteria;
+- assumptions/open decisions;
+- final UI trace table:
+`UI Surface/Control | FN | REQ/CR/Recommendation | SCN | State From→To | Role | Observable Mutation | AC`.
 
-## Draft Application DOCX Definition
-Hospital-facing Thai review document. Must contain workflow swimlanes plus narrative explanation, Function List by source/status, CR, reports, Role Matrix, queue/worklist architecture, key states, integration/data, exceptions, and open decisions.
+No material function may exist only in prose.
 
-Swimlane is document authority and should show:
+## 2. Draft Application DOCX — HOSPITAL REVIEW
+Thai, human-readable, workshop/approval oriented.
+
+Mandatory:
+- application objective/scope;
+- Application Workflow;
+- Role-Based Swimlane for every material multi-role scenario + Thai narrative;
+- Worklist/Queue architecture;
+- transaction/lifecycle explanation;
+- Function List separated into `Hospital Requirement / Standard Recommended Function / CR`;
+- Role Matrix / permission / responsibility;
+- Reports / Outputs / Statistics;
+- integration/data source when material;
+- exception/operational controls;
+- requirement/function trace summary;
+- Open Hospital Decisions clearly separated from confirmed requirements.
+
+Swimlane is document authority:
 `Start → Role → Activity → Decision → System/Record → Handoff/Wait → Exception → End`.
+Do not create a Swimlane product screen unless explicitly required.
 
-Do not add a Swimlane UI screen unless explicitly required by the application.
+## 3. Expert Suggestion DOCX — INDEPENDENT EXPERT REVIEW
+Thai. Must not duplicate Draft Application or silently promote recommendations.
 
-## Expert Suggestion DOCX Definition
-Independent Thai expert review. Must contain recommendations, concerns and decision-valued questions. Recommendations are not Hospital Truth.
+Include applicable:
+- workflow/transaction/worklist recommendations;
+- domain/professional recommendations;
+- operational/UX concerns;
+- data/integration concerns;
+- privacy/security concerns;
+- finance concerns;
+- audit/accountability concerns;
+- patient-safety concerns when relevant;
+- applicable standard/compliance recommendations with source support.
 
-Every material question includes:
-`Priority | Concern | Question | Why Asked | Recommendation/Options | Impact | Owner | Confirm When | Status`.
+Every material question:
+`Q ID | Priority | Concern | Question | Why Asked | Current Evidence | Recommendation/Options | Decision Impact | Owner | Confirm When | Status`.
 
-## index.html Definition
-`index.html` consumes the Blueprint contract conceptually as its source of truth.
+Group:
+`MUST CONFIRM BEFORE DEV / CONFIRM DURING PROTOTYPE REVIEW / SAFE TO DEFER`.
+
+## 4. index.html — PLAYABLE OPERATIONAL MOCKUP
+Built from Blueprint, not independently from Project Session.
 
 For every required scenario:
 `Real Entry → Queue → Open Work → Validate → Action → State Mutation → Handoff/Wait → Repeat/Reassess if applicable → Exception/Recovery → Meaningful End State`.
 
-Mock data is part of the contract, not decoration. It must be designed to demonstrate normal, waiting, aged/attention, repeated/partial-use and material exception cases where applicable.
+Requirements:
+- all prototype-required `FN-*` reachable/implemented;
+- required `SCN-*` executable end-to-end;
+- realistic mock data defined by Blueprint;
+- visible mutation of state/owner/time/quantity/value/history as applicable;
+- meaningful receiver queue/state after handoff;
+- material exception/recovery executable when required;
+- required reports/outputs reachable;
+- no toast-only fake transaction completion;
+- every enabled primary control works;
+- no Demo/Factory/TBD/Workshop labels in normal hospital-facing UI.
 
-## Automated Traceability Gate
-A QA pass must compare Blueprint IDs and declared behaviors with the mockup.
+## Expert Applicability Rule
+The Factory may use a broad expert pool, but deliverables include only relevant activated domains. HA/JCI/ISO27001/HIPAA/etc. do not generate content merely because they exist. Follow `PROJECT_SESSION_INPUT_STANDARD.md`.
 
-Required checks:
-- Function coverage: mandatory FN implemented/reachable.
-- Scenario coverage: SCN executable.
-- Queue coverage: WL exists and contains correct object/state.
-- State coverage: required transition is triggerable and observable.
-- Data coverage: scenario has usable mock record.
-- Report coverage: required prototype RPT reachable.
-- Role coverage: restricted actions represented when material.
-- Reverse trace: no material enabled UI behavior without Blueprint authority.
+When Project Session says `ยึดตาม Standard`, the resulting flow/role/report remains `REFERENCE BASELINE / STANDARD RECOMMENDATION — NOT HOSPITAL CONFIRMED` until hospital evidence confirms it.
 
-Allowed result:
-`PASS` or `FAIL — BLUEPRINT/HTML TRACEABILITY` with missing IDs listed.
+## Automated Blueprint ↔ HTML Traceability Gate
+Must prove:
+- mandatory FN coverage;
+- SCN execution;
+- WL/queue coverage;
+- state transition coverage;
+- mock-data coverage;
+- prototype-required RPT coverage;
+- role/permission coverage when material;
+- reverse trace: no material enabled UI behavior without Blueprint authority.
 
-## Separation of Truth
-Hospital stated/confirmed requirements remain distinct from:
-- Standard Recommended Function
-- Expert Recommendation
-- Compliance Recommendation
-- Working Assumption
-- TBD/Open Decision
+Result: `PASS` or `FAIL — BLUEPRINT/HTML TRACEABILITY` with missing IDs.
 
-The mockup may safely demonstrate a recommendation only when visibly treated as prototype behavior and it does not falsely establish Hospital Policy.
+## Truth Separation
+Hospital evidence remains distinct from:
+`REFERENCE BASELINE / STANDARD RECOMMENDATION / EXPERT RECOMMENDATION / COMPLIANCE RECOMMENDATION / WORKING ASSUMPTION / TBD`.
 
 ## Delivery Gate
-Deliver only after:
-`Blueprint Completeness PASS → DOCX Consistency PASS → Blueprint/HTML Traceability PASS → Workflow Fidelity PASS → Runtime PASS → Design Review PASS`.
+`Blueprint Completeness PASS → DOCX Consistency PASS → Blueprint/HTML Traceability PASS → Workflow Fidelity PASS → Function PASS → Runtime PASS → Design Review PASS`.
 
 Human Visual Review remains required before Gold promotion.

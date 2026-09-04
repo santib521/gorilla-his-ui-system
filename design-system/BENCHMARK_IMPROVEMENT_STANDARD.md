@@ -1,189 +1,191 @@
-# Gorilla HIS — Benchmark Improvement Standard v1.1
+# Gorilla HIS — Benchmark Improvement Standard v1.2
 
 Status: `HIGHEST DESIGN AUTHORITY IN BENCHMARK MODE`
 
 ## 1. Purpose
-A benchmark is a **quality floor and comparison instrument**. It is not a source file to rename, skin, or use as the candidate implementation by default.
+A Human-approved benchmark is a **quality floor, executable design evidence and comparison instrument**. It is not merely inspiration and not a source file to rename/skin.
 
-Core model:
-`BENCHMARK → DECOMPOSE → COMPARE → IDENTIFY GAP → PRESERVE STRENGTH → IMPROVE WEAKNESS → DESIGN NEW CANDIDATE → RENDER → PROVE BETTER`
+Core:
+`BENCHMARK SOURCE → DECOMPOSE → BM CONTRACT → UX CONTRACT → PRIMARY WORKSPACE → RENDER → COMPARE → PASS/REDESIGN → FULL BUILD → PROVE BETTER`
 
-A candidate that is functionally richer but visibly/operationally worse than the benchmark is a Factory failure.
+A functionally richer candidate that is visibly or operationally worse than the benchmark is a Factory failure.
 
 ## 2. Trigger
-Activate `BENCHMARK IMPROVEMENT MODE` when:
+Activate when:
 - user says benchmark / compare and improve / เอาจุดดีแล้วทำให้ดีกว่า;
-- a Human-approved HTML/mockup/screenshot is supplied as a quality target;
-- a Human-approved Gold Standard exists without an explicit exact-copy request.
+- Human-approved HTML/mockup/screenshot is supplied as quality target;
+- Human-approved Gold Standard exists without explicit exact-copy instruction.
 
-Explicit `Copy 100% / pixel-match / exactly` activates `EXACT_REFERENCE_REPLICATION_STANDARD.md` instead.
+Explicit `Copy 100% / pixel-match / exactly` activates Exact Replication Mode instead.
 
-## 3. Benchmark Evidence — READ, ANALYZE, DO NOT BLINDLY CLONE
-When benchmark HTML exists, read its HTML/CSS/DOM/JS directly as **executable design evidence**.
+## 3. Executable Benchmark Evidence — HARD GATE
+When HTML exists, read HTML/CSS/DOM/JS directly.
 
 Extract at minimum:
 - DOM/component hierarchy;
 - shell/topbar/navigation geometry;
 - viewport/work-surface proportions;
-- typography family/size/weight/line-height;
-- spacing rhythm/whitespace distribution;
+- typography hierarchy;
+- spacing/whitespace rhythm;
 - color/border/radius/shadow grammar;
 - tabs/filter/search composition;
 - table density/row height/rich-cell hierarchy;
-- button/status/affordance grammar;
+- status/action/affordance grammar;
 - interaction placement/progressive disclosure;
-- first-viewport information hierarchy.
+- first-viewport information hierarchy;
+- control finish and interaction states.
 
-**HARD RULE:** reading source does not grant permission to use the benchmark source as the candidate implementation.
+A screenshot proves appearance; HTML proves executable design grammar. Use both when available.
 
-Prohibited in Benchmark Mode unless explicitly justified:
-`Benchmark HTML → copy file → rename → inject/replace business functions → candidate`
+## 4. Benchmark Strength Contract — MANDATORY BEFORE BUILD
+Create `Benchmark_Strength_Contract_<Module>.md` or include equivalent `BM-*` section in `Compiled_Design_Knowledge_<Module>.md`.
 
-That is source cloning, not benchmark improvement.
+Each material benchmark characteristic receives a stable `BM-*` ID and classification:
+`PRESERVE / IMPROVE / REPLACE / N/A`.
 
-Source cloning belongs to Exact Replication Mode when the user explicitly requests exact replication.
+Required row:
+`BM ID | Dimension | Benchmark Evidence | Why It Works | Applicability | Candidate Obligation | Decision | Required Visible Evidence | Verification`
 
-## 4. Functional Baseline vs Design Benchmark
-Keep these authorities separate:
+Minimum dimensions:
+1. Shell/navigation
+2. First-viewport work-surface dominance
+3. Typography/readability
+4. Density/whitespace
+5. Worklist/table rhythm
+6. Search/filter/tabs
+7. Status/action distinction
+8. Attention/reminder treatment
+9. Primary workflow visibility
+10. Row/action placement and click burden
+11. Context/history/progressive disclosure
+12. Component/control finish
+13. Overall visual hierarchy/product character
 
-- `Hospital Workflow / validated candidate logic` = Business + Functional Baseline.
-- `Human-approved benchmark` = UX/UI Quality Baseline.
+No BM Contract = `FAIL — BENCHMARK NOT CONSUMED`.
+
+## 5. Do Not Reduce Benchmark to Visual Vocabulary
+Invalid consumption:
+`Benchmark → “white topbar + dark rail + indigo button + dense table” → new generic UI`.
+
+Valid consumption:
+`Benchmark evidence → why the hierarchy works → applicable BM constraint → module-specific UX consequence → rendered verification`.
+
+## 6. Functional Authority vs Design Authority
+Keep separate:
+- Hospital/Blueprint = business/functional authority.
+- Human-approved benchmark = UX/UI quality floor.
 
 Correct synthesis:
-`Validated Functional Model → UX Decision Architecture → Benchmark Strength Extraction → New Candidate Composition → Functional Transplant/Preservation → Rendered Comparison`.
+`Validated Functional Model → Operational UX Contract → BM/KD Constraints → New Candidate Composition → Rendered Comparison`.
 
-Do not let benchmark code replace a stronger validated state machine, transaction model, queue topology, entitlement logic, history, reassessment, or exception handling.
+Never let benchmark code replace stronger validated workflow/state/transaction logic.
 
-## 5. Three-Layer Benchmark
-Compare candidate against benchmark in three layers.
+## 7. Workflow-Authored Composition
+Candidate composition derives from:
+`Actual Workflow → Work Obligation → User Job → Decision Question → Evidence Priority → Work Surface → Interaction Pattern → Composition`.
 
-### A. Visual Quality
-`shell | typography | density | spacing | hierarchy | table rhythm | controls | colors | borders | radius | shadow | whitespace | first-glance silhouette`
+Benchmark informs quality and proven interaction grammar; workflow determines what the product must be.
 
-### B. UX Quality
-`5-second comprehension | workload visibility | status clarity | next-action clarity | click burden | cognitive load | scanability | affordance clarity | detail-on-demand | error prevention`
-
-### C. Workflow / Function Quality
-`workflow coverage | state continuity | ownership/handoff | longitudinal history | reassessment | versioning | entitlement/ledger | exception/recovery | closure | runtime function`
-
-Never win one layer by sacrificing another.
-
-## 6. Workflow-Authored Composition
-Candidate composition must derive from:
-`Actual Workflow → Work Obligation → Operational Capability → UX Decision Architecture → Work Surface → Interaction Pattern → Composition`.
-
-For every primary workspace define:
-`User Goal → Decision Question → Primary Evidence → Attention/Exception → Primary Action → Secondary Action → Detail on Demand`.
-
-The benchmark informs quality and proven interaction grammar; workflow determines what the product must actually be.
-
-## 7. Preserve / Improve / Replace — BEFORE BUILD
-Before candidate build, classify each material benchmark characteristic:
-- `PRESERVE` — proven strength relevant to this workflow;
-- `IMPROVE` — useful but materially improvable;
-- `REPLACE` — pattern is weak or inappropriate for the real workflow;
-- `N/A` — benchmark characteristic does not apply.
-
-Every `IMPROVE` or `REPLACE` requires a reason tied to a measurable dimension:
-workflow fidelity, task speed, scanability, cognitive load, state/next-action clarity, safety, data visibility, accessibility/readability, responsive behavior, or error prevention.
-
-“Cleaner”, “more modern”, “premium”, or designer preference alone is insufficient.
-
-## 8. Anti-Copy / Anti-Skin Gate — HARD GATE
-Before render, reviewer must ask:
-1. Is candidate structurally just the benchmark with renamed labels/data?
-2. Was benchmark DOM/CSS used wholesale without a workflow reason?
-3. Were existing validated functions discarded because benchmark lacked them?
-4. Is the candidate merely the old mockup with a benchmark-like CSS skin?
-5. Can the designer explain the new composition from user work and decision needs?
+## 8. Anti-Copy / Anti-Skin Gate
+Before render ask:
+1. Is candidate structurally just benchmark with renamed labels/data?
+2. Was benchmark DOM/CSS used wholesale without exact-copy instruction?
+3. Were validated functions discarded because benchmark lacked them?
+4. Is candidate merely old mockup with benchmark-like CSS skin?
+5. Can composition be explained from the module's real work and decisions?
 
 If 1–4 = Yes or 5 = No:
 `FAIL — BENCHMARK METHODOLOGY / SOURCE CLONING`.
 
-## 9. 5-Second Operational Test
-For each primary workspace a user should rapidly answer:
-1. Where am I / what work is this?
-2. What needs attention now?
-3. What patient/transaction/task is this?
-4. What is the current state/owner?
-5. What should I do next?
-6. What evidence supports that action?
+## 9. Generic Template Rejection
+Ask:
+`Could the candidate be relabeled and used almost unchanged for CRM, HR, Inventory or an unrelated HIS module?`
 
-Recommended first-glance hierarchy:
+If Yes despite material domain-specific work:
+`FAIL — GENERIC TEMPLATE`.
+
+Gorilla shell/colors alone are insufficient.
+
+## 10. 5-Second Operational Test
+For each primary workspace the user rapidly answers:
+1. Where am I / what job is this?
+2. What needs attention now?
+3. Which patient/case/work object is involved?
+4. What is current state/owner/waiting condition?
+5. What evidence supports the decision?
+6. What should I do next?
+
+Recommended hierarchy:
 `Context → Situation/Attention → Evidence/Work → Exception → Next Action → Detail`.
 
-## 10. Work Surface Over Template
-Premium HIS is not card count or whitespace volume.
+## 11. Work Surface Over Template
+First viewport gives the largest useful area to actual work/evidence.
 
-First viewport gives the largest useful area to actual work/evidence. Avoid:
-- generic KPI-card grids dominating operational pages;
+Reject:
+- KPI-card grids dominating operational pages;
 - wide navigation consuming task space without benefit;
 - equal cards for unequal importance;
 - card-sprawl;
 - detached primary actions;
 - decorative containers;
-- passive tables with no lifecycle action.
+- passive table with no lifecycle action;
+- generic table+drawer architecture replacing a professional workspace.
 
-High information density is acceptable when controlled, scannable, and decision-oriented.
+## 12. Worklist Benchmark Rule
+When queue-driven, first viewport prioritizes as applicable:
+`Type → Identity → Reason/Service → Source → Priority → Status → Owner → Time/Aging → Progress/Waiting → Next Action`.
 
-## 11. Worklist Benchmark Rule
-When the module is queue/worklist driven, first viewport prioritizes:
-`Type → Identity → Reason/Service → Source → Priority → Status → Owner → Time/Aging → Progress → Next Action`.
+Row is actionable work object. Next Action is first-class.
 
-Row = actionable work object, not decorative summary.
-Next Action is first-class; users must not infer it from status code.
+## 13. Professional Workspace Depth
+Material professional work such as assessment/examination/evidence/approval/report authoring/utilization/release must have a work surface proportionate to its complexity.
 
-## 12. Interaction Craft
-Use interaction principles operationally:
-- Hick: stage choices; reduce simultaneous competing actions;
-- Fitts: frequent/important action near affected object and easy to acquire;
-- Proximity: evidence and related action stay together;
-- Progressive disclosure: secondary detail on demand;
-- destructive/corrective action requires deliberate confirmation and traceability where applicable.
+If the candidate compresses such work into a generic two-column drawer without evidence/decision architecture:
+`FAIL — PROFESSIONAL WORKSPACE DEPTH`.
 
-State-changing action must visibly mutate state/data/owner/history; Toast-only success is not sufficient.
+## 14. Primary Workspace Render Gate — MANDATORY
+Before building secondary screens:
+1. select the most important recurring work obligation;
+2. build only the primary workspace to representative depth;
+3. render candidate and benchmark at same viewport;
+4. compare side-by-side using BM/KD contract;
+5. classify strengths as `PRESERVED / IMPROVED / REGRESSED — JUSTIFIED / REGRESSED — FAIL`.
 
-## 13. First-Viewport No-Regression Gate
-At the same viewport compare:
+If failed:
+`STOP → REDESIGN → RENDER AGAIN`.
+
+Full build before this gate passes is prohibited.
+
+## 15. First-Viewport No-Regression Gate
+Compare at same viewport:
 - header/navigation footprint;
 - content start position;
 - work-surface-to-whitespace ratio;
 - useful rows/work visible;
-- patient/work identity prominence;
+- identity prominence;
 - workload visibility;
-- status clarity;
+- status/waiting clarity;
 - next-action clarity;
 - visual noise;
-- whitespace efficiency.
+- whitespace efficiency;
+- control/typography finish.
 
 If candidate wastes more viewport, hides more work, or requires more interpretation without material benefit:
 `FAIL — BENCHMARK REGRESSION`.
 
-## 14. Before / Benchmark / Candidate Matrix — MANDATORY
+## 16. Before / Benchmark / Candidate Matrix — MANDATORY
 Independent reviewer produces:
-`Dimension | Benchmark Strength | Candidate Decision | Result | Evidence/Reason`
+`BM ID | Dimension | Benchmark Strength | Candidate Decision | Render Evidence | Result | Reason`.
 
-Minimum dimensions:
-1. Shell/navigation
-2. Typography/readability
-3. Density/whitespace
-4. Worklist/table
-5. Search/filter/tabs
-6. Status/action distinction
-7. Primary workflow visibility
-8. Interaction/click burden
-9. Longitudinal/context evidence
-10. Overall visual quality
-
-Result values:
+Allowed result:
 `PRESERVED / IMPROVED / REGRESSED — JUSTIFIED / REGRESSED — FAIL`.
 
 No matrix = Benchmark Gate not executed.
 
-## 15. Rendered Comparison — MANDATORY
-Render benchmark and candidate at the same viewport. Compare side-by-side; use overlay/image diff when practical.
+## 17. Rendered Comparison — MANDATORY
+Source inspection alone cannot PASS a visual benchmark gate when rendering is possible.
 
-Reviewer must answer:
+Reviewer answers:
 - What was preserved?
 - What was improved?
 - What became worse?
@@ -193,26 +195,30 @@ Reviewer must answer:
 If No:
 `FAIL — BENCHMARK NOT EXCEEDED`.
 
-## 16. Human Visual Veto
-If the user says the benchmark looks/works better, candidate immediately returns to FAIL regardless of Master compliance, self-score, or Function PASS. Correct the design; do not argue compliance.
+## 18. Independent Reviewer
+Builder cannot be sole approver of Benchmark PASS.
 
-## 17. Relationship to Function
-Correct objective:
-`Benchmark UX/UI Strengths PRESERVED + Validated Factory Workflow/Function PRESERVED + Material Weaknesses IMPROVED`.
+Independent challenger uses:
+- rendered benchmark/candidate;
+- BM/KD contract;
+- Operational UX Contract;
+- workflow/function evidence.
 
-Therefore:
-`Function PASS + Benchmark Regression = FACTORY FAIL`.
-`Visual PASS + Functional Regression = FACTORY FAIL`.
-`Source Clone + Rename = BENCHMARK METHODOLOGY FAIL`.
+Builder explanation is supporting context only.
 
-## 18. Gold Promotion
+## 19. Human Visual Veto
+If the user says benchmark looks/works better, candidate immediately returns to FAIL regardless of self-score, Master compliance or Function PASS.
+
+## 20. Gold Promotion
 Candidate may become Gold only after:
 - Workflow/Function PASS;
 - Runtime PASS;
+- Knowledge Compilation PASS;
+- Operational UX Contract PASS;
+- Primary Workspace Render PASS;
 - Anti-Copy/Anti-Skin PASS;
 - Benchmark Comparison PASS;
-- no unjustified material visual/UX regression;
 - Human Visual Review PASS.
 
-## 19. Final Rule
-**Benchmark is comparison, not copying. Preserve what already works, understand why it works, retain the stronger functional model, design the candidate around the real hospital job, improve measurable weaknesses, and prove the result is better.**
+## 21. Final Rule
+**Use the benchmark as executable knowledge: understand why it works, compile that knowledge into constraints, design for the real hospital job, prove the primary workspace first, and only then build the full candidate.**

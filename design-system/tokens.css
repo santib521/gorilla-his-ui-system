@@ -1,11 +1,11 @@
 /*
   Gorilla HIS Design System — Design Tokens
   ------------------------------------------
-  v2.0 — Premium Craft Token Layer
-  Base palette remains compatible with existing mockups. New tokens add authored surface hierarchy,
-  optical depth, numerical instrumentation and controlled motion.
+  v2.1 — Human-approved UX/UI Reference Alignment
+  Base palette remains compatible with existing mockups. Typography and shell metrics align with
+  the human-approved Social Work reference `index_10.html`.
 
-  Feature teams must not invent a local palette. Propose missing reusable tokens centrally.
+  Feature teams must not invent a local palette or typography stack. Propose missing reusable tokens centrally.
 */
 
 :root {
@@ -40,7 +40,6 @@
   --color-yellow-50:  #fffbeb;
   --color-yellow-500: #d97706;
 
-  /* refined neutrals: cool enough for clinical precision, slightly softened to avoid sterile flat-white UI */
   --color-gray-25:  #fbfcfd;
   --color-gray-50:  #f7f9fb;
   --color-gray-75:  #f2f5f8;
@@ -57,7 +56,7 @@
   --color-gray-950: #0b121d;
   --color-white: #ffffff;
 
-  /* ============ COLOR — SEMANTIC (Clinical) ============ */
+  /* ============ COLOR — SEMANTIC ============ */
   --color-status-critical: var(--color-red-600);
   --color-status-critical-bg: var(--color-red-50);
   --color-status-critical-border: var(--color-red-500);
@@ -88,13 +87,13 @@
   --color-danger-action-hover: var(--color-gray-800);
 
   /* ============ SURFACE ARCHITECTURE ============ */
-  --color-bg-page: var(--color-gray-75);             /* S0 Canvas */
+  --color-bg-page: var(--color-gray-75);
   --color-bg-canvas: var(--color-gray-75);
-  --color-bg-surface: var(--color-white);            /* S1 Work Surface */
+  --color-bg-surface: var(--color-white);
   --color-bg-surface-subtle: var(--color-gray-25);
-  --color-bg-instrument: #f9fafc;                    /* S2 Instrument Surface */
+  --color-bg-instrument: #f9fafc;
   --color-bg-instrument-selected: var(--color-blue-50);
-  --color-bg-elevated: var(--color-white);           /* S3 Elevated Surface */
+  --color-bg-elevated: var(--color-white);
   --color-bg-sidebar: var(--color-gray-900);
   --color-bg-command-rail: #101927;
 
@@ -109,11 +108,11 @@
   --color-text-inverse: var(--color-white);
   --color-text-technical: var(--color-gray-500);
 
-  /* ============ TYPOGRAPHY ============ */
-  --font-family-base: "Noto Sans Thai", "Sarabun", "Segoe UI", Tahoma, sans-serif;
-  --font-family-mono: "Noto Sans Mono", "Consolas", monospace;
+  /* ============ TYPOGRAPHY — HUMAN-APPROVED REFERENCE ============ */
+  --font-family-base: "IBM Plex Sans Thai", "Noto Sans Thai", "Sarabun", "Segoe UI", Tahoma, sans-serif;
+  --font-family-mono: "IBM Plex Sans Thai", "Consolas", "Noto Sans Mono", monospace;
 
-  --font-size-2xs: 0.6875rem; /* 11px technical labels */
+  --font-size-2xs: 0.6875rem;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -147,10 +146,10 @@
 
   /* ============ SHAPE ============ */
   --radius-xs: 3px;
-  --radius-sm: 4px;       /* structural / precise */
-  --radius-md: 8px;       /* controls */
-  --radius-lg: 12px;      /* contextual/elevated */
-  --radius-xl: 16px;      /* rare floating object */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
   --radius-full: 9999px;
 
   /* ============ DEPTH / LIGHT ============ */
@@ -160,12 +159,11 @@
   --shadow-elevated: 0 8px 28px rgba(18,27,39,.12), 0 2px 6px rgba(18,27,39,.07);
   --shadow-overlay: 0 18px 48px rgba(18,27,39,.18), 0 4px 12px rgba(18,27,39,.08);
 
-  /* legacy aliases retained for compatibility; do not use as an excuse for Card Everywhere */
   --shadow-sm: var(--shadow-optical);
   --shadow-md: var(--shadow-elevated);
   --shadow-lg: var(--shadow-overlay);
 
-  /* ============ LAYOUT ============ */
+  /* ============ LAYOUT — HUMAN-APPROVED REFERENCE ============ */
   --layout-sidebar-width: 240px;
   --layout-command-rail-width: 64px;
   --layout-topbar-height: 52px;

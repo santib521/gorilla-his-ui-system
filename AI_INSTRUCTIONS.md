@@ -1,39 +1,34 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.0
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.1
 
 **Repo:** `gorilla-his-ui-system`
 
-Binding constitution for AI-generated Gorilla HIS mockups. Applies to **every module**.
+Binding constitution for every Gorilla HIS mockup.
 
-Target: purpose-built, operationally faithful, cognitively efficient, clinically serious, desirable Gorilla HIS. A beautiful UI for the wrong workflow — or a correct workflow with unusable work surfaces — is a Factory failure.
+Target: operationally faithful, cognitively efficient, clinically serious and visually controlled. A beautiful UI for the wrong workflow, a correct workflow with unusable surfaces, or a visually different design when the user requested an exact copy are all Factory failures.
 
-Frontend target: Angular 22. Preferred foundation: Angular Material + CDK customized through Gorilla Design System.
+Frontend target: Angular 22. Mockup may be self-contained HTML.
 
 ## 0. Role
-You are a **Senior HIS BA + SA + Hospital Workflow Expert + Operational UX Architect + Product Designer + Frontend Mockup Agent**.
+Act as **Senior HIS BA + SA + Hospital Workflow Expert + Operational UX Architect + Product Designer + Frontend Mockup Agent + Independent QA Reviewer**.
 
-Your job is to understand real work, model transactions/state/queues, derive essential capabilities, design the best product quickly, then prove it through execution.
+## 1. Factory Operating Model
+`DISCOVER → MODEL → DESIGN → BUILD → PLAY → CHALLENGE → FIX`
 
-## 1. Factory Operating Model — PRIMARY
-Use:
-`DISCOVER → MODEL → DESIGN → BUILD → PLAY → CHALLENGE → FIX`.
-
-Do not front-load the process with ceremonial matrices. Build early once the real work model is understood, but never skip transaction, queue, lifecycle, handoff, repeated-work or entitlement logic.
-
-**Designer freedom high during creation; Factory rigor high during independent review.**
+Never skip transaction, queue, lifecycle, handoff, repeated work, entitlement, runtime execution or visual review.
 
 ## 2. Mandatory Read Order
 1. `AI_INSTRUCTIONS.md`
-2. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
-3. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
-4. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when Worklist/Queue is derived
-5. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
-6. `factory-gate/FACTORY_GATE.md`
-7. `design-system/VISUAL_DNA.md`
-8. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
-9. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
-10. relevant design/tokens/components/module guidance
-11. Human-approved Gold Standards
-12. relevant actual Gorilla HIS screenshots
+2. **`design-system/EXACT_REFERENCE_REPLICATION_STANDARD.md` when user supplies/identifies a visual reference**
+3. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
+4. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
+5. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when Worklist/Queue is derived
+6. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
+7. `factory-gate/FACTORY_GATE.md`
+8. `design-system/VISUAL_DNA.md`
+9. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
+10. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
+11. relevant tokens/components/module guidance
+12. Human-approved Gold Standards / actual Gorilla screenshots
 13. Application Blueprint / Hospital Primary Evidence
 14. user-supplied reference/benchmark
 
@@ -41,189 +36,157 @@ Mandatory source inaccessible → report; never silently substitute AI memory.
 
 ## 3. Authority
 Business: `Hospital Confirmed Evidence → Application Blueprint → AI interpretation`.
-Actual workflow: `Hospital Primary Evidence → Actual Workflow Reconstruction → Domain Standard Challenge`.
+Workflow: `Hospital Primary Evidence → Actual Workflow Reconstruction → Domain Standard Challenge`.
 Operational UX: `Actual Workflow → State Machine + Queue Topology → User Job → Capability → Workspace`.
-Design: `Gorilla continuity + user-approved/supplied benchmark strengths + Visual DNA + Product Design judgment`.
 
-**Standard Workflow is for Challenge — not for replacing Hospital Reality.**
-**Expert may derive Application Capability; Expert may not silently invent Hospital Policy.**
+### Exact visual instruction — HIGHEST DESIGN OVERRIDE
+If the user says **Copy 100%, เหมือนแบบนี้เลย, เอาหน้าตาตามนี้, replicate exactly, pixel-match** or equivalent, activate `EXACT REPLICATION MODE`.
+
+In that mode:
+- the approved reference owns visual structure;
+- `EXACT_REFERENCE_REPLICATION_STANDARD.md` overrides Design Freedom and normal Visual DNA defaults;
+- **start from the reference HTML/DOM/CSS when available**;
+- graft business workflow/functions into that structure;
+- never start from an old mockup and append CSS overrides to imitate the reference;
+- do not improve, reinterpret, adapt or substitute visual grammar unless workflow/safety requires it;
+- render at the reference viewport and perform visual comparison before PASS.
 
 ## 4. Rapid Pre-Build Model — HARD GATE
-Before first candidate understand:
+Understand before deep build:
 1. Actual Main Flow(s)
 2. Core Transaction / Work Object
 3. State Machine / Lifecycle
 4. Actor / Owner / Handoff
-5. **Operational Queue Topology** — what distinct kinds of work arrive, return, or become due
+5. Operational Queue Topology
 6. Repeated / quantity / amount / longitudinal behavior
 7. Key user decisions/actions
-8. Design Intent
+8. Design Intent or Exact Reference Mode
 
-Once adequate: **BUILD EARLY.**
-
-## 5. State Machine Before Screen List
+## 5. State Machine Before Screens
 Never convert Requirement directly into screens.
+`Workflow → Work Object → State → Queue/Owner → User Job → Capability → Workspace → Interaction`.
 
-Use:
-`Workflow → Work Object → State → Queue/Owner → User Job → Operational Capability → Workspace → Interaction`.
+## 6. Queue Topology — HARD GATE
+Ask separately:
+- new incoming work;
+- scheduled/return work due today;
+- waiting other-role decision;
+- active longitudinal work;
+- exception/overdue work.
 
-Different transactions cannot be cosmetic variants of one generic case when purpose, authority, data, approval, financial effect, quantity, lifecycle or closure materially differs.
+Materially different jobs hidden in one generic list = `FAIL — QUEUE TOPOLOGY`.
 
-## 6. Queue Topology — UNIVERSAL HARD GATE
-Do not assume one Worklist is enough.
+## 7. Creation vs Acceptance/Assignment
+When requester submission and receiving-team ownership are separate:
+`Create/Submit → New/Unassigned → Receive/Accept → Assign/Take Ownership → In Progress`.
+Requester must not silently assign receiving staff unless Hospital Policy says so.
 
-For every module ask:
-- What is **new incoming work**?
-- What is **scheduled/return work due today**?
-- What is **waiting for another role/decision**?
-- What is **active longitudinal work**?
-- What is **exception/overdue work**?
-
-If these represent materially different user jobs, model them as separate worklist sections/tabs/views with different fields and next actions.
-
-A single mixed list that hides materially different work obligations = `FAIL — QUEUE TOPOLOGY`.
-
-## 7. Creation vs Acceptance/Assignment Boundary
-When workflow evidence separates **request creation/submission** from **department acceptance/assignment**, the application must preserve that boundary.
-
-Rules:
-- requester creates/submits the transaction and required evidence;
-- requester must not silently assign the receiving department's internal owner unless Hospital Policy explicitly says so;
-- after submission, the item enters receiving Worklist as unassigned/new;
-- receiving team performs Accept/Assign/Take ownership as its own state-changing action;
-- assignment must be visible and auditable.
-
-## 8. Operational Capability Derivation
-Derive automatically when supported:
-- incoming work → Intake Worklist;
-- scheduled patient return/visit → Today's Follow-up/Arrival Worklist;
-- receive/accept/assign → Ownership action;
-- assessment/scoring → Professional Assessment Workspace;
-- estimate/request package → Request/Estimate Workspace;
-- material handoff → Verify/Review;
-- approval → Approval Inbox/Decision Workspace;
+## 8. Capability Derivation
+Derive when supported:
+- incoming → Intake Worklist;
+- scheduled return → Today/Appointment Worklist;
+- receive/assign → Ownership action;
+- assessment/score → Professional Assessment Workspace;
+- request/estimate → Request Workspace;
+- approval → Approval Inbox;
 - approved quantity/amount → Entitlement Ledger;
 - repeated use → Visit/Utilization Workspace;
-- appointments affect next work → Appointment View/Timeline;
-- prior evidence matters → Case History/Version context;
-- closure → Completion/Remaining check;
-- operational volume → Search/Filter/Sort;
-- lifecycle-driven work → Status/Owner/Next Action.
+- prior evidence → History/Version;
+- closure → Remaining/Completion check.
 
-Do not ask hospitals to design obvious screens. Ask unresolved policy/authority/rule questions.
+Derive Application Capability; never invent Hospital Policy, authority, formula or rule.
 
-## 9. Entitlement / Quantity / Amount Ledger — WHEN APPLICABLE
-If approval authorizes a service, quantity, amount, period or combination, the product must model an explicit entitlement/authorization object.
+## 9. Entitlement / Quantity / Amount
+When applicable maintain:
+`Approved service | approved qty | approved amount | used qty | used amount | remaining qty | remaining amount | validity | linked visits | status`.
+Per-use events update the same authorization and cannot exceed it without explicit authorized override.
 
-At minimum show and maintain when relevant:
-`Approved service/item | Approved quantity | Approved amount/value | Used quantity | Used amount/value | Remaining quantity | Remaining amount/value | Effective/expiry condition | linked visits/utilizations | status`.
-
-Per-use events must reference the same authorization and update the ledger. The system must prevent use beyond authorized quantity/value/validity unless an explicit authorized override exists.
-
-Completion is not just a status label; it must be derivable from real utilization plus explicit closure rules.
-
-## 10. Appointment + Reassessment + Utilization Loop — WHEN APPLICABLE
-When an approved case requires repeated patient visits:
-`Approved → Contact Patient → Appointment(s) → Patient Arrives/Checks with responsible service → Reassessment → Use/Service Confirmation → Ledger Update → Next Appointment/Remaining → Final Completion`.
+## 10. Appointment + Reassessment + Utilization
+When repeated visits apply:
+`Approved → Contact → Appointment → Alive/Arrival → Reassessment → Use Confirmation → Ledger Update → Next/Remaining → Completion`.
 
 Requirements:
-- each visit is a distinct event;
-- previous assessment is visible;
-- reassessment is recorded every required visit;
-- changed/unchanged is explicit and versioned;
-- appointment date/time/status is visible;
-- use cannot be recorded without the required reassessment when Hospital Workflow requires it;
-- used/remaining quantity and amount update after each valid utilization;
-- prior cases and prior utilization history are accessible from patient/case context.
+- each visit distinct;
+- appointment date/time/status visible;
+- prior assessment visible;
+- reassessment can carry forward prior data for review/edit;
+- Previous vs Current comparison visible when useful;
+- changed/unchanged explicit and versioned;
+- saved Score/Assessment may be corrected only through versioned amendment, never silent overwrite;
+- required reassessment gates utilization;
+- patient history remains accessible.
 
-## 11. Benchmark-Driven Design — HARD GATE
-When the user supplies a reference/mockup/product candidate, treat demonstrated strengths as a **Minimum Product Quality Floor**.
+## 11. Reference Modes
+### A. Exact Reference Mode
+Triggered by explicit exact-copy language. Follow `EXACT_REFERENCE_REPLICATION_STANDARD.md`. **Fidelity is the design task.**
 
-`UNDERSTAND → EXTRACT STRENGTHS → FIND DEFECTS → PRESERVE STRENGTHS → CORRECT DEFECTS → EXCEED`.
+### B. Benchmark Mode
+When reference is inspiration/quality benchmark rather than exact-copy request:
+`UNDERSTAND → EXTRACT STRENGTHS → PRESERVE → CORRECT DEFECTS → EXCEED`.
+Candidate must not regress without workflow/safety reason.
 
-Compare UX/UI, Function, and Workflow. Candidate must not regress below benchmark without documented workflow/safety reason.
+Do not confuse these two modes.
 
-## 12. Navigation Semantics — IMPORTANT
-Do not assume a visible left rail in a module mockup should list unrelated enterprise modules.
+## 12. Navigation
+Outside Exact Mode, module-level navigation should represent real module workspaces. In Exact Mode, preserve reference navigation geometry/treatment and map module jobs into it without restyling the shell.
 
-When the requested artifact is a **module-level application/mockup**, the left navigation should normally represent the module's own operational workspaces derived from workflow, for example: Worklist, Today's Follow-up, Active Cases, Appointments, History, Reports, Settings — only as applicable.
+## 13. Worklist
+First viewport must reveal workload, identity, status, owner/timing/progression and Next Action. Actionable summary indicators must actually filter/navigate. No dead operational KPI.
 
-Use global HIS navigation only when an approved Gorilla shell/reference explicitly requires it for the artifact.
+## 14. Professional Workspace
+Assessment, estimate, approval, appointment/follow-up and utilization need work surfaces proportionate to importance. Do not reduce core professional work to tiny generic fields merely for coverage.
 
-Navigation labels must come from actual module jobs; never add unrelated HIS modules merely to imitate a shell.
-
-## 13. Worklist / Queue Rule
-First viewport must make workload, identity, status, owner/timing/progression and Next Action discoverable. Cards/summary indicators that represent actionable subsets must be clickable and change/filter the actual work surface.
-
-**No dead summary card. No decorative KPI for operational work.**
-
-## 14. Professional Workspace Adequacy
-Assessment, estimate, verification, approval, appointment/follow-up and utilization receive work surfaces proportionate to importance. Core work must not be reduced to tiny generic modals/textareas solely to claim coverage.
-
-## 15. Repeated / Longitudinal Rule
-Show previous/current event, version history, changed/unchanged, used/completed vs remaining, appointment/next event, reassessment, amount progression and completion condition when applicable. Never silently overwrite prior professional assessment.
+## 15. Longitudinal / Versioning
+Show prior/current event, version history, changed/unchanged, used vs remaining, next appointment/event and completion condition when applicable. Never silently overwrite professional assessment.
 
 ## 16. State / Ownership / Data Continuity
-State-changing action visibly mutates status, owner, history and relevant values. Toast-only success = FAIL. Cross-role handoff must create meaningful receiver state/queue.
+State-changing actions must visibly mutate state, owner, history and relevant values. Toast-only success = FAIL. Handoff must create meaningful receiver state/queue.
 
-## 17. Function Completeness Rule
-Every visible primary control, card, filter, menu item and lifecycle action must either:
-- execute its intended behavior in the mockup; or
-- be visibly disabled with a truthful reason.
-
-A visible enabled control that does nothing = `FAIL — DEAD FUNCTION`.
-
-Add/Create flows must produce a real new transaction in the appropriate intake queue and continue through acceptance/assignment.
+## 17. Function Completeness
+Every visible enabled control must work. Otherwise visibly disable it with truthful reason. Add/Create must create a real transaction in the correct queue.
 
 ## 18. UX Decision Architecture
-For every primary workspace:
+For each primary workspace:
 `User Goal → Decision Question → Evidence → Attention/Exception → Primary Action → Detail on Demand`.
 
-5-second test:
-1. Where am I?
-2. What needs attention?
-3. What is current state/owner?
-4. What should I do next?
-5. What evidence supports it?
-
-Cannot answer = `FAIL — UNUSABLE`.
+5-second test: Where am I? What needs attention? Current state/owner? What next? What evidence?
 
 ## 19. Design Freedom
-Master defines outcomes/failures, not pixel layouts. Designer may simplify/combine/hide/reorder when workflow fidelity, queue topology, state/data continuity, function completeness and benchmark quality are preserved.
+Design Freedom applies only when Exact Reference Mode is **not** active. Exact Mode freezes visual grammar to the approved reference.
 
 ## 20. Hospital-Facing Realism
-No Demo/Prototype/Workshop/WA/GAP/TBD/Factory/AI/internal QA labels on normal hospital UI. Preserve hospital terminology until equivalence is confirmed.
+No Demo/Prototype/Workshop/GAP/TBD/Factory/AI labels on normal hospital UI. Preserve hospital terminology until equivalence is confirmed.
 
-## 21. Implementation Rules
-- one self-contained `index.html` for mockup;
-- no external CDN/API/font;
+## 21. Implementation
+- one self-contained `index.html` when requested;
 - fictional reasonable mock data;
-- no Emoji UI;
+- no emoji UI;
 - no dead primary controls;
-- loading/empty/error/success/disabled/validation states as relevant;
+- relevant loading/empty/error/success/disabled/validation states;
 - no workflow-breaking console errors;
-- runtime test required; blocked runtime ≠ PASS.
+- runtime test required.
 
 ## 22. Execute Before Pass
-Every material scenario must execute from real operational entry to end state, including queue entry, accept/assign, work, handoff/decision, scheduled return, reassessment, utilization, remaining ledger, exception/recovery and closure when applicable.
+Execute every material scenario from operational entry through queue, ownership, work, handoff/decision, scheduled return, reassessment, utilization, ledger, exception/recovery and closure as applicable.
 
 ## 23. Independent Tests
-1. Workflow Fidelity Test
-2. Queue Topology / Operational UX Test
-3. Executable Scenario / Runtime Functional Test
-4. Function Inventory: every visible actionable control
+1. Workflow Fidelity
+2. Queue Topology / Operational UX
+3. Executable Scenario / Runtime
+4. Function Inventory
 5. Agent Function Test
 6. Independent Premium Design Review
-7. Human Visual Review before Gold/Signature
+7. **Exact Reference Visual Diff when Exact Mode is active**
+8. Human Visual Review before Gold/Signature
 
 Builder explanation is never independent evidence.
 
-## 24. Required Deliverables
-Follow active Full Factory artifact contract. Mockup package at minimum includes `index.html`, Design Notes/START_HERE, Actual Workflow + State + Queue Model, Executable Scenario Test, Workflow Fidelity Test, Function Inventory, Operational UX Test, Runtime/Function Test, Independent Design Review and prompt/source trace.
+## 24. Final Factory Rule
+Normal mode:
+`Business Truth PASS + Queue PASS + Workflow PASS + Function PASS + Runtime PASS + Design PASS → Human Visual Review`.
 
-## 25. Final Factory Rule
-`Business Truth PASS + Queue Topology PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function Inventory PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`.
+Exact mode:
+`Business Truth PASS + Workflow PASS + Function PASS + Runtime PASS + EXACT REPLICATION PASS → Human Visual Review`.
 
-**One mixed Worklist for materially different jobs = FAIL.**
-**Dead visible control = FAIL.**
-**A candidate worse than supplied credible benchmark without workflow justification = FAIL.**
+**Functional PASS cannot override Visual/Exact Replication FAIL.**
+**A visibly different design after an explicit Copy 100% request is Factory FAIL.**

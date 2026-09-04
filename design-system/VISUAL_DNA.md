@@ -1,270 +1,287 @@
-# Gorilla HIS Visual DNA — Product Craft Standard v2.5
+# Gorilla HIS Visual DNA — Product Craft Standard v2.6
 
-> Highest visual-design authority. Gorilla HIS is a precision clinical/operational instrument, not an admin template. Premium means controlled proportion, typography, density, interaction craft and authored workflow composition.
+> Highest visual-design authority. Gorilla HIS is a precision clinical/operational instrument, not an admin template.
 
-## 1. Design Ambition
-Target: Purpose-built, quiet confidence, high-density clarity, clinical gravity, crafted-not-assembled, desirable to use, refined at touchpoint level.
+## 1. Human-Approved Visual Authority
+The human-approved Social Work reference `index_10.html` supplied on 2026-09-04 is now the **primary UX/UI visual grammar reference** for Gorilla HIS operational modules unless a later Human-approved Gold Standard supersedes it.
 
-A successful page still feels Gorilla HIS if logo/module/brand color are hidden.
+The goal is not loose inspiration. New operational mockups should look and feel materially consistent with this reference in:
+- shell proportion;
+- typography;
+- spacing and density;
+- surface hierarchy;
+- navigation treatment;
+- buttons, badges, tabs and forms;
+- worklist rhythm;
+- patient/context anchors;
+- modal/drawer behavior;
+- status color discipline;
+- numerical instrumentation.
 
-## 2. Premium Mental Model
-BMW and Apple/iPhone are quality benchmarks, not visual references to copy.
+**If a candidate is visibly unlike this reference without a workflow/safety reason, it is not a valid premium candidate.**
 
-`BMW cockpit discipline × Apple interaction discipline × Hospital-grade information density × Gorilla HIS continuity`.
+## 2. Design Ambition
+Target: purpose-built, quiet confidence, high-density clarity, clinical gravity, crafted-not-assembled, desirable to use, refined at touchpoint level.
 
-Translate:
-- Proportion → information hierarchy/composition/navigation footprint
-- Cockpit → clinical/operational workspace
-- Control feel → buttons/filters/selectors/task actions
-- Typography → reading priority/Thai readability/numerical instrumentation
-- Fit & finish → alignment/rhythm/icon/control detail
-- Brand DNA → recognizable Gorilla continuity
+Mental model:
+`Precision cockpit discipline × calm hospital density × authored workflow composition × Gorilla HIS continuity`.
 
-## 3. Gorilla Shell Continuity — LEFT NAVIGATION HARD RULE
-The default Gorilla HIS product shell preserves the **left-side menu/navigation bar**.
+## 3. Canonical Shell Grammar — HARD RULE
+Default operational module shell:
+- sticky **52px white topbar**;
+- compact **64px dark command rail** on the left;
+- soft cool-gray canvas;
+- one dominant white work surface with subtle border and optical shadow;
+- work surface owns most viewport width;
+- module context visible in topbar;
+- role/profile utilities live in topbar and do not compete with work;
+- command rail uses icon-first navigation, tooltip labels, restrained count badges and a clear active state.
 
-- Keep it visually subordinate to the task.
-- Compact/collapsible rail behavior is allowed and encouraged.
-- Current module selection/orientation must remain obvious.
-- Module workspace owns the majority of useful viewport width.
-- Do not replace the Gorilla left menu with a top-only navigation simply because a supplied benchmark uses one.
-- A Human-approved Gold Standard may explicitly supersede this rule.
+Command rail reference behavior:
+- dark navy/charcoal gradient;
+- minimum item height about 46px;
+- transparent inactive items;
+- active item becomes a light/white instrument surface with primary-action color;
+- thin left active indicator;
+- hover reveals label tooltip;
+- counts appear only when operationally useful.
 
-## 4. Authored Work Surface
-Do not turn every information group into a card. Preferred hierarchy tools:
-1 typography/alignment;
-2 spacing/proportion;
-3 tonal surface shift;
-4 subtle divider;
-5 bounded container only when object behaves as one object;
-6 shadow only for real elevation.
+A wide dark sidebar with large text blocks is **not** the default premium shell.
 
-Every page needs a visual spine:
-`Context → Situation → Evidence/Work → Exception → Next Action → Detail`.
-
-## 5. Navigation Precision
-Navigation must never visually dominate the task. Avoid giant dark sidebars. Preserve useful width through compact rail/collapse behavior while retaining left-side continuity.
-
-Do not allow sidebar + topbar + tabs + secondary navigation to all compete visually.
-
-## 6. Benchmark No-Regression — HARD GATE
-When a user supplies a credible reference/mockup, first identify the visual/product qualities it demonstrates well: hierarchy, scanability, density, rhythm, action clarity, status encoding, navigation efficiency, **typographic readability** and polish.
-
-A new Gorilla candidate must not be materially worse in those demonstrated qualities without a documented workflow/safety reason.
-
-Target:
-`Preserve proven strengths → Correct business/UX defects → Exceed reference`.
-
-Do not defend a weaker design by citing Factory rules.
-
-## 7. Space Utilization
-Premium is not empty space. Whitespace must improve comprehension.
-
-FAIL when:
-- important work is compressed while large blank regions remain;
-- fixed max-width/template columns waste desktop space;
-- actions are detached from the objects they affect;
-- equal cards/grids define unequal work.
-
-## 8. Surface Architecture
-S0 Canvas: low-contrast neutral environment.
-S1 Work Surface: primary reading/working plane.
-S2 Instrument Surface: compact bounded readings/controls.
-S3 Elevated Surface: menus/drawers/inspectors.
-S4 Semantic Surface: critical/warning/normal/info.
+## 4. Surface Architecture
+Use four visual levels:
+- **S0 Canvas** — cool low-contrast gray environment;
+- **S1 Work Surface** — dominant white operational plane;
+- **S2 Instrument Surface** — subtle gray/blue reading/control region;
+- **S3 Elevated Surface** — drawer, modal, dropdown, contextual overlay.
 
 Depth communicates hierarchy/interactivity, not decoration.
 
-## 9. Thai Typography Craft — SARABUN REFERENCE AUTHORITY
-Typography is primary hierarchy and a **hard usability gate**.
+Preferred order of hierarchy tools:
+1. typography/alignment;
+2. spacing/proportion;
+3. tonal shift;
+4. subtle divider;
+5. bounded container when the object truly behaves as one object;
+6. shadow only for real elevation.
 
-The user-approved HTML reference supplied on 2026-09-03 is the current Thai typography authority for Gorilla HIS operational mockups. Its defining typography is **Sarabun for Thai/normal UI text**, with **JetBrains Mono only for numeric/identifier instrumentation**, and a compact 13px base density.
+Repeated Card Everywhere = FAIL.
 
-### 9.1 Primary font family — HARD RULE
-Preferred product typography:
+## 5. Typography — IBM PLEX SANS THAI AUTHORITY
+The approved reference uses **IBM Plex Sans Thai** and this is now the primary product typography target.
 
-`font-family: "Sarabun", "Leelawadee UI", Tahoma, sans-serif;`
+Primary stack:
+`"IBM Plex Sans Thai", "Noto Sans Thai", "Sarabun", "Segoe UI", Tahoma, sans-serif`
 
-Numeric/identifier instrumentation may use:
-
-`font-family: "JetBrains Mono", Consolas, monospace;`
+Numerical/technical stack may use:
+`"IBM Plex Sans Thai", Consolas, "Noto Sans Mono", monospace`
 
 Rules:
-- **Sarabun is the visual target for Thai UI**, not Tahoma.
-- Tahoma is fallback only; it must never be treated as the design target.
-- Do not use monospace for Thai prose, patient names, labels or status text.
-- Do not choose another Thai font merely because it is available unless Human Review approves it as equal/better.
-- Production Angular should bundle/serve the approved product font through the application asset pipeline.
-- Self-contained Factory mockups must not silently depend on an external CDN. If Sarabun cannot be embedded/served within the mockup environment, use the fallback stack but mark typography as `NOT FULLY VERIFIED` until rendered with Sarabun in an approved environment.
+- IBM Plex Sans Thai is the visual target for production and rendered visual review;
+- Thai body copy remains normal/medium weight, not bold everywhere;
+- monospace treatment is for identifiers, dates, money, score, quota and aligned numeric instruments only;
+- do not use monospace for Thai prose or patient names;
+- production Angular should bundle/serve the approved font through application assets;
+- self-contained mockups must not fetch external CDN fonts unless explicitly allowed by the active Factory contract; if the approved font is not actually rendered, Typography cannot be called fully verified.
 
-### 9.2 Visual character to preserve
-The approved Sarabun reference feels:
-- open and familiar in Thai;
-- narrow enough for dense hospital tables without looking condensed;
-- clean at 12–14px;
-- readable with medium weight rather than oversized type;
-- calm across long Thai labels;
-- compatible with English workflow terms such as Worklist, Consult, Request, Active, Consent and Alive;
-- compatible with dates, HN/VN, currency, score and quota values.
+Reference scale:
+- root/body: 14px-class operational density (`0.875rem` baseline in the approved token system);
+- technical metadata: 10–12px;
+- worklist/table body: about 14px;
+- patient name: 14px/600;
+- HN/VN/subtext: 11–12px;
+- table header: 10–11px uppercase technical style when appropriate;
+- tabs/buttons/forms: 12–14px depending importance;
+- page title: 22px-class (`1.375rem`) only where a true page context exists;
+- patient context anchor name: 16px-class;
+- KPI/instrument values may be 18–32px when they are genuine instruments.
 
-The target is **compact readability**, not large typography.
+Readability comes from font family, weight, contrast, grouping and rhythm before size inflation.
 
-### 9.3 Operational size scale — REFERENCE-DERIVED
-Use the approved HTML density as the default desktop baseline:
-- Body/root: **13px**.
-- Main worklist/table body: **12–13px** (`text-xs` style density is acceptable with Sarabun).
-- Patient name / primary work object: **13px**, usually weight 600–700 depending hierarchy.
-- Table header: **12–13px**, weight 600.
-- Tabs / worklist section tabs: **12px**, weight 600.
-- Left navigation item: **12–13px**, weight 500; active item may use 600.
-- Form label / field text / button label: **12–13px**.
-- Page/workspace heading: **14px** (`text-sm`) and weight 700.
-- Executive/major section heading: **16px** (`text-base`) where justified.
-- KPI main number: **20px** (`text-xl`) when it is the dominant reading.
-- KPI sub-number: **14px** (`text-sm`).
-- Secondary explanation/metadata: **11px**.
-- Very-low-priority shell/version/subtitle metadata: **10px** only.
+## 6. Color Grammar
+Use the approved cool-neutral + indigo/blue action grammar:
+- primary action: indigo/blue;
+- normal/success: green;
+- warning: orange/amber;
+- critical: red;
+- inactive/closed: gray;
+- teal may support brand continuity but should not replace the action hierarchy.
 
-Do **not** force 14–15px for every operational row. Density comes from Sarabun's readable form, disciplined weight, spacing and contrast.
+Use semantic pale backgrounds with darker semantic text/borders. Color supports meaning; wording and position must still communicate state in grayscale.
 
-### 9.4 Weight discipline
-Preferred weights:
-- 400 = normal body/readable detail;
-- 500 = navigation/default emphasized label;
-- 600 = table header, tabs, active navigation, important labels/actions;
-- 700 = page heading, patient/critical primary identity when needed, KPI emphasis.
+Avoid rainbow UI and over-saturated work surfaces.
 
-Avoid 300/light for operational Thai text. Do not make the whole interface semibold/bold.
+## 7. Shape / Border / Shadow Discipline
+Reference-derived geometry:
+- structural radius: 3–4px;
+- controls: around 8px;
+- work surfaces/contextual sections: around 12px;
+- 16px only for rare floating objects;
+- pill/full radius only for chips, badges, counts and compact filters.
 
-### 9.5 Line height and vertical rhythm
-- Dense operational body: **1.35–1.5** line-height.
-- Table cells normally use compact padding roughly equivalent to 10–12px vertical only when information density justifies it.
-- Multi-line rich cells need enough leading for Thai upper/lower marks.
-- Reduce decorative padding/card height before shrinking essential text below the reference scale.
-- Large whitespace around small Thai text is a typography/composition failure.
+Prefer subtle borders and optical shadows. Heavy soft shadows on every card are prohibited.
 
-### 9.6 Contrast and color
+## 8. Spacing Rhythm
+Use the approved 4/8/12/16/20/24/32/48/64 rhythm.
+
+Operational density should feel compact but not cramped:
+- topbar ≈ 52px;
+- command rail ≈ 64px;
+- workspace outer padding ≈ 12px;
+- page/context horizontal padding ≈ 20px;
+- primary content padding ≈ 20px;
+- worklist rows around 10px vertical cell padding;
+- compact controls 32–38px high.
+
+Reduce decorative whitespace before shrinking important information.
+
+## 9. Page Composition — HUMAN-APPROVED GRAMMAR
+Preferred operational composition:
+`Topbar + Command Rail → Work Surface → Page Context → optional Patient/Case Context Anchor → Tabs/Attention Strip → Command Bar → Operational Work → Drawer/Modal on demand`
+
+The page must have a visual spine:
+`Context → Situation → Evidence/Work → Exception → Next Action → Detail`.
+
+Do not start from Dashboard + cards + sidebar merely because it is easy.
+
+## 10. Patient / Case Context Anchor
+When work is patient-centered, use a compact context anchor before deep work:
+- patient name is primary;
+- HN/VN/age/right/encounter are secondary metadata;
+- prior-history indicator may appear as a small semantic cue;
+- case actions stay on the right;
+- avoid duplicating the same patient identity in multiple giant cards.
+
+## 11. Buttons — HARD INTERACTION GRAMMAR
+Button hierarchy:
+- **Primary**: filled indigo/blue, strongest valid next action;
+- **Secondary**: white surface + strong neutral border;
+- **Quiet**: transparent, low visual weight;
+- **Danger**: restrained red semantic treatment;
+- **Small row action**: ~32px high, compact padding.
+
+All enabled controls require hover/focus/pressed behavior. Disabled must be visibly disabled.
+
+A status badge must never look like a button. A button must never look like passive status.
+
+## 12. Badges / Status
+Badges are small semantic instruments:
+- short wording;
+- pale semantic background;
+- darker semantic text;
+- thin semantic/neutral border;
+- around 10–11px technical size when secondary.
+
+Do not use large colorful pills as the dominant row structure.
+
+## 13. Tabs
+Tabs should use:
+- flat horizontal row;
+- subtle background only on selected/hovered state;
+- active text in primary action color;
+- thin 2px active underline;
+- optional compact count badge.
+
+Avoid large segmented-card tabs unless the job specifically needs them.
+
+## 14. Forms
+Reference form grammar:
+- labels 12px-class, semibold, secondary neutral;
+- controls around 38px high;
+- white fill, strong neutral border, 8px radius;
+- focus = primary border + soft primary focus ring;
+- validation uses explicit message + semantic border/background;
+- multi-column grids only when fields remain readable.
+
+## 15. Worklist Grammar
+For transaction-heavy hospital work:
+- one dominant worklist surface;
+- compact command/search/filter bar attached to it;
+- stable aligned columns;
+- technical header row in subtle gray;
+- 14px-class row body;
+- patient name stronger than HN/subtext;
+- numbers/amounts/quotas use aligned/tabular instrumentation;
+- restrained hover row;
+- attention row may receive a subtle semantic wash;
+- closed/off rows may reduce emphasis but remain inspectable;
+- primary next action remains proportionate, not a wall of saturated buttons.
+
+Follow `ENTERPRISE_WORKLIST_STANDARD.md` for detailed behavior.
+
+## 16. Assessment / Professional Workspace Grammar
+Deep professional work should look like an instrument, not a generic modal form:
+- collapsible bounded sections;
+- compact evidence blocks;
+- tables for repeated economic inputs;
+- score/result as an instrument with clear breakdown;
+- prior assessment context shown before current reassessment;
+- selected choices use primary border/soft primary surface;
+- entitlement/progress uses compact quantitative tiles and bars;
+- timeline uses a single vertical spine with semantic event markers.
+
+## 17. Modal / Drawer
+Use modal when a focused decision can be completed without losing list context. Use right drawer when the user needs contextual inspection while preserving the parent workspace.
+
 Reference behavior:
-- body text uses strong slate/dark-neutral contrast;
-- secondary text uses muted slate but remains readable;
-- semantic green/amber/blue highlights status and action, not ordinary prose;
-- white work surfaces on a soft slate canvas support reading;
-- dark shell text must maintain high contrast.
+- modal width around 480px for focused tasks;
+- drawer around 560px for richer context;
+- white surface;
+- 12px radius;
+- strong but controlled overlay shadow;
+- fixed header/footer, scrollable body when needed.
 
-Never compensate for weak typography with stronger color alone.
+## 18. Icons
+Use consistent line icons at approximately 15–18px. Icons clarify semantics; they are not decoration.
 
-### 9.7 Mixed Thai / English / numbers
-- Thai remains Sarabun.
-- Dates, HN/VN, amounts, quota counts and scores may use JetBrains Mono/Consolas selectively.
-- `font-mono` is an instrument treatment, not a body style.
-- Mixed Thai/English labels should remain visually balanced; English uppercase is secondary unless it is an established operational label.
-- Use tabular numerals when side-by-side comparison matters.
+No emoji UI. Avoid mixed icon families. Interactive icon-only controls must provide tooltip/accessible label.
 
-### 9.8 Component-specific typography grammar
-Use the approved reference grammar unless workflow needs otherwise:
-- Top product title: 14px bold; subtitle 10px muted.
-- Role selector/profile: 10–12px.
-- Sidebar section caption: 11px uppercase/letter-spaced; menu 12px medium.
-- Worklist KPI captions: 11–12px; main KPI 20px; active-card sublabels 10px and values 14px.
-- Worklist toolbar/search/filter: 12px.
-- Worklist table: 12px body/header; patient identity may rise to 13px/600–700.
-- Modal/form container: 12px body; modal heading 14px bold; supporting note 10–11px.
-- Status chip/type label: 10px when short and secondary; do not use 10px for patient identity, next action or substantive clinical/social-work evidence.
+## 19. Benchmark No-Regression — HARD GATE
+When a Human-approved reference exists:
+`EXTRACT → REUSE GRAMMAR → ADAPT TO WORKFLOW → RENDER → COMPARE`
 
-### 9.9 Density rule — IMPORTANT
-Do not confuse readability with making everything larger.
+Reviewer must compare:
+- shell footprint;
+- font and density;
+- work-surface proportion;
+- border/radius/shadow discipline;
+- action hierarchy;
+- badge vs button distinction;
+- table rhythm;
+- patient context treatment;
+- modal/drawer polish;
+- overall calmness and authored quality.
 
-The approved reference demonstrates that **Sarabun 13px base + strong hierarchy + compact spacing** can be more readable than a larger but poorly chosen font.
+If visibly weaker than `index_10.html` without workflow/safety reason = `FAIL — VISUAL REGRESSION`.
 
-When information feels hard to read, check in this order:
-1. font family;
-2. font weight;
-3. contrast;
-4. line-height;
-5. alignment/grouping;
-6. padding/whitespace;
-7. only then increase font size.
+## 20. Anti-Template Test
+FAIL when:
+1. screen could become CRM/fintech/logistics by changing labels;
+2. page is mostly generic rounded cards;
+3. wide sidebar visually dominates work;
+4. UI uses local arbitrary colors/radii/shadows;
+5. status and action look the same;
+6. typography does not resemble the approved IBM Plex Sans Thai reference;
+7. important patient/work context is fragmented;
+8. candidate feels AI/template-generated rather than authored;
+9. worklist density/rhythm is materially worse than the approved reference.
 
-### 9.10 Rendered Typography Gate — MANDATORY
-Before Human Visual Review, render the primary worklist at representative desktop scale and compare it with the approved Sarabun HTML reference.
+## 21. Responsive / Adaptive Density
+At narrower widths:
+- preserve command rail continuity;
+- allow work surfaces/tables to adapt/scroll;
+- keep patient/context anchors visible;
+- do not solve width pressure by shrinking Thai operational text below readability;
+- keep primary action discoverable.
 
-Reviewer must answer:
-1. Does the candidate visibly use Sarabun or an approved visually equivalent Thai font?
-2. Is Thai text at least as crisp/readable as the reference without being larger everywhere?
-3. Does the candidate preserve the reference's compact density?
-4. Are patient identity and primary actions more prominent than metadata?
-5. Are table header, navigation and forms clearly differentiated by weight/contrast rather than excessive size?
-6. Are numbers/identifiers treated as instruments without making Thai text monospaced?
-7. Does the rendered page remain calm at real desktop scale?
-
-Any `No` = **FAIL — TYPOGRAPHY / READABILITY**.
-
-If Sarabun cannot actually render in the test environment, result is `BLOCKED/NOT FULLY VERIFIED — APPROVED FONT NOT RENDERED`; do not call Typography PASS based only on CSS declaration.
-
-## 10. Shape Language
-Structural regions: low radius/square.
-Interactive controls: moderate radius with crafted states.
-Floating contextual objects: larger radius/elevation.
-Repeated rounded rectangles everywhere = generic SaaS signature → FAIL.
-
-## 11. Color and Light
-Disciplined neutrals + semantic color. Premium is controlled saturation/contrast, not more color.
-
-## 12. Motion & Micro-interaction
-Motion explains causality. Respect reduced motion. No decorative perpetual animation.
-
-## 13. Composition Before Components
-Before choosing components define:
-- Decision Question
-- Primary Evidence
-- Exception
-- Primary Action
-- Secondary Evidence
-- Navigation footprint
-- Space utilization plan
-- Progressive disclosure plan
-
-Then compose the page.
-
-## 14. Progressive Disclosure
-Intake shows only what is needed to classify/validate/accept work. Deeper functions appear in the case workspace. Rare detail belongs in contextual drawer/accordion/inspector when appropriate.
-
-## 15. Component Jewelry Standard
-Buttons/tabs/fields/selectors/badges/table headers/focus/hover/pressed/selected/disabled/validation/loading/empty/error must look like one product.
-
-## 16. Numbers as Instruments
-Use tabular numerals where useful; unit subordinate but attached; threshold/delta/time near value; semantic color only.
-
-## 17. Anti-Template Test
-Ask:
-1 Could this be CRM/fintech/logistics after labels change? yes=FAIL.
-2 Is page mainly sidebar + generic rounded cards? yes=FAIL.
-3 Are major regions equal because grid was easy? yes=FAIL.
-4 Does removing color destroy hierarchy? yes=FAIL.
-5 Is authored focal path unclear? yes=FAIL.
-6 Does it feel AI/template generated? yes=FAIL.
-7 Is it tidy but lifeless? yes=FAIL Premium Craft.
-8 Is Thai harder to read than the human-approved Sarabun reference? yes=FAIL Typography.
-
-## 18. Desirability Test
-Premium Candidate reaction: “precise, expensive, calm, intentionally designed — I want to use it.”
-
-Clean/neat/usable/professional alone is not Premium.
-
-## 19. Responsive / Adaptive Density
-Inspect representative desktop and narrower workspace. Left navigation may compact/collapse, context remains visible, primary action remains discoverable and high-value content uses width intelligently.
-
-Typography may adapt slightly but must preserve the Sarabun reference character, hierarchy and minimum readability.
-
-## 20. Independent Premium Design Review
-`design-system/PREMIUM_PRODUCT_DESIGN_GATE.md` is mandatory after build.
-
-`Functional PASS + Design FAIL = Factory FAIL`.
+## 22. Independent Premium Review
+`Functional PASS + Visual Regression FAIL = Factory FAIL`.
 `Functional PASS + Typography FAIL = Factory FAIL`.
 
-## 21. Gold Standard Rule
-No artifact may call itself Premium/Gold/Signature solely because Factory Gate passes. Promotion requires rendered visual review, Human Design Approval, Anti-Template PASS, Typography/Readability PASS, Desirability PASS, Gorilla continuity evidence and workflow-authored composition.
+Human Visual Review remains required before Gold/Signature promotion.
 
-## 22. Extraction Rule
-`Human-approved reference → extract Visual Grammar → components/patterns → Factory enforcement`.
-Never reverse into `generic components → assemble → declare premium`.
+## 23. Gold Standard Rule
+Human-approved reference strengths become reusable product grammar. Do not copy accidental content/business assumptions, but preserve approved visual behavior.
+
+## 24. Final Rule
+**The current Gorilla HIS operational visual baseline is the approved `index_10.html` grammar: compact command rail, white work surface, cool neutral canvas, IBM Plex Sans Thai, indigo action hierarchy, restrained semantic status, precise borders/radii, dense readable tables and instrument-like professional workspaces.**

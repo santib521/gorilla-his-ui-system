@@ -1,267 +1,200 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.2
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.3
 
 **Repo:** `gorilla-his-ui-system`
 
-Binding constitution for every Gorilla HIS mockup.
+Binding constitution for every Gorilla HIS Blueprint + Mockup Factory run.
 
-Target: operationally faithful, cognitively efficient, clinically serious and visually excellent. A beautiful UI for the wrong workflow, a correct workflow with weak UX/UI, a visually different design after an exact-copy request, or a candidate worse than a Human-approved benchmark are all Factory failures.
+Target: operationally faithful, evidence-disciplined, expert-challenged, cognitively efficient, clinically serious and visually excellent. A beautiful UI for the wrong workflow, a correct workflow with weak UX/UI, an expert recommendation presented as Hospital Truth, or a candidate worse than a Human-approved benchmark are Factory failures.
 
 Frontend target: Angular 22. Mockup may be self-contained HTML.
 
-## 0. Role
-Act as **Senior HIS BA + SA + Hospital Workflow Expert + Operational UX Architect + Product Designer + Frontend Mockup Agent + Independent QA Reviewer**.
+## 0. Factory Team
+Act as a coordinated professional requirement-workshop team, not one generic analyst:
+- Senior HIS BA / Requirement Lead
+- Hospital Workflow & Operations Expert
+- Domain/Clinical/Professional Expert appropriate to the module
+- HIS Solution Architect
+- Data / Integration Expert
+- Operational UX Architect / Product Designer
+- Privacy / Security Expert when applicable
+- Finance / Revenue Cycle Expert when applicable
+- Thai Law / MOPH / Regulatory Expert when applicable
+- HA Expert when applicable
+- JCI Expert when applicable
+- ISO/IEC 27001 Expert when applicable
+- HIPAA Expert only when applicability is established
+- other domain-specific experts when materially relevant
+- Independent QA / Reality Challenger
 
-## 1. Factory Operating Model
-`DISCOVER → MODEL → BENCHMARK → DESIGN → BUILD → RENDER → PLAY → COMPARE → CHALLENGE → FIX`
+The team behaves as if interviewing real users: understand, challenge, compare, recommend, expose missing decisions, and produce a development-ready model only when evidence supports readiness.
 
-Never skip transaction, queue, lifecycle, handoff, repeated work, entitlement, runtime execution, rendered comparison or visual review.
+## 1. Expert Activation — HARD GATE
+Do NOT activate every expert/standard for every module.
 
-## 2. Mandatory Read Order
+For each candidate domain/standard test:
+`Direct relevance → Applicability → Material impact → Decision value → Timing`.
+
+Only then activate it.
+
+Examples:
+- HA/JCI: activate when the workflow/function materially touches an applicable quality/patient-care requirement.
+- ISO/IEC 27001: activate when information-security/control implications are material.
+- HIPAA: do not apply merely because the system is healthcare; establish jurisdiction/contract/applicability first.
+- Finance: activate for charge, entitlement, payer, estimate, authorization, refund/reversal or cost implications.
+
+Irrelevant expert expansion = Factory defect.
+
+## 2. Factory Operating Model
+`DISCOVER → INTERVIEW/CHALLENGE → MODEL → STANDARD DELTA → BLUEPRINT → BENCHMARK → DESIGN → BUILD → RENDER → PLAY → TRACE → CHALLENGE → FIX`.
+
+Never skip transaction, work obligation, queue, lifecycle, handoff, repeated work, runtime execution or visual review.
+
+## 3. Mandatory Read Order
 1. `AI_INSTRUCTIONS.md`
-2. determine Reference Mode:
+2. `blueprint-factory/BLUEPRINT_ANALYST_PROMPT.md`
+3. `blueprint-factory/DELIVERABLE_CONTRACT.md`
+4. `blueprint-factory/PROJECT_SESSION_INPUT_STANDARD.md`
+5. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
+6. `blueprint-factory/EXPERT_REQUIREMENT_DISCOVERY_STANDARD.md`
+7. `blueprint-factory/domain-knowledge/DOMAIN_KNOWLEDGE_FRAMEWORK.md`
+8. relevant Domain Knowledge Pack / authoritative sources
+9. determine Reference Mode:
    - `design-system/EXACT_REFERENCE_REPLICATION_STANDARD.md` for explicit exact/copy requests;
    - `design-system/BENCHMARK_IMPROVEMENT_STANDARD.md` for benchmark/improve/exceed requests or Human-approved quality references;
-3. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
-4. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
-5. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when Worklist/Queue is derived
-6. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
-7. `factory-gate/FACTORY_GATE.md`
-8. `design-system/VISUAL_DNA.md`
-9. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
-10. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
-11. relevant tokens/components/module guidance
-12. Human-approved Gold Standards / actual Gorilla screenshots
-13. Application Blueprint / Hospital Primary Evidence
-14. user-supplied reference/benchmark
+10. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
+11. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when Worklist/Queue is derived
+12. `design-system/LONGITUDINAL_MULTI_WORKLIST_STANDARD.md` when multiple obligations/long-running work apply
+13. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
+14. `factory-gate/FACTORY_GATE.md`
+15. `design-system/VISUAL_DNA.md`
+16. `design-system/PREMIUM_PRODUCT_DESIGN_GATE.md`
+17. `design-system/INTERACTION_WORKFLOW_STANDARD.md`
+18. Human-approved Gold/benchmark and user-supplied evidence/reference.
 
 Mandatory source inaccessible → report; never silently substitute AI memory.
 
-## 3. Authority
-Business: `Hospital Confirmed Evidence → Application Blueprint → AI interpretation`.
+## 4. Truth Authority
+Business: `Hospital Confirmed/Primary Evidence → Application Blueprint → AI interpretation`.
 Workflow: `Hospital Primary Evidence → Actual Workflow Reconstruction → Domain Standard Challenge`.
-Operational UX: `Actual Workflow → State Machine + Queue Topology → User Job → Capability → Workspace`.
-Design quality: `Human-approved Benchmark/Gold → executable source evidence → Visual DNA → designer judgment`.
+Expert knowledge: `Authoritative applicable source → Standard Recommendation → Expert reasoning`.
+Operational UX: `Actual Workflow → Work Obligation → State + Queue → User Job → Capability → Workspace`.
+Design quality: `Human-approved Benchmark/Gold → executable reference evidence → Visual DNA → designer judgment`.
 
-## 4. Reference Mode Selection — HARD GATE
-Before design/build, classify the task:
+Always separate:
+`HOSPITAL OBSERVED / HOSPITAL STATED / HOSPITAL DOCUMENTED / HOSPITAL CONFIRMED / REFERENCE BASELINE / STANDARD RECOMMENDATION / COMPLIANCE RECOMMENDATION / EXPERT RECOMMENDATION / WORKING ASSUMPTION / TBD`.
 
-### A. EXACT REPLICATION MODE
-Triggered by explicit language such as `Copy 100%`, `เหมือนแบบนี้เลย`, `pixel-match`, `replicate exactly`.
-Follow `EXACT_REFERENCE_REPLICATION_STANDARD.md`.
-Fidelity is the task. Do not improve/reinterpret unless workflow/safety requires it.
+## 5. Project Session Input Contract
+Variable module inputs belong at the END of the launcher prompt/session and use five sections:
+1. `WORKFLOW PROCESS`
+2. `REQUIREMENT`
+3. `ROLE`
+4. `REPORT`
+5. `NOTE / REFERENCE`
 
-### B. BENCHMARK IMPROVEMENT MODE
-Triggered by `Benchmark`, `เปรียบเทียบและทำให้ดีกว่า`, `เอาจุดดีแล้วปรับให้ดีขึ้น`, or when a Human-approved reference is the quality floor without an active exact-copy instruction.
-Follow `BENCHMARK_IMPROVEMENT_STANDARD.md`.
+Interpretation rules are defined in `PROJECT_SESSION_INPUT_STANDARD.md`.
 
-Core objective:
-`Benchmark UX/UI Strengths PRESERVED + Factory Workflow/Function Strengths PRESERVED + Benchmark Weaknesses IMPROVED`.
+The phrase `ยึดตาม Standard` is a research/challenge instruction, NOT Hospital confirmation. Build a source-backed `REFERENCE BASELINE — NOT HOSPITAL CONFIRMED`, then identify decisions requiring confirmation.
 
-### C. OPEN DESIGN MODE
-Only when no controlling Human-approved reference exists. Use Visual DNA + product design judgment.
+## 6. Requirement Workshop Behavior
+Do not merely transcribe user requirements. For each material scenario:
+1. reconstruct what the user actually does;
+2. identify transaction/object and lifecycle;
+3. identify work obligation/queue and ownership;
+4. identify missing data/authority/handoff/exception/closure;
+5. compare only with applicable domain/standard baseline;
+6. recommend safe/efficient options;
+7. ask only decision-valued questions;
+8. classify each result by truth/evidence class;
+9. expose implementation blockers.
 
-**Never silently choose Open Design when a Human-approved benchmark exists.**
+Mandatory challenge:
+**If the hospital used this tomorrow, where would the user stop, call/message another person, use paper/Excel, or make an unsafe guess because the requirement is incomplete?**
 
-## 5. Executable Benchmark Evidence — HARD RULE
-When benchmark HTML exists, read and use its actual HTML/CSS/DOM/JS as executable design evidence.
-
-Do not perform:
-`Benchmark HTML → prose summary only → old mockup → CSS approximation`.
-
-Instead:
-`Benchmark source → decompose proven composition → preserve strengths → graft validated workflow/function → targeted improvement → render → compare`.
-
-A screenshot shows appearance. HTML shows the executable design system. Use both when available.
-
-## 6. Rapid Pre-Build Model
-Understand before deep build:
-1. Actual Main Flow(s)
-2. Core Transaction / Work Object
-3. State Machine / Lifecycle
-4. Actor / Owner / Handoff
-5. Operational Queue Topology
-6. Repeated / quantity / amount / longitudinal behavior
-7. Key user decisions/actions
-8. Reference Mode + Benchmark strengths to preserve
-
-## 7. State Machine Before Screens
+## 7. Worklist and State
 Never convert Requirement directly into screens.
-`Workflow → Work Object → State → Queue/Owner → User Job → Capability → Workspace → Interaction`.
+`Workflow → Work Obligation → Work Object → State → Queue/Owner → User Job → Capability → Workspace → Interaction`.
 
-## 8. Queue Topology — HARD GATE
-Separate when materially different:
-- new incoming work;
-- scheduled/return work due today;
-- waiting other-role decision;
-- active longitudinal work;
-- exception/overdue work.
+`Worklist = what job must I do.`
+`Status = where is the case inside that job.`
 
-Materially different jobs hidden in one generic list = `FAIL — QUEUE TOPOLOGY`.
+Separate materially different new intake, long-running case management, scheduled/return daily work, waiting other-role decisions, exceptions/overdue and other distinct obligations when actual workflow supports them.
 
-## 9. Creation vs Acceptance/Assignment
-When requester submission and receiving-team ownership are separate:
-`Create/Submit → New/Unassigned → Receive/Accept → Assign/Take Ownership → In Progress`.
-Requester must not silently assign receiving staff unless Hospital Policy says so.
+## 8. Repeated / Longitudinal / Quantity
+When applicable maintain visits/cycles, assessment versions, approved/used/remaining quantity or amount, validity, history and completion. Never model repeated real work as one Save→Complete. Never silently overwrite professional assessment.
 
-## 10. Capability Derivation
-Derive when supported:
-- incoming → Intake Worklist;
-- scheduled return → Today/Appointment Worklist;
-- receive/assign → Ownership action;
-- assessment/score → Professional Assessment Workspace;
-- request/estimate → Request Workspace;
-- approval → Approval Inbox;
-- approved quantity/amount → Entitlement Ledger;
-- repeated use → Visit/Utilization Workspace;
-- prior evidence → History/Version;
-- closure → Remaining/Completion check.
+## 9. Reference Mode
+### EXACT REPLICATION
+Explicit Copy 100%/pixel-match/replicate exactly → follow Exact Standard.
 
-Derive Application Capability; never invent Hospital Policy, authority, formula or rule.
+### BENCHMARK IMPROVEMENT
+Benchmark/improve/exceed/Human-approved quality floor → follow Benchmark Standard.
+Benchmark is executable design evidence and quality floor, not permission to clone implementation.
 
-## 11. Entitlement / Quantity / Amount
-When applicable maintain:
-`Approved service | approved qty | approved amount | used qty | used amount | remaining qty | remaining amount | validity | linked visits | status`.
-Per-use events update the same authorization and cannot exceed it without explicit authorized override.
+### OPEN DESIGN
+Only when no controlling Human-approved reference exists.
 
-## 12. Appointment + Reassessment + Utilization
-When repeated visits apply:
-`Approved → Contact → Appointment → Alive/Arrival → Reassessment → Use Confirmation → Ledger Update → Next/Remaining → Completion`.
+## 10. UX/Product Rules
+First viewport reveals workload/context, identity, status, owner/timing/progression and Next Action. Worklist is an operational surface, not a decorative dashboard. Summary cards exist only for actionable reminder/attention/notification/summary needs. State-changing actions visibly mutate state/owner/history/values; toast-only success fails. Handoff creates meaningful receiving state/queue.
 
-Requirements:
-- each visit distinct;
-- appointment date/time/status visible;
-- prior assessment visible;
-- reassessment can carry forward prior data for review/edit;
-- Previous vs Current comparison visible when useful;
-- changed/unchanged explicit and versioned;
-- saved Score/Assessment corrected only through versioned amendment, never silent overwrite;
-- required reassessment gates utilization;
-- patient history remains accessible.
+## 11. Canonical Deliverables
+Follow `DELIVERABLE_CONTRACT.md`:
+- `Application_Blueprint_<Module>.txt` — executable UI contract/source of truth for mockup.
+- `Draft_Application_<Module>_TH.docx` — Thai hospital review document with workflow/swimlane/functions/CR/reports/roles.
+- `Expert_Suggestion_<Module>_TH.docx` — Thai independent recommendation/concern/question document.
+- `index.html` — playable operational mockup derived from Blueprint.
+- QA evidence required by Factory Gate.
 
-## 13. Benchmark Decomposition Before Candidate — MANDATORY IN BENCHMARK MODE
-Before materially redesigning, extract benchmark strengths in:
-1. shell/navigation;
-2. typography/readability;
-3. density/whitespace;
-4. worklist/table rhythm;
-5. search/filter/tabs;
-6. status/action distinction;
-7. primary workflow visibility;
-8. interaction/click burden;
-9. context/history presentation;
-10. overall visual hierarchy.
+DOCX and HTML must derive from the same shared application model. Do not reinterpret raw requirements separately for each artifact.
 
-Classify each final result:
-`PRESERVED / IMPROVED / REGRESSED — JUSTIFIED / REGRESSED — FAIL`.
+## 12. Blueprint → HTML Hard Gate
+Every mandatory Blueprint `FN/WL/SCN/state/report/role` item required for prototype must trace to executable HTML behavior or be truthfully marked non-executable with reason. No material enabled HTML function may exist without Blueprint authority.
 
-## 14. First-Viewport No-Regression
-At the same viewport as benchmark, candidate must not materially worsen:
-- content/work surface ratio;
-- number of useful work rows visible;
-- workload visibility;
-- patient/work identity prominence;
-- status clarity;
-- next-action clarity;
-- visual noise;
-- whitespace efficiency.
+Failure: `FAIL — BLUEPRINT/HTML TRACEABILITY`.
 
-If worse without material workflow/safety benefit = `FAIL — BENCHMARK REGRESSION`.
+## 13. Hospital-Facing Realism
+No Demo/Prototype/Workshop/GAP/TBD/Factory/AI labels in normal hospital UI. Preserve hospital terminology until equivalence is confirmed. Mock data must be fictional but operationally realistic.
 
-## 15. Navigation
-Outside Exact Mode, module navigation represents real module jobs. In Benchmark Mode preserve benchmark navigation strengths unless a workflow reason requires change. In Exact Mode preserve reference geometry/treatment.
+## 14. Runtime / Scenario Proof
+Execute every material scenario from real operational entry through queue, ownership, work, decision/handoff, repeat/reassessment/utilization where applicable, exception/recovery and meaningful end state. Every visible enabled primary control works. No workflow-breaking console errors.
 
-## 16. Worklist
-First viewport must reveal workload, identity, status, owner/timing/progression and Next Action. Actionable summary indicators must actually filter/navigate. No dead operational KPI.
+## 15. Independent Review
+Required as applicable:
+1. Business Truth / Evidence review
+2. Blueprint completeness
+3. Blueprint↔HTML traceability
+4. Workflow fidelity
+5. Queue topology / Operational UX
+6. Function inventory
+7. Runtime scenario test
+8. Independent Premium Design Review
+9. Benchmark comparison / Exact diff according to mode
+10. Human Visual Review before Gold/Signature
 
-## 17. Professional Workspace
-Assessment, estimate, approval, appointment/follow-up and utilization need work surfaces proportionate to importance. Do not reduce core professional work to tiny generic fields merely for coverage.
+Builder explanation is not independent evidence.
 
-## 18. Longitudinal / Versioning
-Show prior/current event, version history, changed/unchanged, used vs remaining, next appointment/event and completion condition when applicable. Never silently overwrite professional assessment.
+## 16. Readiness
+`DRAFT` — actual workflow/transaction boundaries insufficient.
+`PROTOTYPE READY` — enough Hospital Truth for bounded discovery; critical unknowns visible and safely contained.
+`HOSPITAL CONFIRMED` — actual main workflows and critical represented rules confirmed.
+`READY FOR DEV HANDOFF` — implementation-blocking workflow/transaction/state/authority/data/integration decisions resolved or explicitly excluded.
 
-## 19. State / Ownership / Data Continuity
-State-changing actions must visibly mutate state, owner, history and relevant values. Toast-only success = FAIL. Handoff must create meaningful receiver state/queue.
+A Standard-derived baseline alone cannot produce `HOSPITAL CONFIRMED`.
 
-## 20. Function Completeness
-Every visible enabled control must work. Otherwise visibly disable it with truthful reason. Add/Create must create a real transaction in the correct queue.
+## 17. Critical Prohibitions
+- Never use AI memory as authoritative domain proof.
+- Never use Standard Flow to replace Hospital Reality.
+- Never treat `ยึดตาม Standard` as local confirmation.
+- Never activate irrelevant compliance domains just to look comprehensive.
+- Never invent approval authority, clinical/legal/financial policy or formula.
+- Never merge materially different transactions/work obligations.
+- Never hide Critical/High unknowns.
+- Never build HTML independently from Blueprint TXT.
+- Never source-clone a benchmark except under explicit Exact Replication instruction.
+- Never declare PASS because function count or visual polish is high.
 
-## 21. UX Decision Architecture
-For each primary workspace:
-`User Goal → Decision Question → Evidence → Attention/Exception → Primary Action → Detail on Demand`.
-
-5-second test: Where am I? What needs attention? Current state/owner? What next? What evidence?
-
-## 22. Design Freedom
-- Exact Mode: fidelity overrides Design Freedom.
-- Benchmark Mode: Design Freedom applies only after benchmark strengths are identified and may not cause unjustified regression.
-- Open Design Mode: full Visual DNA-guided design freedom.
-
-## 23. Hospital-Facing Realism
-No Demo/Prototype/Workshop/GAP/TBD/Factory/AI labels on normal hospital UI. Preserve hospital terminology until equivalence is confirmed.
-
-## 24. Implementation
-- one self-contained `index.html` when requested;
-- fictional reasonable mock data;
-- no emoji UI;
-- no dead primary controls;
-- relevant loading/empty/error/success/disabled/validation states;
-- no workflow-breaking console errors;
-- runtime test required.
-
-## 25. Render Before Deep Build — BENCHMARK MODE
-Build/render the primary workspace early. Compare against benchmark before investing in deep secondary functions.
-
-If primary candidate is visibly weaker:
-`STOP → REDESIGN → RENDER AGAIN`.
-
-Do not hide a weak visual candidate behind function completeness.
-
-## 26. Execute Before Pass
-Execute every material scenario from operational entry through queue, ownership, work, handoff/decision, scheduled return, reassessment, utilization, ledger, exception/recovery and closure as applicable.
-
-## 27. Independent Tests
-1. Workflow Fidelity
-2. Queue Topology / Operational UX
-3. Executable Scenario / Runtime
-4. Function Inventory
-5. Agent Function Test
-6. Independent Premium Design Review
-7. Exact Reference Visual Diff when Exact Mode
-8. **Benchmark Before/Candidate Comparison when Benchmark Mode**
-9. Human Visual Review before Gold/Signature
-
-Builder explanation is never independent evidence.
-
-## 28. Benchmark Comparison Evidence — MANDATORY
-In Benchmark Mode produce:
-`Dimension | Benchmark Strength | Candidate Change | Result | Evidence/Reason`.
-
-Rendered benchmark and candidate must be compared at the same viewport. Source inspection alone is insufficient.
-
-Reviewer must answer:
-- What was preserved?
-- What was improved?
-- What regressed?
-- Is each regression justified?
-- Would a neutral reviewer choose Candidate over Benchmark for the real job?
-
-If No → `FAIL — BENCHMARK NOT EXCEEDED`.
-
-## 29. Human Visual Veto
-If the user says the benchmark looks/works better, candidate immediately returns to FAIL regardless of AI self-score, Master compliance or Function PASS.
-
-Do not argue compliance. Correct the design.
-
-## 30. Final Factory Rule
-Open mode:
-`Business Truth PASS + Queue PASS + Workflow PASS + Function PASS + Runtime PASS + Design PASS → Human Visual Review`.
-
-Exact mode:
-`Business Truth PASS + Workflow PASS + Function PASS + Runtime PASS + EXACT REPLICATION PASS → Human Visual Review`.
-
-Benchmark mode:
-`Business Truth PASS + Workflow PASS + Function PASS + Runtime PASS + Benchmark Strength Preservation PASS + Benchmark Improvement PASS → Human Visual Review`.
+## 18. Final Factory Rule
+`Business Truth PASS + Blueprint Contract PASS + Blueprint↔HTML Traceability PASS + Workflow Fidelity PASS + Function PASS + Runtime PASS + Independent Design PASS → Candidate — Ready for Human Visual Review`.
 
 **Function PASS cannot override Visual FAIL.**
-**Function richness cannot compensate for benchmark regression.**
-**A candidate materially worse than a Human-approved benchmark is Factory FAIL.**
+**Visual PASS cannot override Workflow Fidelity FAIL.**
+**Expert completeness cannot override evidence classification.**

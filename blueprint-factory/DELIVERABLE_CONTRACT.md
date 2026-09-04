@@ -1,26 +1,36 @@
-# Gorilla HIS — Prompt 1+2 Deliverable Contract v1.1
+# Gorilla HIS — Prompt 1+2 Deliverable Contract v1.2
 
 Status: `FACTORY MASTER`
 
 ## Purpose
-Make requirement discovery, documents and operational mockup one traceable product rather than independent outputs.
+Make requirement discovery, documents, design knowledge and operational mockup one traceable product rather than independent outputs.
 
 Core:
-`Project Session → Expert Workshop/Challenge → Shared Application Model → Executable Blueprint TXT → Review DOCX → Expert DOCX → index.html → Traceability + Runtime Proof`.
+`Project Session → Expert Workshop/Challenge → Shared Application Model → Executable Blueprint TXT → Compiled Design Knowledge → Operational UX Contract → Review DOCX → Expert DOCX → Primary Render Gate → index.html → Traceability + Runtime + Design Evidence`.
 
 ## Canonical Deliverables
-1. `Application_Blueprint_<Module>.txt` — direct authority for UI build.
+1. `Application_Blueprint_<Module>.txt` — direct business/UI behavior authority.
 2. `Draft_Application_<Module>_TH.docx` — Thai hospital review document.
 3. `Expert_Suggestion_<Module>_TH.docx` — Thai independent expert recommendation/concern/question document.
-4. `index.html` — playable mockup derived from #1.
+4. `index.html` — playable mockup derived from #1 and constrained by approved design knowledge.
 
-Additional QA/support files may be generated, but they do not replace these four.
+These four remain canonical. The following **mandatory QA/design evidence artifacts** support the build and gates and do not replace the four:
+- `Compiled_Design_Knowledge_<Module>.md`
+- `Operational_UX_Contract_<Module>.md`
+- `Benchmark_Strength_Contract_<Module>.md` when Benchmark Mode applies, or equivalent `BM-*` section in compiled knowledge
+- Primary Workspace Render/Comparison evidence
+- Blueprint↔HTML Traceability
+- Workflow Fidelity Test
+- Runtime Functional Test
+- Independent Premium/Benchmark Design Review
 
 ## Single Shared Model Rule
 All deliverables derive from the same workflow/transaction/state/work-obligation/role/function model. Do not separately reinterpret raw requirements for DOCX and HTML.
 
+Design artifacts do not invent business truth. They compile how approved knowledge and benchmark strengths should shape the presentation and interaction of the Blueprint-defined work.
+
 ## 1. Application Blueprint TXT — EXECUTABLE UI CONTRACT
-Must be deterministic enough that another UI Factory Agent can build `index.html` without rereading raw requirement or guessing behavior.
+Must be deterministic enough that another UI Factory Agent can build behavior without rereading raw requirement or guessing.
 
 Minimum contract:
 `Actual Workflow → Work Obligation → Worklist/Queue → Transaction → Lifecycle/State → Role/Owner → Screen → Visible Data → Action → Validation → Mutation → Handoff → Repeat/Reassess → Exception → End State`.
@@ -55,7 +65,25 @@ Mandatory Blueprint content:
 
 No material function may exist only in prose.
 
-## 2. Draft Application DOCX — HOSPITAL REVIEW
+## 2. Compiled Design Knowledge — DESIGN CONSTRAINT CONTRACT
+Follow `design-system/KNOWLEDGE_TO_DESIGN_COMPILATION_STANDARD.md`.
+
+Purpose: prove that applicable Gorilla/Claude knowledge, Visual DNA, Gold/benchmark evidence and approved patterns are transformed into actionable build constraints.
+
+Minimum trace:
+`KD/BM ID | Source | Applicable Rule/Strength | Design Consequence | Required UI Evidence | Verification`.
+
+Reading/summarizing knowledge alone does not satisfy this artifact.
+
+## 3. Operational UX Contract — WORKSPACE CONTRACT
+Follow `design-system/OPERATIONAL_UX_CONTRACT_STANDARD.md`.
+
+For each material Work Obligation define:
+`User Job → Decision Question → Primary Evidence → Attention/Exception → Primary Action → Mutation → Handoff → First Viewport → Dominant Work Surface → Supporting Surfaces`.
+
+This contract bridges Blueprint behavior to non-generic product composition.
+
+## 4. Draft Application DOCX — HOSPITAL REVIEW
 Thai, human-readable, workshop/approval oriented.
 
 Mandatory:
@@ -74,9 +102,10 @@ Mandatory:
 
 Swimlane is document authority:
 `Start → Role → Activity → Decision → System/Record → Handoff/Wait → Exception → End`.
+
 Do not create a Swimlane product screen unless explicitly required.
 
-## 3. Expert Suggestion DOCX — INDEPENDENT EXPERT REVIEW
+## 5. Expert Suggestion DOCX — INDEPENDENT EXPERT REVIEW
 Thai. Must not duplicate Draft Application or silently promote recommendations.
 
 Include applicable:
@@ -96,8 +125,18 @@ Every material question:
 Group:
 `MUST CONFIRM BEFORE DEV / CONFIRM DURING PROTOTYPE REVIEW / SAFE TO DEFER`.
 
-## 4. index.html — PLAYABLE OPERATIONAL MOCKUP
-Built from Blueprint, not independently from Project Session.
+## 6. Primary Workspace Render Evidence — PRE-FULL-BUILD GATE
+Follow `factory-gate/PRIMARY_WORKSPACE_RENDER_GATE.md`.
+
+Before full/secondary build, prove the most important recurring operational workspace against applicable KD/BM constraints and Human-approved quality floor.
+
+If failed:
+`STOP → REDESIGN → RENDER AGAIN`.
+
+Do not build the full candidate first and discover at the end that the composition is weak.
+
+## 7. index.html — PLAYABLE OPERATIONAL MOCKUP
+Built from Blueprint behavior and constrained by Compiled Design Knowledge + Operational UX Contract.
 
 For every required scenario:
 `Real Entry → Queue → Open Work → Validate → Action → State Mutation → Handoff/Wait → Repeat/Reassess if applicable → Exception/Recovery → Meaningful End State`.
@@ -112,10 +151,11 @@ Requirements:
 - required reports/outputs reachable;
 - no toast-only fake transaction completion;
 - every enabled primary control works;
+- material professional workspaces meet UX Contract depth;
 - no Demo/Factory/TBD/Workshop labels in normal hospital-facing UI.
 
 ## Expert Applicability Rule
-The Factory may use a broad expert pool, but deliverables include only relevant activated domains. HA/JCI/ISO27001/HIPAA/etc. do not generate content merely because they exist. Follow `PROJECT_SESSION_INPUT_STANDARD.md`.
+Use a broad expert pool, but deliverables include only relevant activated domains. HA/JCI/ISO27001/HIPAA/etc. do not generate content merely because they exist.
 
 When Project Session says `ยึดตาม Standard`, the resulting flow/role/report remains `REFERENCE BASELINE / STANDARD RECOMMENDATION — NOT HOSPITAL CONFIRMED` until hospital evidence confirms it.
 
@@ -132,11 +172,24 @@ Must prove:
 
 Result: `PASS` or `FAIL — BLUEPRINT/HTML TRACEABILITY` with missing IDs.
 
+## Design Evidence Gate
+Must prove:
+- critical KD coverage;
+- BM preservation/improvement when Benchmark Mode applies;
+- Operational UX Contract coverage;
+- Primary Workspace Render PASS;
+- generic-template rejection;
+- professional workspace depth;
+- independent design challenge;
+- Human review status.
+
+A prose QA file without executed/rendered evidence cannot declare PASS.
+
 ## Truth Separation
 Hospital evidence remains distinct from:
 `REFERENCE BASELINE / STANDARD RECOMMENDATION / EXPERT RECOMMENDATION / COMPLIANCE RECOMMENDATION / WORKING ASSUMPTION / TBD`.
 
 ## Delivery Gate
-`Blueprint Completeness PASS → DOCX Consistency PASS → Blueprint/HTML Traceability PASS → Workflow Fidelity PASS → Function PASS → Runtime PASS → Design Review PASS`.
+`Blueprint Completeness PASS → DOCX Consistency PASS → Knowledge Compilation PASS → Operational UX Contract PASS → Primary Workspace Render PASS → Blueprint/HTML Traceability PASS → Workflow Fidelity PASS → Function PASS → Runtime PASS → Independent Design/Benchmark PASS`.
 
 Human Visual Review remains required before Gold promotion.

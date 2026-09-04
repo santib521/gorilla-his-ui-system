@@ -1,225 +1,270 @@
-# Gorilla HIS — Premium Operational Worklist Standard v1.2
+# Gorilla HIS — Premium Operational Worklist Standard v1.3
 
 Status: `MANDATORY WHEN WORKLIST/QUEUE IS DERIVED`
 
 ## 1. Purpose
-Create a worklist that feels like a premium professional instrument, not a compliance table and not a generic admin dashboard.
+Create a worklist that behaves like a premium hospital work instrument: compact, comparable, actionable and calm.
 
-**The worklist should make the user want to work from it.**
+The Human-approved `index_10.html` reference is the current visual floor for operational worklists.
 
 ## 2. Core Outcome
-On opening the page, the user should quickly understand:
+On opening the page, users should quickly understand:
 `What work exists → What deserves attention → What state it is in → What to do next`.
 
-How the designer achieves this is flexible.
+## 3. Canonical Visual Grammar — HUMAN APPROVED
+When a tabular/ledger worklist fits the job, default composition should closely follow:
 
-## 3. Preferred Design Thinking
-Start with the work, not components:
-- What are the real work objects?
-- What does the user scan repeatedly?
-- What differences matter for prioritization?
-- What action is most common at each state?
-- What information can be hidden until selection?
-- What deserves visual emphasis?
+`Page Context → optional Patient/Case Context → Tabs/Attention Strip → Attached Command Bar → Dominant White Worklist Surface → Contextual Drawer/Modal`
 
-Then choose the composition.
+Visual qualities to preserve:
+- cool-gray canvas;
+- one dominant white work surface;
+- subtle border/optical shadow;
+- restrained 8–12px radii;
+- IBM Plex Sans Thai typography target;
+- indigo/blue primary actions;
+- pale semantic status treatment;
+- compact row density;
+- numerical fields treated as instruments;
+- no decorative dashboard sprawl.
 
-## 4. Worklist Composition — OPTIONS, NOT TEMPLATE
-A strong pattern may be:
-`Compact Header → optional small Attention/My Work zone → Search/Filter command bar → Operational List → contextual workspace`.
+## 4. Shell Relationship
+The worklist belongs inside the Gorilla operational shell:
+- 52px white topbar;
+- 64px dark icon-first command rail;
+- rail visually subordinate to the table;
+- worklist uses the majority of viewport width.
 
-But this is not mandatory. A split-view queue, grouped list, timeline list, schedule-worklist hybrid, or another composition is valid if it serves the work better.
+Do not use a wide text-heavy sidebar by default.
 
-**Do not make every Gorilla module look identical.**
+## 5. Worklist Composition
+Preferred transaction-heavy pattern:
+- shallow page/context header;
+- optional compact attention strip;
+- tabs only when they represent genuinely different queues;
+- search/filter/sort controls attached to the list;
+- one dominant table/list;
+- contextual detail in drawer/full workspace when deeper work is needed.
 
-## 5. Benchmark-Derived Enterprise Ledger Pattern — PREFERRED WHEN FITS THE JOB
-For transaction-heavy hospital work where users compare many records, values, statuses, quantities or next actions, consider an **Enterprise Ledger Worklist** pattern.
-
-Characteristics extracted from strong reference worklists:
-- compact summary tiles above the list only when each summary maps to actionable work;
-- one dominant bounded worklist surface rather than many competing cards;
-- command/search controls integrated into the list header;
-- clear column architecture with stable alignment;
-- rich cells combining primary + secondary context instead of excessive columns;
-- quantitative values shown as instruments: quantity, amount, score, used/remaining, dates;
-- restrained semantic status chips;
-- compact but readable row height;
-- subtle row banding/tonal separation to support horizontal scanning;
-- primary action visually obvious but proportionate, with secondary/history actions quieter;
-- totals/counts belong at the edge/footer of the list, not as oversized dashboard numbers.
-
-Use this pattern only when users really scan and compare multiple transactions. It is a **reference grammar, not a mandatory layout**.
+Do not create multiple competing cards around a small table.
 
 ## 6. Attention / Summary
-Summary information is useful only when it changes what the user does.
+Summary elements are optional and must support action.
 
-A small set of counts, urgent items, recent work, approval waiting, due follow-up, or active entitlement may be shown elegantly. Do not create KPI cards simply because dashboards usually have cards.
+If used:
+- shallow, compact and clickable;
+- show one operational count/value per item;
+- do not displace the worklist below the fold;
+- no decorative charting;
+- active/attention rows may use a subtle semantic background wash.
 
-When summary tiles are used:
-- each tile must be clickable/filterable/navigational;
-- one dominant number + short operational label is usually enough;
-- secondary value may show amount/exception when decision-relevant;
-- avoid decorative charts or duplicated metrics;
-- keep the entire summary zone shallow enough that the worklist remains visible in the first viewport.
+## 7. Command Bar
+Use a compact attached command bar:
+- search input generally 220–360px;
+- frequent filters as compact pills/chips/selects;
+- result count at the edge;
+- primary create/action button only when it is a frequent entry action;
+- advanced filters behind disclosure.
 
-Summary must support the worklist, not compete with it.
+Controls should feel part of the worklist, not scattered across the page.
 
-## 7. Row / Item Hierarchy
-Each item represents a real actionable work object. Choose fields for decision value, not completeness.
+## 8. Table Header
+Reference-derived header treatment:
+- subtle gray surface;
+- thin bottom border;
+- compact vertical padding;
+- technical 10–11px text when uppercase/letter-spaced labels are appropriate;
+- otherwise 12px semibold Thai labels;
+- never large dark header bars.
 
-Typical hierarchy may include:
-`Type → Patient/Case → Reason/Service → Context/Source → Assessment/Progress → State → Next Action`.
+Headers must remain readable and stable during scan.
 
-Owner, aging, priority, quantity, amount, appointment or requester should appear when they materially affect the user's decision.
+## 9. Row Density
+Reference target:
+- body approximately 14px-class typography;
+- around 10px vertical cell padding;
+- enough height for one primary + one secondary line;
+- no giant whitespace;
+- subtle hover state;
+- optional semantic attention wash;
+- closed/off rows may reduce emphasis but remain legible and inspectable.
 
-The designer may combine fields into a richer cell rather than creating excessive columns.
+If row height is high while decision value is low = redesign.
 
-### Rich-cell hierarchy
-When combining data in one cell:
-- line 1 = primary decision object, usually patient/case/service;
-- line 2 = secondary context such as HN, unit, requester, date;
-- line 3 only when it adds material decision value;
-- primary/secondary contrast should come from weight/tone/alignment before extra badges.
+## 10. Rich Cell Hierarchy
+Use rich cells before adding excessive columns.
 
-## 8. Quantitative Scanability
-When work includes money, quantity, score, quota, entitlement, utilization or repeated visits, the worklist should allow side-by-side comparison without opening every case.
+Typical hierarchy:
+- line 1: patient / case / service — strongest;
+- line 2: HN/VN/unit/requester/date — smaller muted text;
+- line 3 only when it changes a decision.
 
-Preferred treatment:
-- use tabular numerals when available;
-- keep unit adjacent to value;
-- show `used / approved` and `remaining` together;
-- show amount used/remaining when material;
-- visually distinguish exception/shortfall without relying on color alone;
-- progress bars are optional and should be compact, not decorative.
+Patient name should visually dominate HN and metadata.
 
-If a user must open each row merely to know how much has been used or remains, the worklist is incomplete when that information drives action.
+## 11. Type / History Indicator
+Transaction type may be shown as a compact small label/badge attached near the primary object rather than consuming an entire column when that saves scan width.
 
-## 9. Next Action
-The next valid action should be obvious from the item's lifecycle. It may be a button, contextual action, row affordance or open-to-stage behavior.
+Prior-history presence should normally use a small recognizable icon/cue; open History on interaction. Do not waste a full text column when the binary cue is enough.
 
-Examples: `รับงาน / ประเมิน / ลง SMDA / Verify / ส่งอนุมัติ / พิจารณา / ติดต่อผู้ป่วย / ประเมินครั้งถัดไป / บันทึกเยี่ยมบ้าน / ปิด Case`.
+## 12. Quantitative Instrumentation
+For money, quantity, quota, score, dates and utilization:
+- use tabular/aligned numerals;
+- keep units adjacent;
+- show used/approved and remaining together when they drive work;
+- compact progress bar may supplement values;
+- do not force users to open each case to discover material remaining quantity/value.
 
-Primary action should be visually stronger than history/secondary action, but not so large or saturated that every row becomes a wall of buttons.
+## 13. Status Encoding
+Status is passive information, not an action.
 
-Do not make users decode a status and then hunt through menus to discover the action.
+Status badges:
+- small;
+- pale semantic background;
+- darker semantic text;
+- thin border or no heavy border;
+- no hover/cursor treatment unless intentionally interactive.
 
-## 10. Premium Density
-Premium worklists balance density and calmness.
+Users must be able to distinguish status from clickable controls immediately.
 
-Aim for:
-- useful information per viewport;
-- comfortable Thai reading;
-- stable alignment;
-- clear primary/secondary text;
-- restrained status treatment;
-- enough whitespace to separate meaning;
-- subtle hover/selection/focus states;
-- numbers/progress that are easy to compare.
+## 14. Action Hierarchy
+Primary next action:
+- compact filled indigo/blue button;
+- strongest action in the row;
+- ~32px height for row actions.
 
-Avoid both extremes: cramped spreadsheet and oversized card gallery.
+Secondary:
+- white outlined or quiet action.
 
-### Density benchmark test
-At a standard desktop viewport, ask whether the visible rows communicate enough real work to justify their vertical space. If row height is high while decision value is low, redesign.
+History/timeline/icon actions:
+- visually quieter than primary.
 
-## 11. Search / Filter / Sort
-Expose only high-value frequent controls first. Advanced filters may stay behind disclosure.
+Never present every possible action as equal saturated buttons.
 
-Possible dimensions: identity, My Work/All/Unassigned, transaction type, stage, urgency, unit/source, date/age, blocked/returned, service/category.
+## 15. Tabs
+If queues are distinct, use flat tabs with:
+- 12–14px semibold text;
+- primary-color active text;
+- subtle selected background;
+- thin 2px active underline;
+- optional compact count badge.
 
-Prefer a compact command bar that feels attached to the worklist. Do not scatter search, reset, filters and actions across unrelated areas.
+Do not use oversized card tabs.
 
-Do not fill the toolbar with every possible filter.
+## 16. Appointment / Daily Service Worklist
+When work is appointment-driven, the table should expose without opening the case:
+- appointment date/time;
+- patient/HN;
+- arrival/Alive time;
+- VN when created;
+- responsible worker/service;
+- arrival/contact status;
+- reassessment/Score status;
+- utilization status;
+- next action.
 
-## 12. Status & Attention Encoding
-Use color as a supporting signal, not the entire language. Meaning should remain understandable in grayscale through wording, position, weight, icon/shape or progress.
+Use a Date filter prominently because the queue is date-centered.
 
-Reserve stronger emphasis for genuinely actionable states such as urgent, new/unassigned, returned, blocked, waiting approval or due follow-up.
+Recommended lifecycle actions:
+`Scheduled → Alive/Arrived → Reassessment → Use Confirmation → Completed / Cancelled`
 
-Status chips should be compact and semantic. Avoid long outlined labels that dominate the row.
+Alive must visibly mutate time/state/VN when applicable.
 
-## 13. Contextual Work
-Opening an item should take the user to the work that needs doing, not always to a generic Overview.
+## 17. Reassessment in Worklist
+If current work depends on prior assessment:
+- show current Score and version when available;
+- show prior Score/delta when material;
+- expose `ประเมิน Score + SDMA` when due;
+- after save, expose `แก้ไข Score/SDMA` when correction is allowed;
+- edits must be versioned amendments, not destructive overwrite.
 
-Choose full page, side inspector, drawer or split view based on task depth and need to preserve list context.
+## 18. Contextual Work
+Opening a row should take the user to the correct lifecycle stage, not a generic overview.
 
-After completing/handoff, return to a useful work state with the list/filter/context preserved.
+Use:
+- full page for deep professional work;
+- right drawer for contextual inspection/history;
+- modal for a focused bounded decision.
 
-## 14. 8 UX/UI Principles in Worklist Design
-Use as design instincts:
-- familiar work vocabulary and grouping;
-- fewer simultaneous choices;
-- easy-to-hit frequent actions;
-- chunked information;
-- polished visual quality;
-- proximity of evidence/action;
-- consistent semantic styling;
-- clear, satisfying handoff/completion feedback.
+After handoff/save, return to a meaningful list state with filter context preserved.
 
-Do not add eight visible UI elements to prove the eight principles were used.
+## 19. Button vs Badge Clarity — HARD GATE
+A user should know what is clickable without trial-and-error.
 
-## 15. Premium Visual Direction
-The desired feeling is **quiet confidence**:
-- restrained, sophisticated color;
-- high-quality Thai typography;
+Interactive:
+- cursor/hover/focus state;
+- border/fill consistent with control grammar.
+
+Passive:
+- no button-like elevation/hover;
+- status wording and semantic badge grammar.
+
+Confusing passive labels with controls = `FAIL — AFFORDANCE CLARITY`.
+
+## 20. Typography
+Follow `VISUAL_DNA.md` and `tokens.css`.
+
+Current target:
+- IBM Plex Sans Thai for operational text;
+- body/table ~14px-class;
+- metadata 10–12px;
+- patient identity 14px/600;
+- technical numbers may use aligned/mono treatment.
+
+## 21. Premium Visual Direction
+Desired feeling: **quiet precision**.
+
+Use:
+- white primary surface;
+- cool neutral canvas;
+- indigo/blue action hierarchy;
 - precise spacing;
-- controlled corner radius and shadow;
-- purposeful iconography;
-- strong scan rhythm;
-- no decorative clutter;
-- no generic SaaS-dashboard feel.
+- restrained semantic color;
+- thin dividers;
+- subtle optical shadow;
+- consistent line icons.
 
-Preferred visual behavior for ledger-style worklists:
-- soft neutral page canvas;
-- white/light primary work surface;
-- subtle borders over heavy shadows;
-- header row clearly differentiated but not dark/heavy;
-- stronger typographic hierarchy than box hierarchy;
-- colored values only when meaningfully exceptional/actionable;
-- compact, crafted buttons with state-driven emphasis.
+Avoid:
+- giant KPI dashboards;
+- card sprawl;
+- oversized rounded tiles;
+- rainbow buttons;
+- heavy shadows;
+- wide dark navigation competing with work;
+- generic SaaS admin composition.
 
-A premium screen may be simple. Simplicity is successful when important work becomes easier to see and act on.
+## 22. Human Reference Extraction Contract
+For every new worklist candidate compare against approved reference on:
+`command-rail footprint | page-context height | work-surface proportion | toolbar density | header treatment | row height | patient/metadata hierarchy | quantitative emphasis | status treatment | action hierarchy | border/radius/shadow discipline | typography | hover/focus craft`
 
-## 16. Reference Benchmark
-When a user/reference candidate demonstrates stronger hierarchy, scanability or premium craft, analyze it as design evidence. Preserve its useful principles while adapting to Gorilla HIS and actual workflow.
+Candidate must be equal or better unless workflow/safety requires deviation.
 
-For screenshot references, explicitly extract:
-`summary proportion | worklist-to-whitespace ratio | header treatment | row height | primary/secondary type scale | cell grouping | numerical emphasis | status treatment | action hierarchy | border/shadow/radius discipline`.
-
-Do not reject a better visual idea merely because it differs from a preferred Factory pattern.
-
-## 17. Hard Failures
+## 23. Hard Failures
 - user cannot tell what to work on;
-- passive list with no natural action path;
-- important workflow information buried;
-- next action unclear;
-- worklist displaced by decorative dashboard content;
-- excessive card/badge/color/shadow noise;
-- cramped or tiny typography;
-- generic admin template with weak domain identity;
-- repeated/quantity work hides progress;
-- item opens to the wrong lifecycle stage;
-- summary cards look operational but are not interactive;
-- primary action and history action have equal visual weight;
-- row height/whitespace materially exceeds the decision value shown;
-- design is visibly inferior to a credible reference in hierarchy/scanability without operational justification.
+- materially different queues collapsed into one confusing list;
+- worklist displaced by dashboard decoration;
+- row action unclear;
+- status looks clickable when it is not;
+- clickable control looks passive;
+- important quantity/amount/progress hidden;
+- patient identity weaker than metadata;
+- wide navigation consumes work area;
+- excessive cards/badges/colors/shadows;
+- row density materially worse than approved reference;
+- candidate visually diverges from Human-approved `index_10.html` without reason.
 
-## 18. Review — SHORT AND OUTCOME-BASED
+## 24. Review
 Reviewer answers:
-1. Can I understand the workload quickly?
-2. Can I see what deserves attention?
-3. Can I distinguish transaction/state/progress?
-4. Can I compare key quantitative values without opening each case?
-5. Is the next action obvious?
-6. Does the screen feel calm, premium and professional?
-7. Does it fit this specific hospital job rather than a generic dashboard?
-8. Can I continue the actual workflow naturally?
-9. If a benchmark exists, is the candidate at least equal in scan rhythm, density and visual finish?
+1. Can I understand workload in seconds?
+2. Can I tell what deserves attention?
+3. Are queues/states distinct?
+4. Are patient identity and quantitative values easy to scan?
+5. Is next action obvious?
+6. Can I distinguish buttons from status labels immediately?
+7. Does the page preserve the approved command-rail/work-surface grammar?
+8. Is the table density and typography at least as good as the approved reference?
+9. Can the real workflow continue naturally?
 
-If yes and runtime/workflow tests pass, the worklist is a valid candidate.
+Any material `No` = redesign.
 
-## 19. Final Rule
-**Modern ≠ cards. Dense ≠ cramped. Premium ≠ empty. Master ≠ template.**
-
-**Strong enterprise worklists behave like an operational ledger: compact, comparable, actionable and calm.**
-
-Design for the job first; use the rules to protect quality, not to replace design judgment.
+## 25. Final Rule
+**Strong Gorilla worklists now follow the approved `index_10.html` product grammar: compact shell, dominant white ledger surface, precise hierarchy, restrained semantic states, IBM Plex Sans Thai, indigo action hierarchy and calm hospital-grade density.**

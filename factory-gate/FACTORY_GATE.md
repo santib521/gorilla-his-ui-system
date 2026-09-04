@@ -1,255 +1,252 @@
-# Gorilla HIS UI Factory Gate — Evolution Craft v3.2
+# Gorilla HIS UI Factory Gate — Evolution Craft v3.3
 
-Factory Gate is mandatory for every Gorilla HIS mockup. It protects business truth, clinical safety, recognizable product continuity, speed of prototyping and premium craft.
+Factory Gate is mandatory for every Gorilla HIS mockup. It protects business truth, workflow fidelity, recognizable product continuity, knowledge utilization, premium craft and runtime quality.
 
 If this file conflicts with `AI_INSTRUCTIONS.md`, `AI_INSTRUCTIONS.md` wins.
 
 ## 1. Authority
-
 ### Business Authority
-1. Application Blueprint
-2. Workflow / Requirement / Function List / Business Rules explicitly derived from the Blueprint
+1. Hospital Confirmed / Primary Evidence
+2. Application Blueprint
+3. Derived workflow/function/business rules traceable to the Blueprint
 
 Missing Blueprint information = `N/A — not present in Blueprint`. Do not invent business rules.
 
-### Design Authority
-1. `design-system/VISUAL_DNA.md`
-2. `design-system/LEGACY_DNA.md`
+### Design Authority in Benchmark Mode
+1. Human-approved Gold/benchmark executable source + approved screenshots
+2. compiled `BM-*` / `KD-*` constraints derived from that evidence
 3. `AI_INSTRUCTIONS.md`
-4. `design-system/design-rules.md`, `ux-rules.md`, `tokens.css`, `icon-rules.md`
-5. Human-approved Gold Standard relevant to the archetype
-6. Approved Components / Patterns
-7. Relevant actual Gorilla HIS screenshots for continuity
-8. Candidate references
-9. AI design judgment
+4. `VISUAL_DNA.md` / relevant approved product knowledge
+5. `LEGACY_DNA.md` + actual Gorilla screenshots
+6. approved tokens/icons/components/patterns
+7. designer judgment
+
+### Design Authority in Open Mode
+1. `AI_INSTRUCTIONS.md`
+2. `VISUAL_DNA.md`
+3. `LEGACY_DNA.md` + actual Gorilla screenshots
+4. approved tokens/icons/components/patterns
+5. relevant Gold archetype evidence
+6. designer judgment
 
 Components are primitives, not composition masters.
 
 ## 2. Factory Flow
-
-For `PROTOTYPE READY`:
-
-`Blueprint → Legacy DNA Scan → FAST PRE-BUILD → Visual Concept → Build index.html → START_HERE → Self-QA → Post-Build → Independent QA → Human Prototype Review → Hospital Confirmation`
-
-For confirmed/product UI:
-
-`Confirmed Blueprint → Legacy DNA Scan → Full Pre-Build → Visual Concept → Build → Self-QA → Post-Build → Independent QA → Human Visual Review → Approved → Gold when explicitly promoted`
+For every operational mockup:
+`Blueprint → Knowledge Compilation → Operational UX Contract → Reference/Benchmark Decomposition → Primary Workspace Build → Primary Workspace Render Gate → Full Build → Runtime/Scenario Proof → Traceability → Independent Design Challenge → Human Visual Review`.
 
 Rules:
-- Pre-Build FAIL = STOP
-- Visual Concept FAIL = STOP
-- Self-QA FAIL = FIX before Post-Build
-- Post-Build FAIL = RETURN TO BUILDER
-- Legacy Continuity FAIL = RETURN TO BUILDER
-- Component Finish FAIL = RETURN TO BUILDER
-- Visual/Craft FAIL = RETURN TO BUILDER
+- Knowledge Compilation FAIL = STOP
+- UX Contract FAIL = STOP
+- Primary Workspace Render FAIL = STOP/REDESIGN
+- Runtime FAIL = RETURN TO BUILDER
+- Benchmark Regression = RETURN TO BUILDER
+- Generic Template = RETURN TO PRODUCT/UX DESIGN
+- Human says benchmark is better = FAIL
 
-## 3. FAST PRE-BUILD Gate — PROTOTYPE READY
+## 3. Mandatory Pre-Build Artifacts
+Before full `index.html` build:
+1. `Application_Blueprint_<Module>.txt`
+2. `Compiled_Design_Knowledge_<Module>.md`
+3. `Operational_UX_Contract_<Module>.md`
+4. `Benchmark_Strength_Contract_<Module>.md` or equivalent BM section when Benchmark Mode applies
 
-The purpose is to reach a useful first `index.html` quickly without weakening safety.
+No required artifact = Factory build blocked.
 
-Before coding, Builder must state only:
-1. Blueprint status + critical safety boundary;
-2. Legacy Preserve / Improve / Replace summary;
-3. Decision Question / Primary Evidence / Exception / Primary Action;
-4. Visual Concept Signature;
-5. Binding Reuse Contract;
-6. top Anti-Template / Legacy Continuity risks;
-7. PASS / FAIL.
+## 4. Knowledge Utilization Gate
+Follow `design-system/KNOWLEDGE_TO_DESIGN_COMPILATION_STANDARD.md`.
 
-Do not generate long traceability or compliance prose before the first working screen. Detailed evidence moves to Post-Build.
-
-## 4. Legacy Continuity Gate
-
-Review relevant real Gorilla HIS screenshots and classify important product grammar as:
-- PRESERVE
-- IMPROVE
-- REPLACE
-
-PASS when:
-- the mockup remains recognizable as Gorilla HIS;
-- familiar clinical/operational navigation and context are retained where useful;
-- modernization improves hierarchy/control feel without inventing a different product family.
+PASS requires every critical applicable `KD-*` to identify:
+`Source → Design Consequence → UI Surface → Verification`.
 
 FAIL when:
-- the page looks like another vendor, generic SaaS, LMS, CRM or fashionable clean-sheet redesign;
-- legacy density/navigation/context is discarded without workflow rationale;
-- continuity is claimed only through logo or brand color.
+- knowledge is only summarized;
+- benchmark is reduced to shell/colors/buttons;
+- compiled knowledge is not traceable to UI;
+- source says one thing while candidate composition ignores it.
 
-## 5. Visual Concept Gate
+Failure: `FAIL — KNOWLEDGE NOT APPLIED`.
 
-Before coding answer:
+## 5. Operational UX Contract Gate
+Follow `design-system/OPERATIONAL_UX_CONTRACT_STANDARD.md`.
 
-**What makes this screen unmistakably Gorilla HIS and materially better to operate than the current generation?**
+For each material work obligation prove:
+`User Job → Decision Question → Primary Evidence → Exception → Primary Action → Mutation → Handoff → Dominant Work Surface`.
 
-PASS requires:
-- recognizable legacy continuity;
-- workflow-specific composition or interaction idea;
-- concrete operational/clinical improvement;
-- craft beyond color/radius/shadow/icons.
+A material professional activity cannot be reduced to a generic two-column drawer merely for function coverage.
 
-If the concept is only `clean / modern / premium / blue / spacious` = FAIL.
+Failure:
+- `FAIL — PROFESSIONAL WORKSPACE DEPTH`
+- `FAIL — TEMPLATE-LED COMPOSITION`
 
-## 6. Binding Reuse Contract
+## 6. Primary Workspace Render Gate
+Follow `factory-gate/PRIMARY_WORKSPACE_RENDER_GATE.md`.
 
+Before secondary/full build:
+- select the most important recurring work obligation;
+- build representative primary workspace;
+- render it;
+- compare against controlling Human-approved benchmark/Gold at comparable viewport when applicable;
+- independently challenge it.
+
+Allowed PASS only after actual render evidence.
+
+If FAIL: `STOP → REDESIGN → RENDER AGAIN`.
+
+## 7. Generic Template Hard Reject
+Reject immediately when the screen could be relabeled and reused almost unchanged for CRM, HR, Inventory or an unrelated HIS module despite material domain-specific work.
+
+Signals:
+- generic header + KPI strip + universal table + universal drawer architecture;
+- every professional activity compressed into the same two-column form;
+- navigation expresses abbreviations/components rather than real jobs;
+- module specificity exists only in labels/data;
+- composition is explained by grid/card convenience rather than user work.
+
+Failure: `FAIL — GENERIC TEMPLATE`.
+
+## 8. Binding Reuse Contract
 Before coding declare relevant approved sources and planned use.
 
 Minimum roles to evaluate:
 | Role | Source | Requirement |
 |---|---|---|
+| Gold/Benchmark | Human-approved artifact | quality floor in Benchmark Mode |
 | Visual DNA | `design-system/VISUAL_DNA.md` | composition/craft authority |
-| Legacy DNA | `design-system/LEGACY_DNA.md` + screenshots | continuity/evolution |
+| Legacy DNA | `design-system/LEGACY_DNA.md` + screenshots | product continuity |
 | Tokens | `design-system/tokens.css` | approved values |
-| Icons | `design-system/icon-rules.md` | semantic Font Awesome |
-| Shell continuity | approved shell / relevant real screenshot | preserve product family where suitable |
-| Controls / Forms / Modal | relevant approved components | behavior/states |
-| Pattern | relevant approved pattern(s) | reuse when workflow fits |
-| Gold Standard | relevant Human-approved artifact / N/A | archetype continuity |
+| Icons | `design-system/icon-rules.md` | semantic icon language |
+| Controls/Forms | approved components | behavior/states |
+| Patterns | approved patterns | reuse only when workflow fits |
 
-`Read/Reference ≠ Reuse`.
+`Read/Reference ≠ Reuse` and `Read ≠ Applied`.
 
-Do not require KPI/Operational components when irrelevant.
-
-## 7. Decision Architecture Gate
-
-State:
+## 9. Decision Architecture Gate
+For every primary workspace state:
+- User Job
 - Decision Question
 - Primary Evidence
-- Exception
+- Attention/Exception
 - Primary Action
-- Secondary Evidence
+- Secondary Evidence/Action
+- Observable state/data mutation
+- Handoff/next queue
 
-PASS only when grounded in Blueprint.
+PASS only when grounded in Blueprint + UX Contract.
 
-## 8. Hard Reject
-
-Reject immediately when any applies:
-- Blueprint not read;
-- mandatory authority source not read;
-- external CDN/font/JS/CSS or Font Awesome CDN/Kit;
-- real patient data;
-- missing Main Workflow / Critical Requirement;
-- dead Main Workflow action;
-- workflow-breaking JS error;
-- hidden chain-of-thought in deliverables;
-- local palette used to bypass tokens;
-- patient-safety semantic colors used decoratively;
-- Emoji UI;
-- unapproved custom icon when approved FA semantic icon exists;
-- generic AI/futuristic theme;
-- repeated rounded-card grammar as architecture;
-- hierarchy collapses without color;
-- easy-grid composition without workflow reason;
-- flat white spreadsheet with no authored hierarchy;
-- clean-sheet visual redesign that breaks Gorilla HIS continuity without approved reason;
-- main workflow text rendered primarily below 12px;
-- main tabs rendered as tiny text links without integrated active-state treatment;
-- important mode/safety banner visually weaker than surrounding ordinary content;
-- main navigation uses placeholder abbreviations because real icon rendering was skipped;
-- missing `START_HERE.md`;
-- reviewer cannot discover Main Demo Flow without guessing;
-- page self-labels Premium/Gold/World-class without Human Approval.
-
-## 9. Premium HIS Visual Gate
-
+## 10. Premium HIS Visual Gate
 Rendered UI must be reviewed whenever rendering is possible.
 
 | Gate | Question | PASS condition |
 |---|---|---|
-| VG-01 Product Character | Purpose-built HIS or generic software? | Clinical / Operational / Trustworthy / Crafted / Desirable |
-| VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | Situation → evidence → exception → action is obvious |
-| VG-03 Icon System | Approved icon language? | FA semantic mapping; no Emoji/CDN; no placeholder abbreviation fallback for main nav |
-| VG-04 Composition | Authored or grid-generated? | Proportion follows importance |
-| VG-05 Surface Architecture | Too flat/decorative? | deliberate meaningful layers |
-| VG-06 Typography Craft | Does type carry hierarchy and remain readable? | main workflow normally 14px; supporting metadata ≥12px; technical micro-labels may use 11px |
-| VG-07 Instrument Quality | Reading or spreadsheet cell? | contextual instrument treatment when relevant |
-| VG-08 Color Discipline | Controlled and semantic? | neutral-led, clinical semantics strict |
-| VG-09 Data Visualization | Answers a decision? | only meaningful visualization |
-| VG-10 Interaction Craft | State change deliberate? | hover/selected/pressed/causal feedback |
-| VG-11 AI Integration | AI showroom? | intelligence attached to evidence |
-| VG-12 Density | Real HIS density without noise? | meaningful first viewport without unreadably tiny type |
-| VG-13 Anti-Template | Could labels become CRM/fintech? | No |
-| VG-14 Dryness / Barren | Sterile/unfinished? | No |
-| VG-15 Desirability | Crafted, not merely tidy? | visually compelling without decoration |
-| VG-16 Legacy Continuity | Same Gorilla HIS product family? | recognizable continuity + justified evolution |
-| VG-17 Demo Usability | Can a non-dev reviewer play it? | START_HERE + discoverable demo journey |
-| VG-18 Component Finish | Do buttons, tabs, banners, icons, fields and selectors feel expensive/precise? | consistent optical weight, readable sizing, intentional active/hover/pressed/focus states, no cheap/default-browser appearance |
+| VG-01 Product Character | Purpose-built HIS or generic software? | domain-specific operational instrument |
+| VG-02 Decision Hierarchy | Can user grasp situation in ~5 seconds? | context → evidence → exception → action obvious |
+| VG-03 Navigation | Real jobs or placeholder abbreviations? | meaningful, precise, product-consistent |
+| VG-04 Composition | Authored or grid-generated? | proportion follows operational importance |
+| VG-05 Work Surface | Does real work dominate? | primary evidence/work gets largest useful area |
+| VG-06 Typography | Readable and crafted? | hierarchy clear; no tiny main-work text |
+| VG-07 Professional Workspace Depth | Complex work treated seriously? | workspace proportional to decision/evidence complexity |
+| VG-08 Color Discipline | Controlled and semantic? | neutral-led, safety semantics strict |
+| VG-09 Status/Action | Can user distinguish state from action? | Next Action is first-class |
+| VG-10 Interaction Craft | Deliberate state change? | hover/selected/focus + visible causal mutation |
+| VG-11 Density | Real HIS density without noise? | useful first viewport |
+| VG-12 Anti-Template | Could labels become CRM/HR/fintech? | No |
+| VG-13 Legacy/Gorilla Continuity | Same product family? | recognizable continuity + justified evolution |
+| VG-14 Component Finish | Controls feel precise? | no default/cheap browser treatment |
+| VG-15 Benchmark Preservation | Human-approved strengths retained? | no unjustified regression |
+| VG-16 Desirability | Crafted, not merely tidy? | visually compelling without decoration |
 
 Automatic P0 Design FAIL:
-- VG-01, VG-02, VG-08, VG-13, VG-16;
-- clinical-safety misuse;
-- external asset violation;
-- workflow failure.
+- VG-01, VG-02, VG-05, VG-07, VG-08, VG-12, VG-15;
+- workflow/safety failure;
+- generic template;
+- Human benchmark veto.
 
-Premium Candidate cannot pass Human Visual Review if VG-06 or VG-18 materially fail.
+## 11. First-Viewport No-Regression
+At comparable viewport review:
+- header/navigation footprint;
+- content start position;
+- dominant work-surface ratio;
+- useful rows/evidence visible;
+- patient/case identity prominence;
+- workload visibility;
+- status/waiting clarity;
+- next-action clarity;
+- visual noise;
+- whitespace efficiency;
+- control/typography finish.
 
-## 10. BMW Evolution Test
+Worse without material workflow/safety benefit = `FAIL — BENCHMARK REGRESSION`.
 
-BMW is a quality benchmark, not a visual-copy instruction.
+## 12. Hard Reject
+Reject immediately when any applies:
+- Blueprint not read;
+- mandatory authority source inaccessible and silently substituted;
+- required compiled design/UX contract missing;
+- full module built before Primary Workspace Render Gate in applicable workflow;
+- real patient data;
+- missing material workflow/function;
+- dead enabled primary action;
+- workflow-breaking JS error;
+- generic AI/SaaS theme;
+- repeated rounded-card grammar as architecture;
+- KPI cards displace real operational work;
+- placeholder abbreviation navigation used as finished design;
+- generic table/drawer is the only workspace architecture for materially different jobs;
+- main workflow text primarily below 12px;
+- state change communicated only by toast;
+- benchmark comparison claimed without actual rendered comparison when rendering is possible;
+- PASS/CANDIDATE declared for a test not executed;
+- page self-labels Premium/Gold/World-class without Human Approval.
 
-Ask:
-1. What Gorilla HIS DNA is preserved?
-2. What legacy friction is materially improved?
-3. What specific control/information detail feels more precise and considered?
-4. Would an existing Gorilla user know where they are and how to work?
-5. Do the small touchpoints — button, tab, selector, banner and icon — feel like premium cockpit controls rather than generic web UI?
+## 13. Evidence-Based QA Rule
+A QA Markdown file that says PASS is not evidence.
 
-If only color/logo/shadow/radius/icons changed → FAIL.
-If the result feels like another product → FAIL.
-If layout is good but controls still look cheap → FAIL Component Finish.
+Evidence requirements:
+- Knowledge: `KD/BM → UI` mapping
+- Traceability: IDs/control/state mapping
+- Runtime: executed scenario with result
+- State mutation: observable before/after
+- Benchmark: same-viewport render comparison
+- Visual claim: rendered evidence
 
-## 11. iPhone Test
+If evidence is absent, result is `NOT EXECUTED`, never PASS.
 
-- refined when decoration is reduced;
-- depth improves hierarchy, not ornament;
-- controls feel deliberate;
-- visual complexity is reduced without removing useful information.
+## 14. Independent Review Rule
+Builder cannot be sole approver of:
+- Benchmark PASS
+- Premium Design PASS
+- Primary Workspace Render PASS
+- Generic Template rejection
 
-A page cannot pass by being flashy or barren.
+Independent challenger must review rendered/executable evidence against compiled contracts.
 
-## 12. Operational / Command Center Rule
+## 15. Human Visual Veto
+If Human says benchmark is better, immediately set:
+`FAIL — HUMAN BENCHMARK VETO`.
 
-Command Center is a live decision instrument, not a fixed layout template.
+Do not defend Master compliance. Redesign.
 
-`premium-operational-layout.html` is Candidate Reference only and is not mandatory composition authority.
+## 16. Post-Build Evidence
+Post-Build must include as applicable:
+- Blueprint Traceability
+- Compiled Knowledge Verification
+- Operational UX Contract Verification
+- Benchmark BM Matrix
+- Primary Workspace Render evidence
+- Decision Architecture Verification
+- Generic Template Test
+- Workflow Fidelity
+- Runtime Scenario Test
+- Premium Visual Gate
+- Human Visual Review limitation/status
 
-First viewport should communicate operating state, trajectory/time-to-threshold, bottleneck, evidence and intervention/projected impact.
-
-## 13. Demo Guide Gate
-
-Every mockup must ship `START_HERE.md` containing:
-- purpose;
-- roles;
-- first click;
-- 4–8 step Main Demo Flow;
-- expected result for critical actions;
-- clickable controls;
-- prototype assumptions/TBDs;
-- confirmation questions when relevant.
-
-When practical add an unobtrusive in-product `Demo Guide` control.
-
-No README/demo guide = FAIL.
-
-## 14. Post-Build Evidence
-
-Post-Build must include:
-- Blueprint Traceability;
-- Binding Reuse Verification;
-- Legacy Continuity Verification;
-- Visual Concept Verification;
-- Decision Architecture Verification;
-- Anti-Template Test;
-- Dryness Test;
-- BMW Evolution Test;
-- iPhone Test;
-- Premium HIS Visual Gate VG-01..VG-18;
-- Component Finish Verification;
-- Demo Usability Test;
-- Human Visual Review limitation/status.
-
-## 15. Gold Standard Rule
-
+## 17. Gold Standard Rule
 Factory PASS = governed Candidate only.
 
-`Candidate → Independent QA Passed → Human Approved → explicit Gold promotion`
+`Candidate → Independent QA Passed → Human Approved → explicit Gold promotion`.
+
+## 18. Final Rule
+`Business Truth PASS + Blueprint PASS + Knowledge Applied PASS + UX Contract PASS + Primary Render PASS + Workflow PASS + Function PASS + Runtime PASS + Independent Design/Benchmark PASS → Human Visual Review`.
+
+**No unexecuted PASS. No generic-template PASS. No benchmark regression PASS.**

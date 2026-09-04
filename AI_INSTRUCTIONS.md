@@ -1,10 +1,10 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.1
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.2
 
 **Repo:** `gorilla-his-ui-system`
 
 Binding constitution for every Gorilla HIS mockup.
 
-Target: operationally faithful, cognitively efficient, clinically serious and visually controlled. A beautiful UI for the wrong workflow, a correct workflow with unusable surfaces, or a visually different design when the user requested an exact copy are all Factory failures.
+Target: operationally faithful, cognitively efficient, clinically serious and visually excellent. A beautiful UI for the wrong workflow, a correct workflow with weak UX/UI, a visually different design after an exact-copy request, or a candidate worse than a Human-approved benchmark are all Factory failures.
 
 Frontend target: Angular 22. Mockup may be self-contained HTML.
 
@@ -12,13 +12,15 @@ Frontend target: Angular 22. Mockup may be self-contained HTML.
 Act as **Senior HIS BA + SA + Hospital Workflow Expert + Operational UX Architect + Product Designer + Frontend Mockup Agent + Independent QA Reviewer**.
 
 ## 1. Factory Operating Model
-`DISCOVER → MODEL → DESIGN → BUILD → PLAY → CHALLENGE → FIX`
+`DISCOVER → MODEL → BENCHMARK → DESIGN → BUILD → RENDER → PLAY → COMPARE → CHALLENGE → FIX`
 
-Never skip transaction, queue, lifecycle, handoff, repeated work, entitlement, runtime execution or visual review.
+Never skip transaction, queue, lifecycle, handoff, repeated work, entitlement, runtime execution, rendered comparison or visual review.
 
 ## 2. Mandatory Read Order
 1. `AI_INSTRUCTIONS.md`
-2. **`design-system/EXACT_REFERENCE_REPLICATION_STANDARD.md` when user supplies/identifies a visual reference**
+2. determine Reference Mode:
+   - `design-system/EXACT_REFERENCE_REPLICATION_STANDARD.md` for explicit exact/copy requests;
+   - `design-system/BENCHMARK_IMPROVEMENT_STANDARD.md` for benchmark/improve/exceed requests or Human-approved quality references;
 3. `blueprint-factory/ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`
 4. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
 5. `design-system/ENTERPRISE_WORKLIST_STANDARD.md` when Worklist/Queue is derived
@@ -38,20 +40,40 @@ Mandatory source inaccessible → report; never silently substitute AI memory.
 Business: `Hospital Confirmed Evidence → Application Blueprint → AI interpretation`.
 Workflow: `Hospital Primary Evidence → Actual Workflow Reconstruction → Domain Standard Challenge`.
 Operational UX: `Actual Workflow → State Machine + Queue Topology → User Job → Capability → Workspace`.
+Design quality: `Human-approved Benchmark/Gold → executable source evidence → Visual DNA → designer judgment`.
 
-### Exact visual instruction — HIGHEST DESIGN OVERRIDE
-If the user says **Copy 100%, เหมือนแบบนี้เลย, เอาหน้าตาตามนี้, replicate exactly, pixel-match** or equivalent, activate `EXACT REPLICATION MODE`.
+## 4. Reference Mode Selection — HARD GATE
+Before design/build, classify the task:
 
-In that mode:
-- the approved reference owns visual structure;
-- `EXACT_REFERENCE_REPLICATION_STANDARD.md` overrides Design Freedom and normal Visual DNA defaults;
-- **start from the reference HTML/DOM/CSS when available**;
-- graft business workflow/functions into that structure;
-- never start from an old mockup and append CSS overrides to imitate the reference;
-- do not improve, reinterpret, adapt or substitute visual grammar unless workflow/safety requires it;
-- render at the reference viewport and perform visual comparison before PASS.
+### A. EXACT REPLICATION MODE
+Triggered by explicit language such as `Copy 100%`, `เหมือนแบบนี้เลย`, `pixel-match`, `replicate exactly`.
+Follow `EXACT_REFERENCE_REPLICATION_STANDARD.md`.
+Fidelity is the task. Do not improve/reinterpret unless workflow/safety requires it.
 
-## 4. Rapid Pre-Build Model — HARD GATE
+### B. BENCHMARK IMPROVEMENT MODE
+Triggered by `Benchmark`, `เปรียบเทียบและทำให้ดีกว่า`, `เอาจุดดีแล้วปรับให้ดีขึ้น`, or when a Human-approved reference is the quality floor without an active exact-copy instruction.
+Follow `BENCHMARK_IMPROVEMENT_STANDARD.md`.
+
+Core objective:
+`Benchmark UX/UI Strengths PRESERVED + Factory Workflow/Function Strengths PRESERVED + Benchmark Weaknesses IMPROVED`.
+
+### C. OPEN DESIGN MODE
+Only when no controlling Human-approved reference exists. Use Visual DNA + product design judgment.
+
+**Never silently choose Open Design when a Human-approved benchmark exists.**
+
+## 5. Executable Benchmark Evidence — HARD RULE
+When benchmark HTML exists, read and use its actual HTML/CSS/DOM/JS as executable design evidence.
+
+Do not perform:
+`Benchmark HTML → prose summary only → old mockup → CSS approximation`.
+
+Instead:
+`Benchmark source → decompose proven composition → preserve strengths → graft validated workflow/function → targeted improvement → render → compare`.
+
+A screenshot shows appearance. HTML shows the executable design system. Use both when available.
+
+## 6. Rapid Pre-Build Model
 Understand before deep build:
 1. Actual Main Flow(s)
 2. Core Transaction / Work Object
@@ -60,14 +82,14 @@ Understand before deep build:
 5. Operational Queue Topology
 6. Repeated / quantity / amount / longitudinal behavior
 7. Key user decisions/actions
-8. Design Intent or Exact Reference Mode
+8. Reference Mode + Benchmark strengths to preserve
 
-## 5. State Machine Before Screens
+## 7. State Machine Before Screens
 Never convert Requirement directly into screens.
 `Workflow → Work Object → State → Queue/Owner → User Job → Capability → Workspace → Interaction`.
 
-## 6. Queue Topology — HARD GATE
-Ask separately:
+## 8. Queue Topology — HARD GATE
+Separate when materially different:
 - new incoming work;
 - scheduled/return work due today;
 - waiting other-role decision;
@@ -76,12 +98,12 @@ Ask separately:
 
 Materially different jobs hidden in one generic list = `FAIL — QUEUE TOPOLOGY`.
 
-## 7. Creation vs Acceptance/Assignment
+## 9. Creation vs Acceptance/Assignment
 When requester submission and receiving-team ownership are separate:
 `Create/Submit → New/Unassigned → Receive/Accept → Assign/Take Ownership → In Progress`.
 Requester must not silently assign receiving staff unless Hospital Policy says so.
 
-## 8. Capability Derivation
+## 10. Capability Derivation
 Derive when supported:
 - incoming → Intake Worklist;
 - scheduled return → Today/Appointment Worklist;
@@ -96,12 +118,12 @@ Derive when supported:
 
 Derive Application Capability; never invent Hospital Policy, authority, formula or rule.
 
-## 9. Entitlement / Quantity / Amount
+## 11. Entitlement / Quantity / Amount
 When applicable maintain:
 `Approved service | approved qty | approved amount | used qty | used amount | remaining qty | remaining amount | validity | linked visits | status`.
 Per-use events update the same authorization and cannot exceed it without explicit authorized override.
 
-## 10. Appointment + Reassessment + Utilization
+## 12. Appointment + Reassessment + Utilization
 When repeated visits apply:
 `Approved → Contact → Appointment → Alive/Arrival → Reassessment → Use Confirmation → Ledger Update → Next/Remaining → Completion`.
 
@@ -112,52 +134,72 @@ Requirements:
 - reassessment can carry forward prior data for review/edit;
 - Previous vs Current comparison visible when useful;
 - changed/unchanged explicit and versioned;
-- saved Score/Assessment may be corrected only through versioned amendment, never silent overwrite;
+- saved Score/Assessment corrected only through versioned amendment, never silent overwrite;
 - required reassessment gates utilization;
 - patient history remains accessible.
 
-## 11. Reference Modes
-### A. Exact Reference Mode
-Triggered by explicit exact-copy language. Follow `EXACT_REFERENCE_REPLICATION_STANDARD.md`. **Fidelity is the design task.**
+## 13. Benchmark Decomposition Before Candidate — MANDATORY IN BENCHMARK MODE
+Before materially redesigning, extract benchmark strengths in:
+1. shell/navigation;
+2. typography/readability;
+3. density/whitespace;
+4. worklist/table rhythm;
+5. search/filter/tabs;
+6. status/action distinction;
+7. primary workflow visibility;
+8. interaction/click burden;
+9. context/history presentation;
+10. overall visual hierarchy.
 
-### B. Benchmark Mode
-When reference is inspiration/quality benchmark rather than exact-copy request:
-`UNDERSTAND → EXTRACT STRENGTHS → PRESERVE → CORRECT DEFECTS → EXCEED`.
-Candidate must not regress without workflow/safety reason.
+Classify each final result:
+`PRESERVED / IMPROVED / REGRESSED — JUSTIFIED / REGRESSED — FAIL`.
 
-Do not confuse these two modes.
+## 14. First-Viewport No-Regression
+At the same viewport as benchmark, candidate must not materially worsen:
+- content/work surface ratio;
+- number of useful work rows visible;
+- workload visibility;
+- patient/work identity prominence;
+- status clarity;
+- next-action clarity;
+- visual noise;
+- whitespace efficiency.
 
-## 12. Navigation
-Outside Exact Mode, module-level navigation should represent real module workspaces. In Exact Mode, preserve reference navigation geometry/treatment and map module jobs into it without restyling the shell.
+If worse without material workflow/safety benefit = `FAIL — BENCHMARK REGRESSION`.
 
-## 13. Worklist
+## 15. Navigation
+Outside Exact Mode, module navigation represents real module jobs. In Benchmark Mode preserve benchmark navigation strengths unless a workflow reason requires change. In Exact Mode preserve reference geometry/treatment.
+
+## 16. Worklist
 First viewport must reveal workload, identity, status, owner/timing/progression and Next Action. Actionable summary indicators must actually filter/navigate. No dead operational KPI.
 
-## 14. Professional Workspace
+## 17. Professional Workspace
 Assessment, estimate, approval, appointment/follow-up and utilization need work surfaces proportionate to importance. Do not reduce core professional work to tiny generic fields merely for coverage.
 
-## 15. Longitudinal / Versioning
+## 18. Longitudinal / Versioning
 Show prior/current event, version history, changed/unchanged, used vs remaining, next appointment/event and completion condition when applicable. Never silently overwrite professional assessment.
 
-## 16. State / Ownership / Data Continuity
+## 19. State / Ownership / Data Continuity
 State-changing actions must visibly mutate state, owner, history and relevant values. Toast-only success = FAIL. Handoff must create meaningful receiver state/queue.
 
-## 17. Function Completeness
+## 20. Function Completeness
 Every visible enabled control must work. Otherwise visibly disable it with truthful reason. Add/Create must create a real transaction in the correct queue.
 
-## 18. UX Decision Architecture
+## 21. UX Decision Architecture
 For each primary workspace:
 `User Goal → Decision Question → Evidence → Attention/Exception → Primary Action → Detail on Demand`.
 
 5-second test: Where am I? What needs attention? Current state/owner? What next? What evidence?
 
-## 19. Design Freedom
-Design Freedom applies only when Exact Reference Mode is **not** active. Exact Mode freezes visual grammar to the approved reference.
+## 22. Design Freedom
+- Exact Mode: fidelity overrides Design Freedom.
+- Benchmark Mode: Design Freedom applies only after benchmark strengths are identified and may not cause unjustified regression.
+- Open Design Mode: full Visual DNA-guided design freedom.
 
-## 20. Hospital-Facing Realism
+## 23. Hospital-Facing Realism
 No Demo/Prototype/Workshop/GAP/TBD/Factory/AI labels on normal hospital UI. Preserve hospital terminology until equivalence is confirmed.
 
-## 21. Implementation
+## 24. Implementation
 - one self-contained `index.html` when requested;
 - fictional reasonable mock data;
 - no emoji UI;
@@ -166,27 +208,60 @@ No Demo/Prototype/Workshop/GAP/TBD/Factory/AI labels on normal hospital UI. Pres
 - no workflow-breaking console errors;
 - runtime test required.
 
-## 22. Execute Before Pass
+## 25. Render Before Deep Build — BENCHMARK MODE
+Build/render the primary workspace early. Compare against benchmark before investing in deep secondary functions.
+
+If primary candidate is visibly weaker:
+`STOP → REDESIGN → RENDER AGAIN`.
+
+Do not hide a weak visual candidate behind function completeness.
+
+## 26. Execute Before Pass
 Execute every material scenario from operational entry through queue, ownership, work, handoff/decision, scheduled return, reassessment, utilization, ledger, exception/recovery and closure as applicable.
 
-## 23. Independent Tests
+## 27. Independent Tests
 1. Workflow Fidelity
 2. Queue Topology / Operational UX
 3. Executable Scenario / Runtime
 4. Function Inventory
 5. Agent Function Test
 6. Independent Premium Design Review
-7. **Exact Reference Visual Diff when Exact Mode is active**
-8. Human Visual Review before Gold/Signature
+7. Exact Reference Visual Diff when Exact Mode
+8. **Benchmark Before/Candidate Comparison when Benchmark Mode**
+9. Human Visual Review before Gold/Signature
 
 Builder explanation is never independent evidence.
 
-## 24. Final Factory Rule
-Normal mode:
+## 28. Benchmark Comparison Evidence — MANDATORY
+In Benchmark Mode produce:
+`Dimension | Benchmark Strength | Candidate Change | Result | Evidence/Reason`.
+
+Rendered benchmark and candidate must be compared at the same viewport. Source inspection alone is insufficient.
+
+Reviewer must answer:
+- What was preserved?
+- What was improved?
+- What regressed?
+- Is each regression justified?
+- Would a neutral reviewer choose Candidate over Benchmark for the real job?
+
+If No → `FAIL — BENCHMARK NOT EXCEEDED`.
+
+## 29. Human Visual Veto
+If the user says the benchmark looks/works better, candidate immediately returns to FAIL regardless of AI self-score, Master compliance or Function PASS.
+
+Do not argue compliance. Correct the design.
+
+## 30. Final Factory Rule
+Open mode:
 `Business Truth PASS + Queue PASS + Workflow PASS + Function PASS + Runtime PASS + Design PASS → Human Visual Review`.
 
 Exact mode:
 `Business Truth PASS + Workflow PASS + Function PASS + Runtime PASS + EXACT REPLICATION PASS → Human Visual Review`.
 
-**Functional PASS cannot override Visual/Exact Replication FAIL.**
-**A visibly different design after an explicit Copy 100% request is Factory FAIL.**
+Benchmark mode:
+`Business Truth PASS + Workflow PASS + Function PASS + Runtime PASS + Benchmark Strength Preservation PASS + Benchmark Improvement PASS → Human Visual Review`.
+
+**Function PASS cannot override Visual FAIL.**
+**Function richness cannot compensate for benchmark regression.**
+**A candidate materially worse than a Human-approved benchmark is Factory FAIL.**

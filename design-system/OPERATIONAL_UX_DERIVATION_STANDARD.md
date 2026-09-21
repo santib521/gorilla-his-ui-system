@@ -189,6 +189,36 @@ Every enabled visible primary control must work. Add/Create must create a real t
 
 Dead enabled controls = FAIL.
 
+## 16A. Compact Entry + Local Progressive Disclosure
+For Consult/Request/Order and other data-entry-heavy workspaces, the default interaction target is a compact primary workspace that minimizes scrolling and pointer travel without sacrificing readability or safety.
+
+Mandatory derivation:
+`Source semantics → Entry sequence → Parent control → Conditional child data → Local reveal → Validation → Submit → Observable receiving queue`.
+
+Rules:
+- Sequence controls by the user's actual entry workflow, not by paper section number or implementation convenience.
+- Fit the normal path within one primary viewport when reasonably possible.
+- Do not permanently display conditional detail.
+- On select/toggle/check, reveal the dependent fields **directly beneath or within that selected block**.
+- Never reveal dependent content as a detached section far below the trigger.
+- Use a subtle bordered container to communicate parent/child relationship without card sprawl.
+- After successful cross-role submission, prototypes should make the resulting transaction observable in the receiving Worklist/queue when that handoff is material.
+- Keep requester-side mock history intentionally small when it is not the user's primary work surface; operational Worklists should contain enough varied records to demonstrate filtering/states/actions.
+
+### Source-Form Semantic Mapping Gate
+When a hospital form is the controlling primary evidence, inspect the complete form plus its instructions before converting it into UI.
+
+Create/verify:
+`Source item → exact meaning → parent/child relationship → multi/single select → conditional detail → downstream effect`.
+
+Do not invent a replacement taxonomy merely because it is visually simpler.
+
+Failure:
+- `FAIL — EXCESSIVE SCROLL`
+- `FAIL — NONLOCAL DISCLOSURE`
+- `FAIL — INPUT SEQUENCE`
+- `FAIL — SOURCE FORM SEMANTIC DRIFT`
+
 ## 17. Premium Composition Direction
 Target premium, simple, calm, precise, professional, expensive without decorative luxury. Use hierarchy, Thai readability, deliberate density, restrained semantics and state-driven actions.
 

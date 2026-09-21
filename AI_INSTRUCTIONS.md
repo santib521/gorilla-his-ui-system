@@ -139,6 +139,28 @@ Generic `table + generic drawer + two-column form + Next` cannot substitute for 
 
 Failure: `FAIL — PROFESSIONAL WORKSPACE DEPTH` or `FAIL — TEMPLATE-LED COMPOSITION`.
 
+## 9A. Single-Viewport / Progressive Disclosure — HARD GATE
+For data-entry, request, consult, order and professional workspaces, optimize the normal working path for one primary viewport whenever the information volume reasonably permits.
+
+Core rule:
+`Sequence first → progressive disclosure → local expansion → minimal pointer travel`.
+
+- Arrange fields in the actual order users think and enter data; do not force pointer movement up/down/back across distant sections.
+- Keep the normal path compact. Avoid long paper-form translation, stacked section sprawl, oversized whitespace and unnecessary vertical scrolling.
+- Conditional content stays hidden until its controlling choice is selected.
+- Reveal conditional content **immediately adjacent to / inside the controlling section**. Do not append the revealed detail at the bottom of the page or in a distant later section.
+- Use calm, explicit visual containment (subtle border/background/heading) so the relationship between trigger and revealed detail is obvious.
+- Preserve source-document semantics before simplifying. A parent option and its child topics must not be collapsed into a new taxonomy without evidence.
+- Before UI conversion, inspect the complete controlling source form/instruction and map `Source field → meaning → dependency → UI control → reveal location`.
+- If one viewport is impossible without unsafe density, preserve sequence and use the minimum scrolling necessary; never shrink text/controls merely to claim single-screen compliance.
+- Tabs/steps are acceptable only when they represent materially different work stages, not as a substitute for good field sequencing.
+
+Hard failures:
+`FAIL — EXCESSIVE SCROLL`
+`FAIL — NONLOCAL DISCLOSURE`
+`FAIL — INPUT SEQUENCE`
+`FAIL — SOURCE FORM SEMANTIC DRIFT`.
+
 ## 10. Reference Mode
 ### EXACT REPLICATION
 Explicit Copy 100%/pixel-match/replicate exactly → Exact Standard.

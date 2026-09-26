@@ -89,7 +89,7 @@ Thai, human-readable, workshop/approval oriented.
 Mandatory:
 - application objective/scope;
 - Application Workflow;
-- Role-Based Swimlane for every material multi-role scenario + Thai narrative;
+- Role-Based Swimlane **Diagram** for every material multi-role scenario + Thai narrative; a role-column table alone is not a Swimlane;
 - Worklist/Queue architecture;
 - transaction/lifecycle explanation;
 - Function List separated into `Hospital Requirement / Standard Recommended Function / CR`;

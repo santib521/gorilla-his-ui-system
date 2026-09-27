@@ -89,7 +89,7 @@ Thai, human-readable, workshop/approval oriented.
 Mandatory:
 - application objective/scope;
 - Application Workflow;
-- Role-Based Swimlane **Diagram** for every material multi-role scenario + Thai narrative; a role-column table alone is not a Swimlane;
+- Editable Word-native Role-Based Swimlane for every material multi-role scenario + Thai narrative; image-only output is not authoritative. A Word table is acceptable only when it functions as a visual swimlane with role lanes, process/decision/branch and handoff semantics; a prose role matrix is not a Swimlane;
 - Worklist/Queue architecture;
 - transaction/lifecycle explanation;
 - Function List separated into `Hospital Requirement / Standard Recommended Function / CR`;
@@ -100,7 +100,9 @@ Mandatory:
 - requirement/function trace summary;
 - Open Hospital Decisions clearly separated from confirmed requirements.
 
-Swimlane is document authority:
+Editable Swimlane is document authority; PNG/SVG/PDF is preview/export only. The same rule applies to Thai, English and Bilingual deliverables.
+
+Swimlane workflow contract:
 `Start → Role → Activity → Decision → System/Record → Handoff/Wait → Exception → End`.
 
 Do not create a Swimlane product screen unless explicitly required.

@@ -250,3 +250,8 @@ Factory PASS = governed Candidate only.
 `Business Truth PASS + Blueprint PASS + Knowledge Applied PASS + UX Contract PASS + Primary Render PASS + Workflow PASS + Function PASS + Runtime PASS + Independent Design/Benchmark PASS → Human Visual Review`.
 
 **No unexecuted PASS. No generic-template PASS. No benchmark regression PASS.**
+
+## Swimlane Diagram Engineering Gate
+For every material multi-role workflow, apply `factory-gate/SWIMLANE_DIAGRAM_ENGINEERING_STANDARD.md`.
+A semantic-correct diagram still FAILS if rendered connector routing, branch clarity, lane ownership, or visual hierarchy fails the standard.
+Builder/Layout Engineer cannot be the sole Visual QA approver. Rendered-artifact review is mandatory before delivery.

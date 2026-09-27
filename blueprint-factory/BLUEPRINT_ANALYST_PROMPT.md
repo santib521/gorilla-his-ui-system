@@ -78,7 +78,7 @@ HARD RULE: No material function may exist only in prose. Every buildable functio
 Thai language. Human-readable and workshop/approval oriented, not the direct coding contract.
 Mandatory content:
 - Executive application scope/objective.
-- Application Workflow with **actual rendered Role-Based Swimlane Diagram** for every material multi-role scenario plus Thai explanation. A role-column table is supporting detail only and does not satisfy the Swimlane requirement.\n- Swimlane must follow `ROLE_BASED_SWIMLANE_STANDARD.md`: Lane = accountable Role/System; activities and decisions stay in the responsible lane; cross-lane arrows show real handoff; material branches are labelled.
+- Application Workflow with **editable Word-native Role-Based Swimlane** for every material multi-role scenario plus Thai explanation. An image-only Swimlane or prose role matrix does not satisfy the requirement. An editable Word table is acceptable only when it visually represents lanes, process steps, decisions/branches and handoffs.\n- Swimlane must follow `ROLE_BASED_SWIMLANE_STANDARD.md`: Lane = accountable Role/System; activities and decisions stay in the responsible lane; handoff and material branches are explicit. The DOCX Swimlane is the editable master; PNG/SVG/PDF may be preview/export only. This applies to Thai, English and Bilingual outputs.
 - Worklist/Queue architecture and lifecycle explanation.
 - Function List separated into:
   `Hospital Requirement / Standard Recommended Function / CR` with evidence/status.

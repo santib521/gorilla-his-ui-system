@@ -1,4 +1,4 @@
-# Gorilla HIS — Role-Based Swimlane Workflow Standard v1.1
+# Gorilla HIS — Role-Based Swimlane Workflow Standard v1.2
 
 Status: `FACTORY MASTER — HARD GATE`
 
@@ -89,7 +89,7 @@ PASS requires:
 Any material violation = `FAIL — ROLE-BASED SWIMLANE`.
 
 ## 11. Draft Application Contract
-For each material multi-role scenario, the Draft Application must contain an **editable Role-Based Swimlane** plus narrative/detail as needed.
+For each material multi-role scenario, the Draft Application must contain a **Word-native editable visual Role-Based Swimlane** plus narrative/detail as needed. The DOCX itself is canonical; companion formats cannot replace it.
 
 Recommended order:
 `Editable Application Workflow → Narrative → Detailed Workflow/Decision Table → Role Matrix`.

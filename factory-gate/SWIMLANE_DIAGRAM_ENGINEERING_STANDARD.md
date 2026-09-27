@@ -1,4 +1,4 @@
-# Gorilla HIS — Swimlane Diagram Engineering & Review Standard v1.0
+# Gorilla HIS — Swimlane Diagram Engineering & Review Standard v1.1
 
 ## 1. Purpose
 This standard upgrades Factory workflow-diagram production from “place shapes and connect them” to professional cross-functional process modeling.
@@ -125,3 +125,34 @@ A raster screenshot may be used only for preview, never as the editable master.
 - [ ] rendered artifact visually inspected
 - [ ] independent visual reviewer PASS
 - [ ] human veto resolved
+
+
+## 11. Semantic Regression Gate — MANDATORY BEFORE DRAWING
+The diagram agent MUST retrieve and preserve confirmed module workflow facts from the current Blueprint / approved mockup / Hospital Evidence before creating geometry.
+
+For every confirmed fact, create a Semantic Invariant row:
+Invariant ID | Confirmed fact | Required actor | Required state/transaction | Required downstream obligation | Source.
+
+A diagram FAILS before rendering if it omits, reverses, bypasses, or weakens a Semantic Invariant.
+
+Example class of invariant:
+APPROVED entitlement is not equivalent to utilization. If the approved workflow requires Social Worker notification/coordination and reassessment before each utilization, the swimlane MUST show those obligations between approval and utilization. It must not jump directly from Approve to generic Follow-up/Closure.
+
+## 12. Gate Execution / No Self-Certification
+Writing this standard is not equivalent to applying it.
+Before delivery, the build record MUST contain:
+1. Semantic Skeleton reviewed against current Blueprint / approved mockup;
+2. Semantic Invariant checklist with PASS/FAIL;
+3. rendered slide inspection results;
+4. connector collision/ambiguity results;
+5. reviewer identity/role distinct from the layout builder when an independent reviewer is available;
+6. unresolved FAIL => STOP delivery.
+
+If independent review is unavailable in the execution environment, the artifact MUST NOT be described as independently reviewed or Factory-Gate PASS.
+
+## 13. Regression Learning
+When human review identifies a previously confirmed workflow fact that disappeared from a later diagram:
+- classify as Semantic Regression, not a cosmetic issue;
+- restore the confirmed fact from authoritative project evidence;
+- add the fact to the module Semantic Invariants;
+- rebuild from Semantic Skeleton rather than patching connector geometry only.

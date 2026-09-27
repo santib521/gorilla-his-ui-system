@@ -195,3 +195,16 @@ Hospital evidence remains distinct from:
 `Blueprint Completeness PASS → DOCX Consistency PASS → Knowledge Compilation PASS → Operational UX Contract PASS → Primary Workspace Render PASS → Blueprint/HTML Traceability PASS → Workflow Fidelity PASS → Function PASS → Runtime PASS → Independent Design/Benchmark PASS`.
 
 Human Visual Review remains required before Gold promotion.
+
+## Editable Workflow Master — HARD GATE
+For every material multi-role workflow, deliver an editable workflow master:
+`Workflow_<Module>_<Language>.pptx`.
+
+The PPTX is a supporting QA/review artifact and does not replace the four canonical product deliverables. It must use native editable shapes/connectors and follow `ROLE_BASED_SWIMLANE_STANDARD.md`.
+
+The Draft Application DOCX may embed/render a preview, but:
+- image-only Swimlane without editable master = FAIL;
+- table-only Swimlane = FAIL;
+- editable conversion that degrades the approved visual grammar = FAIL;
+- no delivery may claim visual PASS without render-and-inspect evidence;
+- no delivery may claim independent review unless a reviewer separate from the builder actually reviewed it.

@@ -89,7 +89,7 @@ Thai, human-readable, workshop/approval oriented.
 Mandatory:
 - application objective/scope;
 - Application Workflow;
-- Editable Word-native Role-Based Swimlane for every material multi-role scenario + Thai narrative; image-only output is not authoritative. A Word table is acceptable only when it functions as a visual swimlane with role lanes, process/decision/branch and handoff semantics; a prose role matrix is not a Swimlane;
+- Word-native editable **visual** Role-Based Swimlane for every material multi-role scenario + Thai narrative. The visual grammar must remain conventional swimlane (Role Lanes + Process Shapes + Decision Diamonds + directional Connectors + branch labels + cross-lane handoffs). Image-only, PowerPoint substitution, or a role-column/table representation presented as the Swimlane is not acceptable;
 - Worklist/Queue architecture;
 - transaction/lifecycle explanation;
 - Function List separated into `Hospital Requirement / Standard Recommended Function / CR`;
@@ -100,7 +100,7 @@ Mandatory:
 - requirement/function trace summary;
 - Open Hospital Decisions clearly separated from confirmed requirements.
 
-Editable Swimlane is document authority; PNG/SVG/PDF is preview/export only. The same rule applies to Thai, English and Bilingual deliverables.
+Editable visual Swimlane inside the DOCX is document authority. PNG/SVG/PDF/PPTX may be preview/companion only and cannot replace it. Before delivery, render and inspect every swimlane page, verify Word editability, run independent semantic/visual review, and honor Human Visual Veto. If Word-native editability cannot be produced or verified, STOP rather than substitute another format. The same rule applies to Thai, English and Bilingual deliverables.
 
 Swimlane workflow contract:
 `Start → Role → Activity → Decision → System/Record → Handoff/Wait → Exception → End`.

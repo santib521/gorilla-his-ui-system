@@ -255,3 +255,80 @@ Factory PASS = governed Candidate only.
 For every material multi-role workflow, apply `factory-gate/SWIMLANE_DIAGRAM_ENGINEERING_STANDARD.md`.
 A semantic-correct diagram still FAILS if rendered connector routing, branch clarity, lane ownership, or visual hierarchy fails the standard.
 Builder/Layout Engineer cannot be the sole Visual QA approver. Rendered-artifact review is mandatory before delivery.
+
+
+## 19. Delivery Evidence Lock — HARD GATE
+
+Purpose: prevent a Builder or conversational agent from claiming that a visible defect is fixed when only source/CSS/static structure was changed.
+
+### 19.1 Claim-to-Evidence Rule
+Any user-facing completion claim such as `fixed`, `removed`, `hidden`, `works`, `PASS`, `ready`, `clean`, or equivalent requires evidence from the **same final candidate artifact**.
+
+Allowed status language:
+- `IMPLEMENTED — NOT RUNTIME VERIFIED` when code was changed but the running candidate was not executed.
+- `RUNTIME VERIFIED` only after the final artifact was opened/executed and the affected state was observed.
+- `VISUAL VERIFIED` only after a render/screenshot of the affected viewport/state was reviewed.
+- `PASS` only when all applicable hard gates have executed evidence.
+
+Static source inspection, CSS inspection, DOM-string inspection, file existence, syntax success, or Builder explanation can never upgrade a claim to Runtime/Visual PASS.
+
+### 19.2 Regression Reproduction Gate
+Every human-reported defect becomes a mandatory regression scenario before delivery.
+
+Record:
+`DEFECT-ID → exact screen/state → viewport/device mode → reproduction steps → expected visible result → before evidence → fix → after evidence → regression result`.
+
+A defect is not closed merely because the suspected code path changed.
+
+### 19.3 Re-render / Re-entry Proof
+If the defect can reappear after `render()`, navigation, role switch, responsive mode switch, reload, save, handoff, or return-to-work, the independent test must execute those transitions before closure.
+
+For UI elements that must not be visible:
+1. open the affected screen;
+2. confirm absence in the initial rendered viewport;
+3. trigger the relevant re-render/navigation;
+4. return to the screen;
+5. confirm absence again;
+6. capture runtime/visual evidence.
+
+### 19.4 Builder / Tester / Reviewer Separation
+The same logical agent/pass that implemented a change cannot grant final Runtime or Visual PASS.
+
+Required roles:
+- **Builder** — implements the change and reports `IMPLEMENTED — NOT VERIFIED`;
+- **Runtime Tester** — executes the regression scenario against the final artifact;
+- **Visual Reviewer** — inspects the rendered affected viewport for visual residue/regression;
+- **Traceability Reviewer** — confirms no unapproved UI/function was introduced.
+
+If independent execution is unavailable, status remains `BLOCKED — INDEPENDENT VERIFICATION NOT EXECUTED`. Never simulate or invent a reviewer.
+
+### 19.5 No Unrequested UI Insertion
+A fix must not introduce a new user-facing control, explanation panel, mode selector, badge, navigation element, or workflow step unless it is:
+1. explicitly required by Blueprint/Hospital evidence; or
+2. an Expert Recommendation clearly approved for prototype use.
+
+Any unrequested user-facing insertion is `FAIL — UNAUTHORIZED UI SURFACE`.
+
+Before delivery run reverse trace:
+`Every new visible control/surface → Blueprint FN/REQ/approved recommendation`.
+No trace = remove it.
+
+### 19.6 Final-Candidate Identity Lock
+All QA evidence must identify the exact artifact/version/hash under test.
+If the artifact changes after Runtime/Visual verification, affected verification is invalidated and must be rerun.
+
+### 19.7 Delivery Block
+Do not provide a user download as a completed/fixed candidate when a material requested correction lacks applicable Runtime + Visual evidence.
+
+Allowed delivery wording when tools prevent execution:
+`Candidate generated; Runtime/Visual verification not executed, so the requested defect is not yet claimed fixed.`
+
+### 19.8 Human Defect Reopen Rule
+If the Human shows that a delivered defect remains visible:
+- immediately mark prior result `FALSE PASS — DEFECT REPRODUCED`;
+- reopen the regression scenario;
+- identify which evidence gate was missing or invalid;
+- strengthen the Factory rule when the failure pattern is systemic;
+- do not defend the previous PASS.
+
+**Final rule: no evidence from the final running artifact = no completion claim.**

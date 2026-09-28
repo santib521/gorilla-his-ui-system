@@ -332,3 +332,80 @@ If the Human shows that a delivered defect remains visible:
 - do not defend the previous PASS.
 
 **Final rule: no evidence from the final running artifact = no completion claim.**
+
+
+## 20. Executable Release Controller — FAIL-CLOSED HARD GATE
+
+Purpose: convert Factory governance from advisory text into a release-control contract. Building an artifact never grants permission to deliver it.
+
+### 20.1 Separation of Build and Release
+`BUILD != DELIVER`.
+
+Required release chain:
+`Builder → Structural Gate → Runtime Regression → Visual Evidence → Traceability Review → Release Controller → Human Review`.
+
+Only the Release Controller may label an artifact `DELIVERABLE CANDIDATE`.
+
+### 20.2 Fail-Closed Rule
+Any required gate with status `FAIL`, `NOT EXECUTED`, `BLOCKED`, missing evidence, stale evidence, or evidence from a different artifact version/hash blocks delivery.
+
+The system must never downgrade a missing execution step into a warning merely to produce a file.
+
+### 20.3 Patch Debt / Duplicate Authority Gate
+Before runtime testing, inspect the final source for patch accumulation.
+
+FAIL when a material UI behavior has competing implementations, including:
+- duplicate renderer/function definitions intended to control the same surface;
+- appended CSS/JS overrides used to mask an obsolete implementation instead of removing/reconciling it;
+- stale renderer paths that can recreate a removed control after navigation/re-render;
+- multiple authorities for the same state, layout, workflow action or component;
+- version patches whose order determines correctness.
+
+Required result:
+`PASS — SINGLE AUTHORITY` or `FAIL — PATCH DEBT / DUPLICATE AUTHORITY`.
+
+A defect fix that only appends another override to a known conflicting implementation is not releasable.
+
+### 20.4 Regression Registry
+Every Human-reported defect receives a persistent `REG-*` record containing:
+`Defect → Artifact → Screen/State → Viewport/Mode → Reproduction → Expected Result → Runtime Steps → Visual Assertion → Re-entry Assertion → Result`.
+
+Previously failed `REG-*` scenarios are mandatory for later versions touching the same surface.
+
+### 20.5 Runtime + Visual Pairing
+For user-visible defects, runtime and visual evidence are a pair:
+- Runtime proves behavior/state;
+- Visual evidence proves what the Human actually sees.
+
+Neither source inspection nor DOM absence alone is sufficient for a visual defect.
+
+### 20.6 Artifact Fingerprint
+Release evidence must identify the exact final artifact by filename/version and content fingerprint/hash.
+Any post-verification source mutation invalidates the affected evidence and returns the artifact to the relevant gate.
+
+### 20.7 Release Manifest
+Before delivery create/maintain a release decision containing:
+`Artifact Fingerprint | Blueprint Trace | Structural Gate | Patch Debt Gate | Runtime Scenarios | Visual Evidence | Regression Registry | Independent Review | Release Decision`.
+
+Allowed decisions:
+- `DELIVERABLE CANDIDATE — ALL REQUIRED GATES EXECUTED`
+- `BLOCKED — REQUIRED GATE NOT EXECUTED`
+- `REJECTED — GATE FAILED`
+
+### 20.8 Multi-Agent Evidence Contract
+Multi-Agent means separation of evidence-producing responsibilities, not multiple simulated opinions.
+
+- Domain/BA/Workflow reviewers validate Hospital workflow truth and requirement trace.
+- Builder produces the artifact but cannot release it.
+- Runtime Tester executes the final artifact.
+- Visual QA reviews final rendered evidence.
+- Traceability Reviewer checks unauthorized/missing surfaces.
+- Release Controller evaluates evidence only.
+
+If these independent evidence passes cannot actually be executed, do not claim Multi-Agent PASS.
+
+### 20.9 Delivery Tooling Rule
+When the environment supports executable browser/render tooling, the Factory must use it for material UI corrections before delivery.
+When it does not, delivery remains blocked or explicitly unverified; prose confidence cannot substitute.
+
+**Final enforcement rule: a file can exist without being releasable. The Release Controller releases evidence, not confidence.**

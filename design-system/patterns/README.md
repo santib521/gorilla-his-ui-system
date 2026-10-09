@@ -19,3 +19,8 @@ Pattern = โครงหน้าจอระดับ **หน้าเต็�
 ## กฎการเพิ่ม pattern ใหม่
 
 เหมือน component: ต้องผ่านที่ประชุม weekly design sync ก่อน ห้ามเพิ่มเองโดยไม่แจ้งทีม
+
+
+## Approved reference-derived patterns
+
+- [Minimal Paper EMR](./minimal-paper-emr.md) — clinical note workspace derived from Education V2; reuse source regions, do not recreate from scratch.

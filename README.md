@@ -11,6 +11,7 @@ Design System + Mockup Factory สำหรับระบบ Gorilla HIS (Hospi
 
 0. **อัปเดต 2026-08-31 — Visual Audit v1.2:** เทียบกับภาพหน้าจอจริง 29 ภาพใน `screenshots/actual-gorilla-his/` แล้ว — ปรับสีหลักเป็นโทน indigo/periwinkle, เพิ่ม component `stat-card.html` / `patient-summary-panel.html`, เพิ่ม pattern `dashboard-home.md`, เพิ่ม module `or-anesthesia/` และ `billing/` (ยืนยันว่ามีจริง) ดูรายละเอียดที่ `design-system/design-rules.md` § 0 และ changelog ใน `AI_INSTRUCTIONS.md` § 8
 1. อ่าน [`AI_INSTRUCTIONS.md`](./AI_INSTRUCTIONS.md) — กติกาทั้งหมด (อ่านครั้งแรกที่เข้าร่วมทีม)
+1A. เปิด [`design-system/APPROVED_REFERENCE_TEMPLATE_REGISTRY.md`](./design-system/APPROVED_REFERENCE_TEMPLATE_REGISTRY.md) — เลือก Gold HTML/Component ก่อนสร้างหน้าจอใหม่
 2. Copy `modules/_feature-template/` ไปเริ่มงานใน `modules/<module>/<feature>/` แล้วกรอก `feature-spec.md` ก่อน
 3. เปิด [`MOCKUP_PROMPT_TEMPLATE.md`](./MOCKUP_PROMPT_TEMPLATE.md) — copy พรอมป์นี้ไปใช้ทุกครั้งที่สร้าง feature ใหม่
 4. ทำตาม [`WORKFLOW.md`](./WORKFLOW.md) — branch, PR, QA gate, merge
@@ -30,6 +31,10 @@ gorilla-his-ui-system/
 │   ├── design-rules.md         ← หลักการออกแบบเชิงภาพ, กฎสี, accessibility
 │   ├── ux-rules.md              ← หลักการเชิงพฤติกรรม/โต้ตอบ (action, worklist, state)
 │   ├── tokens.css               ← Design tokens (สี/spacing/font) — ใช้เท่านั้น ห้าม hardcode
+│   ├── APPROVED_REFERENCE_TEMPLATE_REGISTRY.md ← Gold references + component lookup map
+│   ├── reference-templates/
+│   │   ├── Social_V2.html        ← Human-approved operational UI reference
+│   │   └── Education_V2.html     ← Human-approved clinical EMR / Minimal Paper reference
 │   ├── components/              ← 15 component จริงที่ใช้งานได้ (copy ไปใช้ต่อ)
 │   └── patterns/                 ← โครงหน้าจอระดับ pattern (list-detail, order-entry, approval, dashboard-home ฯลฯ)
 ├── screenshots/

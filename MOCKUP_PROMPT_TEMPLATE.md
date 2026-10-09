@@ -52,6 +52,28 @@ Record:
 Target:
 **Preserve proven strengths → correct business/workflow defects → visibly exceed benchmark.**
 
+## 4A. APPROVED TEMPLATE / COMPONENT REUSE — HARD GATE
+
+Read `design-system/APPROVED_REFERENCE_TEMPLATE_REGISTRY.md` before building.
+
+Select source by request:
+- **Social_V2.html** → primary operational shell and interaction reference when explicitly requested.
+- **Education_V2.html** → clinical EMR / Minimal Paper note and progress-note reference only.
+- **Dashboard KPI card** → `components/stat-card.html` or `components/enterprise-kpi-strip.html` according to the dashboard archetype.
+- **Patient Banner** → `components/patient-banner.html`; detailed context → `components/patient-summary-panel.html`.
+- **Worklist** → `components/worklist.html` plus applicable Worklist standards.
+
+Required approach:
+1. Start from the selected source HTML or component, not from a newly invented shell.
+2. Preserve its structure, CSS classes/tokens, typography, spacing, navigation and interaction grammar.
+3. Adapt target roles, labels, fields, workflow states and mock data without retaining source-module identity.
+4. Never bring Education roles/content into a non-Education module or Social Work business rules into another module.
+5. Keep the canonical source unchanged; work on a feature copy.
+6. Include a Source Reuse Map and state which exact regions were reused.
+7. If the source cannot be accessed, stop and report that blocker. Do not silently approximate it from memory.
+
+A replacement that merely resembles an existing approved component is not accepted as reuse.
+
 ## 5. DESIGN — PRODUCT JUDGMENT
 Derive obvious capabilities from real work.
 

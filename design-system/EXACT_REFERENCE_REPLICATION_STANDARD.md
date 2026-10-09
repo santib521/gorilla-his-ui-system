@@ -12,6 +12,10 @@ Activate **EXACT REPLICATION MODE** when the user says or clearly means:
 
 When active, this standard overrides Visual DNA defaults, generic Gorilla shell rules, Design Freedom, benchmark adaptation, and any instruction to improve/exceed/reinterpret the supplied visual.
 
+## 1A. Canonical reference registry
+
+Before implementation, consult `APPROVED_REFERENCE_TEMPLATE_REGISTRY.md`. It identifies `reference-templates/Social_V2.html` as the operational-module Gold reference and `reference-templates/Education_V2.html` as the clinical EMR / Minimal Paper reference. These source files are canonical and must remain unchanged during feature work.
+
 ## 2. Core Rule
 **Do not redesign the reference. Reproduce it.**
 

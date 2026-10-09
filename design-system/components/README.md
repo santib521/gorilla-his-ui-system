@@ -28,6 +28,18 @@ Every HTML file is a preview/reference for single-file mockups using `tokens.css
 | `patient-summary-panel.html` | Detailed patient context panel | Approved primitive |
 | `premium-operational-layout.html` | Historical rigid operational layout | **DEPRECATED Candidate — never use as Mandatory Master** |
 
+## Human-Approved Gold Reference Mapping
+
+Before creating a screen or component, consult `../APPROVED_REFERENCE_TEMPLATE_REGISTRY.md`.
+
+- Dashboard summary card → `stat-card.html` or `enterprise-kpi-strip.html` according to use case.
+- Patient Banner → `patient-banner.html`; rich clinical context → `patient-summary-panel.html`.
+- Worklist → `worklist.html` and the Worklist UX standards.
+- Minimal Paper clinical note / SOAP progress note → `../reference-templates/Education_V2.html` as the approved source reference; copy the relevant clinical documentation region into the target feature and adapt only required fields/actions.
+- Explicit Social V2 visual reference → `../reference-templates/Social_V2.html` is the shell/operational UI authority for that feature.
+
+Do not rebuild these from scratch. The two Gold HTML files are canonical source assets; do not edit them for a module-specific implementation.
+
 ## Selection Rule
 
 1. Start from the **Decision Question**, not from a component.

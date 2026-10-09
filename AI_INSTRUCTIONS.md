@@ -54,6 +54,7 @@ Never skip transaction, work obligation, queue, lifecycle, handoff, repeated wor
 9. determine Reference Mode:
    - `design-system/EXACT_REFERENCE_REPLICATION_STANDARD.md` for explicit exact/copy requests;
    - `design-system/BENCHMARK_IMPROVEMENT_STANDARD.md` for benchmark/improve/exceed requests or Human-approved quality references;
+9A. `design-system/APPROVED_REFERENCE_TEMPLATE_REGISTRY.md` — mandatory lookup for reusable Gold HTML/components
 10. `design-system/KNOWLEDGE_TO_DESIGN_COMPILATION_STANDARD.md`
 11. `design-system/OPERATIONAL_UX_DERIVATION_STANDARD.md`
 12. `design-system/OPERATIONAL_UX_CONTRACT_STANDARD.md`
@@ -68,6 +69,19 @@ Never skip transaction, work obligation, queue, lifecycle, handoff, repeated wor
 21. `factory-gate/FACTORY_GATE.md`
 
 Mandatory source inaccessible → report; never silently substitute AI memory.
+
+## 3A. Approved Reference Templates — HARD GATE
+
+Before designing any requested mockup, consult `design-system/APPROVED_REFERENCE_TEMPLATE_REGISTRY.md`.
+
+- `Social_V2.html` is a human-approved operational-module Gold reference. When explicitly named, it is the source HTML to copy/adapt in place for shell, navigation, patient context, worklist, forms and interaction grammar.
+- `Education_V2.html` is a human-approved clinical EMR / Minimal Paper Gold reference. Reuse only the relevant clinical documentation and progress-note regions when requested; never import Education-specific roles, menus or business workflows by accident.
+- For Dashboard cards, Patient Banner, Worklist and Minimal Paper EMR, use the registry's explicit source mapping before creating anything new.
+- Reuse an existing component/pattern or exact reference region before building a substitute. “Looks similar” is not proof of reuse.
+- Keep canonical reference files immutable during module work. Copy them into the target feature, then make target-specific changes there.
+- Produce a Source Reuse Map before implementation and run reference comparison after implementation.
+- A visible drift from the selected Gold reference without a documented workflow/safety reason is a Design Gate failure.
+- A functional mockup must connect controls, forms, queue rows, KPI counts and state changes to shared mock data. Label-only role switching, dead controls, contradictory KPI/worklist counts or a success toast without a data mutation are failures.
 
 ## 4. Truth Authority
 Business: `Hospital Confirmed/Primary Evidence → Application Blueprint → AI interpretation`.

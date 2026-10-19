@@ -1,4 +1,4 @@
-# WORKFLOW.md — Git & QA Process
+# WORKFLOW.md — Git & QA Process v1.1.0
 
 ## 0. Source Version / Baseline Lock (MANDATORY)
 

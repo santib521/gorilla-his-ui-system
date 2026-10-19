@@ -1,5 +1,6 @@
 # Source Version & Baseline Lock — Gorilla HIS Factory Gate
 
+**Document Version:** 1.0.0  
 **Status:** Mandatory Factory Gate (proposed on branch `mockup/factory-source-version-gate-ti`; effective on `main` after review and merge)  
 **Owner:** Factory / Product Governance  
 **Applies to:** Every HTML mockup, prototype, design correction, workflow change, repair, merge, regression fix, and regenerated artifact.
@@ -68,7 +69,7 @@ Change Scope: <authorized change>
 
 ## 4. Mandatory Source Version Manifest
 
-Create/maintain `SOURCE_VERSION_MANIFEST.md` for the feature, or an equivalent manifest bound to the release. At minimum record:
+Create/maintain `SOURCE_VERSION_MANIFEST.md` for the feature using `factory-gate/SOURCE_VERSION_MANIFEST_TEMPLATE.md`, or an equivalent manifest bound to the release. At minimum record:
 
 | Field | Required evidence |
 |---|---|
@@ -137,7 +138,7 @@ Every user-facing delivery/update must state:
 - **Gate evidence:** structural / runtime / visual / regression / independent review, each marked PASS, FAIL, or NOT EXECUTED.
 - **Release status:** one status from Section 7.
 
-If this contract cannot be completed, do not present the file as the corrected final candidate.
+If this contract cannot be completed, do not present the file as the corrected final candidate. The standard form is `factory-gate/SOURCE_VERSION_MANIFEST_TEMPLATE.md`.
 
 ## 9. Human defect reopen rule
 

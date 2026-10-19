@@ -1,4 +1,4 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.4
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.5
 
 **Repo:** `gorilla-his-ui-system`
 

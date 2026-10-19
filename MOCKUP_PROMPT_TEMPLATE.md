@@ -1,4 +1,4 @@
-# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.5
+# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.6
 
 > Blueprint/Hospital Evidence = Business Truth. Repository = Factory/Product Authority. User-supplied reference = benchmark quality floor for demonstrated strengths.
 

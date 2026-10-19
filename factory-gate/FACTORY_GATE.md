@@ -1,4 +1,4 @@
-# Gorilla HIS UI Factory Gate — Evolution Craft v3.3
+# Gorilla HIS UI Factory Gate — Evolution Craft v3.4
 
 Factory Gate is mandatory for every Gorilla HIS mockup. It protects business truth, workflow fidelity, recognizable product continuity, knowledge utilization, premium craft and runtime quality.
 

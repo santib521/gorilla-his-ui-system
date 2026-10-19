@@ -33,7 +33,7 @@ Components are primitives, not composition masters.
 
 ## 2. Factory Flow
 For every operational mockup:
-`Blueprint → Knowledge Compilation → Operational UX Contract → Reference/Benchmark Decomposition → Primary Workspace Build → Primary Workspace Render Gate → Full Build → Runtime/Scenario Proof → Traceability → Independent Design Challenge → Human Visual Review`.
+`Source Version / Baseline Lock → Blueprint → Knowledge Compilation → Operational UX Contract → Reference/Benchmark Decomposition → Primary Workspace Build → Primary Workspace Render Gate → Full Build → Runtime/Scenario Proof → Traceability → Independent Design Challenge → Human Visual Review`.
 
 Rules:
 - Knowledge Compilation FAIL = STOP
@@ -342,7 +342,7 @@ Purpose: convert Factory governance from advisory text into a release-control co
 `BUILD != DELIVER`.
 
 Required release chain:
-`Builder → Structural Gate → Runtime Regression → Visual Evidence → Traceability Review → Release Controller → Human Review`.
+`Source Version Lock → Builder → Structural Gate → Runtime Regression → Visual Evidence → Traceability Review → Release Controller → Human Review`.
 
 Only the Release Controller may label an artifact `DELIVERABLE CANDIDATE`.
 
@@ -409,3 +409,23 @@ When the environment supports executable browser/render tooling, the Factory mus
 When it does not, delivery remains blocked or explicitly unverified; prose confidence cannot substitute.
 
 **Final enforcement rule: a file can exist without being releasable. The Release Controller releases evidence, not confidence.**
+
+
+## 21. Source Version / Baseline Lock — HARD GATE
+
+Follow `factory-gate/SOURCE_VERSION_BASELINE_LOCK.md`. This gate is mandatory for every edit, repair, merge, style refinement, and regenerated HTML artifact.
+
+Before editing, record and verify:
+`Exact Source File + Version + Repo Path/Branch/Commit/Blob SHA or File SHA-256 → Parent Version/Hash → Authorized Change Scope → Protected Scope → Next Candidate Version`.
+
+Required enforcement:
+- Resolve the source using the authority precedence in `SOURCE_VERSION_BASELINE_LOCK.md`; never infer the current source from a filename such as FINAL/FIXED/LATEST or from memory.
+- Apply MAJOR.MINOR.PATCH versioning and embed version metadata in the candidate; never overwrite the approved baseline in place.
+- Produce a source/version manifest with the exact candidate fingerprint and test evidence.
+- Multi-Agent reviewers must all use the same source/parent/candidate hash. A mismatch invalidates evidence.
+- Conflict, missing source, missing hash, absent manifest, or uncertain parent version = `BLOCKED — BASELINE NOT IDENTIFIED`; do not build or deliver.
+- The exact final artifact hash must match the artifact used for Runtime and Visual verification. Any post-test change reopens the affected gates.
+- Every handoff must state source filename/version, parent version, candidate filename/version/hash, changes, protected scope and evidence status.
+- `FINAL`, `FIXED`, `LATEST`, or “syntax passed” are never substitutes for version identity or runtime evidence.
+
+Hard failure: `FAIL — VERSION TRACEABILITY`. Release decision remains blocked until all required evidence is bound to the exact final candidate.

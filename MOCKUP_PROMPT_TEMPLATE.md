@@ -1,4 +1,4 @@
-# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.5
+# MOCKUP_PROMPT_TEMPLATE.md — Gorilla HIS Rapid Operational Product Builder v2.6
 
 > Blueprint/Hospital Evidence = Business Truth. Repository = Factory/Product Authority. User-supplied reference = benchmark quality floor for demonstrated strengths.
 
@@ -9,6 +9,22 @@
 ## 0. READ AUTHORITY
 Read current `AI_INSTRUCTIONS.md`, `ACTUAL_WORKFLOW_DISCOVERY_STANDARD.md`, `OPERATIONAL_UX_DERIVATION_STANDARD.md`, `EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`, relevant Gorilla design standards, Application Blueprint/Hospital Evidence, and user-supplied benchmark.
 Mandatory source inaccessible → report; never replace it with AI memory.
+
+## 0A. SOURCE VERSION LOCK — MANDATORY HARD GATE
+
+Before analysis or coding, follow `factory-gate/SOURCE_VERSION_BASELINE_LOCK.md`.
+
+Start every run with a Source Version Manifest that states:
+- exact source filename/path and authority class;
+- explicit source version and repo branch/commit/blob SHA, or local artifact SHA-256;
+- exact parent candidate version/hash;
+- authorized requested change and protected surfaces;
+- next MAJOR.MINOR.PATCH candidate version;
+- conflict/ambiguity check and baseline decision.
+
+Source priority: explicitly named current source → latest Human-approved/accepted artifact → exact latest delivered candidate the user is continuing from → indexed approved mockup. If sources conflict or identity/hash is unavailable, stop with `BLOCKED — BASELINE NOT IDENTIFIED`; do not guess or merge.
+
+Never overwrite the baseline in place. Never use FINAL/FIXED/LATEST as the only version identifier. Every candidate must embed its version/parent metadata and include a manifest with final SHA-256. All Builder/Tester/Reviewer roles use the same candidate hash.
 
 ## 1. DISCOVER — FAST
 Extract only what prevents wrong product design:
@@ -142,6 +158,7 @@ Do not explain away a weaker candidate. Improve it.
 
 ## REQUIRED MOCKUP QA OUTPUT
 - `index.html`
+- `SOURCE_VERSION_MANIFEST.md` (exact source/parent/candidate versions, SHA-256, changed/protected scope, gate evidence)
 - `START_HERE.md`
 - Actual Workflow + State + Queue Model
 - Benchmark Delta when supplied
@@ -154,7 +171,7 @@ Do not explain away a weaker candidate. Improve it.
 - prompt/source trace
 
 ## FINAL HARD GATE
-`Business Truth PASS + Queue Topology PASS + Visual Candidate Veto PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function Inventory PASS + Runtime PASS + Independent Design PASS + Benchmark No-Regression PASS → Candidate — Ready for Human Visual Review`.
+`Source Version / Baseline Lock PASS + Business Truth PASS + Queue Topology PASS + Visual Candidate Veto PASS + Executable Scenario PASS + Workflow Fidelity PASS + Operational UX PASS + Function Inventory PASS + Runtime PASS + Independent Design PASS + Benchmark No-Regression PASS → Candidate — Ready for Human Visual Review`.
 
 **One generic Worklist for materially different user jobs = FAIL.**
 **Visible enabled function that does nothing = FAIL.**

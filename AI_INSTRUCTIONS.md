@@ -1,4 +1,4 @@
-# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.4
+# AI_INSTRUCTIONS.md — Gorilla HIS Mockup Constitution v4.5
 
 **Repo:** `gorilla-his-ui-system`
 
@@ -251,6 +251,21 @@ Builder cannot be sole approver of design or benchmark gates.
 
 A Standard-derived baseline alone cannot produce `HOSPITAL CONFIRMED`.
 
+## 19A. Source Version / Baseline Lock — HARD GATE
+
+Follow `factory-gate/SOURCE_VERSION_BASELINE_LOCK.md` before every edit, repair, merge, or regenerated mockup.
+
+Mandatory pre-edit declaration:
+`Exact Source File + Version + Locator/Hash → Parent Candidate Version/Hash → Authorized Change Scope → Protected Scope → Next Candidate Version`.
+
+- Do not start work if the source is ambiguous, not current, or its exact identity cannot be established.
+- Never choose a source based solely on `FINAL`, `FIXED`, `LATEST`, timestamps, or assistant memory.
+- Every candidate uses `MAJOR.MINOR.PATCH`, carries its source/parent version and exact artifact fingerprint, and records a change manifest.
+- Every QA agent must use the same candidate hash; any post-test mutation invalidates affected evidence.
+- A missing baseline/version manifest is `FAIL — VERSION TRACEABILITY`, blocking build promotion and delivery.
+- Every delivery response must name the exact source version, parent version, candidate version/hash, changed scope, protected-scope regression result, and gate status.
+- If multiple candidate sources conflict, stop and resolve the source; do not merge or patch by guess.
+
 ## 20. Critical Prohibitions
 - Never use AI memory as authoritative domain proof.
 - Never use Standard Flow to replace Hospital Reality.
@@ -274,3 +289,5 @@ A Standard-derived baseline alone cannot produce `HOSPITAL CONFIRMED`.
 **Visual PASS cannot override Workflow Fidelity FAIL.**
 **Knowledge Read cannot substitute for Knowledge Applied.**
 **Expert completeness cannot override evidence classification.**
+
+Version governance reference: `factory-gate/SOURCE_VERSION_BASELINE_LOCK.md` is a mandatory HARD GATE, not optional guidance.

@@ -1,5 +1,17 @@
 # WORKFLOW.md — Git & QA Process
 
+## 0. Source Version / Baseline Lock (MANDATORY)
+
+Before creating a branch or editing any artifact:
+1. Identify the exact source file/version and authority class.
+2. Record source path, branch/commit/blob SHA or local-file SHA-256.
+3. Record parent candidate version/hash, authorized change scope, and protected scope.
+4. Assign next MAJOR.MINOR.PATCH version; do not use FINAL/FIXED/LATEST as identity.
+5. Create/update `SOURCE_VERSION_MANIFEST.md` and embed version metadata in the artifact.
+6. If multiple possible baselines conflict, stop and resolve; do not edit by guess.
+
+Every PR must include source version, parent version/hash, candidate version/hash, changed scope, protected scope, regression scenarios, runtime/visual evidence and gate statuses. A candidate hash changed after testing must be retested. Follow `factory-gate/SOURCE_VERSION_BASELINE_LOCK.md`.
+
 ## 1. Branch Naming
 
 ```
@@ -18,6 +30,7 @@ mockup/<module>-<feature>-<ชื่อย่อผู้ทำ>
 6. Commit: `git commit -m "mockup(<module>): add <feature> v1"`
 7. Push + เปิด Pull Request เข้า `main`
    - PR description ต้องแปะ **Design Notes** ที่ AI สรุปมา
+   - ระบุ source version, parent version/hash, candidate version/hash และ changed/protected scope
    - แนบ screenshot คร่าว ๆ ใน PR (ไม่ต้องรอ approve ก่อนถ่ายจริงจัง)
 
 ## 3. QA Gate (บังคับก่อน merge)

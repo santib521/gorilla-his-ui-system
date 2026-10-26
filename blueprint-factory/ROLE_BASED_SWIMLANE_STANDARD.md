@@ -96,3 +96,45 @@ Recommended order:
 
 ## 12. Final Rule
 **Swimlane answers “Who does what, who decides, and where does the work go next?” The master must also be editable by the hospital/project team.**
+
+
+## 11. Editable Visual Equivalence Gate — HARD GATE
+
+Editable does **not** mean converting a Swimlane Diagram into a role-column table.
+
+For an editable master to PASS, it must preserve the visual grammar of the approved Swimlane:
+- visible horizontal/vertical Role lanes;
+- native editable Process shapes;
+- native editable Decision diamonds;
+- native editable directional connectors/arrows;
+- visible cross-lane handoffs;
+- branch labels adjacent to the correct connector;
+- Return/Reject/Loop paths when material;
+- clear chronological reading without relying on sequence numbers.
+
+### Accepted editable master
+Preferred: `Workflow_<Module>_<Language>.pptx` using native PowerPoint shapes/connectors. All lane headers, process boxes, decisions, labels and connectors must remain editable.
+
+DOCX may contain a rendered preview for hospital review, but the editable PPTX is the workflow diagram master. Image-only output without an editable master = FAIL.
+
+### Rejected
+- Word table/cell layout presented as the primary Swimlane;
+- image-only PNG/JPG/SVG/PDF with no editable master;
+- editable text over a flattened diagram;
+- diagram whose connectors cross unrelated boxes/text or whose path is visually ambiguous.
+
+## 12. Visual Regression / Benchmark Preservation Gate — HARD GATE
+When converting an approved/non-editable Swimlane into an editable form:
+1. render both old and new versions;
+2. compare lane structure, process placement, decision shape, connector routing, branch labels and reading order;
+3. editable version must preserve or improve the approved visual composition;
+4. any material degradation = FAIL and must be redesigned before delivery.
+
+## 13. Independent Review Gate
+The builder may not be the sole approver of a material Swimlane change. Review must explicitly check:
+`Role Ownership | Decision Authority | Handoff Correctness | Connector Routing | Editability | Visual Equivalence | Readability`.
+
+If no independent review was actually executed, status must be `NOT INDEPENDENTLY REVIEWED`; do not claim PASS.
+
+## 14. Human Veto Gate
+A Human Visual Review finding such as unreadable, visually broken, wrong role separation, misleading connector, or degraded benchmark overrides prior automated/structural PASS. Result = `FAIL — HUMAN VISUAL VETO` until corrected and re-rendered.

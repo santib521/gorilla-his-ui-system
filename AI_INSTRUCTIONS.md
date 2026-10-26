@@ -66,6 +66,7 @@ Never skip transaction, work obligation, queue, lifecycle, handoff, repeated wor
 19. `factory-gate/PRIMARY_WORKSPACE_RENDER_GATE.md`
 20. `factory-gate/EXECUTABLE_SCENARIO_ACCEPTANCE_GATE.md`
 21. `factory-gate/FACTORY_GATE.md`
+22. `factory-gate/BASELINE_VERSION_AND_REGRESSION_LOCK_GATE.md`
 
 Mandatory source inaccessible → report; never silently substitute AI memory.
 
@@ -274,3 +275,15 @@ A Standard-derived baseline alone cannot produce `HOSPITAL CONFIRMED`.
 **Visual PASS cannot override Workflow Fidelity FAIL.**
 **Knowledge Read cannot substitute for Knowledge Applied.**
 **Expert completeness cannot override evidence classification.**
+
+## Mandatory Existing-Mockup Baseline and Regression Lock — HARD GATE
+
+For every task that edits an existing HTML/mockup, read and obey `factory-gate/BASELINE_VERSION_AND_REGRESSION_LOCK_GATE.md`.
+
+Before editing, record the exact approved base version, filename/path, SHA-256, source authority/commit, request scope, preserve list, and known fixed regressions. If the authoritative baseline cannot be proven, stop with `BLOCKED — BASELINE NOT LOCKED`; do not infer it from memory or pick a convenient older version.
+
+Every candidate must be derived from that locked source, have a reviewed minimal diff, a new traceable output version, and a change manifest. Preserve all unrelated UI, workflow, state, navigation, and previously accepted behavior.
+
+Known fixed defects must become executable regression assertions. In particular, when the approved behavior says Progress Note closes on page navigation, execute the browser scenario: open panel → navigate away → confirm closed → return → confirm still closed → switch Case → confirm no stale panel/content leakage. Keep panel visibility separate from saved/draft data persistence.
+
+**Syntax-only checks are never a Runtime/Workflow/Release PASS.** If runtime execution or diff verification is unavailable, report `BLOCKED / NOT VERIFIED` accurately and do not present the artifact as tested or ready. Any failed regression returns the candidate to the builder and requires the relevant scenario to be rerun from its proper starting state.
